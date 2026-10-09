@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Portail développeurs et API — GerMoonBank</title>
+  <meta name="description" content="API GerMoonBank pour les entreprises clientes Business : clés API, webhooks signés, sécurité et état des services.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/developpeurs/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Portail développeurs et API — GerMoonBank">
+  <meta property="og:description" content="API GerMoonBank pour les entreprises clientes Business : clés API, webhooks signés, sécurité et état des services.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/developpeurs/">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/business.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header page="developpeurs" segment="business"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="index.html">Business</a></li><li><span aria-current="page">API</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">L’API GerMoonBank, pour automatiser vos paiements.</h1>
+        <p class="gmb-page-heros__intro">Réservée aux entreprises clientes d’une formule Business : consultation des comptes et des opérations, virements soumis à vos règles d’approbation, et événements notifiés en temps réel.</p>
+      </div>
+    </section>
+    <section class="gmb-section" aria-labelledby="t-acces">
+      <div class="gmb-conteneur gmb-pile gmb-pile--large">
+        <h2 class="gmb-section__titre" id="t-acces">Comment y accéder</h2>
+        <div class="gmb-grille gmb-grille--3">
+          <article class="gmb-carte"><span class="gmb-carte__icone" data-icone="cadenas"></span><h3 class="gmb-carte__titre">Clés API</h3><p class="gmb-carte__texte">Un administrateur de votre entreprise crée les clés dans l’Espace Business et choisit leurs droits : lecture seule, ou lecture et virements. Le secret ne s’affiche qu’une fois.</p></article>
+          <article class="gmb-carte"><span class="gmb-carte__icone" data-icone="cloche"></span><h3 class="gmb-carte__titre">Webhooks signés</h3><p class="gmb-carte__texte">Opérations, virements et approbations vous sont notifiés à l’adresse de votre choix. Chaque envoi est signé (HMAC SHA-256) pour que vous puissiez en vérifier l’origine.</p></article>
+          <article class="gmb-carte"><span class="gmb-carte__icone" data-icone="serveur"></span><h3 class="gmb-carte__titre">État des services</h3><p class="gmb-carte__texte">La disponibilité de l’API et de nos services est publiée en direct.</p><p class="gmb-carte__pied"><a class="gmb-lien-fleche" href="../aide/etat-des-services.html">Voir l’état des services</a></p></article>
+        </div>
+      </div>
+    </section>
+    <section class="gmb-section gmb-section--alt" aria-labelledby="t-securite">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre" id="t-securite">Sécurisée dès la conception</h2>
+        <ul class="gmb-coches gmb-coches--colonne">
+          <li><span data-icone="check"></span><span>Échanges chiffrés (HTTPS uniquement).</span></li>
+          <li><span data-icone="check"></span><span>Secrets des clés conservés sous forme d’empreinte : personne, pas même nos équipes, ne peut les relire.</span></li>
+          <li><span data-icone="check"></span><span>Révocation immédiate d’une clé depuis l’Espace Business.</span></li>
+          <li><span data-icone="check"></span><span>Les virements créés par l’API suivent les mêmes plafonds et les mêmes règles d’approbation que dans l’Espace Business.</span></li>
+        </ul>
+      </div>
+    </section>
+    <section class="gmb-section" aria-labelledby="t-qui">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre" id="t-qui">Qui peut utiliser l’API ?</h2>
+        <p class="gmb-section__intro">Les entreprises clientes des formules Business Start, Growth et Scale. La documentation détaillée des points d’accès est remise avec vos clés, dans l’Espace Business.</p>
+        <p><a class="gmb-bouton gmb-bouton--principal" href="index.html">Découvrir l’offre Business</a></p>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

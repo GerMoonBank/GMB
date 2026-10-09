@@ -1,0 +1,130 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/pages/legal.css
+   Aide, réclamations, état des services, pages légales, documents imprimables — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend la section 9 de design/vitrine.css.
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+@layer pages {
+  /* ===========================================================================
+     9. CENTRE D'AIDE ET ÉTAT DES SERVICES
+     ======================================================================== */
+  .gmb-aide-rubrique {
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    color: var(--gmb-text);
+    text-decoration: none;
+  }
+
+  .gmb-aide-rubrique__titre {
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  .gmb-recherche-aide {
+    display: grid;
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-recherche-aide__resultats {
+    display: grid;
+    margin: 0;
+    padding: var(--gmb-space-2);
+    list-style: none;
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-surface-raised);
+    box-shadow: var(--gmb-shadow-lg);
+  }
+
+  .gmb-recherche-aide__resultats a {
+    display: grid;
+    gap: 2px;
+    padding: var(--gmb-space-3);
+    border-radius: var(--gmb-radius-md);
+    color: var(--gmb-text);
+    font-weight: var(--gmb-weight-semibold);
+    text-decoration: none;
+  }
+
+  .gmb-recherche-aide__resultats a:hover {
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-recherche-aide__rubrique {
+    font-size: var(--gmb-fs-2xs);
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-recherche-aide__vide {
+    padding: var(--gmb-space-3);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-etat-liste {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-surface);
+  }
+
+  .gmb-etat-liste > li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gmb-space-2) var(--gmb-space-4);
+    padding: var(--gmb-space-4) var(--gmb-space-5);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-etat-liste > li:last-child {
+    border-block-end: 0;
+  }
+
+  .gmb-etat-liste__nom {
+    display: grid;
+    font-weight: var(--gmb-weight-semibold);
+  }
+
+  .gmb-etat-liste__message {
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-medium);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-etat-historique__barres {
+    display: grid;
+    grid-template-columns: repeat(90, minmax(0, 1fr));
+    gap: 2px;
+    height: 36px;
+  }
+
+  .gmb-etat-historique__jour {
+    border-radius: 2px;
+    background-color: var(--gmb-succes-500);
+  }
+
+  .gmb-etat-historique__jour--incident {
+    background-color: var(--gmb-alerte-500);
+  }
+
+  /* Documents imprimables (brochure, document d'information tarifaire) */
+  .doc-actions { display: flex; flex-wrap: wrap; gap: var(--gmb-space-3); align-items: end; }
+  .doc-dit__groupe th { background-color: var(--gmb-surface-2); font-weight: var(--gmb-weight-bold); }
+  .doc-dit th[scope="row"] { width: 55%; }
+  .doc-dit td.gmb-nombre { text-align: start; white-space: normal; overflow-wrap: anywhere; }
+  @media print {
+    gm-header, gm-footer, .gmb-lien-evitement, .doc-actions, .gmb-fil-ariane { display: none !important; }
+    .gmb-page-heros { padding-block: 0 !important; background: none !important; }
+    .gmb-section { padding-block: 8pt !important; }
+    .gmb-tableau-zone { overflow: visible !important; }
+    .doc-section { break-inside: avoid-page; }
+    body { background: #fff !important; }
+  }
+}

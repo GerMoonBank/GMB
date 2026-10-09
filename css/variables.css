@@ -1,0 +1,775 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/variables.css
+   Jetons de design (couleurs, typographie, espacements, thèmes) — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend design/variables.css.
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+/* Ordre des couches CSS de tout le projet, déclaré une seule fois, ici.
+   Une couche placée plus à droite l'emporte sur les précédentes, quelle que
+   soit la spécificité des sélecteurs : les pages peuvent donc surcharger un
+   composant sans « !important ». */
+@layer tokens, reset, base, layout, components, utilities, pages;
+
+@layer tokens {
+
+  /* ===========================================================================
+     1. PRIMITIVES DE COULEUR
+     Palette brute de la marque. Les composants ne les utilisent jamais
+     directement : ils passent par les jetons sémantiques des sections 2 et 3,
+     qui changent avec le thème.
+     ======================================================================== */
+  :root {
+    /* Violet — couleur principale */
+    --gmb-violet-50:  #F3F2FF;
+    --gmb-violet-100: #EEEDFF;
+    --gmb-violet-200: #D4D1FF;
+    --gmb-violet-300: #B4AFFF;
+    --gmb-violet-400: #8F88FF;
+    --gmb-violet-450: #7B5BFF; /* étape intermédiaire du dégradé de marque */
+    --gmb-violet-500: #635BFF; /* principale — texte blanc dessus : 4,7:1 */
+    --gmb-violet-600: #4F46E5; /* survol des boutons */
+    --gmb-violet-700: #4B42D6; /* liens et texte violet sur fond clair : 6,9:1 */
+    --gmb-violet-800: #3A31B0;
+    --gmb-violet-900: #2A2380;
+    --gmb-violet-950: #1A1650;
+
+    /* Teal — accent, lune, actions du thème sombre */
+    --gmb-teal-50:  #E6FBF8;
+    --gmb-teal-100: #C2F5EE;
+    --gmb-teal-200: #9FF2E6;
+    --gmb-teal-300: #7FEBDD;
+    --gmb-teal-400: #00D4B8; /* accent — interdit en texte sur fond clair (1,9:1) */
+    --gmb-teal-500: #00B89F;
+    --gmb-teal-600: #009985; /* traits de graphique sur fond clair : 3,6:1 */
+    --gmb-teal-700: #00796B; /* texte teal sur fond clair : 5,3:1 */
+    --gmb-teal-800: #005C52;
+    --gmb-teal-900: #003F39;
+
+    /* Rose — mises en avant, univers Jeunes */
+    --gmb-rose-50:  #FFF0F7;
+    --gmb-rose-100: #FFE3F0;
+    --gmb-rose-200: #FFC2DE;
+    --gmb-rose-300: #FF8CC4;
+    --gmb-rose-400: #FF66AE;
+    --gmb-rose-500: #FF3E9A; /* décor ; texte encre 900 dessus : 5,6:1 */
+    --gmb-rose-600: #D61F74; /* badges à texte blanc : 4,9:1 */
+    --gmb-rose-700: #B0145F;
+    --gmb-rose-800: #870F49;
+    --gmb-rose-900: #5E0A33;
+
+    /* Encre — neutres sombres teintés de violet (texte, thème sombre) */
+    --gmb-encre-950: #07061A;
+    --gmb-encre-900: #110E33; /* texte principal : 18,5:1 sur blanc */
+    --gmb-encre-850: #16133D;
+    --gmb-encre-800: #1C1849;
+    --gmb-encre-700: #282262;
+    --gmb-encre-600: #312A73;
+    --gmb-encre-500: #3D3585;
+
+    /* Nuage, brume, ardoise — neutres clairs et intermédiaires */
+    --gmb-blanc:       #FFFFFF;
+    --gmb-nuage-25:    #F8F8FD;
+    --gmb-nuage-50:    #F3F5FA; /* fond clair par défaut */
+    --gmb-nuage-75:    #EFF2F9;
+    --gmb-nuage-100:   #EBEFF8;
+    --gmb-nuage-150:   #E2E7F2;
+    --gmb-nuage-200:   #CFD7E9;
+    --gmb-brume-100:   #D8DEEE;
+    --gmb-brume-200:   #BCC5DE;
+    --gmb-brume-300:   #9AA6C8; /* texte secondaire sur fond sombre : 7,6:1 */
+    --gmb-ardoise-400: #7885AB;
+    --gmb-ardoise-500: #5D6A91; /* texte discret sur fond clair : 5,3:1 */
+    --gmb-ardoise-600: #434F75; /* texte secondaire sur fond clair : 8,0:1 */
+    --gmb-ardoise-700: #2E3757;
+
+    /* États */
+    --gmb-succes-50:  #E8F7F1;
+    --gmb-succes-200: #A8E6CF;
+    --gmb-succes-300: #3FD4A6;
+    --gmb-succes-500: #1DB98A;
+    --gmb-succes-700: #08795A; /* texte de succès sur fond clair : 5,4:1 */
+
+    --gmb-alerte-50:  #FFF5E8;
+    --gmb-alerte-200: #F6D6A6;
+    --gmb-alerte-300: #F4B75A;
+    --gmb-alerte-500: #F0A63A;
+    --gmb-alerte-700: #9A5C00; /* texte d'alerte sur fond clair : 5,4:1 */
+
+    --gmb-danger-50:  #FDECEC;
+    --gmb-danger-200: #F5C2C4;
+    --gmb-danger-300: #F07377;
+    --gmb-danger-500: #E5484D;
+    --gmb-danger-700: #B4232A; /* texte d'erreur sur fond clair : 6,5:1 */
+
+    --gmb-info-50:  #EAF2FF;
+    --gmb-info-200: #BCD3FF;
+    --gmb-info-300: #8AB4FF;
+    --gmb-info-500: #4C8DFF;
+    --gmb-info-700: #1F5FD1; /* texte d'information sur fond clair : 5,8:1 */
+
+    /* Couleurs de la barre du navigateur (balise meta theme-color) */
+    --gmb-theme-color-clair:  #F3F5FA;
+    --gmb-theme-color-sombre: #07061A;
+  }
+
+
+  /* ===========================================================================
+     2. JETONS SÉMANTIQUES — THÈME CLAIR (par défaut)
+     ======================================================================== */
+  :root,
+  [data-theme="clair"] {
+    color-scheme: light;
+
+    /* Fonds et surfaces */
+    --gmb-bg:              var(--gmb-nuage-50);
+    --gmb-bg-alt:          var(--gmb-blanc);
+    --gmb-surface:         var(--gmb-blanc);
+    --gmb-surface-2:       var(--gmb-nuage-75);
+    --gmb-surface-3:       var(--gmb-nuage-150);
+    --gmb-surface-raised:  var(--gmb-blanc);
+    --gmb-surface-inverse: var(--gmb-encre-900);
+    --gmb-surface-brand:   var(--gmb-violet-50);
+
+    /* Textes */
+    --gmb-text:            var(--gmb-encre-900);
+    --gmb-text-muted:      var(--gmb-ardoise-600);
+    --gmb-text-faint:      var(--gmb-ardoise-500);
+    --gmb-text-inverse:    var(--gmb-blanc);
+    --gmb-text-disabled:   var(--gmb-brume-300);
+
+    /* Bordures */
+    --gmb-border:          var(--gmb-nuage-150);
+    --gmb-border-strong:   var(--gmb-nuage-200);
+    --gmb-border-input:    var(--gmb-brume-200);
+    --gmb-divider:         var(--gmb-nuage-150);
+
+    /* Action principale : boutons, onglet actif, sélection */
+    --gmb-action:             var(--gmb-violet-500);
+    --gmb-action-hover:       var(--gmb-violet-600);
+    --gmb-action-active:      var(--gmb-violet-700);
+    --gmb-on-action:          var(--gmb-blanc);
+    --gmb-action-soft:        var(--gmb-violet-100);
+    --gmb-on-action-soft:     var(--gmb-violet-700);
+    --gmb-action-disabled:    var(--gmb-nuage-150);
+    --gmb-on-action-disabled: var(--gmb-ardoise-400);
+
+    /* Liens, accents et mises en avant */
+    --gmb-link:              var(--gmb-violet-700);
+    --gmb-link-hover:        var(--gmb-violet-800);
+    --gmb-accent:            var(--gmb-teal-700); /* accent lisible en texte */
+    --gmb-accent-decor:      var(--gmb-teal-400); /* décors, grandes icônes */
+    --gmb-accent-soft:       var(--gmb-teal-50);
+    --gmb-highlight:         var(--gmb-rose-600); /* « Le plus choisi », nouveautés */
+    --gmb-on-highlight:      var(--gmb-blanc);
+    --gmb-highlight-soft:    var(--gmb-rose-100);
+    --gmb-on-highlight-soft: var(--gmb-rose-700);
+
+    /* Montants : un débit garde la couleur du texte et son signe −,
+       jamais de rouge pour une opération normale */
+    --gmb-amount-positive: var(--gmb-succes-700);
+    --gmb-amount-negative: var(--gmb-encre-900);
+
+    /* États : texte, fond, bordure */
+    --gmb-succes-text:   var(--gmb-succes-700);
+    --gmb-succes-bg:     var(--gmb-succes-50);
+    --gmb-succes-border: var(--gmb-succes-200);
+    --gmb-alerte-text:   var(--gmb-alerte-700);
+    --gmb-alerte-bg:     var(--gmb-alerte-50);
+    --gmb-alerte-border: var(--gmb-alerte-200);
+    --gmb-danger-text:   var(--gmb-danger-700);
+    --gmb-danger-bg:     var(--gmb-danger-50);
+    --gmb-danger-border: var(--gmb-danger-200);
+    --gmb-info-text:     var(--gmb-info-700);
+    --gmb-info-bg:       var(--gmb-info-50);
+    --gmb-info-border:   var(--gmb-info-200);
+
+    /* Focus clavier (toujours visible, appliqué dans base.css) */
+    --gmb-focus-color: var(--gmb-violet-500);
+    --gmb-focus-ring:  0 0 0 4px rgba(99, 91, 255, .28);
+
+    /* Superpositions */
+    --gmb-overlay: rgba(7, 6, 26, .55);   /* fond des fenêtres modales */
+    --gmb-scrim:   rgba(17, 14, 51, .32); /* sous les menus et tiroirs */
+
+    /* Lune fonctionnelle (objectifs, budgets, dossiers, code secret) */
+    --gmb-moon-lit:    var(--gmb-teal-400);
+    --gmb-moon-shadow: var(--gmb-nuage-150);
+    --gmb-moon-ring:   var(--gmb-nuage-200);
+    --gmb-moon-glow:   rgba(0, 212, 184, .30);
+
+    /* Verre dépoli : en-tête au défilement, barres fixes */
+    --gmb-glass-bg:     rgba(255, 255, 255, .78);
+    --gmb-glass-border: rgba(207, 215, 233, .70);
+
+    /* Squelettes de chargement */
+    --gmb-skeleton-base:  var(--gmb-nuage-150);
+    --gmb-skeleton-shine: var(--gmb-nuage-50);
+
+    /* Sélection de texte et barres de défilement */
+    --gmb-selection-bg:          var(--gmb-violet-200);
+    --gmb-selection-text:        var(--gmb-encre-900);
+    --gmb-scrollbar-thumb:       var(--gmb-brume-200);
+    --gmb-scrollbar-thumb-hover: var(--gmb-brume-300);
+    --gmb-scrollbar-track:       transparent;
+
+    /* Graphiques : chaque trait atteint au moins 3:1 sur la surface */
+    --gmb-chart-1:    var(--gmb-teal-600);
+    --gmb-chart-2:    var(--gmb-violet-500);
+    --gmb-chart-3:    var(--gmb-rose-600);
+    --gmb-chart-4:    var(--gmb-info-500);
+    --gmb-chart-5:    var(--gmb-alerte-700);
+    --gmb-chart-grid: var(--gmb-nuage-150);
+    --gmb-chart-area: rgba(0, 153, 133, .14);
+
+    /* Ombres — 10 niveaux */
+    --gmb-shadow-xs:    0 1px 2px rgba(17, 14, 51, .06);
+    --gmb-shadow-sm:    0 1px 3px rgba(17, 14, 51, .08), 0 1px 2px rgba(17, 14, 51, .04);
+    --gmb-shadow-md:    0 4px 12px -2px rgba(17, 14, 51, .08), 0 2px 4px -2px rgba(17, 14, 51, .05);
+    --gmb-shadow-lg:    0 12px 28px -8px rgba(17, 14, 51, .14), 0 4px 10px -4px rgba(17, 14, 51, .06);
+    --gmb-shadow-xl:    0 24px 48px -16px rgba(17, 14, 51, .20);
+    --gmb-shadow-2xl:   0 40px 80px -24px rgba(17, 14, 51, .28);
+    --gmb-shadow-inset: inset 0 1px 2px rgba(17, 14, 51, .06);
+    --gmb-shadow-brand: 0 14px 34px -12px rgba(99, 91, 255, .55);
+    --gmb-shadow-teal:  0 14px 34px -12px rgba(0, 184, 159, .45);
+    --gmb-shadow-rose:  0 14px 34px -12px rgba(214, 31, 116, .40);
+
+    /* Dégradés.
+       --gmb-gradient-hero est une liste de calques sans couleur de fond :
+       l'écrire suivi d'une couleur, par exemple
+       background: var(--gmb-gradient-hero), var(--gmb-bg); */
+    --gmb-gradient-brand:   linear-gradient(135deg, var(--gmb-violet-500) 0%, var(--gmb-violet-450) 55%, var(--gmb-teal-400) 100%);
+    --gmb-gradient-promo:   linear-gradient(90deg, var(--gmb-violet-500) 0%, var(--gmb-rose-600) 100%);
+    --gmb-gradient-hero:
+      radial-gradient(1100px 560px at 88% -12%, rgba(99, 91, 255, .16), transparent 62%),
+      radial-gradient(900px 520px at -6% 104%, rgba(0, 212, 184, .14), transparent 62%),
+      radial-gradient(700px 420px at 50% 120%, rgba(255, 62, 154, .08), transparent 60%);
+    --gmb-gradient-surface: linear-gradient(180deg, var(--gmb-blanc) 0%, var(--gmb-nuage-25) 100%);
+    --gmb-gradient-night:   radial-gradient(900px 520px at 78% 0%, var(--gmb-encre-700) 0%, var(--gmb-encre-900) 58%, var(--gmb-encre-950) 100%);
+    --gmb-gradient-shine:   linear-gradient(135deg, rgba(255, 255, 255, .38) 0%, rgba(255, 255, 255, 0) 62%);
+  }
+
+
+  /* ===========================================================================
+     3. JETONS SÉMANTIQUES — THÈME SOMBRE PREMIUM
+     Mêmes noms qu'en section 2 : un composant écrit une seule fois
+     s'affiche correctement dans les deux thèmes.
+     ======================================================================== */
+  [data-theme="sombre"] {
+    color-scheme: dark;
+
+    --gmb-bg:              var(--gmb-encre-950);
+    --gmb-bg-alt:          var(--gmb-encre-900);
+    --gmb-surface:         var(--gmb-encre-850);
+    --gmb-surface-2:       var(--gmb-encre-800);
+    --gmb-surface-3:       var(--gmb-encre-700);
+    --gmb-surface-raised:  var(--gmb-encre-800);
+    --gmb-surface-inverse: var(--gmb-nuage-50);
+    --gmb-surface-brand:   rgba(99, 91, 255, .14);
+
+    --gmb-text:            var(--gmb-nuage-100);
+    --gmb-text-muted:      var(--gmb-brume-300);
+    --gmb-text-faint:      var(--gmb-ardoise-400);
+    --gmb-text-inverse:    var(--gmb-encre-900);
+    --gmb-text-disabled:   var(--gmb-ardoise-500);
+
+    --gmb-border:          rgba(235, 239, 248, .09);
+    --gmb-border-strong:   rgba(235, 239, 248, .16);
+    --gmb-border-input:    rgba(235, 239, 248, .22);
+    --gmb-divider:         rgba(235, 239, 248, .08);
+
+    --gmb-action:             var(--gmb-teal-400);
+    --gmb-action-hover:       var(--gmb-teal-300);
+    --gmb-action-active:      var(--gmb-teal-500);
+    --gmb-on-action:          var(--gmb-encre-900); /* 9,8:1 */
+    --gmb-action-soft:        rgba(0, 212, 184, .14);
+    --gmb-on-action-soft:     var(--gmb-teal-300);
+    --gmb-action-disabled:    var(--gmb-encre-700);
+    --gmb-on-action-disabled: var(--gmb-ardoise-400);
+
+    --gmb-link:              var(--gmb-violet-300);
+    --gmb-link-hover:        var(--gmb-violet-200);
+    --gmb-accent:            var(--gmb-teal-400);
+    --gmb-accent-decor:      var(--gmb-teal-400);
+    --gmb-accent-soft:       rgba(0, 212, 184, .12);
+    --gmb-highlight:         var(--gmb-rose-500);
+    --gmb-on-highlight:      var(--gmb-encre-900); /* 5,6:1 */
+    --gmb-highlight-soft:    rgba(255, 62, 154, .16);
+    --gmb-on-highlight-soft: var(--gmb-rose-300);
+
+    --gmb-amount-positive: var(--gmb-succes-300);
+    --gmb-amount-negative: var(--gmb-nuage-100);
+
+    --gmb-succes-text:   var(--gmb-succes-300);
+    --gmb-succes-bg:     rgba(29, 185, 138, .14);
+    --gmb-succes-border: rgba(63, 212, 166, .35);
+    --gmb-alerte-text:   var(--gmb-alerte-300);
+    --gmb-alerte-bg:     rgba(240, 166, 58, .14);
+    --gmb-alerte-border: rgba(244, 183, 90, .35);
+    --gmb-danger-text:   var(--gmb-danger-300);
+    --gmb-danger-bg:     rgba(229, 72, 77, .14);
+    --gmb-danger-border: rgba(240, 115, 119, .35);
+    --gmb-info-text:     var(--gmb-info-300);
+    --gmb-info-bg:       rgba(76, 141, 255, .14);
+    --gmb-info-border:   rgba(138, 180, 255, .35);
+
+    --gmb-focus-color: var(--gmb-violet-300);
+    --gmb-focus-ring:  0 0 0 4px rgba(143, 136, 255, .35);
+
+    --gmb-overlay: rgba(3, 2, 12, .72);
+    --gmb-scrim:   rgba(3, 2, 12, .50);
+
+    --gmb-moon-lit:    var(--gmb-teal-400);
+    --gmb-moon-shadow: rgba(235, 239, 248, .08);
+    --gmb-moon-ring:   rgba(235, 239, 248, .22);
+    --gmb-moon-glow:   rgba(0, 212, 184, .40);
+
+    --gmb-glass-bg:     rgba(30, 25, 82, .58);
+    --gmb-glass-border: rgba(235, 239, 248, .12);
+
+    --gmb-skeleton-base:  var(--gmb-encre-800);
+    --gmb-skeleton-shine: var(--gmb-encre-700);
+
+    --gmb-selection-bg:          rgba(143, 136, 255, .45);
+    --gmb-selection-text:        var(--gmb-blanc);
+    --gmb-scrollbar-thumb:       rgba(235, 239, 248, .18);
+    --gmb-scrollbar-thumb-hover: rgba(235, 239, 248, .30);
+
+    --gmb-chart-1:    var(--gmb-teal-400);
+    --gmb-chart-2:    var(--gmb-violet-400);
+    --gmb-chart-3:    var(--gmb-rose-400);
+    --gmb-chart-4:    var(--gmb-info-300);
+    --gmb-chart-5:    var(--gmb-alerte-300);
+    --gmb-chart-grid: rgba(235, 239, 248, .07);
+    --gmb-chart-area: rgba(0, 212, 184, .16);
+
+    --gmb-shadow-xs:    0 1px 2px rgba(0, 0, 0, .40);
+    --gmb-shadow-sm:    0 1px 3px rgba(0, 0, 0, .45), 0 1px 2px rgba(0, 0, 0, .30);
+    --gmb-shadow-md:    0 6px 16px -4px rgba(0, 0, 0, .50);
+    --gmb-shadow-lg:    0 16px 34px -10px rgba(0, 0, 0, .60);
+    --gmb-shadow-xl:    0 28px 56px -18px rgba(0, 0, 0, .70);
+    --gmb-shadow-2xl:   0 44px 88px -26px rgba(0, 0, 0, .78);
+    --gmb-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, .05);
+    --gmb-shadow-brand: 0 16px 38px -14px rgba(99, 91, 255, .65);
+    --gmb-shadow-teal:  0 16px 38px -14px rgba(0, 212, 184, .50);
+    --gmb-shadow-rose:  0 16px 38px -14px rgba(255, 62, 154, .45);
+
+    --gmb-gradient-hero:
+      radial-gradient(1100px 560px at 88% -12%, rgba(99, 91, 255, .30), transparent 62%),
+      radial-gradient(900px 520px at -6% 104%, rgba(0, 212, 184, .16), transparent 62%),
+      radial-gradient(700px 420px at 50% 120%, rgba(255, 62, 154, .10), transparent 60%);
+    --gmb-gradient-surface: linear-gradient(180deg, var(--gmb-encre-850) 0%, var(--gmb-encre-900) 100%);
+    --gmb-gradient-shine:   linear-gradient(135deg, rgba(255, 255, 255, .14) 0%, rgba(255, 255, 255, 0) 62%);
+  }
+
+
+  /* ===========================================================================
+     4. TYPOGRAPHIE
+     Manrope pour tout le texte et l'interface ; JetBrains Mono pour les
+     références, IBAN et extraits de code. Les fichiers de police sont
+     déclarés dans base.css (hébergés sur le site, conformes au RGPD).
+     ======================================================================== */
+  :root {
+    --gmb-font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --gmb-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+    /* Chiffres tabulaires et alignés pour les montants */
+    --gmb-font-features-amount: "tnum" 1, "lnum" 1;
+
+    --gmb-weight-regular:   400;
+    --gmb-weight-medium:    500;
+    --gmb-weight-semibold:  600;
+    --gmb-weight-bold:      700;
+    --gmb-weight-extrabold: 800;
+
+    /* Échelle fluide. Formule : clamp(minimum, base + pente × vw, maximum).
+       Le minimum s'applique à 320 px de large, le maximum à 1 440 px
+       (2 560 px pour --gmb-fs-5xl, réservé aux très grands écrans). */
+    --gmb-fs-2xs: 0.75rem;   /* 12 px : mentions légales, jamais en dessous */
+    --gmb-fs-xs:  0.8125rem; /* 13 px : badges, aides sous les champs */
+    --gmb-fs-sm:  0.875rem;  /* 14 px : métadonnées */
+    --gmb-fs-md:  clamp(0.9375rem, 0.9018rem + 0.1786vw, 1.0625rem); /* 15 → 17 px : corps */
+    --gmb-fs-lg:  clamp(1.0625rem, 1.0089rem + 0.2679vw, 1.25rem);   /* 17 → 20 px : chapeaux */
+    --gmb-fs-xl:  clamp(1.1875rem, 1.1339rem + 0.2679vw, 1.375rem);  /* 19 → 22 px : titre 3 */
+    --gmb-fs-2xl: clamp(1.5rem, 1.3929rem + 0.5357vw, 1.875rem);     /* 24 → 30 px : titre 2 */
+    --gmb-fs-3xl: clamp(1.75rem, 1.5357rem + 1.0714vw, 2.5rem);      /* 28 → 40 px : titre 1 */
+    --gmb-fs-4xl: clamp(2.25rem, 1.8929rem + 1.7857vw, 3.5rem);      /* 36 → 56 px : affichage */
+    --gmb-fs-5xl: clamp(2.5rem, 2.2143rem + 1.4286vw, 4.5rem);       /* 40 → 72 px : héros XXL */
+
+    /* Interlignes */
+    --gmb-lh-tight:   1.05; /* affichage */
+    --gmb-lh-heading: 1.15; /* titres */
+    --gmb-lh-snug:    1.3;  /* cartes, listes */
+    --gmb-lh-body:    1.55; /* texte courant */
+    --gmb-lh-relaxed: 1.7;  /* mentions longues */
+
+    /* Approche (espacement des lettres) */
+    --gmb-tracking-display: -0.03em;
+    --gmb-tracking-heading: -0.02em;
+    --gmb-tracking-snug:    -0.01em;
+    --gmb-tracking-normal:  0;
+    --gmb-tracking-wide:    0.02em;
+
+    /* Longueur de ligne confortable */
+    --gmb-measure:        68ch;
+    --gmb-measure-narrow: 52ch;
+  }
+
+
+  /* ===========================================================================
+     5. ESPACEMENTS, GRILLES ET CONTENEURS
+     Base de 4 px. Les jetons fluides s'adaptent de 320 px à 1 440 px.
+     ======================================================================== */
+  :root {
+    --gmb-space-0:  0;
+    --gmb-space-1:  0.25rem; /*  4 px */
+    --gmb-space-2:  0.5rem;  /*  8 px */
+    --gmb-space-3:  0.75rem; /* 12 px */
+    --gmb-space-4:  1rem;    /* 16 px */
+    --gmb-space-5:  1.25rem; /* 20 px */
+    --gmb-space-6:  1.5rem;  /* 24 px */
+    --gmb-space-7:  2rem;    /* 32 px */
+    --gmb-space-8:  2.5rem;  /* 40 px */
+    --gmb-space-9:  3rem;    /* 48 px */
+    --gmb-space-10: 4rem;    /* 64 px */
+    --gmb-space-11: 5rem;    /* 80 px */
+    --gmb-space-12: 6rem;    /* 96 px */
+
+    /* Espacements fluides */
+    --gmb-gutter:    clamp(1rem, 0.6429rem + 1.7857vw, 2.25rem);  /* 16 → 36 px : marges latérales */
+    --gmb-section-y: clamp(3rem, 2.1429rem + 4.2857vw, 6rem);     /* 48 → 96 px : entre sections */
+    --gmb-stack:     clamp(1rem, 0.8214rem + 0.8929vw, 1.625rem); /* 16 → 26 px : entre blocs */
+    --gmb-card-pad:  clamp(1rem, 0.7857rem + 1.0714vw, 1.75rem);  /* 16 → 28 px : intérieur des cartes */
+
+    /* Conteneurs */
+    --gmb-container-xs:  30rem;  /*  480 px : connexion, formulaires */
+    --gmb-container-sm:  40rem;  /*  640 px */
+    --gmb-container-md:  48rem;  /*  768 px */
+    --gmb-container-lg:  64rem;  /* 1024 px */
+    --gmb-container-xl:  75rem;  /* 1200 px : vitrine */
+    --gmb-container-2xl: 90rem;  /* 1440 px : espaces clients, back-office */
+    --gmb-container-max: 100rem; /* 1600 px : plafond des très grands écrans */
+
+    /* Grille : 4 colonnes sur mobile, 8 sur tablette, 12 sur ordinateur */
+    --gmb-grid-columns: 4;
+    --gmb-grid-gap: clamp(0.75rem, 0.5714rem + 0.8929vw, 1.375rem); /* 12 → 22 px */
+
+    /* Points de rupture, en lecture seule pour js/core.js.
+       Les media queries ne peuvent pas lire de variables : les valeurs
+       sont reprises telles quelles dans les fichiers CSS.
+       360 petit mobile · 480 grand mobile · 768 tablette · 1024 petit
+       ordinateur · 1280 ordinateur · 1440 grand écran · 1920 et 2560 TV,
+       écrans 2K et 4K. */
+    --gmb-bp-xs:  360px;
+    --gmb-bp-sm:  480px;
+    --gmb-bp-md:  768px;
+    --gmb-bp-lg:  1024px;
+    --gmb-bp-xl:  1280px;
+    --gmb-bp-2xl: 1440px;
+    --gmb-bp-3xl: 1920px;
+    --gmb-bp-4xl: 2560px;
+
+    /* Taille de base de la page, agrandie sur les très grands écrans
+       (appliquée à <html> dans base.css : tout ce qui est en rem suit) */
+    --gmb-root-size: 100%;
+  }
+
+
+  /* ===========================================================================
+     6. RAYONS, BORDURES ET FOCUS
+     ======================================================================== */
+  :root {
+    --gmb-radius-xs:     6px;
+    --gmb-radius-sm:     10px;
+    --gmb-radius-md:     14px;  /* boutons, champs */
+    --gmb-radius-lg:     18px;
+    --gmb-radius-xl:     22px;  /* cartes */
+    --gmb-radius-2xl:    28px;
+    --gmb-radius-3xl:    36px;  /* grands blocs, héros */
+    --gmb-radius-pill:   999px;
+    --gmb-radius-circle: 50%;
+    --gmb-radius-logo:   22%;   /* carré arrondi de l'icône GerMoonBank */
+
+    --gmb-border-width:        1px;
+    --gmb-border-width-strong: 1.5px;
+    --gmb-focus-width:         2px;
+    --gmb-focus-offset:        2px;
+  }
+
+
+  /* ===========================================================================
+     7. MOUVEMENT
+     Durées du cahier des charges : 120 ms (retours immédiats), 200 ms
+     (changements d'état), 320 ms (panneaux), 600 ms (célébrations).
+     Toutes passent à zéro si l'appareil demande moins d'animations (§ 11).
+     ======================================================================== */
+  :root {
+    --gmb-duration-instant:     80ms;
+    --gmb-duration-fast:        120ms;
+    --gmb-duration-normal:      200ms;
+    --gmb-duration-panel:       320ms;
+    --gmb-duration-slow:        480ms;
+    --gmb-duration-celebration: 600ms;
+
+    /* 8 courbes d'accélération */
+    --gmb-ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+    --gmb-ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+    --gmb-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);   /* entrées */
+    --gmb-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);   /* sorties */
+    --gmb-ease-out-quint:  cubic-bezier(0.22, 1, 0.36, 1);
+    --gmb-ease-smooth:     cubic-bezier(0.65, 0, 0.35, 1);
+    --gmb-ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1); /* léger rebond */
+    --gmb-ease-linear:     linear;
+
+    /* Transitions prêtes à l'emploi */
+    --gmb-transition-colors:
+      color var(--gmb-duration-fast) var(--gmb-ease-standard),
+      background-color var(--gmb-duration-fast) var(--gmb-ease-standard),
+      border-color var(--gmb-duration-fast) var(--gmb-ease-standard),
+      box-shadow var(--gmb-duration-fast) var(--gmb-ease-standard);
+    --gmb-transition-transform: transform var(--gmb-duration-normal) var(--gmb-ease-out-quint);
+    --gmb-transition-panel:
+      transform var(--gmb-duration-panel) var(--gmb-ease-emphasized),
+      opacity var(--gmb-duration-panel) var(--gmb-ease-standard);
+  }
+
+
+  /* ===========================================================================
+     8. PLANS D'EMPILEMENT (z-index)
+     Toujours utiliser ces jetons : jamais de z-index « 9999 » isolé.
+     ======================================================================== */
+  :root {
+    --gmb-z-hide:      -1;
+    --gmb-z-base:      0;
+    --gmb-z-raised:    1;
+    --gmb-z-dropdown:  100;
+    --gmb-z-sticky:    200;
+    --gmb-z-header:    300;
+    --gmb-z-cta-bar:   350;
+    --gmb-z-drawer:    400;
+    --gmb-z-overlay:   500;
+    --gmb-z-modal:     600;
+    --gmb-z-popover:   700;
+    --gmb-z-toast:     800;
+    --gmb-z-tooltip:   900;
+    --gmb-z-skip-link: 1000;
+  }
+
+
+  /* ===========================================================================
+     9. TAILLES DES COMPOSANTS
+     ======================================================================== */
+  :root {
+    /* Zone tactile minimale (WCAG 2.5.5, Apple, Google) */
+    --gmb-touch-min: 44px;
+
+    /* Hauteurs de contrôles */
+    --gmb-control-sm: 40px;
+    --gmb-control-md: 48px;
+    --gmb-control-lg: 56px;
+    --gmb-input-h:    52px;
+
+    /* Structure des pages */
+    --gmb-header-h:  64px;  /* 72 px dès 1 024 px (§ 10) */
+    --gmb-promo-h:   40px;  /* bandeau promotionnel ou d'information */
+    --gmb-cta-bar-h: 76px;  /* boutons fixés en bas du menu mobile */
+    --gmb-tabbar-h:  64px;  /* barre d'onglets de l'application */
+    --gmb-sidebar-w: 264px; /* barre latérale de l'Espace client */
+    --gmb-drawer-w:  min(420px, 100vw);
+    --gmb-logo-h:    32px;
+
+    /* Clavier virtuel et pastilles du code secret (AUTH-03) */
+    --gmb-key-h:    64px;
+    --gmb-key-gap:  12px;
+    --gmb-pastille: 22px;
+
+    /* Icônes et avatars */
+    --gmb-icon-xs:  14px;
+    --gmb-icon-sm:  16px;
+    --gmb-icon-md:  20px;
+    --gmb-icon-lg:  24px;
+    --gmb-icon-xl:  32px;
+    --gmb-icon-2xl: 48px;
+    --gmb-avatar-sm: 32px;
+    --gmb-avatar-md: 40px;
+    --gmb-avatar-lg: 56px;
+
+    /* Verre dépoli */
+    --gmb-glass-blur:     18px;
+    --gmb-glass-saturate: 160%;
+
+    /* Zones de sécurité des écrans à encoche (iPhone, Android) */
+    --gmb-safe-top:    env(safe-area-inset-top, 0px);
+    --gmb-safe-right:  env(safe-area-inset-right, 0px);
+    --gmb-safe-bottom: env(safe-area-inset-bottom, 0px);
+    --gmb-safe-left:   env(safe-area-inset-left, 0px);
+  }
+
+
+  /* ===========================================================================
+     10. AJUSTEMENTS SELON LA LARGEUR D'ÉCRAN
+     ======================================================================== */
+  @media (min-width: 768px) {
+    :root {
+      --gmb-grid-columns: 8;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --gmb-grid-columns: 12;
+      --gmb-header-h:     72px;
+      --gmb-logo-h:       36px;
+    }
+  }
+
+  /* Très grands écrans : tout le site grandit légèrement pour garder des
+     proportions confortables (17 px puis 18 px de base). */
+  @media (min-width: 1920px) {
+    :root {
+      --gmb-root-size: 106.25%;
+      --gmb-header-h:  80px;
+    }
+  }
+
+  @media (min-width: 2560px) {
+    :root {
+      --gmb-root-size: 112.5%;
+    }
+  }
+
+
+  /* ===========================================================================
+     11. PRÉFÉRENCES DE L'APPAREIL (accessibilité)
+     ======================================================================== */
+
+  /* Moins d'animations : les durées tombent à zéro, le rebond disparaît. */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --gmb-duration-instant:     0.01ms;
+      --gmb-duration-fast:        0.01ms;
+      --gmb-duration-normal:      0.01ms;
+      --gmb-duration-panel:       0.01ms;
+      --gmb-duration-slow:        0.01ms;
+      --gmb-duration-celebration: 0.01ms;
+      --gmb-ease-spring:          linear;
+    }
+  }
+
+  /* Contraste renforcé : textes secondaires et bordures plus marqués,
+     aucune transparence. */
+  @media (prefers-contrast: more) {
+    :root,
+    [data-theme="clair"] {
+      --gmb-text-muted:    var(--gmb-ardoise-700);
+      --gmb-text-faint:    var(--gmb-ardoise-600);
+      --gmb-border:        var(--gmb-ardoise-400);
+      --gmb-border-strong: var(--gmb-ardoise-600);
+      --gmb-border-input:  var(--gmb-ardoise-600);
+      --gmb-link:          var(--gmb-violet-800);
+      --gmb-glass-bg:      var(--gmb-blanc);
+    }
+
+    [data-theme="sombre"] {
+      --gmb-text-muted:    var(--gmb-nuage-100);
+      --gmb-text-faint:    var(--gmb-brume-200);
+      --gmb-border:        rgba(235, 239, 248, .35);
+      --gmb-border-strong: rgba(235, 239, 248, .55);
+      --gmb-border-input:  rgba(235, 239, 248, .60);
+      --gmb-glass-bg:      var(--gmb-encre-900);
+    }
+
+    :root {
+      --gmb-glass-blur: 0px;
+    }
+  }
+
+  /* Transparence réduite (réglage macOS, iOS et Windows) */
+  @media (prefers-reduced-transparency: reduce) {
+    :root,
+    [data-theme="clair"] {
+      --gmb-glass-bg: var(--gmb-blanc);
+    }
+
+    [data-theme="sombre"] {
+      --gmb-glass-bg: var(--gmb-encre-900);
+    }
+
+    :root {
+      --gmb-glass-blur: 0px;
+    }
+  }
+
+  /* Mode « couleurs forcées » (contraste élevé de Windows) :
+     le focus utilise la couleur système de surbrillance. */
+  @media (forced-colors: active) {
+    :root,
+    [data-theme] {
+      --gmb-focus-color: Highlight;
+      --gmb-focus-ring:  none;
+      --gmb-glass-blur:  0px;
+    }
+  }
+
+  /* Impression (relevés, attestations, contrats) : fond blanc, texte noir,
+     ni ombres ni dégradés décoratifs. */
+  @media print {
+    :root,
+    [data-theme] {
+      color-scheme: light;
+      --gmb-bg:            #FFFFFF;
+      --gmb-bg-alt:        #FFFFFF;
+      --gmb-surface:       #FFFFFF;
+      --gmb-surface-2:     #FFFFFF;
+      --gmb-surface-3:     #FFFFFF;
+      --gmb-text:          #000000;
+      --gmb-text-muted:    #333333;
+      --gmb-text-faint:    #555555;
+      --gmb-border:        #999999;
+      --gmb-border-strong: #666666;
+      --gmb-shadow-xs:     none;
+      --gmb-shadow-sm:     none;
+      --gmb-shadow-md:     none;
+      --gmb-shadow-lg:     none;
+      --gmb-shadow-xl:     none;
+      --gmb-shadow-2xl:    none;
+      --gmb-shadow-brand:  none;
+      --gmb-shadow-teal:   none;
+      --gmb-shadow-rose:   none;
+      --gmb-gradient-hero: none;
+      --gmb-glass-bg:      #FFFFFF;
+      --gmb-glass-blur:    0px;
+    }
+  }
+}
+
+/* =============================================================================
+   EXEMPLES D'UTILISATION (à titre indicatif ; les vrais composants sont dans
+   components.css)
+
+   .bouton-principal {
+     min-height: var(--gmb-control-lg);
+     padding-inline: var(--gmb-space-6);
+     border-radius: var(--gmb-radius-md);
+     background: var(--gmb-action);
+     color: var(--gmb-on-action);
+     transition: var(--gmb-transition-colors);
+   }
+   .bouton-principal:hover { background: var(--gmb-action-hover); }
+
+   .carte {
+     padding: var(--gmb-card-pad);
+     border-radius: var(--gmb-radius-xl);
+     background: var(--gmb-surface);
+     border: var(--gmb-border-width) solid var(--gmb-border);
+     box-shadow: var(--gmb-shadow-sm);
+   }
+
+   .montant {
+     font-feature-settings: var(--gmb-font-features-amount);
+     color: var(--gmb-amount-negative);
+   }
+
+   <section data-theme="sombre"> … </section>   bloc sombre dans une page claire
+   ========================================================================== */

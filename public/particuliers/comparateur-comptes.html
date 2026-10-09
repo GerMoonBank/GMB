@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Comparateur de comptes — GerMoonBank</title>
+  <meta name="description" content="Indiquez vos usages : le comparateur calcule le coût réel de chaque formule GerMoonBank, frais d’usage et intérêts du Livret compris.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/particuliers/comparateur-comptes.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Comparateur de comptes — GerMoonBank">
+  <meta property="og:description" content="Indiquez vos usages : le comparateur calcule le coût réel de chaque formule GerMoonBank, frais d’usage et intérêts du Livret compris.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/particuliers/comparateur-comptes.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header segment="particuliers" page="comparateur-comptes"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="index.html">Particuliers</a></li><li><span aria-current="page">Comparateur de comptes</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Comparateur de comptes</h1>
+        <p class="gmb-page-heros__intro">Indiquez vos usages : le comparateur calcule le coût réel de chaque formule, frais d’usage et intérêts du Livret compris.</p>
+      </div>
+    </section>
+    <section class="gmb-section" aria-labelledby="s36">
+      <div class="gmb-conteneur gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre gmb-section__titre--moyen" id="s36">Vos usages</h2>
+        <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-simulateur="comptes" novalidate>
+          <div class="gmb-grille gmb-grille--2">
+            <div class="gmb-champ"><label class="gmb-champ__libelle" for="cc-retraits">Retraits hors zone euro, par mois (€)</label><input class="gmb-saisie" id="cc-retraits" name="retraits" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
+            <div class="gmb-champ"><label class="gmb-champ__libelle" for="cc-devises">Paiements en devises, par mois (€)</label><input class="gmb-saisie" id="cc-devises" name="devises" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
+            <div class="gmb-champ"><label class="gmb-champ__libelle" for="cc-epargne">Épargne sur le Livret GMB (€)</label><input class="gmb-saisie" id="cc-epargne" name="epargne" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
+            <div class="gmb-champ"><span class="gmb-champ__libelle">Paiements en devises</span><label class="gmb-case"><input type="checkbox" name="weekend"><span>Surtout le week-end</span></label></div>
+          </div>
+          <div class="gmb-tableau-zone" tabindex="0" role="region" aria-label="Coût mensuel de chaque formule" data-resultats-comptes></div>
+          <p class="gmb-resultat" aria-live="polite" data-recommandation-compte></p>
+          <p class="gmb-mention">Estimation sur un mois, à partir des tarifs en vigueur. Les intérêts du Livret sont bruts, avant impôt. Un coût net négatif signifie que les intérêts dépassent ce que coûte la formule.</p>
+        </form>
+      </div>
+    </section>
+    <section class="gmb-section gmb-section--alt" aria-labelledby="s37">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre gmb-section__titre--moyen" id="s37">Pour aller plus loin</h2>
+        <div class="gmb-prose"><p>Le détail de chaque formule figure dans les <a href="../tarifs/particuliers.html">tarifs</a> et dans la <a href="../tarifs/grille-tarifaire.html">grille tarifaire</a>.</p></div><div class="gmb-rangee gmb-rangee--serree"><a class="gmb-bouton gmb-bouton--principal" href="../inscription/index.html">Ouvrir un compte</a></div>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

@@ -1,0 +1,129 @@
+{
+  "livret": {
+    "versementMinimal": 10,
+    "plafond": 100000,
+    "baseJours": 365
+  },
+  "credit": {
+    "montantMin": 1000,
+    "montantMax": 50000,
+    "pas": 500,
+    "dureeMin": 6,
+    "dureeMax": 84,
+    "fraisDossier": 0,
+    "objets": [
+      {
+        "code": "auto_moto",
+        "libelle": "Auto ou moto"
+      },
+      {
+        "code": "travaux",
+        "libelle": "Travaux"
+      },
+      {
+        "code": "etudes",
+        "libelle": "Études"
+      },
+      {
+        "code": "autre",
+        "libelle": "Autre projet"
+      }
+    ],
+    "grille": [
+      {
+        "objet": "tous",
+        "dureeMin": 6,
+        "dureeMax": 24,
+        "tauxDebiteur": 4.9
+      },
+      {
+        "objet": "tous",
+        "dureeMin": 25,
+        "dureeMax": 48,
+        "tauxDebiteur": 5.75
+      },
+      {
+        "objet": "tous",
+        "dureeMin": 49,
+        "dureeMax": 84,
+        "tauxDebiteur": 6.25
+      }
+    ],
+    "tauxUsure": 8.5,
+    "exemple": {
+      "montant": 10000,
+      "duree": 48
+    },
+    "delaiRetractation": 14
+  },
+  "international": {
+    "fraisChange": 0.5,
+    "majorationWeekend": 1,
+    "fraisRetrait": 2,
+    "fraisRetraitMinimum": 1,
+    "devises": [
+      {
+        "code": "USD",
+        "nom": "Dollar américain",
+        "decimalesTaux": 4
+      },
+      {
+        "code": "GBP",
+        "nom": "Livre sterling",
+        "decimalesTaux": 4
+      },
+      {
+        "code": "CHF",
+        "nom": "Franc suisse",
+        "decimalesTaux": 4
+      },
+      {
+        "code": "CAD",
+        "nom": "Dollar canadien",
+        "decimalesTaux": 4
+      },
+      {
+        "code": "JPY",
+        "nom": "Yen japonais",
+        "decimalesTaux": 2
+      },
+      {
+        "code": "CNY",
+        "nom": "Yuan chinois",
+        "decimalesTaux": 4
+      },
+      {
+        "code": "XOF",
+        "nom": "Franc CFA (UEMOA)",
+        "taux": 655.957,
+        "decimalesTaux": 3,
+        "fixe": true
+      }
+    ]
+  },
+  "reglementes": {
+    "livretA": {
+      "plafond": 22950,
+      "plafondAssociations": 76500
+    },
+    "ldds": {
+      "plafond": 12000
+    },
+    "livretJeune": {
+      "plafond": 1600,
+      "ageMin": 12,
+      "ageMax": 25
+    },
+    "cel": {
+      "plafond": 15300
+    },
+    "pel": {
+      "plafond": 61200,
+      "versementInitial": 225,
+      "versementAnnuelMinimum": 540
+    },
+    "fgdr": {
+      "plafond": 100000
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Demande déposée — GerMoonBank</title>
+  <meta name="description" content="Votre demande est déposée : les prochaines étapes.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/inscription/confirmation.html">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/inscription.js"></script>
+</head>
+<body data-etape="confirmation">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <header class="gmb-pile gmb-pile--serree"><p class="gmb-mention">Demande <span data-reference>…</span></p><h1 class="gmb-section__titre" id="titre-page">Merci</h1><p class="gmb-section__intro" data-etat-dossier>Votre demande est déposée.</p></header>
+      <section class="gmb-carte gmb-pile gmb-pile--serree" data-si-type="ouverture" aria-label="Prochaines étapes"><h2 class="gmb-section__titre gmb-section__titre--moyen">La suite</h2>
+        <ol class="gmb-pile gmb-pile--serree"><li>Nous vérifions vos documents.</li><li>Notre trésorerie confirme la réception de votre virement.</li><li>Votre compte est ouvert : votre identifiant bancaire s’affiche dans l’Espace Mon Dossier.</li><li>Vous activez votre accès à l’Espace client avec un code envoyé par e-mail.</li></ol></section>
+      <section class="gmb-carte gmb-pile gmb-pile--serree" data-si-type="credit" aria-label="Prochaines étapes" hidden><h2 class="gmb-section__titre gmb-section__titre--moyen">La suite</h2>
+        <ol class="gmb-pile gmb-pile--serree"><li>Un analyste étudie votre demande et vos justificatifs.</li><li>Votre offre de prêt s’affiche dans l’Espace Mon Dossier : ses conditions sont maintenues au moins 15 jours.</li><li>Vous l’acceptez en ligne ; vous disposez de 14 jours pour vous rétracter.</li><li>Les fonds sont versés à partir du 8<sup>e</sup> jour après votre acceptation.</li></ol></section>
+      <section class="gmb-carte gmb-pile gmb-pile--serree" data-si-projet aria-label="Votre demande de prêt" hidden><h2 class="gmb-section__titre gmb-section__titre--moyen">Votre demande de prêt</h2>
+        <ol class="gmb-pile gmb-pile--serree"><li>Elle est étudiée dès l’ouverture de votre compte.</li><li>L’offre apparaît dans votre Espace client : ses conditions sont maintenues au moins 15 jours.</li><li>Vous l’acceptez en ligne ; vous disposez de 14 jours pour vous rétracter.</li><li>Les fonds sont versés sur votre compte à partir du 8<sup>e</sup> jour après votre acceptation, et les échéances y sont prélevées chaque mois.</li></ol></section>
+      <p><a class="gmb-bouton gmb-bouton--principal" href="../../app/mon-dossier/index.html">Suivre ma demande dans l’Espace Mon Dossier</a></p>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

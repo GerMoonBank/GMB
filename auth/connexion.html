@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr" data-theme="sombre">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Espace client — GerMoonBank</title>
+  <meta name="description" content="Connexion à l’Espace client GerMoonBank avec votre identifiant et votre code secret.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B0926">
+  <script>/* Apparence de l'Espace client (« Nuit » par défaut), appliquée avant l'affichage */(function(){try{var t=localStorage.getItem('gmb-theme');if(t==='clair'||(t===''&&matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.dataset.theme='clair';}}catch(e){}})();</script>
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/auth/connexion.html">
+  <link rel="icon" href="../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="preload" href="../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../css/pages/auth.css">
+  <script type="module" src="../js/components.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+</head>
+<body data-page="connexion" class="auth-client">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <header class="gmb-pile gmb-pile--serree auth-client__tete"><img class="auth-client__embleme" src="../assets/logo/gmb-icone.svg" alt="" width="64" height="64"><h1 class="gmb-section__titre" id="titre-page">Espace client</h1><p class="gmb-section__intro">Connectez-vous avec votre identifiant et votre code secret.</p></header>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="connexion-client" novalidate>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="identifiant">Identifiant</label><input class="gmb-saisie" id="identifiant" name="identifiant" type="text" autocomplete="username" aria-describedby="identifiant-aide identifiant-erreur" inputmode="numeric" maxlength="9"><p class="gmb-champ__aide" id="identifiant-aide">8 chiffres.</p><p class="gmb-champ__erreur" id="identifiant-erreur" hidden></p></div>
+        <div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="memoriser" name="memoriser"><span>Mémoriser mon identifiant sur cet appareil</span></label></div>
+        <div class="gmb-rangee"><button type="button" class="gmb-bouton gmb-bouton--principal" data-continuer-identifiant>Continuer</button></div>
+        <div class="gmb-pile gmb-pile--moyenne" data-etape-code hidden>
+          <div id="clavier-connexion" data-clavier></div>
+          <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Se connecter</button></div>
+        </div>
+        <p class="gmb-liens-connexion"><a href="code-secret.html">Code secret oublié ou bloqué ?</a> · <a href="premiere-connexion.html">Première connexion</a></p>
+      </form>
+      <p>Votre demande est en cours ? <a href="mon-dossier.html">Espace Mon Dossier</a>.</p>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <p class="gmb-mention"><strong>GerMoonBank ne vous demandera jamais votre code secret ni votre mot de passe</strong>, ni par téléphone, ni par e-mail, ni par message.</p>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

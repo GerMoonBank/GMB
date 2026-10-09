@@ -1,0 +1,669 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/pages/product.css
+   Pages produits : bandeau, formules, comparatifs, simulateurs, documents — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend les sections 1 à 7 de design/vitrine.css.
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+@layer pages {
+
+
+  /* ===========================================================================
+     1. BANDEAU DE PAGE ET FIL D'ARIANE
+     ======================================================================== */
+  .gmb-page-heros {
+    position: relative;
+    padding-block: var(--gmb-space-8) var(--gmb-section-y);
+    background: var(--gmb-gradient-hero), var(--gmb-bg);
+    overflow: clip;
+  }
+
+  .gmb-page-heros--nuit {
+    background: var(--gmb-gradient-night);
+  }
+
+  .gmb-page-heros__grille {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: var(--gmb-space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-page-heros__grille--visuel {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    }
+  }
+
+  .gmb-page-heros__texte {
+    display: grid;
+    justify-items: start;
+    gap: var(--gmb-space-4);
+  }
+
+  .gmb-page-heros__titre {
+    max-width: 18ch;
+    font-size: var(--gmb-fs-5xl);
+    font-weight: var(--gmb-weight-extrabold);
+    line-height: 1.04;
+    letter-spacing: var(--gmb-tracking-display);
+    text-wrap: balance;
+  }
+
+  .gmb-page-heros__intro {
+    max-width: 38rem;
+    font-size: var(--gmb-fs-lg);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-page-heros__visuel {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 18rem;
+  }
+
+  .gmb-fil-ariane {
+    margin-block-end: var(--gmb-space-2);
+    font-size: var(--gmb-fs-xs);
+  }
+
+  .gmb-fil-ariane ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gmb-space-1) var(--gmb-space-2);
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-fil-ariane li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gmb-space-2);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-fil-ariane li + li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-inline-end: 1.5px solid currentColor;
+    border-block-start: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    opacity: 0.6;
+  }
+
+  .gmb-fil-ariane a {
+    color: var(--gmb-text-muted);
+    text-decoration: none;
+  }
+
+  .gmb-fil-ariane a:hover {
+    color: var(--gmb-text);
+    text-decoration-line: underline;
+  }
+
+  .gmb-fil-ariane [aria-current="page"] {
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text);
+  }
+
+
+  /* ===========================================================================
+     2. CHOIX DE PÉRIODE ET CARTES DE FORMULE (VIT-17)
+     ======================================================================== */
+  .gmb-periode {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gmb-space-3);
+    margin-block-end: var(--gmb-space-6);
+  }
+
+  .gmb-formule__equivalent {
+    margin-block-start: calc(var(--gmb-space-2) * -1);
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-accent);
+  }
+
+  .gmb-formules-grille {
+    display: grid;
+    gap: var(--gmb-grid-gap);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 640px) {
+    .gmb-formules-grille { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-formules-grille { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1280px) {
+    .gmb-formules-grille { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  }
+
+
+  /* ===========================================================================
+     3. COMPARATIF DÉTAILLÉ (tableau large qui défile, 1re colonne fixe)
+     ======================================================================== */
+  .gmb-comparatif-zone {
+    position: relative; /* garde les textes masqués dans la zone qui défile */
+    overflow-x: auto;
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-xl);
+    background-color: var(--gmb-surface);
+    box-shadow: var(--gmb-shadow-xs);
+    overscroll-behavior-x: contain;
+  }
+
+  .gmb-comparatif-zone:focus-visible {
+    outline: var(--gmb-focus-width) solid var(--gmb-focus-color);
+    outline-offset: var(--gmb-focus-offset);
+  }
+
+  .gmb-comparatif {
+    width: 100%;
+    min-width: 56rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--gmb-fs-sm);
+  }
+
+  .gmb-comparatif th,
+  .gmb-comparatif td {
+    padding: var(--gmb-space-3) var(--gmb-space-4);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .gmb-comparatif thead th {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+    background-color: var(--gmb-surface);
+    font-size: var(--gmb-fs-md);
+    font-weight: var(--gmb-weight-extrabold);
+  }
+
+  .gmb-comparatif__prix {
+    display: block;
+    margin-block-start: 2px;
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-comparatif tbody th[scope="row"] {
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 1;
+    min-width: 13rem;
+    background-color: var(--gmb-surface);
+    font-weight: var(--gmb-weight-semibold);
+    text-align: start;
+  }
+
+  .gmb-comparatif thead th:first-child {
+    inset-inline-start: 0;
+    z-index: 2;
+  }
+
+  .gmb-comparatif__groupe th {
+    padding-block: var(--gmb-space-4) var(--gmb-space-2);
+    background-color: var(--gmb-bg-alt);
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-bold);
+    letter-spacing: var(--gmb-tracking-wide);
+    color: var(--gmb-text-muted);
+    text-align: start;
+  }
+
+  .gmb-comparatif__oui .gmb-icone {
+    color: var(--gmb-accent);
+  }
+
+  .gmb-comparatif__non {
+    color: var(--gmb-text-faint);
+  }
+
+  .gmb-comparatif tbody tr:last-child > * {
+    border-block-end: 0;
+  }
+
+  .gmb-comparatif-aide {
+    margin-block-start: var(--gmb-space-2);
+    font-size: var(--gmb-fs-xs);
+    color: var(--gmb-text-muted);
+  }
+
+  @media (min-width: 1280px) {
+    .gmb-comparatif-aide { display: none; }
+  }
+
+
+  /* ===========================================================================
+     4. LISTES DE VALEURS (frais, résultats, taux)
+     ======================================================================== */
+  .gmb-frais {
+    display: grid;
+    margin: 0;
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-surface);
+  }
+
+  .gmb-frais__ligne {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--gmb-space-1) var(--gmb-space-5);
+    padding: var(--gmb-space-4) var(--gmb-space-5);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-frais__ligne:last-child {
+    border-block-end: 0;
+  }
+
+  .gmb-frais dt {
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-frais dd {
+    margin: 0;
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  /* Tableau simple (taux par formule…) */
+  .gmb-tableau-zone {
+    position: relative;
+    overflow-x: auto;
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-surface);
+  }
+
+  .gmb-tableau {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--gmb-fs-sm);
+  }
+
+  .gmb-tableau th,
+  .gmb-tableau td {
+    padding: var(--gmb-space-3) var(--gmb-space-5);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+    text-align: start;
+  }
+
+  .gmb-tableau thead th {
+    background-color: var(--gmb-bg-alt);
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-tableau tbody tr:last-child > * {
+    border-block-end: 0;
+  }
+
+  .gmb-tableau .gmb-nombre {
+    font-weight: var(--gmb-weight-bold);
+    font-variant-numeric: tabular-nums;
+    text-align: end;
+    white-space: nowrap;
+  }
+
+  .gmb-tableau--centre td {
+    text-align: center;
+  }
+
+  .gmb-tableau .gmb-comparatif__oui .gmb-icone {
+    color: var(--gmb-accent);
+  }
+
+  /* Ligne de résultat mise en évidence (TAEG, écart avec le taux de la BCE) */
+  .gmb-resultats .gmb-fort dt {
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text);
+  }
+
+  .gmb-resultats .gmb-fort dd {
+    font-size: var(--gmb-fs-xl);
+    font-weight: var(--gmb-weight-extrabold);
+    color: var(--gmb-accent);
+  }
+
+  .gmb-tableau tr[data-mis-en-avant] {
+    background-color: var(--gmb-action-soft);
+  }
+
+
+  /* ===========================================================================
+     5. SIMULATEURS (Livret, crédit)
+     ======================================================================== */
+  .gmb-simulateur {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    overflow: hidden;
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-2xl);
+    background-color: var(--gmb-surface);
+    box-shadow: var(--gmb-shadow-md);
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-simulateur { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+  }
+
+  .gmb-simulateur__saisie,
+  .gmb-simulateur__resultat {
+    display: grid;
+    align-content: start;
+    gap: var(--gmb-space-5);
+    padding: clamp(1.5rem, 1rem + 2.5vw, 2.75rem);
+  }
+
+  .gmb-simulateur__resultat {
+    background: var(--gmb-gradient-night);
+  }
+
+  .gmb-simulateur__ligne {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-simulateur__valeur {
+    font-size: var(--gmb-fs-2xl);
+    font-weight: var(--gmb-weight-extrabold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gmb-simulateur__bornes {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--gmb-fs-2xs);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-simulateur__principal {
+    display: grid;
+    gap: var(--gmb-space-1);
+  }
+
+  .gmb-simulateur__principal dt {
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-simulateur__principal dd {
+    margin: 0;
+    font-size: var(--gmb-fs-4xl);
+    font-weight: var(--gmb-weight-extrabold);
+    line-height: 1.05;
+    letter-spacing: var(--gmb-tracking-display);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gmb-resultats {
+    display: grid;
+    margin: 0;
+    border-block-start: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-resultats > div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gmb-space-4);
+    padding-block: var(--gmb-space-3);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-resultats dt {
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-resultats dd {
+    margin: 0;
+    font-weight: var(--gmb-weight-bold);
+    font-variant-numeric: tabular-nums;
+    text-align: end;
+  }
+
+  /* Le TAEG s'affiche plus grand que tout autre taux (code de la consommation) */
+  .gmb-resultats .gmb-taeg dt {
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text);
+  }
+
+  .gmb-resultats .gmb-taeg dd {
+    font-size: var(--gmb-fs-2xl);
+    font-weight: var(--gmb-weight-extrabold);
+    color: var(--gmb-accent);
+  }
+
+  .gmb-simulateur[data-valide="false"] .gmb-simulateur__resultat,
+  .gmb-simulateur__formulaire[data-valide="false"] .gmb-simulateur__resultat {
+    opacity: 0.45;
+  }
+
+  /* Mention obligatoire du crédit : toujours visible, sans clic */
+  .gmb-mention-obligatoire {
+    padding: var(--gmb-space-4) var(--gmb-space-5);
+    border: 2px solid var(--gmb-text);
+    border-radius: var(--gmb-radius-md);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-bold);
+    line-height: var(--gmb-lh-snug);
+    color: var(--gmb-text);
+  }
+
+  .gmb-exemple-representatif {
+    padding: var(--gmb-space-5);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-bg-alt);
+    font-size: var(--gmb-fs-sm);
+    line-height: var(--gmb-lh-body);
+  }
+
+  .gmb-exemple-representatif strong {
+    font-weight: var(--gmb-weight-bold);
+  }
+
+
+  /* ===========================================================================
+     6. ÉTAPES, DOCUMENTS, GALERIE DE CARTES, COFFRES
+     ======================================================================== */
+  .gmb-etapes {
+    display: grid;
+    gap: var(--gmb-space-5);
+    counter-reset: etape;
+    list-style: none;
+    padding: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-etapes { grid-template-columns: repeat(var(--gmb-etapes-colonnes, 4), minmax(0, 1fr)); }
+  }
+
+  .gmb-etapes > li {
+    position: relative;
+    display: grid;
+    gap: var(--gmb-space-2);
+    padding: var(--gmb-space-6) var(--gmb-space-5) var(--gmb-space-5);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-xl);
+    background-color: var(--gmb-surface);
+    counter-increment: etape;
+  }
+
+  .gmb-etapes > li::before {
+    content: counter(etape);
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    margin-block-end: var(--gmb-space-1);
+    border-radius: 50%;
+    background-color: var(--gmb-action);
+    color: var(--gmb-on-action);
+    font-weight: var(--gmb-weight-extrabold);
+  }
+
+  .gmb-etapes__titre {
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  .gmb-etapes__texte {
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-documents {
+    display: grid;
+    gap: var(--gmb-space-3);
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-documents > li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gmb-space-3) var(--gmb-space-4);
+    padding: var(--gmb-space-4) var(--gmb-space-5);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-surface);
+  }
+
+  .gmb-documents__nom {
+    flex: 1 1 14rem;
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  .gmb-documents__detail {
+    display: block;
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-medium);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-galerie-cartes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr));
+    gap: var(--gmb-space-6) var(--gmb-grid-gap);
+  }
+
+  .gmb-galerie-cartes figure {
+    display: grid;
+    justify-items: center;
+    gap: var(--gmb-space-3);
+    margin: 0;
+    text-align: center;
+  }
+
+  .gmb-galerie-cartes .gmb-carte-bancaire {
+    --gmb-carte-bancaire-largeur: 100%;
+    max-width: 15rem;
+  }
+
+  .gmb-galerie-cartes figcaption {
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-galerie-cartes figcaption strong {
+    display: block;
+    font-size: var(--gmb-fs-md);
+    color: var(--gmb-text);
+  }
+
+  /* Coffres : la lune montre la part de l'objectif atteinte, avec le chiffre */
+  .gmb-coffres {
+    display: grid;
+    gap: var(--gmb-space-3);
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-coffres > li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--gmb-space-4);
+    padding: var(--gmb-space-4);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-surface);
+  }
+
+  .gmb-coffres__nom {
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  .gmb-coffres__detail {
+    font-size: var(--gmb-fs-xs);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-coffres__part {
+    font-weight: var(--gmb-weight-extrabold);
+    font-variant-numeric: tabular-nums;
+    color: var(--gmb-accent);
+  }
+
+
+  /* ===========================================================================
+     7. APPEL FINAL ET PAGE 404
+     ======================================================================== */
+  .gmb-appel {
+    position: relative;
+    isolation: isolate;
+    text-align: center;
+  }
+
+  .gmb-appel .gmb-astre {
+    --gmb-astre-taille: 24rem;
+    inset-block-end: -18rem;
+    inset-inline-start: 50%;
+    z-index: -1;
+    translate: -50% 0;
+    opacity: 0.85;
+  }
+
+  .gmb-appel__contenu {
+    display: grid;
+    justify-items: center;
+    gap: var(--gmb-space-5);
+    padding-block-end: var(--gmb-space-8);
+  }
+
+  .gmb-page-absente {
+    display: grid;
+    justify-items: center;
+    gap: var(--gmb-space-5);
+    padding-block: var(--gmb-space-10);
+    text-align: center;
+  }
+
+  .gmb-page-absente .gmb-lune {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .gmb-page-absente__code {
+    font-family: var(--gmb-font-mono);
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
+}

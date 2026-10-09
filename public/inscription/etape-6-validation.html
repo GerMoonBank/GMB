@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Premier versement — GerMoonBank</title>
+  <meta name="description" content="Étape 6 de votre demande : premier versement par virement et dépôt.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/inscription/etape-6-validation.html">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/inscription.js"></script>
+</head>
+<body data-etape="etape-6-validation">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <nav aria-label="Étapes de la demande"><ol class="gmb-frise-etapes"><li data-fait="true"><span class="gmb-frise-etapes__numero">1</span><span>Identité</span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">2</span><span>Coordonnées</span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">3</span><span><span data-frise-etape="3">Votre situation</span></span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">4</span><span>Documents</span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">5</span><span>Signature</span></li><li aria-current="step" data-fait="false"><span class="gmb-frise-etapes__numero">6</span><span><span data-frise-etape="6">Premier versement</span></span></li></ol></nav>
+      <header class="gmb-pile gmb-pile--serree"><p class="gmb-mention">Demande <span data-reference>…</span></p><h1 class="gmb-section__titre" id="titre-page"><span data-frise-etape="6">Premier versement</span></h1><p class="gmb-section__intro">Votre compte est ouvert dès la réception de votre virement et la vérification de vos documents.</p></header>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="versement" novalidate>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="montant">Montant du premier versement (€)</label><input class="gmb-saisie" id="montant" name="montant" type="text" required aria-describedby="montant-aide montant-erreur" value="50" inputmode="decimal"><p class="gmb-champ__aide" id="montant-aide">De 10 € à 1 000 €.</p><p class="gmb-champ__erreur" id="montant-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="titulaire">Titulaire du compte d’où part le virement</label><input class="gmb-saisie" id="titulaire" name="titulaire" type="text" required aria-describedby="titulaire-aide titulaire-erreur"><p class="gmb-champ__aide" id="titulaire-aide">Le virement doit partir d’un compte à votre nom, ou au nom de votre société pour un compte Business.</p><p class="gmb-champ__erreur" id="titulaire-erreur" hidden></p></div><div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Obtenir les coordonnées du virement</button></div>
+      </form>
+      <section class="gmb-carte gmb-pile gmb-pile--serree" aria-label="Coordonnées du virement" data-coordonnees hidden>
+        <h2 class="gmb-section__titre gmb-section__titre--moyen">Faites votre virement</h2>
+        <dl class="gmb-pile gmb-pile--serree">
+          <div><dt>Bénéficiaire</dt><dd data-champ-virement="titulaire"></dd></div>
+          <div><dt>IBAN</dt><dd><code data-champ-virement="iban"></code> <button type="button" class="gmb-bouton gmb-bouton--fantome gmb-bouton--petit" data-copier="iban">Copier</button></dd></div>
+          <div><dt>BIC</dt><dd><code data-champ-virement="bic"></code></dd></div>
+          <div><dt>Banque</dt><dd data-champ-virement="banque"></dd></div>
+          <div><dt>Montant</dt><dd data-montant-virement></dd></div>
+          <div><dt>Référence à indiquer, obligatoirement</dt><dd><code data-champ-virement="reference"></code> <button type="button" class="gmb-bouton gmb-bouton--fantome gmb-bouton--petit" data-copier="reference">Copier</button></dd></div>
+        </dl>
+      </section>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="depot" novalidate hidden>
+        <div data-si-virement><div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="virement_fait" name="virement_fait" aria-describedby="virement_fait-erreur"><span>J’effectue ce virement depuis un compte à mon nom (ou au nom de ma société).</span></label><p class="gmb-champ__erreur" id="virement_fait-erreur" hidden></p></div></div>
+        <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Déposer ma demande</button></div>
+      </form>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

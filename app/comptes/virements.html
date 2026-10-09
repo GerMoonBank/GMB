@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Faire un virement — Espace client GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../../css/pages/auth.css">
+  <link rel="stylesheet" href="../../css/app.css">
+  <script type="module" src="../../js/app/transfers.js"></script>
+</head>
+<body data-app="virements" class="app-corps">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="app-entete">
+    <a class="app-entete__marque" href="../../app/index.html"><strong>GerMoonBank</strong></a>
+    <div class="app-entete__actions"><span class="app-entete__identite" data-app-identite></span>
+      <button type="button" class="gmb-bouton gmb-bouton--fantome gmb-bouton--petit app-entete__bouton" data-discret aria-pressed="false"><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="app-entete__libelle">Masquer les montants</span></button>
+      <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit app-entete__bouton" data-deconnexion><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span class="app-entete__libelle">Se déconnecter</span></button></div>
+  </header>
+  <div class="app-cadre">
+    <nav class="app-nav" aria-label="Espace client" data-app-nav></nav>
+    <main id="contenu" class="app-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <div class="gmb-pile gmb-pile--large">
+        <h1 class="gmb-section__titre" id="titre-page">Faire un virement</h1>
+        <p data-aucun-beneficiaire hidden>Ajoutez d’abord un <a href="beneficiaires.html">bénéficiaire</a> : son nom est vérifié auprès de sa banque.</p>
+        <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="virement" novalidate>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="compte">Depuis le compte</label><div class="gmb-liste"><select class="gmb-saisie" id="compte" name="compte"></select></div></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="beneficiaire">Vers</label><div class="gmb-liste"><select class="gmb-saisie" id="beneficiaire" name="beneficiaire"></select></div></div>
+          <p class="gmb-champ__aide" data-plafond hidden></p>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="montant">Montant (€)</label><input class="gmb-saisie" id="montant" name="montant" type="text" inputmode="decimal" autocomplete="off"></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="motif">Motif (facultatif)</label><input class="gmb-saisie" id="motif" name="motif" type="text" maxlength="140"></div>
+          <fieldset class="gmb-champ"><legend class="gmb-champ__libelle">Quand ?</legend><div class="gmb-pile gmb-pile--serree">
+            <label class="gmb-choix"><input type="radio" name="type" value="instantane" checked><span>Maintenant</span></label>
+            <label class="gmb-choix"><input type="radio" name="type" value="differe"><span>À une date choisie</span></label>
+            <label class="gmb-choix"><input type="radio" name="type" value="permanent"><span>Régulièrement (virement permanent)</span></label></div></fieldset>
+          <div data-si-date hidden><div class="gmb-champ"><label class="gmb-champ__libelle" for="date">Date d’exécution</label><input class="gmb-saisie" id="date" name="date" type="date"></div></div>
+          <div data-si-frequence hidden><div class="gmb-champ"><label class="gmb-champ__libelle" for="frequence">Fréquence</label><div class="gmb-liste"><select class="gmb-saisie" id="frequence" name="frequence"><option value="mensuelle">Tous les mois</option><option value="hebdomadaire">Toutes les semaines</option><option value="trimestrielle">Tous les trimestres</option><option value="annuelle">Tous les ans</option></select></div></div></div>
+          <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Continuer</button></div>
+          <p class="gmb-mention">Vous confirmerez le virement avec votre code secret.</p>
+        </form>
+        <p><a href="virements-programmes.html">Vos virements programmés</a> · <a href="beneficiaires.html">Vos bénéficiaires</a> · <a href="virements-internationaux.html">Virements à l’international</a></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

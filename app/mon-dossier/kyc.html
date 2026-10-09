@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Échanges avec votre conseiller — Espace client GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../../css/pages/auth.css">
+  <link rel="stylesheet" href="../../css/app.css">
+  <script type="module" src="../../js/app/mon-dossier.js"></script>
+</head>
+<body data-app="dossier-echanges" class="app-corps">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="app-entete">
+    <a class="app-entete__marque" href="index.html"><strong>GerMoonBank</strong> <span class="app-entete__espace">Espace Mon Dossier</span></a>
+    <div class="app-entete__actions"><span class="app-entete__identite" data-app-identite></span>
+      <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit app-entete__bouton" data-deconnexion><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span class="app-entete__libelle">Se déconnecter</span></button></div>
+  </header>
+  <div class="app-cadre">
+    <nav class="app-nav" aria-label="Espace Mon Dossier" data-app-nav></nav>
+    <main id="contenu" class="app-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <div class="gmb-pile gmb-pile--large">
+        <h1 class="gmb-section__titre" id="titre-page">Échanges avec votre conseiller</h1>
+        <div class="gmb-champ" data-choix-dossier hidden></div>
+        <section class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-messages"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-messages">Messages</h2><div data-messages><p>Chargement…</p></div>
+          <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="message" novalidate><div class="gmb-champ"><label class="gmb-champ__libelle" for="message-contenu">Votre message</label><textarea class="gmb-saisie" id="message-contenu" name="contenu" rows="4" maxlength="2000"></textarea></div>
+            <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Envoyer</button></div></form></section>
+        <section class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-rdv" data-rdv><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-rdv">Rendez-vous</h2><p>Un conseiller peut vous appeler ou vous recevoir en vidéo pour finaliser votre demande.</p>
+          <p><button type="button" class="gmb-bouton gmb-bouton--secondaire" data-demander-rdv>Demander un rendez-vous</button></p><div data-liste-rdv><p>Chargement…</p></div></section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

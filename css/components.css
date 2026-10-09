@@ -1,0 +1,1779 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/components.css
+   Composants (boutons, champs, cartes, badges, dialogues…) — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend design/components.css (couche « components »).
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+@layer components {
+
+  /* ===========================================================================
+     0. COMPOSANTS WEB ET JETONS PROPRES AUX COMPOSANTS
+     ======================================================================== */
+
+  /* Les composants web n'ajoutent pas de boîte : l'en-tête reste « collant »
+     sur toute la page. Avant leur chargement, la hauteur de l'en-tête est
+     réservée pour éviter que la page ne saute. */
+  gm-header,
+  gm-footer {
+    display: contents;
+  }
+
+  gm-header:not(:defined) {
+    display: block;
+    min-height: calc(var(--gmb-header-h) + var(--gmb-safe-top));
+  }
+
+  :root,
+  [data-theme="clair"] {
+    --gmb-logo-nom: var(--gmb-encre-900);
+    --gmb-logo-banque: var(--gmb-violet-500);
+    --gmb-curseur-piste: var(--gmb-nuage-150);
+  }
+
+  [data-theme="sombre"] {
+    --gmb-logo-nom: var(--gmb-blanc);
+    --gmb-logo-banque: var(--gmb-violet-400);
+    --gmb-curseur-piste: rgba(235, 239, 248, 0.16);
+  }
+
+
+  /* ===========================================================================
+     1. LOGO ET ICÔNES
+     ======================================================================== */
+  .gmb-logo {
+    display: block;
+    height: 100%;
+    width: auto;
+    flex: none;
+  }
+
+  .gmb-logo__nom {
+    fill: var(--gmb-logo-nom);
+    transition: fill var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-logo__banque {
+    fill: var(--gmb-logo-banque);
+    transition: fill var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-icone {
+    display: inline-block;
+    flex: none;
+    vertical-align: middle;
+  }
+
+
+  /* ===========================================================================
+     2. BOUTONS
+     Principal (violet en clair, teal en sombre), secondaire, discret, danger ;
+     40, 48 et 56 px. Un seul bouton principal par écran.
+     ======================================================================== */
+  .gmb-bouton {
+    --gmb-bouton-h: var(--gmb-control-md);
+    --gmb-bouton-roue: var(--gmb-text);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gmb-space-2);
+    min-height: var(--gmb-bouton-h);
+    padding: var(--gmb-space-2) var(--gmb-space-6);
+    border: var(--gmb-border-width-strong) solid transparent;
+    border-radius: var(--gmb-radius-pill);
+    background-color: transparent;
+    color: var(--gmb-text);
+    font-family: inherit;
+    font-size: var(--gmb-fs-md);
+    font-weight: var(--gmb-weight-bold);
+    line-height: 1.2;
+    letter-spacing: var(--gmb-tracking-snug);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      background-color var(--gmb-duration-fast) var(--gmb-ease-standard),
+      border-color var(--gmb-duration-fast) var(--gmb-ease-standard),
+      color var(--gmb-duration-fast) var(--gmb-ease-standard),
+      box-shadow var(--gmb-duration-normal) var(--gmb-ease-standard),
+      transform var(--gmb-duration-fast) var(--gmb-ease-standard);
+  }
+
+  .gmb-bouton:active {
+    transform: scale(0.98);
+  }
+
+  .gmb-bouton .gmb-icone {
+    width: 1.15em;
+    height: 1.15em;
+  }
+
+  .gmb-bouton--principal {
+    --gmb-bouton-roue: var(--gmb-on-action);
+    background-color: var(--gmb-action);
+    color: var(--gmb-on-action);
+    box-shadow: var(--gmb-shadow-sm);
+  }
+
+  .gmb-bouton--principal:hover {
+    background-color: var(--gmb-action-hover);
+    box-shadow: var(--gmb-shadow-md);
+  }
+
+  .gmb-bouton--principal:active {
+    background-color: var(--gmb-action-active);
+  }
+
+  .gmb-bouton--secondaire {
+    border-color: var(--gmb-border-strong);
+    background-color: var(--gmb-surface);
+    color: var(--gmb-text);
+  }
+
+  .gmb-bouton--secondaire:hover {
+    border-color: var(--gmb-text-faint);
+    background-color: var(--gmb-surface-2);
+  }
+
+  /* Secondaire transparent, pour un fond coloré ou sombre */
+  .gmb-bouton--contour {
+    border-color: var(--gmb-border-strong);
+    color: var(--gmb-text);
+  }
+
+  .gmb-bouton--contour:hover {
+    border-color: var(--gmb-text-muted);
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-bouton--discret {
+    --gmb-bouton-roue: var(--gmb-link);
+    padding-inline: var(--gmb-space-3);
+    color: var(--gmb-link);
+  }
+
+  .gmb-bouton--discret:hover {
+    background-color: var(--gmb-action-soft);
+    color: var(--gmb-link-hover);
+  }
+
+  .gmb-bouton--danger {
+    --gmb-bouton-roue: var(--gmb-blanc);
+    background-color: var(--gmb-danger-700);
+    color: var(--gmb-blanc);
+  }
+
+  .gmb-bouton--danger:hover {
+    background-color: color-mix(in srgb, var(--gmb-danger-700) 88%, black);
+  }
+
+  .gmb-bouton--petit {
+    --gmb-bouton-h: var(--gmb-control-sm);
+    padding-inline: var(--gmb-space-4);
+    font-size: var(--gmb-fs-sm);
+  }
+
+  .gmb-bouton--grand {
+    --gmb-bouton-h: var(--gmb-control-lg);
+    padding-inline: var(--gmb-space-7);
+    font-size: var(--gmb-fs-md);
+  }
+
+  .gmb-bouton--bloc {
+    width: 100%;
+  }
+
+  /* Bouton carré ne contenant qu'une icône (avec aria-label) */
+  .gmb-bouton--icone {
+    width: var(--gmb-bouton-h);
+    padding: 0;
+  }
+
+  .gmb-bouton:disabled,
+  .gmb-bouton[aria-disabled="true"] {
+    border-color: transparent;
+    background-color: var(--gmb-action-disabled);
+    color: var(--gmb-on-action-disabled);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Chargement : aria-busy="true" pendant l'envoi */
+  .gmb-bouton[aria-busy="true"] {
+    color: transparent;
+    pointer-events: none;
+  }
+
+  .gmb-bouton[aria-busy="true"]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 1.25em;
+    height: 1.25em;
+    margin: auto;
+    border: 2.5px solid color-mix(in srgb, var(--gmb-bouton-roue) 30%, transparent);
+    border-top-color: var(--gmb-bouton-roue);
+    border-radius: 50%;
+    animation: gmb-rotation 0.8s linear infinite;
+  }
+
+  /* Écrans tactiles : 44 px minimum, même pour les petits boutons */
+  @media (pointer: coarse) {
+    .gmb-bouton--petit { --gmb-bouton-h: var(--gmb-touch-min); }
+  }
+
+  /* Lien suivi d'une flèche */
+  .gmb-lien-fleche {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gmb-space-2);
+    min-height: var(--gmb-touch-min);
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-link);
+    text-decoration: none;
+  }
+
+  .gmb-lien-fleche:hover {
+    color: var(--gmb-link-hover);
+    text-decoration-line: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .gmb-lien-fleche .gmb-icone {
+    transition: transform var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-lien-fleche:hover .gmb-icone {
+    transform: translateX(3px);
+  }
+
+
+  /* ===========================================================================
+     3. PUCES, BADGES ET LISTES À COCHES
+     ======================================================================== */
+  .gmb-puce {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gmb-space-2);
+    min-height: 34px;
+    padding: var(--gmb-space-1) var(--gmb-space-4);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-pill);
+    background-color: var(--gmb-surface);
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text);
+    text-decoration: none;
+  }
+
+  .gmb-puce--accent {
+    border-color: color-mix(in srgb, var(--gmb-accent) 40%, transparent);
+    background-color: var(--gmb-accent-soft);
+    color: var(--gmb-accent);
+  }
+
+  a.gmb-puce:hover {
+    border-color: currentColor;
+  }
+
+  .gmb-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gmb-space-1);
+    min-height: 24px;
+    padding: 2px var(--gmb-space-3);
+    border-radius: var(--gmb-radius-pill);
+    background-color: var(--gmb-surface-2);
+    font-size: var(--gmb-fs-2xs);
+    font-weight: var(--gmb-weight-bold);
+    line-height: 1.2;
+    color: var(--gmb-text-muted);
+    white-space: nowrap;
+  }
+
+  .gmb-badge .gmb-icone {
+    width: 14px;
+    height: 14px;
+  }
+
+  .gmb-badge--marque  { background-color: var(--gmb-action-soft);    color: var(--gmb-on-action-soft); }
+  .gmb-badge--info    { background-color: var(--gmb-info-bg);        color: var(--gmb-info-text); }
+  .gmb-badge--succes  { background-color: var(--gmb-succes-bg);      color: var(--gmb-succes-text); }
+  .gmb-badge--alerte  { background-color: var(--gmb-alerte-bg);      color: var(--gmb-alerte-text); }
+  .gmb-badge--danger  { background-color: var(--gmb-danger-bg);      color: var(--gmb-danger-text); }
+  .gmb-badge--rose    { background-color: var(--gmb-highlight);      color: var(--gmb-on-highlight); }
+
+  .gmb-coches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gmb-space-2) var(--gmb-space-5);
+    list-style: none;
+    padding: 0;
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-coches > li {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-coches .gmb-icone {
+    width: 18px;
+    height: 18px;
+    margin-block-start: 1px;
+    color: var(--gmb-accent);
+  }
+
+  .gmb-coches--colonne {
+    flex-direction: column;
+  }
+
+
+  /* ===========================================================================
+     4. CARTES, ARGUMENTS ET CHIFFRES
+     ======================================================================== */
+  .gmb-carte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-card-pad);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-xl);
+    background-color: var(--gmb-surface);
+    color: var(--gmb-text);
+    box-shadow: var(--gmb-shadow-xs);
+  }
+
+  .gmb-carte--plate {
+    background-color: var(--gmb-bg-alt);
+    box-shadow: none;
+  }
+
+  .gmb-carte--nuit {
+    border-color: transparent;
+    background: var(--gmb-gradient-night);
+    overflow: hidden;
+  }
+
+  .gmb-carte--interactive {
+    transition:
+      transform var(--gmb-duration-normal) var(--gmb-ease-standard),
+      box-shadow var(--gmb-duration-normal) var(--gmb-ease-standard),
+      border-color var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-carte--interactive:hover {
+    transform: translateY(-3px);
+    border-color: var(--gmb-border-strong);
+    box-shadow: var(--gmb-shadow-lg);
+  }
+
+  /* Toute la carte devient cliquable ; le lien garde un nom accessible */
+  .gmb-carte__lien-etendu {
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-link);
+    text-decoration: none;
+  }
+
+  .gmb-carte__lien-etendu::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .gmb-carte__lien-etendu:focus-visible {
+    outline: none;
+  }
+
+  .gmb-carte:has(.gmb-carte__lien-etendu:focus-visible) {
+    outline: var(--gmb-focus-width) solid var(--gmb-focus-color);
+    outline-offset: var(--gmb-focus-offset);
+  }
+
+  .gmb-carte__icone {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--gmb-radius-md);
+    background-color: var(--gmb-action-soft);
+    color: var(--gmb-on-action-soft);
+  }
+
+  .gmb-carte__icone .gmb-icone {
+    width: var(--gmb-icon-lg);
+    height: var(--gmb-icon-lg);
+  }
+
+  .gmb-carte__titre {
+    font-size: var(--gmb-fs-xl);
+    font-weight: var(--gmb-weight-extrabold);
+    line-height: var(--gmb-lh-snug);
+    letter-spacing: var(--gmb-tracking-heading);
+  }
+
+  .gmb-carte__texte {
+    font-size: var(--gmb-fs-sm);
+    line-height: var(--gmb-lh-body);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-carte__pied {
+    margin-block-start: auto;
+    padding-block-start: var(--gmb-space-2);
+  }
+
+  /* Argument : icône, titre court, explication */
+  .gmb-argument {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: var(--gmb-space-3) var(--gmb-space-4);
+  }
+
+  .gmb-argument__icone {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--gmb-radius-md);
+    background-color: var(--gmb-accent-soft);
+    color: var(--gmb-accent);
+  }
+
+  .gmb-argument__icone .gmb-icone {
+    width: var(--gmb-icon-lg);
+    height: var(--gmb-icon-lg);
+  }
+
+  .gmb-argument__titre {
+    font-size: var(--gmb-fs-md);
+    font-weight: var(--gmb-weight-bold);
+    line-height: var(--gmb-lh-snug);
+  }
+
+  .gmb-argument__texte {
+    margin-block-start: var(--gmb-space-1);
+    font-size: var(--gmb-fs-sm);
+    line-height: var(--gmb-lh-body);
+    color: var(--gmb-text-muted);
+  }
+
+  /* Grand chiffre (taux, montant mis en avant) */
+  .gmb-chiffre {
+    font-size: clamp(3.5rem, 2.2rem + 5.5vw, 7rem);
+    font-weight: var(--gmb-weight-extrabold);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .gmb-chiffre__unite {
+    font-size: 0.32em;
+    letter-spacing: var(--gmb-tracking-heading);
+  }
+
+  /* Montant : chiffres tabulaires, jamais coupé */
+  .gmb-montant {
+    font-feature-settings: var(--gmb-font-features-amount);
+    font-variant-numeric: tabular-nums lining-nums;
+    white-space: nowrap;
+  }
+
+  .gmb-montant--positif {
+    color: var(--gmb-amount-positive);
+  }
+
+  .gmb-avatar {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: var(--gmb-avatar-md);
+    height: var(--gmb-avatar-md);
+    border-radius: var(--gmb-radius-circle);
+    background-color: var(--gmb-accent-soft);
+    color: var(--gmb-accent);
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-extrabold);
+  }
+
+  .gmb-separateur {
+    height: var(--gmb-border-width);
+    border: 0;
+    background-color: var(--gmb-divider);
+  }
+
+
+  /* ===========================================================================
+     5. CHAMPS DE SAISIE
+     Libellé toujours visible, aide sous le champ, erreur qui dit quoi faire.
+     ======================================================================== */
+  .gmb-champ {
+    display: grid;
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-champ__libelle {
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text);
+  }
+
+  .gmb-champ__facultatif {
+    font-weight: var(--gmb-weight-medium);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-champ__aide {
+    font-size: var(--gmb-fs-xs);
+    line-height: var(--gmb-lh-snug);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-champ__erreur {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gmb-space-2);
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-semibold);
+    line-height: var(--gmb-lh-snug);
+    color: var(--gmb-danger-text);
+  }
+
+  .gmb-champ__erreur[hidden] {
+    display: none;
+  }
+
+  .gmb-saisie {
+    width: 100%;
+    min-height: var(--gmb-input-h);
+    padding: 0 var(--gmb-space-4);
+    border: var(--gmb-border-width-strong) solid var(--gmb-border-input);
+    border-radius: var(--gmb-radius-md);
+    background-color: var(--gmb-surface);
+    color: var(--gmb-text);
+    font-family: inherit;
+    font-size: max(16px, var(--gmb-fs-md));
+    transition: border-color var(--gmb-duration-fast) var(--gmb-ease-standard), box-shadow var(--gmb-duration-fast) var(--gmb-ease-standard);
+  }
+
+  .gmb-saisie::placeholder {
+    color: var(--gmb-text-faint);
+  }
+
+  .gmb-saisie:hover {
+    border-color: var(--gmb-text-faint);
+  }
+
+  .gmb-saisie:focus {
+    border-color: var(--gmb-action);
+  }
+
+  .gmb-saisie[aria-invalid="true"] {
+    border-color: var(--gmb-danger-500);
+  }
+
+  .gmb-saisie:disabled {
+    background-color: var(--gmb-surface-2);
+    color: var(--gmb-text-disabled);
+    cursor: not-allowed;
+  }
+
+  textarea.gmb-saisie {
+    min-height: 7.5rem;
+    padding-block: var(--gmb-space-3);
+    resize: vertical;
+  }
+
+  .gmb-saisie--mono {
+    font-family: var(--gmb-font-mono);
+    letter-spacing: 0.04em;
+  }
+
+  .gmb-saisie--montant {
+    font-weight: var(--gmb-weight-bold);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Champ avec suffixe (€, %, mois) */
+  .gmb-saisie-groupe {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .gmb-saisie-groupe > .gmb-saisie {
+    padding-inline-end: 3.25rem;
+  }
+
+  .gmb-saisie-groupe__suffixe {
+    position: absolute;
+    inset-inline-end: var(--gmb-space-4);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text-muted);
+    pointer-events: none;
+  }
+
+  /* Liste déroulante : enveloppe .gmb-liste autour du <select> */
+  .gmb-liste {
+    position: relative;
+  }
+
+  .gmb-liste > select.gmb-saisie {
+    appearance: none;
+    padding-inline-end: 2.75rem;
+    cursor: pointer;
+  }
+
+  .gmb-liste::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: 1.15rem;
+    inset-block-start: 50%;
+    width: 8px;
+    height: 8px;
+    border-inline-end: 2px solid var(--gmb-text-muted);
+    border-block-end: 2px solid var(--gmb-text-muted);
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
+  }
+
+  /* Case à cocher et bouton radio natifs, agrandis */
+  .gmb-case {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gmb-space-3);
+    min-height: var(--gmb-touch-min);
+    padding-block: var(--gmb-space-2);
+    cursor: pointer;
+  }
+
+  .gmb-case > input {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin: 1px 0 0;
+    accent-color: var(--gmb-action);
+    cursor: pointer;
+  }
+
+  /* Interrupteur : <input type="checkbox" role="switch" class="gmb-interrupteur"> */
+  .gmb-interrupteur {
+    position: relative;
+    flex: none;
+    width: 52px;
+    height: 32px;
+    margin: 0;
+    border-radius: var(--gmb-radius-pill);
+    background-color: var(--gmb-border-strong);
+    appearance: none;
+    cursor: pointer;
+    transition: background-color var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-interrupteur::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 4px;
+    inset-inline-start: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--gmb-blanc);
+    box-shadow: var(--gmb-shadow-sm);
+    transition: transform var(--gmb-duration-normal) var(--gmb-ease-spring);
+  }
+
+  .gmb-interrupteur:checked {
+    background-color: var(--gmb-action);
+  }
+
+  .gmb-interrupteur:checked::before {
+    transform: translateX(20px);
+  }
+
+  .gmb-interrupteur:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  /* Curseur (simulateurs) : la partie remplie suit --valeur (de 0 % à 100 %) */
+  .gmb-curseur {
+    --valeur: 50%;
+    width: 100%;
+    height: 32px;
+    margin: 0;
+    background: transparent;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .gmb-curseur::-webkit-slider-runnable-track {
+    height: 8px;
+    border-radius: var(--gmb-radius-pill);
+    background: linear-gradient(to right, var(--gmb-action) 0 var(--valeur), var(--gmb-curseur-piste) var(--valeur) 100%);
+  }
+
+  .gmb-curseur::-moz-range-track {
+    height: 8px;
+    border-radius: var(--gmb-radius-pill);
+    background-color: var(--gmb-curseur-piste);
+  }
+
+  .gmb-curseur::-moz-range-progress {
+    height: 8px;
+    border-radius: var(--gmb-radius-pill);
+    background-color: var(--gmb-action);
+  }
+
+  .gmb-curseur::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+    margin-block-start: -10px;
+    border: 4px solid var(--gmb-action);
+    border-radius: 50%;
+    background-color: var(--gmb-blanc);
+    box-shadow: var(--gmb-shadow-md);
+    appearance: none;
+  }
+
+  .gmb-curseur::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border: 4px solid var(--gmb-action);
+    border-radius: 50%;
+    background-color: var(--gmb-blanc);
+    box-shadow: var(--gmb-shadow-md);
+  }
+
+  .gmb-curseur:focus-visible {
+    outline: none;
+  }
+
+  .gmb-curseur:focus-visible::-webkit-slider-thumb {
+    box-shadow: var(--gmb-focus-ring), var(--gmb-shadow-md);
+  }
+
+  .gmb-curseur:focus-visible::-moz-range-thumb {
+    box-shadow: var(--gmb-focus-ring), var(--gmb-shadow-md);
+  }
+
+  /* Choix segmenté (formules du simulateur) : boutons radio natifs */
+  .gmb-segments {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    max-width: 100%;
+    padding: 4px;
+    border-radius: var(--gmb-radius-pill);
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-segments__option {
+    position: relative;
+    flex: 1 1 auto;
+  }
+
+  .gmb-segments__option > input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .gmb-segments__option > span {
+    display: grid;
+    place-items: center;
+    min-height: var(--gmb-control-sm);
+    padding-inline: var(--gmb-space-3);
+    border-radius: var(--gmb-radius-pill);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text-muted);
+    white-space: nowrap;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-segments__option > input:checked + span {
+    background-color: var(--gmb-surface-raised);
+    color: var(--gmb-text);
+    box-shadow: var(--gmb-shadow-sm);
+  }
+
+  .gmb-segments__option > input:focus-visible + span {
+    outline: var(--gmb-focus-width) solid var(--gmb-focus-color);
+    outline-offset: 1px;
+  }
+
+
+  /* ===========================================================================
+     6. ENCADRÉS ET ACCORDÉONS
+     ======================================================================== */
+  .gmb-encadre {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-space-4) var(--gmb-space-5);
+    border: var(--gmb-border-width) solid var(--gmb-info-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-info-bg);
+    color: var(--gmb-info-text);
+    font-size: var(--gmb-fs-sm);
+    line-height: var(--gmb-lh-body);
+  }
+
+  .gmb-encadre .gmb-icone {
+    width: var(--gmb-icon-lg);
+    height: var(--gmb-icon-lg);
+  }
+
+  .gmb-encadre--neutre {
+    border-color: var(--gmb-border);
+    background-color: var(--gmb-surface);
+    color: var(--gmb-text);
+  }
+
+  .gmb-encadre--neutre .gmb-icone { color: var(--gmb-accent); }
+
+  .gmb-encadre--succes {
+    border-color: var(--gmb-succes-border);
+    background-color: var(--gmb-succes-bg);
+    color: var(--gmb-succes-text);
+  }
+
+  .gmb-encadre--alerte {
+    border-color: var(--gmb-alerte-border);
+    background-color: var(--gmb-alerte-bg);
+    color: var(--gmb-alerte-text);
+  }
+
+  .gmb-encadre--danger {
+    border-color: var(--gmb-danger-border);
+    background-color: var(--gmb-danger-bg);
+    color: var(--gmb-danger-text);
+  }
+
+  .gmb-accordeon {
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-accordeon > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gmb-space-4);
+    min-height: 64px;
+    padding-block: var(--gmb-space-4);
+    font-size: var(--gmb-fs-lg);
+    font-weight: var(--gmb-weight-bold);
+    line-height: var(--gmb-lh-snug);
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .gmb-accordeon > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Signe + qui pivote en × à l'ouverture */
+  .gmb-accordeon > summary::after {
+    content: "";
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background:
+      linear-gradient(currentColor, currentColor) center / 14px 2px no-repeat,
+      linear-gradient(currentColor, currentColor) center / 2px 14px no-repeat,
+      var(--gmb-surface-2);
+    transition: transform var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-accordeon[open] > summary::after {
+    transform: rotate(45deg);
+  }
+
+  .gmb-accordeon__contenu {
+    max-width: var(--gmb-measure);
+    padding-block-end: var(--gmb-space-5);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-accordeon__contenu > * + * {
+    margin-block-start: var(--gmb-space-3);
+  }
+
+
+  /* ===========================================================================
+     7. LA LUNE, LANGAGE FONCTIONNEL
+     SVG produit par luneSVG() (js/core.js) ; grand astre décoratif des héros.
+     ======================================================================== */
+  .gmb-lune {
+    display: inline-block;
+    flex: none;
+    vertical-align: middle;
+  }
+
+  .gmb-lune__ombre {
+    fill: var(--gmb-moon-shadow);
+    stroke: var(--gmb-moon-ring);
+    stroke-width: 1;
+  }
+
+  .gmb-lune__eclairee {
+    fill: var(--gmb-moon-lit);
+  }
+
+  .gmb-lune--halo {
+    filter: drop-shadow(0 0 6px var(--gmb-moon-glow));
+  }
+
+  /* Célébration d'un objectif atteint : 600 ms, une seule fois */
+  .gmb-lune--celebration {
+    animation: gmb-celebration var(--gmb-duration-celebration) var(--gmb-ease-spring) 1;
+  }
+
+  /* Grand astre : pleine lune teal qui respire lentement */
+  .gmb-astre {
+    position: absolute;
+    width: var(--gmb-astre-taille, 30rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 64% 68%, rgba(0, 121, 107, 0.16) 0 7%, transparent 7.5%),
+      radial-gradient(circle at 30% 58%, rgba(0, 121, 107, 0.12) 0 4.5%, transparent 5%),
+      radial-gradient(circle at 58% 26%, rgba(0, 121, 107, 0.1) 0 3.5%, transparent 4%),
+      radial-gradient(circle at 34% 30%, var(--gmb-teal-100) 0%, var(--gmb-teal-300) 48%, var(--gmb-teal-500) 100%);
+    box-shadow: 0 0 110px 24px var(--gmb-moon-glow);
+    pointer-events: none;
+    animation: gmb-respiration 9s var(--gmb-ease-smooth) infinite alternate;
+  }
+
+
+  /* ===========================================================================
+     8. CLAVIER DU CODE SECRET ET PASTILLES (AUTH-03)
+     Dix chiffres mélangés, une case vide, touche Effacer ; huit lunes.
+     ======================================================================== */
+  .gmb-pastilles {
+    display: flex;
+    justify-content: center;
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-pastille {
+    width: var(--gmb-pastille);
+    height: var(--gmb-pastille);
+    border: 2px solid var(--gmb-moon-ring);
+    border-radius: 50%;
+    background-color: var(--gmb-moon-shadow);
+    transition:
+      background-color var(--gmb-duration-fast) var(--gmb-ease-standard),
+      border-color var(--gmb-duration-fast) var(--gmb-ease-standard),
+      transform var(--gmb-duration-fast) var(--gmb-ease-spring);
+  }
+
+  .gmb-pastille[data-rempli="true"] {
+    border-color: var(--gmb-moon-lit);
+    background-color: var(--gmb-moon-lit);
+    box-shadow: 0 0 0 4px var(--gmb-moon-glow);
+    transform: scale(1.06);
+  }
+
+  .gmb-clavier {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gmb-key-gap);
+    width: 100%;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .gmb-touche {
+    display: grid;
+    place-items: center;
+    height: var(--gmb-key-h);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-surface-2);
+    color: var(--gmb-text);
+    font-family: inherit;
+    font-size: var(--gmb-fs-2xl);
+    font-weight: var(--gmb-weight-bold);
+    font-variant-numeric: tabular-nums;
+    touch-action: manipulation;
+    user-select: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      background-color var(--gmb-duration-instant) var(--gmb-ease-standard),
+      transform var(--gmb-duration-instant) var(--gmb-ease-standard);
+  }
+
+  .gmb-touche:hover {
+    background-color: var(--gmb-surface-3);
+  }
+
+  .gmb-touche:active {
+    background-color: var(--gmb-action-soft);
+    transform: scale(0.96);
+  }
+
+  .gmb-touche :is(img, svg) {
+    width: 28px;
+    height: 28px;
+    pointer-events: none;
+  }
+
+  .gmb-touche--vide {
+    border-color: transparent;
+    background-color: transparent;
+    pointer-events: none;
+  }
+
+  .gmb-touche--action {
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-clavier[aria-disabled="true"] .gmb-touche {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+
+  /* ===========================================================================
+     9. VISUELS DE LA VITRINE : TÉLÉPHONE, CARTE BANCAIRE, OPÉRATION
+     ======================================================================== */
+  .gmb-appareil {
+    position: relative;
+    width: var(--gmb-appareil-largeur, 18.5rem);
+    aspect-ratio: 9 / 19.3;
+    padding: 9px;
+    border-radius: 3rem;
+    background: linear-gradient(150deg, var(--gmb-encre-700), var(--gmb-encre-950));
+    box-shadow:
+      inset 0 0 0 1.5px rgba(255, 255, 255, 0.14),
+      0 50px 90px -40px rgba(7, 6, 26, 0.85),
+      var(--gmb-shadow-brand);
+  }
+
+  .gmb-appareil__ecran {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 2.45rem;
+    background-color: var(--gmb-bg);
+    color: var(--gmb-text);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .gmb-appareil__ilot {
+    position: absolute;
+    inset-block-start: 9px;
+    inset-inline-start: 50%;
+    z-index: 2;
+    width: 31%;
+    height: 24px;
+    border-radius: var(--gmb-radius-pill);
+    background-color: var(--gmb-encre-950);
+    translate: -50% 0;
+  }
+
+  .gmb-appareil__etat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 22px 0;
+    font-size: 11px;
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  /* Carte bancaire : variantes de formule */
+  .gmb-carte-bancaire {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: var(--gmb-carte-bancaire-largeur, 15rem);
+    aspect-ratio: 85.6 / 54;
+    padding: 6% 7%;
+    border-radius: 7% / 11%;
+    background: var(--gmb-gradient-brand);
+    color: var(--gmb-blanc);
+    box-shadow: var(--gmb-shadow-xl);
+    overflow: hidden;
+  }
+
+  .gmb-carte-bancaire::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gmb-gradient-shine);
+    pointer-events: none;
+  }
+
+  .gmb-carte-bancaire--nuit {
+    background: linear-gradient(135deg, var(--gmb-encre-700), var(--gmb-encre-950));
+  }
+
+  .gmb-carte-bancaire--metal {
+    background: linear-gradient(135deg, var(--gmb-ardoise-500), var(--gmb-encre-850) 60%, var(--gmb-encre-950));
+  }
+
+  .gmb-carte-bancaire__haut,
+  .gmb-carte-bancaire__bas {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .gmb-carte-bancaire__logo {
+    width: 18%;
+    border-radius: var(--gmb-radius-logo);
+  }
+
+  .gmb-carte-bancaire__formule {
+    font-size: 0.75rem;
+    font-weight: var(--gmb-weight-extrabold);
+    letter-spacing: 0.14em;
+  }
+
+  .gmb-carte-bancaire__puce {
+    width: 17%;
+    aspect-ratio: 1.3;
+    border-radius: 18%;
+    background: linear-gradient(135deg, var(--gmb-alerte-200), var(--gmb-alerte-500));
+    opacity: 0.9;
+  }
+
+  .gmb-carte-bancaire__numero {
+    font-family: var(--gmb-font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* Ligne d'opération : icône, libellé, catégorie, montant à droite */
+  .gmb-operation {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--gmb-space-3);
+    padding-block: var(--gmb-space-2);
+  }
+
+  .gmb-operation__icone {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--gmb-radius-md);
+    background-color: var(--gmb-surface-2);
+    color: var(--gmb-text);
+  }
+
+  .gmb-operation__libelle {
+    overflow: hidden;
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-bold);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .gmb-operation__detail {
+    font-size: var(--gmb-fs-2xs);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-operation__montant {
+    font-weight: var(--gmb-weight-bold);
+    font-variant-numeric: tabular-nums lining-nums;
+    white-space: nowrap;
+  }
+
+  .gmb-operation__montant--credit {
+    color: var(--gmb-amount-positive);
+  }
+
+  /* Boutique d'applications (sans logo de marque tierce) */
+  .gmb-boutique {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gmb-space-3);
+    min-height: 52px;
+    padding: var(--gmb-space-2) var(--gmb-space-5) var(--gmb-space-2) var(--gmb-space-4);
+    border: var(--gmb-border-width) solid var(--gmb-border-strong);
+    border-radius: var(--gmb-radius-md);
+    background-color: var(--gmb-surface);
+    color: var(--gmb-text);
+    line-height: 1.15;
+    text-decoration: none;
+  }
+
+  .gmb-boutique .gmb-icone {
+    width: var(--gmb-icon-lg);
+    height: var(--gmb-icon-lg);
+  }
+
+  .gmb-boutique__petit {
+    display: block;
+    font-size: var(--gmb-fs-2xs);
+    font-weight: var(--gmb-weight-medium);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-boutique__nom {
+    display: block;
+    font-size: var(--gmb-fs-md);
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  a.gmb-boutique:hover {
+    border-color: var(--gmb-text-muted);
+  }
+
+  /* Code QR : toujours sur fond blanc pour être lisible par les téléphones */
+  .gmb-qr {
+    width: fit-content;
+    padding: var(--gmb-space-3);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-blanc);
+    box-shadow: var(--gmb-shadow-sm);
+  }
+
+  .gmb-qr > svg {
+    display: block;
+    width: var(--gmb-qr-taille, 8.5rem);
+    height: auto;
+  }
+
+
+  /* ===========================================================================
+     10. FENÊTRES (<dialog>), MENU MOBILE NATIF, COOKIES, NOTIFICATIONS
+     ======================================================================== */
+  .gmb-dialogue {
+    width: min(34rem, calc(100% - 2 * var(--gmb-gutter)));
+    max-width: none;
+    max-height: min(90dvh, 48rem);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--gmb-radius-2xl);
+    background-color: var(--gmb-surface-raised);
+    color: var(--gmb-text);
+    box-shadow: var(--gmb-shadow-2xl);
+    overflow: hidden;
+  }
+
+  .gmb-dialogue[open] {
+    display: flex;
+    flex-direction: column;
+    animation: gmb-apparition var(--gmb-duration-panel) var(--gmb-ease-emphasized);
+  }
+
+  .gmb-dialogue::backdrop {
+    background-color: rgba(7, 6, 26, 0.55);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+
+  .gmb-dialogue__entete {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gmb-space-4);
+    padding: var(--gmb-space-6) var(--gmb-space-6) var(--gmb-space-2);
+  }
+
+  .gmb-dialogue__titre {
+    font-size: var(--gmb-fs-xl);
+    font-weight: var(--gmb-weight-extrabold);
+    line-height: var(--gmb-lh-snug);
+  }
+
+  .gmb-dialogue__corps {
+    display: grid;
+    gap: var(--gmb-space-4);
+    padding: var(--gmb-space-2) var(--gmb-space-6) var(--gmb-space-5);
+    overflow-y: auto;
+  }
+
+  .gmb-dialogue__pied {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-space-4) var(--gmb-space-6) calc(var(--gmb-space-5) + var(--gmb-safe-bottom));
+    border-block-start: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  /* Sur téléphone, la fenêtre devient un panneau qui monte du bas */
+  @media (max-width: 479.98px) {
+    .gmb-dialogue {
+      width: 100%;
+      max-height: 92dvh;
+      margin: auto 0 0;
+      border-radius: var(--gmb-radius-2xl) var(--gmb-radius-2xl) 0 0;
+    }
+
+    .gmb-dialogue[open] {
+      animation-name: gmb-montee;
+    }
+
+    .gmb-dialogue__pied > .gmb-bouton {
+      flex: 1 1 100%;
+    }
+  }
+
+  /* Le menu mobile utilise <dialog> : piège à focus et touche Échap natifs */
+  dialog.gmb-menu-mobile {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding-inline: 0;
+    padding-block-end: 0;
+    border: 0;
+    overflow: hidden;
+  }
+
+  dialog.gmb-menu-mobile:not([open]) {
+    display: none;
+  }
+
+  dialog.gmb-menu-mobile::backdrop {
+    background-color: transparent;
+  }
+
+  /* Ligne d'un réglage (cookies, préférences) */
+  .gmb-reglage {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gmb-space-4);
+    padding-block: var(--gmb-space-4);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-reglage:last-child {
+    border-block-end: 0;
+  }
+
+  .gmb-reglage__titre {
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  .gmb-reglage__texte {
+    margin-block-start: var(--gmb-space-1);
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
+
+  /* Bandeau cookies : trois boutons de même taille et de même contraste */
+  .gmb-cookies {
+    position: fixed;
+    inset-inline: var(--gmb-gutter);
+    inset-block-end: calc(var(--gmb-space-4) + var(--gmb-safe-bottom));
+    z-index: var(--gmb-z-popover);
+    display: grid;
+    gap: var(--gmb-space-4);
+    max-width: 42rem;
+    margin-inline: auto;
+    padding: var(--gmb-space-6);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-2xl);
+    background-color: var(--gmb-surface-raised);
+    color: var(--gmb-text);
+    box-shadow: var(--gmb-shadow-2xl);
+    animation: gmb-montee var(--gmb-duration-panel) var(--gmb-ease-emphasized);
+  }
+
+  .gmb-cookies[hidden] {
+    display: none;
+  }
+
+  .gmb-cookies__titre {
+    font-size: var(--gmb-fs-lg);
+    font-weight: var(--gmb-weight-extrabold);
+  }
+
+  .gmb-cookies__texte {
+    font-size: var(--gmb-fs-sm);
+    line-height: var(--gmb-lh-body);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-cookies__actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-cookies__actions > .gmb-bouton {
+    padding-inline: var(--gmb-space-3);
+  }
+
+  @media (max-width: 479.98px) {
+    .gmb-cookies {
+      inset-inline: var(--gmb-space-2);
+      padding: var(--gmb-space-5);
+    }
+
+    .gmb-cookies__actions {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Notifications éphémères (notifier() dans js/core.js) */
+  .gmb-notifications {
+    position: fixed;
+    inset-inline: var(--gmb-gutter);
+    inset-block-start: calc(var(--gmb-safe-top) + var(--gmb-space-4));
+    z-index: var(--gmb-z-toast);
+    display: grid;
+    justify-items: center;
+    gap: var(--gmb-space-2);
+    pointer-events: none;
+  }
+
+  .gmb-notification {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--gmb-space-3);
+    width: min(100%, 28rem);
+    padding: var(--gmb-space-2) var(--gmb-space-2) var(--gmb-space-2) var(--gmb-space-4);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-surface-inverse);
+    color: var(--gmb-text-inverse);
+    box-shadow: var(--gmb-shadow-xl);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: auto;
+    transition:
+      opacity var(--gmb-duration-normal) var(--gmb-ease-standard),
+      transform var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-notification[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .gmb-notification__texte {
+    margin: 0;
+    padding-block: var(--gmb-space-2);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-semibold);
+    line-height: var(--gmb-lh-snug);
+  }
+
+  .gmb-notification__fermer {
+    display: grid;
+    place-items: center;
+    width: var(--gmb-touch-min);
+    height: var(--gmb-touch-min);
+    border-radius: 50%;
+    color: inherit;
+  }
+
+  .gmb-notification__fermer:hover {
+    background-color: color-mix(in srgb, currentColor 14%, transparent);
+  }
+
+
+  /* ===========================================================================
+     11. FORMULES (vitrine, VIT-01 et VIT-17)
+     ======================================================================== */
+  .gmb-formule {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gmb-space-4);
+    height: 100%;
+    padding: var(--gmb-space-6) var(--gmb-space-5);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-xl);
+    background-color: var(--gmb-surface);
+    box-shadow: var(--gmb-shadow-xs);
+  }
+
+  .gmb-formule--mise-en-avant {
+    border: 2px solid var(--gmb-action);
+    box-shadow: var(--gmb-shadow-lg);
+  }
+
+  .gmb-formule__entete {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-formule__nom {
+    font-size: var(--gmb-fs-xl);
+    font-weight: var(--gmb-weight-extrabold);
+    letter-spacing: var(--gmb-tracking-heading);
+  }
+
+  .gmb-formule__prix {
+    font-size: var(--gmb-fs-3xl);
+    font-weight: var(--gmb-weight-extrabold);
+    line-height: 1;
+    letter-spacing: var(--gmb-tracking-display);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .gmb-formule__periode {
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-medium);
+    letter-spacing: normal;
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-formule__resume {
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-formule__liste {
+    display: grid;
+    flex: 1 1 auto;
+    align-content: start;
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-space-4) 0 0;
+    list-style: none;
+    border-block-start: var(--gmb-border-width) solid var(--gmb-divider);
+    font-size: var(--gmb-fs-sm);
+    line-height: var(--gmb-lh-snug);
+  }
+
+  .gmb-formule__liste > li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-formule__liste .gmb-icone {
+    width: 18px;
+    height: 18px;
+    color: var(--gmb-accent);
+  }
+
+
+  /* ===========================================================================
+     12. COMPLÉMENTS DU GABARIT (en-tête, pied de page)
+     ======================================================================== */
+
+  /* En-tête : boutons sur une ligne ; entre 1 024 et 1 439 px, version compacte
+     (« Suivre mon dossier » et « Espace client » en icône, nom accessible conservé) */
+  .gmb-entete__actions .gmb-bouton,
+  .gmb-menu-mobile__actions .gmb-bouton {
+    white-space: nowrap;
+  }
+
+  .gmb-menu-mobile__actions .gmb-bouton {
+    padding-inline: var(--gmb-space-3);
+  }
+
+  @media (min-width: 1024px) and (max-width: 1439.98px) {
+    .gmb-entete__barre { gap: var(--gmb-space-3); }
+    .gmb-entete__lien { padding-inline: var(--gmb-space-2); }
+    .gmb-entete__texte-large,
+    .gmb-entete__suivre-texte { display: none; }
+    .gmb-entete__espace { width: var(--gmb-bouton-h); padding: 0; }
+  }
+
+  /* Petits libellés : contraste d'au moins 4,5:1 dans les deux thèmes */
+  .gmb-mega__titre,
+  .gmb-app__groupe,
+  .gmb-app__onglet:not([aria-current="page"]) {
+    color: var(--gmb-text-muted);
+  }
+
+  /* Carte mise en avant du méga-menu */
+  .gmb-mega__carte > .gmb-badge {
+    align-self: flex-start;
+  }
+
+  .gmb-mega__carte-titre {
+    font-size: var(--gmb-fs-xl);
+    font-weight: var(--gmb-weight-extrabold);
+    line-height: var(--gmb-lh-snug);
+    letter-spacing: var(--gmb-tracking-heading);
+  }
+
+  .gmb-mega__carte-texte {
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
+
+  /* Section qui passe sous l'en-tête transparent (héros sombre) */
+  .gmb-sous-entete {
+    margin-block-start: calc(-1 * (var(--gmb-header-h) + var(--gmb-safe-top)));
+    padding-block-start: calc(var(--gmb-header-h) + var(--gmb-safe-top) + var(--gmb-sous-entete-marge, var(--gmb-space-9)));
+  }
+
+  .gmb-pied__langues {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gmb-space-1);
+  }
+
+  .gmb-pied__langue {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--gmb-touch-min);
+    padding-inline: var(--gmb-space-3);
+    border: var(--gmb-border-width) solid transparent;
+    border-radius: var(--gmb-radius-pill);
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text-muted);
+    text-decoration: none;
+  }
+
+  .gmb-pied__langue:hover {
+    color: var(--gmb-text);
+  }
+
+  .gmb-pied__langue[aria-current="true"] {
+    border-color: var(--gmb-border-strong);
+    color: var(--gmb-text);
+  }
+
+  .gmb-pied__statut {
+    padding: var(--gmb-space-3) var(--gmb-space-4);
+    border: var(--gmb-border-width) solid var(--gmb-alerte-border);
+    border-radius: var(--gmb-radius-md);
+    color: var(--gmb-text);
+  }
+
+  .gmb-pied__statut strong {
+    color: var(--gmb-alerte-text);
+  }
+
+  .gmb-lien-bouton {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration-line: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+
+
+  /* ===========================================================================
+     13. CHARGEMENT
+     ======================================================================== */
+  .gmb-squelette {
+    min-height: 1em;
+    border-radius: var(--gmb-radius-sm);
+    background: linear-gradient(90deg, var(--gmb-skeleton-base) 0%, var(--gmb-skeleton-shine) 50%, var(--gmb-skeleton-base) 100%) 0 0 / 200% 100%;
+    animation: gmb-reflet 1.4s linear infinite;
+  }
+
+  .gmb-chargement {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    border: 2.5px solid color-mix(in srgb, currentColor 25%, transparent);
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: gmb-rotation 0.8s linear infinite;
+  }
+
+
+  /* ===========================================================================
+     14. ANIMATIONS
+     ======================================================================== */
+  @keyframes gmb-rotation {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes gmb-reflet {
+    to { background-position: -200% 0; }
+  }
+
+  @keyframes gmb-apparition {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @keyframes gmb-montee {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @keyframes gmb-respiration {
+    from { transform: scale(1);    box-shadow: 0 0 90px 18px var(--gmb-moon-glow); }
+    to   { transform: scale(1.03); box-shadow: 0 0 150px 40px var(--gmb-moon-glow); }
+  }
+
+  @keyframes gmb-celebration {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(1.18); filter: drop-shadow(0 0 14px var(--gmb-moon-glow)); }
+    100% { transform: scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gmb-astre,
+    .gmb-squelette,
+    .gmb-lune--celebration,
+    .gmb-dialogue[open],
+    .gmb-cookies {
+      animation: none;
+    }
+
+    .gmb-chargement,
+    .gmb-bouton[aria-busy="true"]::after {
+      animation-duration: 2.4s;
+    }
+  }
+
+  @media print {
+    .gmb-cookies,
+    .gmb-notifications,
+    .gmb-astre {
+      display: none !important;
+    }
+
+    .gmb-bouton {
+      border: 1px solid currentColor;
+      box-shadow: none;
+    }
+  }
+
+  /* Composants communs à tous les espaces */
+  .gmb-bouton--fantome { background-color: transparent; border-color: transparent; color: var(--gmb-violet-700); box-shadow: none; }
+  .gmb-bouton--fantome:hover { background-color: var(--gmb-surface-2); }
+  .gmb-bouton--fantome.gmb-bouton--danger { color: var(--gmb-danger-text); }
+  .gmb-dialogue__formulaire { display: grid; gap: var(--gmb-space-4); }
+  .gmb-tableau-zone { max-inline-size: 100%; overflow-x: auto; background-color: var(--gmb-surface); border: var(--gmb-border-width) solid var(--gmb-border); border-radius: var(--gmb-radius-lg); }
+  .gmb-tableau { inline-size: 100%; border-collapse: collapse; font-size: var(--gmb-fs-sm); }
+  .gmb-tableau caption { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .gmb-tableau thead th { padding: var(--gmb-space-3) var(--gmb-space-4); text-align: start; font-size: var(--gmb-fs-xs); font-weight: var(--gmb-weight-semibold); letter-spacing: 0.04em; text-transform: uppercase; color: var(--gmb-text-muted); background-color: var(--gmb-surface-2); border-block-end: var(--gmb-border-width) solid var(--gmb-border); white-space: nowrap; }
+  .gmb-tableau tbody th, .gmb-tableau td { padding: var(--gmb-space-3) var(--gmb-space-4); text-align: start; border-block-end: var(--gmb-border-width) solid var(--gmb-border); vertical-align: middle; }
+  .gmb-tableau tbody tr:last-child :is(th, td) { border-block-end: 0; }
+  .gmb-mention-obligatoire { margin: 0; padding: var(--gmb-space-3) var(--gmb-space-4); font-size: var(--gmb-fs-sm); background-color: var(--gmb-surface-2); border-inline-start: 3px solid var(--gmb-violet-500); border-radius: var(--gmb-radius-md); }
+}

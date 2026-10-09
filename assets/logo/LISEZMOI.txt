@@ -1,0 +1,32 @@
+GerMoonBank · assets/logo/ — identité visuelle v2.1
+====================================================
+gmb-logo.svg               Logo horizontal pour fond clair (texte vectorisé, aucune police requise)
+gmb-logo-sombre.svg        Logo horizontal pour fond sombre
+gmb-logo-mono.svg          Logo monochrome (prend la couleur du texte s'il est intégré dans la page)
+gmb-icone.svg              Icône seule, coins arrondis (favicon moderne, interface)
+gmb-icone-pleine.svg       Icône sans coins arrondis (base des icônes iPhone et Android)
+gmb-icone-mono.svg         Icône monochrome
+favicon.ico                Favicon 16, 32 et 48 px (anciens navigateurs)
+favicon-16.png, -32.png    Favicons PNG
+apple-touch-icon.png       Icône iPhone et iPad, 180 x 180 (iOS arrondit lui-même les coins)
+icone-192.png, -512.png    Icônes d'application (PWA), usage « any »
+icone-masquable-192.png, -512.png   Icônes Android « maskable » (motif dans la zone de sécurité)
+gmb-partage.png            Image de partage 1200 x 630 (Facebook, LinkedIn, WhatsApp, X)
+
+Dans le <head> de chaque page (chemins relatifs pour GitHub Pages) :
+  <link rel="icon" href="assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+
+Dans manifest.webmanifest :
+  "icons": [
+    { "src": "assets/logo/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/logo/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/logo/icone-masquable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/logo/icone-masquable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+
+Règles : ne pas déformer, ne pas changer les couleurs, laisser autour du logo un espace
+libre au moins égal à la moitié de la hauteur de l'icône. Le nom GerMoonBank doit être
+validé par l'avocat avant tout dépôt de marque (cahier des charges, section 4.1).

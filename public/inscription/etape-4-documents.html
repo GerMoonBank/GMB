@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vos documents — GerMoonBank</title>
+  <meta name="description" content="Étape 4 de votre demande : vos pièces justificatives.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/inscription/etape-4-documents.html">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/inscription.js"></script>
+</head>
+<body data-etape="etape-4-documents">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <nav aria-label="Étapes de la demande"><ol class="gmb-frise-etapes"><li data-fait="true"><span class="gmb-frise-etapes__numero">1</span><span>Identité</span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">2</span><span>Coordonnées</span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">3</span><span><span data-frise-etape="3">Votre situation</span></span></li><li aria-current="step" data-fait="false"><span class="gmb-frise-etapes__numero">4</span><span>Documents</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">5</span><span>Signature</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">6</span><span><span data-frise-etape="6">Premier versement</span></span></li></ol></nav>
+      <header class="gmb-pile gmb-pile--serree"><p class="gmb-mention">Demande <span data-reference>…</span></p><h1 class="gmb-section__titre" id="titre-page">Vos documents</h1><p class="gmb-section__intro">PDF, JPG, PNG ou HEIC, 10 Mo au plus. Une photo nette, sans reflet, suffit.</p></header>
+      <div class="gmb-carte" data-consentement-selfie hidden><div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="consentement_photo" name="consentement_photo" aria-describedby="consentement_photo-erreur"><span>J’accepte que ma photo soit comparée à ma pièce d’identité par un analyste GerMoonBank, pour vérifier mon identité.</span></label><p class="gmb-champ__erreur" id="consentement_photo-erreur" hidden></p></div></div>
+      <div class="gmb-pile gmb-pile--moyenne" data-pieces><p>Chargement de la liste des documents…</p></div>
+      <p class="gmb-resultat" aria-live="polite" data-reste></p>
+      <div class="gmb-rangee"><button type="button" class="gmb-bouton gmb-bouton--principal" data-continuer disabled>Continuer</button></div>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

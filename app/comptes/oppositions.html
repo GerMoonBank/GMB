@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Oppositions — Espace client GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../../css/pages/auth.css">
+  <link rel="stylesheet" href="../../css/app.css">
+  <script type="module" src="../../js/app/accounts.js"></script>
+</head>
+<body data-app="oppositions" class="app-corps">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="app-entete">
+    <a class="app-entete__marque" href="../../app/index.html"><strong>GerMoonBank</strong></a>
+    <div class="app-entete__actions"><span class="app-entete__identite" data-app-identite></span>
+      <button type="button" class="gmb-bouton gmb-bouton--fantome gmb-bouton--petit app-entete__bouton" data-discret aria-pressed="false"><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="app-entete__libelle">Masquer les montants</span></button>
+      <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit app-entete__bouton" data-deconnexion><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span class="app-entete__libelle">Se déconnecter</span></button></div>
+  </header>
+  <div class="app-cadre">
+    <nav class="app-nav" aria-label="Espace client" data-app-nav></nav>
+    <main id="contenu" class="app-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <div class="gmb-pile gmb-pile--large">
+        <h1 class="gmb-section__titre" id="titre-page">Oppositions</h1>
+        <p>Carte perdue ou volée, ou opération que vous ne reconnaissez pas : faites opposition immédiatement. Pour une opération que vous ne reconnaissez pas, contestez-la aussi depuis l’historique du compte.</p>
+        <section class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-cartes"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-cartes">Vos cartes</h2><div data-cartes><p>Chargement…</p></div></section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

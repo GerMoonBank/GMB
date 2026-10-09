@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Simulateur d’épargne — GerMoonBank</title>
+  <meta name="description" content="Simulez ce que rapportent un versement initial et des versements mensuels sur le Livret GMB, année par année.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/epargne/simulateur-epargne.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Simulateur d’épargne — GerMoonBank">
+  <meta property="og:description" content="Simulez ce que rapportent un versement initial et des versements mensuels sur le Livret GMB, année par année.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/epargne/simulateur-epargne.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header segment="particuliers" page="simulateur-epargne"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="index.html">Épargne</a></li><li><span aria-current="page">Simulateur d’épargne</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Simulateur d’épargne</h1>
+        <p class="gmb-page-heros__intro">Ce que rapporteraient vos versements sur le Livret GMB, calculé jour par jour comme sur votre livret.</p>
+      </div>
+    </section>
+    <section class="gmb-section" aria-labelledby="s45">
+      <div class="gmb-conteneur gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre gmb-section__titre--moyen" id="s45">Votre épargne</h2>
+        <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-simulateur="epargne" novalidate><div class="gmb-grille gmb-grille--2"><div class="gmb-champ"><label class="gmb-champ__libelle" for="se-initial">Versement initial (€)</label><input class="gmb-saisie" id="se-initial" name="initial" type="text" inputmode="decimal" autocomplete="off" value="1000"></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="se-mensuel">Versement chaque mois (€)</label><input class="gmb-saisie" id="se-mensuel" name="mensuel" type="text" inputmode="decimal" autocomplete="off" value="100"></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="se-annees">Durée (années, de 1 à 10)</label><input class="gmb-saisie" id="se-annees" name="annees" type="text" inputmode="decimal" autocomplete="off" value="5"></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="se-formule">Formule</label><div class="gmb-liste"><select class="gmb-saisie" id="se-formule" name="formule"></select></div></div></div><p class="gmb-resultat" aria-live="polite" data-synthese-epargne></p><div class="gmb-tableau-zone" tabindex="0" role="region" aria-label="Évolution de votre épargne" data-resultats-epargne></div><p class="gmb-mention">Simulation à taux constant : intérêts bruts, avant impôt, calculés chaque jour et ajoutés au solde. Les versements cessent au plafond de 100 000 €.</p></form>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

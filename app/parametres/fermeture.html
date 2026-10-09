@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fermer votre compte — Espace client GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../../css/pages/auth.css">
+  <link rel="stylesheet" href="../../css/app.css">
+  <script type="module" src="../../js/app/security.js"></script>
+</head>
+<body data-app="fermeture" class="app-corps">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="app-entete">
+    <a class="app-entete__marque" href="../../app/index.html"><strong>GerMoonBank</strong></a>
+    <div class="app-entete__actions"><span class="app-entete__identite" data-app-identite></span>
+      <button type="button" class="gmb-bouton gmb-bouton--fantome gmb-bouton--petit app-entete__bouton" data-discret aria-pressed="false"><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="app-entete__libelle">Masquer les montants</span></button>
+      <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit app-entete__bouton" data-deconnexion><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span class="app-entete__libelle">Se déconnecter</span></button></div>
+  </header>
+  <div class="app-cadre">
+    <nav class="app-nav" aria-label="Espace client" data-app-nav></nav>
+    <main id="contenu" class="app-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <div class="gmb-pile gmb-pile--large">
+        <h1 class="gmb-section__titre" id="titre-page">Fermer votre compte</h1>
+        <nav class="app-sous-nav" aria-label="Paramètres"><ul><li><a href="profil.html">Profil</a></li><li><a href="coordonnees.html">Coordonnées</a></li><li><a href="code-secret.html">Code secret</a></li><li><a href="2fa.html">Sécurité</a></li><li><a href="appareils.html">Appareils</a></li><li><a href="notifications.html">Notifications</a></li><li><a href="langue-devise.html">Apparence</a></li><li><a href="mot-de-passe.html">Mot de passe</a></li><li><a href="fermeture.html" aria-current="page">Fermeture</a></li></ul></nav>
+        <div class="gmb-carte gmb-pile gmb-pile--serree">
+          <p>La fermeture est <strong>gratuite</strong> et intervient sous <strong>30 jours</strong> au plus. Votre solde vous est restitué par virement sur le compte bancaire de votre choix.</p>
+          <p>Un prêt en cours doit d’abord être remboursé, par anticipation si vous le souhaitez.</p>
+        </div>
+        <div data-demande></div>
+        <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="fermeture" novalidate>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="motif">Pourquoi partez-vous ?</label><div class="gmb-liste"><select class="gmb-saisie" id="motif" name="motif"></select></div></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="precision">Précision</label><input class="gmb-saisie" id="precision" name="precision" type="text" maxlength="300" autocomplete="off"><p class="gmb-champ__aide">Facultatif.</p></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="iban">IBAN du compte qui recevra votre solde</label><input class="gmb-saisie" id="iban" name="iban" type="text" autocomplete="off" spellcheck="false"></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="titulaire">Titulaire de ce compte</label><input class="gmb-saisie" id="titulaire" name="titulaire" type="text" autocomplete="name"></div>
+          <div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="compris" name="compris"><span>J’ai compris que la fermeture de mon compte est définitive.</span></label></div>
+          <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Demander la fermeture</button></div>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

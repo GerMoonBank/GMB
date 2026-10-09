@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Centre d’aide — GerMoonBank</title>
+  <meta name="description" content="Réponses aux questions fréquentes : ouvrir un compte, suivre un dossier, se connecter, cartes, virements, épargne, crédit, Pro, Jeunes et sécurité.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/aide/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Centre d’aide — GerMoonBank">
+  <meta property="og:description" content="Réponses aux questions fréquentes : ouvrir un compte, suivre un dossier, se connecter, cartes, virements, épargne, crédit, Pro, Jeunes et sécurité.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/aide/">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/business.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header page="aide" segment="particuliers"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><span aria-current="page">Centre d’aide</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Comment pouvons-nous vous aider ?</h1>
+        <div class="gmb-recherche-aide" data-recherche-aide style="width:100%">
+          <label class="gmb-champ__libelle" for="recherche-aide">Rechercher une réponse</label>
+          <input class="gmb-saisie" id="recherche-aide" type="search" autocomplete="off" placeholder="Par exemple : carte, virement, Mon Dossier" aria-describedby="recherche-aide-aide" aria-controls="resultats-aide">
+          <p class="gmb-champ__aide" id="recherche-aide-aide">Des suggestions s’affichent dès la troisième lettre. Nous ne vous demanderons jamais d’identifiant, de code ni de mot de passe.</p>
+          <ul class="gmb-recherche-aide__resultats" id="resultats-aide" hidden></ul>
+          <p class="gmb-visuellement-masque" aria-live="polite" data-annonce-recherche></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--sans-haut" aria-label="Orientation">
+      <div class="gmb-conteneur gmb-grille gmb-grille--3">
+        <article class="gmb-carte gmb-carte--interactive"><span class="gmb-carte__icone" data-icone="dossier"></span><h2 class="gmb-carte__titre">Vous avez une demande en cours ?</h2><p class="gmb-carte__texte">Complétez-la ou suivez son avancement.</p><p class="gmb-carte__pied"><a class="gmb-carte__lien-etendu" href="../../auth/mon-dossier.html">Suivre mon dossier</a></p></article>
+        <article class="gmb-carte gmb-carte--interactive"><span class="gmb-carte__icone" data-icone="cadenas"></span><h2 class="gmb-carte__titre">Vous êtes client ?</h2><p class="gmb-carte__texte">Toutes vos opérations et votre messagerie sont dans votre espace.</p><p class="gmb-carte__pied"><a class="gmb-carte__lien-etendu" href="../../auth/connexion.html">Espace client</a></p></article>
+        <article class="gmb-carte gmb-carte--nuit" data-theme="sombre"><span class="gmb-carte__icone" data-icone="flocon"></span><h2 class="gmb-carte__titre">Carte perdue ou volée ?</h2><p class="gmb-carte__texte">Gelez-la immédiatement dans l’application, puis faites opposition. L’opposition se fait depuis la rubrique Cartes de l’Espace client, à tout moment.</p><p class="gmb-carte__pied"><a class="gmb-lien-fleche" href="../societe/securite.html">Que faire en cas de fraude<span data-icone="flecheDroite"></span></a></p></article>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-rubriques">
+      <div class="gmb-conteneur">
+        <div class="gmb-section__entete"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-rubriques">Rubriques</h2></div>
+        <ul class="gmb-grille gmb-grille--etroite" style="list-style:none;padding:0"><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-ouvrir"><span class="gmb-carte__icone" data-icone="utilisateur"></span><span class="gmb-aide-rubrique__titre">Ouvrir un compte</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-suivre"><span class="gmb-carte__icone" data-icone="dossier"></span><span class="gmb-aide-rubrique__titre">Suivre un dossier</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-connexion"><span class="gmb-carte__icone" data-icone="cadenas"></span><span class="gmb-aide-rubrique__titre">Se connecter</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-cartes"><span class="gmb-carte__icone" data-icone="carte"></span><span class="gmb-aide-rubrique__titre">Cartes</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-virements"><span class="gmb-carte__icone" data-icone="virement"></span><span class="gmb-aide-rubrique__titre">Virements</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-epargne"><span class="gmb-carte__icone" data-icone="croissance"></span><span class="gmb-aide-rubrique__titre">Épargne</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-credit"><span class="gmb-carte__icone" data-icone="banque"></span><span class="gmb-aide-rubrique__titre">Crédit</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-pro"><span class="gmb-carte__icone" data-icone="mallette"></span><span class="gmb-aide-rubrique__titre">Pro et Business</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-jeunes"><span class="gmb-carte__icone" data-icone="sourire"></span><span class="gmb-aide-rubrique__titre">Jeunes</span></a></li><li><a class="gmb-carte gmb-carte--interactive gmb-aide-rubrique" href="#rubrique-securite"><span class="gmb-carte__icone" data-icone="bouclier"></span><span class="gmb-aide-rubrique__titre">Sécurité</span></a></li></ul>
+      </div>
+    </section>
+
+    <section class="gmb-section" aria-labelledby="titre-questions">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+        <h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-questions">Questions fréquentes</h2>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-ouvrir" aria-labelledby="titre-rubrique-ouvrir">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-ouvrir">Ouvrir un compte</h3>
+          <details class="gmb-accordeon" id="aide-ouvrir-1"><summary>Combien de temps faut-il pour ouvrir un compte ?</summary><div class="gmb-accordeon__contenu"><p>Environ 8 minutes en ligne. Vous suivez ensuite votre demande dans Mon Dossier ; la vérification des pièces prend en général 48 heures ouvrées.</p></div></details><details class="gmb-accordeon" id="aide-ouvrir-2"><summary>Quels documents faut-il préparer ?</summary><div class="gmb-accordeon__contenu"><p>Une pièce d’identité en cours de validité, un smartphone avec caméra, un justificatif de domicile de moins de 3 mois et une carte bancaire ou un compte à votre nom dans l’Espace économique européen.</p></div></details><details class="gmb-accordeon" id="aide-ouvrir-3"><summary>Qui peut ouvrir un compte ?</summary><div class="gmb-accordeon__contenu"><p>Les personnes majeures résidant en France. L’ouverture à d’autres pays de l’Union européenne suivra.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-suivre" aria-labelledby="titre-rubrique-suivre">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-suivre">Suivre un dossier</h3>
+          <details class="gmb-accordeon" id="aide-suivre-1"><summary>Quelle différence entre Mon Dossier et l’Espace client ?</summary><div class="gmb-accordeon__contenu"><p>Mon Dossier sert à suivre une demande, avec votre e-mail et un mot de passe : il ne donne jamais accès à des comptes. L’Espace client est votre banque, avec votre identifiant à 8 chiffres, votre code secret et votre appareil de confiance.</p></div></details><details class="gmb-accordeon" id="aide-suivre-2"><summary>On me demande de remplacer une pièce : que faire ?</summary><div class="gmb-accordeon__contenu"><p>Connectez-vous à Mon Dossier : vous arrivez directement sur la pièce à remplacer, avec le motif et la date limite.</p></div></details><details class="gmb-accordeon" id="aide-suivre-3"><summary>J’ai oublié le mot de passe de Mon Dossier</summary><div class="gmb-accordeon__contenu"><p>Utilisez « Mot de passe oublié ? » sur la page de connexion : vous recevez un lien valable 30 minutes. Aucun mot de passe n’est jamais envoyé par e-mail.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-connexion" aria-labelledby="titre-rubrique-connexion">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-connexion">Se connecter</h3>
+          <details class="gmb-accordeon" id="aide-connexion-1"><summary>Où trouver mon identifiant bancaire ?</summary><div class="gmb-accordeon__contenu"><p>Dans Mon Dossier, une fois votre compte ouvert. Il s’affiche une seule fois, après une nouvelle saisie de votre mot de passe et d’un code reçu par e-mail.</p></div></details><details class="gmb-accordeon" id="aide-connexion-2"><summary>Pourquoi les chiffres du clavier changent-ils de place ?</summary><div class="gmb-accordeon__contenu"><p>Pour que personne ne puisse deviner votre code secret en observant vos gestes. Un mode accessible est disponible.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-cartes" aria-labelledby="titre-rubrique-cartes">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-cartes">Cartes</h3>
+          <details class="gmb-accordeon" id="aide-cartes-1"><summary>Comment geler ma carte ?</summary><div class="gmb-accordeon__contenu"><p>Depuis l’application ou l’Espace client, rubrique Cartes : un geste pour la geler, un autre pour la débloquer.</p></div></details><details class="gmb-accordeon" id="aide-cartes-2"><summary>Ma carte permet-elle un découvert ?</summary><div class="gmb-accordeon__contenu"><p>Non : elle est à autorisation systématique. Un paiement n’est accepté que si votre solde le permet.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-virements" aria-labelledby="titre-rubrique-virements">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-virements">Virements</h3>
+          <details class="gmb-accordeon" id="aide-virements-1"><summary>Les virements instantanés sont-ils gratuits ?</summary><div class="gmb-accordeon__contenu"><p>Oui, avec toutes les formules.</p></div></details><details class="gmb-accordeon" id="aide-virements-2"><summary>Qu’est-ce que la vérification du bénéficiaire ?</summary><div class="gmb-accordeon__contenu"><p>Avant chaque virement, le nom que vous saisissez est comparé à celui du titulaire du compte. En cas d’écart, vous êtes prévenu avant d’envoyer.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-epargne" aria-labelledby="titre-rubrique-epargne">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-epargne">Épargne</h3>
+          <details class="gmb-accordeon" id="aide-epargne-1"><summary>Quand sont versés les intérêts du Livret ?</summary><div class="gmb-accordeon__contenu"><p>Chaque jour, sur votre solde de fin de journée, au taux de votre formule.</p></div></details><details class="gmb-accordeon" id="aide-epargne-2"><summary>Mon épargne est-elle disponible ?</summary><div class="gmb-accordeon__contenu"><p>Oui, à tout moment, par virement immédiat vers votre compte courant.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-credit" aria-labelledby="titre-rubrique-credit">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-credit">Crédit</h3>
+          <details class="gmb-accordeon" id="aide-credit-1"><summary>Comment demander un prêt personnel ?</summary><div class="gmb-accordeon__contenu"><p>Simulez votre projet sur la page Crédits, puis faites votre demande en ligne. Elle se suit dans Mon Dossier.</p></div></details><details class="gmb-accordeon" id="aide-credit-2"><summary>Ai-je un délai de rétractation ?</summary><div class="gmb-accordeon__contenu"><p>Oui, 14 jours calendaires après la signature de l’offre. Un bouton « Me rétracter » reste affiché pendant ce délai.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-pro" aria-labelledby="titre-rubrique-pro">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-pro">Pro et Business</h3>
+          <details class="gmb-accordeon" id="aide-pro-1"><summary>Puis-je utiliser le même identifiant pour mon compte pro ?</summary><div class="gmb-accordeon__contenu"><p>Oui. L’espace Pro s’ouvre depuis le sélecteur d’espace, avec le même identifiant bancaire.</p></div></details><details class="gmb-accordeon" id="aide-pro-2"><summary>Les factures électroniques sont-elles incluses ?</summary><div class="gmb-accordeon__contenu"><p>Oui, dès Pro Solo : création, envoi au format structuré et suivi des statuts.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-jeunes" aria-labelledby="titre-rubrique-jeunes">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-jeunes">Jeunes</h3>
+          <details class="gmb-accordeon" id="aide-jeunes-1"><summary>Comment ouvrir un compte pour mon enfant ?</summary><div class="gmb-accordeon__contenu"><p>Depuis votre Espace client, si vous êtes déjà client, avec un justificatif du lien de filiation.</p></div></details><details class="gmb-accordeon" id="aide-jeunes-2"><summary>Quelles dépenses sont bloquées ?</summary><div class="gmb-accordeon__contenu"><p>Les jeux d’argent, l’alcool et le tabac, et les crypto-actifs, quels que soient les réglages.</p></div></details>
+        </section>
+        <section class="gmb-pile gmb-pile--serree" id="rubrique-securite" aria-labelledby="titre-rubrique-securite">
+          <h3 class="gmb-carte__titre" id="titre-rubrique-securite">Sécurité</h3>
+          <details class="gmb-accordeon" id="aide-securite-1"><summary>Un conseiller me demande mon code : est-ce normal ?</summary><div class="gmb-accordeon__contenu"><p>Non, jamais. Raccrochez et contactez-nous par la messagerie de votre espace.</p></div></details><details class="gmb-accordeon" id="aide-securite-2"><summary>Que faire si je ne reconnais pas une opération ?</summary><div class="gmb-accordeon__contenu"><p>Signalez-la depuis le détail de l’opération dans votre espace. Une opération non autorisée est remboursée au plus tard le premier jour ouvrable suivant votre signalement, sauf soupçon de fraude.</p></div></details>
+        </section>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-contact">
+      <div class="gmb-conteneur">
+        <div class="gmb-section__entete"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-contact">Nous contacter</h2></div>
+        <div class="gmb-grille gmb-grille--3">
+          <article class="gmb-carte"><span class="gmb-carte__icone" data-icone="support"></span><h3 class="gmb-carte__titre">Assistant conversationnel</h3><p class="gmb-carte__texte">Ses réponses seront toujours signalées comme automatisées, et vous pourrez demander un conseiller à tout moment.</p><span class="gmb-badge gmb-badge--alerte" style="align-self:flex-start">Dans l’Espace client</span></article>
+          <article class="gmb-carte"><span class="gmb-carte__icone" data-icone="smartphone"></span><h3 class="gmb-carte__titre">Messagerie de votre espace</h3><p class="gmb-carte__texte">Depuis Mon Dossier pour une demande en cours, depuis l’Espace client si vous êtes client.</p><p class="gmb-carte__pied"><a class="gmb-lien-fleche" href="../../auth/mon-dossier.html">Ouvrir Mon Dossier<span data-icone="flecheDroite"></span></a></p></article>
+          <article class="gmb-carte"><span class="gmb-carte__icone" data-icone="dossier"></span><h3 class="gmb-carte__titre">Réclamation</h3><p class="gmb-carte__texte">Une réponse ne vous satisfait pas ? Voici comment faire une réclamation et dans quels délais nous répondons.</p><p class="gmb-carte__pied"><a class="gmb-lien-fleche" href="../legal/mediation.html">Faire une réclamation<span data-icone="flecheDroite"></span></a></p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

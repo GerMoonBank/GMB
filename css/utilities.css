@@ -1,0 +1,60 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/utilities.css
+   Utilitaires : lecteurs d’écran, affichage selon l’écran, extension — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend les utilitaires de design/base.css et design/layout.css.
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+@layer utilities {
+  /* Masqué à l'écran, lu par les lecteurs d'écran */
+  .gmb-visuellement-masque,
+  .gmb-visuellement-masque-focusable:not(:focus, :focus-within) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  /* Affichage selon l'écran */
+  @media (max-width: 767.98px) {
+    .gmb-masque-mobile { display: none !important; }
+  }
+
+  @media (min-width: 768px) {
+    .gmb-seulement-mobile { display: none !important; }
+  }
+
+  @media (max-width: 1023.98px) {
+    .gmb-seulement-bureau { display: none !important; }
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-masque-bureau { display: none !important; }
+  }
+
+  .gmb-extensible { flex: 1 1 auto; min-width: 0; }
+
+  /* Animations discrètes (js/animations.js) : glissement à l'entrée, contenu toujours visible */
+  @media (prefers-reduced-motion: no-preference) {
+    .gmb-animations-actives [data-animer] {
+      transition: transform 600ms var(--gmb-ease-smooth, ease-out);
+    }
+
+    .gmb-animations-actives [data-animer]:not(.est-visible) {
+      transform: translateY(14px);
+    }
+  }
+
+  /* Animation continue mise en pause hors de l'écran */
+  .gmb-anime-pause,
+  .gmb-anime-pause * {
+    animation-play-state: paused !important;
+  }
+}

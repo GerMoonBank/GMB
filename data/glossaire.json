@@ -1,0 +1,136 @@
+{
+  "termes": [
+    {
+      "terme": "ACPR",
+      "definition": "Autorité de contrôle prudentiel et de résolution, adossée à la Banque de France. Elle agrée et contrôle les banques, les établissements de paiement et les assureurs en France."
+    },
+    {
+      "terme": "AMF",
+      "definition": "Autorité des marchés financiers. Elle régule les marchés et les produits d’investissement en France, et agrée notamment les prestataires de services sur crypto-actifs."
+    },
+    {
+      "terme": "Authentification forte",
+      "definition": "Vérification de l’identité par au moins deux éléments de catégories différentes : ce que l’on sait (un code), ce que l’on possède (un appareil), ce que l’on est (une caractéristique physique). Elle est exigée pour les paiements par la deuxième directive européenne sur les services de paiement."
+    },
+    {
+      "terme": "BIC",
+      "definition": "Code international de 8 ou 11 caractères qui identifie une banque ou un établissement de paiement."
+    },
+    {
+      "terme": "Bénéficiaire effectif",
+      "definition": "Personne physique qui détient, directement ou indirectement, plus de 25 % du capital ou des droits de vote d’une société, ou qui la contrôle. À défaut, il s’agit de son représentant légal."
+    },
+    {
+      "terme": "Coffre",
+      "definition": "Chez GerMoonBank, sous-compte de votre compte courant dédié à un projet, alimenté par vos versements ou par les arrondis de vos paiements."
+    },
+    {
+      "terme": "Document d’information tarifaire",
+      "definition": "Document normalisé, au format européen, qui présente les frais des principaux services liés à un compte de paiement, pour faciliter la comparaison des offres."
+    },
+    {
+      "terme": "Document d’informations clés",
+      "definition": "Document remis avant la souscription d’un produit d’investissement, qui en présente les caractéristiques, les risques et les coûts."
+    },
+    {
+      "terme": "Découvert autorisé",
+      "definition": "Possibilité, convenue avec la banque, de rendre son compte débiteur jusqu’à un montant et pendant une durée définis. GerMoonBank ne le propose pas."
+    },
+    {
+      "terme": "Délai de rétractation",
+      "definition": "Délai de 14 jours calendaires pendant lequel l’emprunteur peut renoncer à un crédit à la consommation, sans avoir à se justifier."
+    },
+    {
+      "terme": "FGDR",
+      "definition": "Fonds de Garantie des Dépôts et de Résolution. Il indemnise les clients d’une banque agréée défaillante, jusqu’à 100 000 € par déposant et par établissement. Les sommes versées chez GerMoonBank n’en bénéficient pas, car GerMoonBank n’est pas un établissement agréé."
+    },
+    {
+      "terme": "FICP",
+      "definition": "Fichier national des incidents de remboursement des crédits aux particuliers, tenu par la Banque de France. Il est consulté avant l’octroi d’un crédit."
+    },
+    {
+      "terme": "Franchise",
+      "definition": "Montant mensuel en deçà duquel une opération, comme un retrait ou un change, est sans frais. Il dépend de votre formule."
+    },
+    {
+      "terme": "IBAN",
+      "definition": "Identifiant international d’un compte bancaire, utilisé pour les virements et les prélèvements. En France, il comporte 27 caractères et commence par FR."
+    },
+    {
+      "terme": "Identifiant bancaire",
+      "definition": "Chez GerMoonBank, numéro à 8 chiffres qui permet, avec votre code secret, de vous connecter à l’Espace client."
+    },
+    {
+      "terme": "Kbis",
+      "definition": "Extrait d’immatriculation d’une société au registre du commerce et des sociétés. Il prouve son existence juridique."
+    },
+    {
+      "terme": "KYC",
+      "definition": "Connaissance du client (de l’anglais « Know Your Customer ») : vérifications d’identité et de situation imposées par la réglementation avant l’ouverture d’un compte."
+    },
+    {
+      "terme": "LCB-FT",
+      "definition": "Lutte contre le blanchiment des capitaux et le financement du terrorisme : ensemble des obligations de vigilance des établissements financiers."
+    },
+    {
+      "terme": "Mandat de prélèvement SEPA",
+      "definition": "Autorisation donnée à un créancier de prélever votre compte. Il porte une référence unique de mandat (RUM) et peut être révoqué à tout moment."
+    },
+    {
+      "terme": "MiCA",
+      "definition": "Règlement européen sur les marchés de crypto-actifs. Il encadre les prestataires de services sur crypto-actifs dans l’Union européenne."
+    },
+    {
+      "terme": "MoonPoints",
+      "definition": "Chez GerMoonBank, points de fidélité convertibles en euros : 100 MoonPoints valent 1 €."
+    },
+    {
+      "terme": "Numéro de compte GerMoonBank",
+      "definition": "Numéro à 11 chiffres, dont une clé de contrôle, attribué à chaque compte GerMoonBank. Il permet de recevoir des virements entre clients GerMoonBank."
+    },
+    {
+      "terme": "Opposition",
+      "definition": "Blocage définitif d’une carte en cas de perte, de vol ou d’utilisation frauduleuse. À distinguer du gel, qui est réversible."
+    },
+    {
+      "terme": "PPE",
+      "definition": "Personne politiquement exposée : personne qui exerce ou a exercé une fonction publique importante, ou membre de sa famille ou proche. Elle fait l’objet d’une vigilance renforcée."
+    },
+    {
+      "terme": "Prélèvement SEPA",
+      "definition": "Paiement réalisé à l’initiative d’un créancier, autorisé par un mandat, entre comptes de la zone SEPA."
+    },
+    {
+      "terme": "RUM",
+      "definition": "Référence unique de mandat, qui identifie un mandat de prélèvement SEPA."
+    },
+    {
+      "terme": "SEPA",
+      "definition": "Espace unique de paiement en euros, qui réunit les pays de l’Union européenne et plusieurs pays voisins, avec les mêmes règles pour les virements et les prélèvements."
+    },
+    {
+      "terme": "SIREN",
+      "definition": "Numéro à 9 chiffres qui identifie une entreprise en France. Son dernier chiffre est une clé de contrôle."
+    },
+    {
+      "terme": "TAEG",
+      "definition": "Taux annuel effectif global : coût total d’un crédit, intérêts et frais obligatoires compris, exprimé en pourcentage annuel. Il permet de comparer les offres."
+    },
+    {
+      "terme": "Taux débiteur",
+      "definition": "Taux d’intérêt appliqué au capital emprunté, hors frais."
+    },
+    {
+      "terme": "Taux d’usure",
+      "definition": "Taux maximal légal qu’un crédit ne peut pas dépasser. Il est fixé chaque trimestre par la Banque de France, selon la catégorie de prêt."
+    },
+    {
+      "terme": "Virement instantané",
+      "definition": "Virement exécuté en quelques secondes, 24 heures sur 24, tous les jours de l’année."
+    },
+    {
+      "terme": "Vérification du bénéficiaire",
+      "definition": "Contrôle de concordance entre le nom saisi et le titulaire du compte destinataire, avant l’envoi d’un virement. Chez GerMoonBank, il est effectué pour les comptes GerMoonBank ; pour une autre banque, vous en êtes informé."
+    }
+  ]
+}

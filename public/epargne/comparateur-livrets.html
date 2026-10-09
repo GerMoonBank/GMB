@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Comparateur de livrets — GerMoonBank</title>
+  <meta name="description" content="Comparez les intérêts du Livret GMB, du Livret A et du LDDS pour une même somme, impôt compris.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/epargne/comparateur-livrets.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Comparateur de livrets — GerMoonBank">
+  <meta property="og:description" content="Comparez les intérêts du Livret GMB, du Livret A et du LDDS pour une même somme, impôt compris.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/epargne/comparateur-livrets.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header segment="particuliers" page="comparateur-livrets"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="index.html">Épargne</a></li><li><span aria-current="page">Comparateur de livrets</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Comparateur de livrets</h1>
+        <p class="gmb-page-heros__intro">Le Livret GMB face au Livret A et au LDDS, pour une même somme, impôt compris.</p>
+      </div>
+    </section>
+    <section class="gmb-section" aria-labelledby="s46">
+      <div class="gmb-conteneur gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre gmb-section__titre--moyen" id="s46">Votre comparaison</h2>
+        <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-simulateur="livrets" novalidate><div class="gmb-grille gmb-grille--2"><div class="gmb-champ"><label class="gmb-champ__libelle" for="cl-montant">Somme à placer (€)</label><input class="gmb-saisie" id="cl-montant" name="montant" type="text" inputmode="decimal" autocomplete="off" value="10000"></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="cl-formule">Formule</label><div class="gmb-liste"><select class="gmb-saisie" id="cl-formule" name="formule"></select></div></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="cl-taux-a">Taux du Livret A en vigueur (%)</label><input class="gmb-saisie" id="cl-taux-a" name="tauxA" type="text" inputmode="decimal" autocomplete="off" value="" aria-describedby="cl-taux-a-aide"><p class="gmb-champ__aide" id="cl-taux-a-aide">Publié sur le site de la Banque de France.</p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="cl-impot">Taux d’imposition des intérêts (%)</label><input class="gmb-saisie" id="cl-impot" name="impot" type="text" inputmode="decimal" autocomplete="off" value="" aria-describedby="cl-impot-aide"><p class="gmb-champ__aide" id="cl-impot-aide">Prélèvement forfaitaire unique : taux publié sur impots.gouv.fr.</p></div></div><div class="gmb-tableau-zone" tabindex="0" role="region" aria-label="Comparaison des livrets" data-resultats-livrets></div><p class="gmb-resultat" aria-live="polite" data-message-livrets></p><p class="gmb-mention">Estimation sur un an, à taux constant, pour une somme placée dès le premier jour. Le Livret A et le LDDS sont exonérés d’impôt ; GerMoonBank ne les propose pas.</p></form>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

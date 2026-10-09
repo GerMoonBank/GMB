@@ -1,0 +1,149 @@
+{
+  "source": "Centre d’aide GerMoonBank",
+  "rubriques": [
+    "Cartes",
+    "Crédit",
+    "Jeunes",
+    "Ouvrir un compte",
+    "Pro et Business",
+    "Se connecter",
+    "Suivre un dossier",
+    "Sécurité",
+    "Virements",
+    "Épargne"
+  ],
+  "questions": [
+    {
+      "id": "aide-ouvrir-1",
+      "rubrique": "Ouvrir un compte",
+      "question": "Combien de temps faut-il pour ouvrir un compte ?",
+      "reponse": "Environ 8 minutes en ligne. Vous suivez ensuite votre demande dans Mon Dossier ; la vérification des pièces prend en général 48 heures ouvrées."
+    },
+    {
+      "id": "aide-ouvrir-2",
+      "rubrique": "Ouvrir un compte",
+      "question": "Quels documents faut-il préparer ?",
+      "reponse": "Une pièce d’identité en cours de validité, un smartphone avec caméra, un justificatif de domicile de moins de 3 mois et une carte bancaire ou un compte à votre nom dans l’Espace économique européen."
+    },
+    {
+      "id": "aide-ouvrir-3",
+      "rubrique": "Ouvrir un compte",
+      "question": "Qui peut ouvrir un compte ?",
+      "reponse": "Les personnes majeures résidant en France. L’ouverture à d’autres pays de l’Union européenne suivra."
+    },
+    {
+      "id": "aide-suivre-1",
+      "rubrique": "Suivre un dossier",
+      "question": "Quelle différence entre Mon Dossier et l’Espace client ?",
+      "reponse": "Mon Dossier sert à suivre une demande, avec votre e-mail et un mot de passe : il ne donne jamais accès à des comptes. L’Espace client est votre banque, avec votre identifiant à 8 chiffres, votre code secret et votre appareil de confiance."
+    },
+    {
+      "id": "aide-suivre-2",
+      "rubrique": "Suivre un dossier",
+      "question": "On me demande de remplacer une pièce : que faire ?",
+      "reponse": "Connectez-vous à Mon Dossier : vous arrivez directement sur la pièce à remplacer, avec le motif et la date limite."
+    },
+    {
+      "id": "aide-suivre-3",
+      "rubrique": "Suivre un dossier",
+      "question": "J’ai oublié le mot de passe de Mon Dossier",
+      "reponse": "Utilisez « Mot de passe oublié ? » sur la page de connexion : vous recevez un lien valable 30 minutes. Aucun mot de passe n’est jamais envoyé par e-mail."
+    },
+    {
+      "id": "aide-connexion-1",
+      "rubrique": "Se connecter",
+      "question": "Où trouver mon identifiant bancaire ?",
+      "reponse": "Dans Mon Dossier, une fois votre compte ouvert. Il s’affiche une seule fois, après une nouvelle saisie de votre mot de passe et d’un code reçu par e-mail."
+    },
+    {
+      "id": "aide-connexion-2",
+      "rubrique": "Se connecter",
+      "question": "Pourquoi les chiffres du clavier changent-ils de place ?",
+      "reponse": "Pour que personne ne puisse deviner votre code secret en observant vos gestes. Un mode accessible est disponible."
+    },
+    {
+      "id": "aide-cartes-1",
+      "rubrique": "Cartes",
+      "question": "Comment geler ma carte ?",
+      "reponse": "Depuis l’application ou l’Espace client, rubrique Cartes : un geste pour la geler, un autre pour la débloquer."
+    },
+    {
+      "id": "aide-cartes-2",
+      "rubrique": "Cartes",
+      "question": "Ma carte permet-elle un découvert ?",
+      "reponse": "Non : elle est à autorisation systématique. Un paiement n’est accepté que si votre solde le permet."
+    },
+    {
+      "id": "aide-virements-1",
+      "rubrique": "Virements",
+      "question": "Les virements instantanés sont-ils gratuits ?",
+      "reponse": "Oui, avec toutes les formules."
+    },
+    {
+      "id": "aide-virements-2",
+      "rubrique": "Virements",
+      "question": "Qu’est-ce que la vérification du bénéficiaire ?",
+      "reponse": "Avant chaque virement, le nom que vous saisissez est comparé à celui du titulaire du compte. En cas d’écart, vous êtes prévenu avant d’envoyer."
+    },
+    {
+      "id": "aide-epargne-1",
+      "rubrique": "Épargne",
+      "question": "Quand sont versés les intérêts du Livret ?",
+      "reponse": "Chaque jour, sur votre solde de fin de journée, au taux de votre formule."
+    },
+    {
+      "id": "aide-epargne-2",
+      "rubrique": "Épargne",
+      "question": "Mon épargne est-elle disponible ?",
+      "reponse": "Oui, à tout moment, par virement immédiat vers votre compte courant."
+    },
+    {
+      "id": "aide-credit-1",
+      "rubrique": "Crédit",
+      "question": "Comment demander un prêt personnel ?",
+      "reponse": "Simulez votre projet sur la page Crédits, puis faites votre demande en ligne. Elle se suit dans Mon Dossier."
+    },
+    {
+      "id": "aide-credit-2",
+      "rubrique": "Crédit",
+      "question": "Ai-je un délai de rétractation ?",
+      "reponse": "Oui, 14 jours calendaires après la signature de l’offre. Un bouton « Me rétracter » reste affiché pendant ce délai."
+    },
+    {
+      "id": "aide-pro-1",
+      "rubrique": "Pro et Business",
+      "question": "Puis-je utiliser le même identifiant pour mon compte pro ?",
+      "reponse": "Oui. L’espace Pro s’ouvre depuis le sélecteur d’espace, avec le même identifiant bancaire."
+    },
+    {
+      "id": "aide-pro-2",
+      "rubrique": "Pro et Business",
+      "question": "Les factures électroniques sont-elles incluses ?",
+      "reponse": "Oui, dès Pro Solo : création, envoi au format structuré et suivi des statuts."
+    },
+    {
+      "id": "aide-jeunes-1",
+      "rubrique": "Jeunes",
+      "question": "Comment ouvrir un compte pour mon enfant ?",
+      "reponse": "Depuis votre Espace client, si vous êtes déjà client, avec un justificatif du lien de filiation."
+    },
+    {
+      "id": "aide-jeunes-2",
+      "rubrique": "Jeunes",
+      "question": "Quelles dépenses sont bloquées ?",
+      "reponse": "Les jeux d’argent, l’alcool et le tabac, et les crypto-actifs, quels que soient les réglages."
+    },
+    {
+      "id": "aide-securite-1",
+      "rubrique": "Sécurité",
+      "question": "Un conseiller me demande mon code : est-ce normal ?",
+      "reponse": "Non, jamais. Raccrochez et contactez-nous par la messagerie de votre espace."
+    },
+    {
+      "id": "aide-securite-2",
+      "rubrique": "Sécurité",
+      "question": "Que faire si je ne reconnais pas une opération ?",
+      "reponse": "Signalez-la depuis le détail de l’opération dans votre espace. Une opération non autorisée est remboursée au plus tard le premier jour ouvrable suivant votre signalement, sauf soupçon de fraude."
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/pages/auth.css
+   Connexion, activation, clavier sécurisé (AUTH-01 à AUTH-07) — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend la partie connexion de design/espace-client.css.
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+@layer pages {
+
+
+  /* ===========================================================================
+     1. CONNEXION ET ACTIVATION (AUTH-01 à AUTH-05)
+     ======================================================================== */
+  .gmb-connexion {
+    display: grid;
+    gap: var(--gmb-space-5);
+    width: min(100%, 27rem);
+    margin-inline: auto;
+  }
+
+  .gmb-connexion .gmb-panneau {
+    gap: var(--gmb-space-5);
+  }
+
+  .gmb-saisie--identifiant {
+    font-family: var(--gmb-font-mono);
+    font-size: var(--gmb-fs-2xl);
+    font-weight: var(--gmb-weight-semibold);
+    letter-spacing: 0.12em;
+    text-align: center;
+  }
+
+  .gmb-rappel-code {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--gmb-space-3);
+    font-size: var(--gmb-fs-xs);
+    line-height: var(--gmb-lh-snug);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-identifiant-memorise {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gmb-space-2);
+    padding: var(--gmb-space-3) var(--gmb-space-4);
+    border-radius: var(--gmb-radius-md);
+    background-color: var(--gmb-bg-alt);
+    font-family: var(--gmb-font-mono);
+    font-weight: var(--gmb-weight-semibold);
+  }
+
+  .gmb-liens-connexion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gmb-space-1) var(--gmb-space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--gmb-fs-xs);
+  }
+
+  .gmb-liens-connexion a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--gmb-touch-min);
+  }
+
+  /* Chargement sécurisé : éclipse (AUTH-02) */
+  .gmb-eclipse {
+    position: relative;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-inline: auto;
+    border-radius: 50%;
+    background-color: var(--gmb-moon-lit);
+    box-shadow: 0 0 30px 6px var(--gmb-moon-glow);
+    overflow: hidden;
+  }
+
+  .gmb-eclipse::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: var(--gmb-surface);
+    animation: gmb-eclipse 1.4s var(--gmb-ease-smooth) infinite;
+  }
+
+  @keyframes gmb-eclipse {
+    from { transform: translateX(-105%); }
+    to   { transform: translateX(105%); }
+  }
+
+  .gmb-mention-clavier {
+    font-size: var(--gmb-fs-2xs);
+    color: var(--gmb-text-muted);
+    text-align: center;
+  }
+
+  .gmb-compte-rebours-validation {
+    font-size: var(--gmb-fs-3xl);
+    font-weight: var(--gmb-weight-extrabold);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+
+  .gmb-visite {
+    display: grid;
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-space-5);
+    border-radius: var(--gmb-radius-xl);
+    background: var(--gmb-gradient-night);
+  }
+
+  /* Pastilles du code secret (lot C2) */
+  .gmb-pastilles { display: flex; justify-content: center; gap: var(--gmb-space-2); margin-block: var(--gmb-space-3); }
+  .gmb-pastille { inline-size: 12px; block-size: 12px; border-radius: var(--gmb-radius-circle); border: 2px solid var(--gmb-text-muted); }
+  .gmb-pastille[data-pleine="true"] { background-color: var(--gmb-violet-500); border-color: var(--gmb-violet-500); }
+
+  /* Liens de connexion sans séparateur flottant */
+  .gmb-liens-connexion { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gmb-space-2) var(--gmb-space-5); font-size: 0; }
+  .gmb-liens-connexion a { font-size: var(--gmb-fs-sm); }
+
+  /* ===========================================================================
+     2. CONNEXION À L'ESPACE CLIENT : L'APPARENCE DE L'APPLICATION (version 5)
+     body.auth-client : connexion, première connexion, code secret oublié,
+     confirmation d'un nouvel appareil, activation de l'application. « Nuit »
+     par défaut (html[data-theme="sombre"]), « Claire » si le client l'a choisie.
+     ======================================================================== */
+  .auth-client { display: flex; flex-direction: column; min-block-size: 100dvh; background-color: var(--gmb-bg); }
+  [data-theme="sombre"] .auth-client {
+    background: radial-gradient(900px 520px at 100% -10%, rgb(99 91 255 / 0.3), transparent 62%),
+      radial-gradient(700px 480px at -12% 34%, rgb(0 212 184 / 0.1), transparent 60%), #0B0926;
+  }
+  [data-theme="sombre"]:has(> .auth-client) { background-color: #0B0926; color-scheme: dark; }
+  .auth-client > main { flex: 1 0 auto; padding-block: var(--gmb-space-8) var(--gmb-space-10); }
+  .auth-client .gmb-entete-tunnel { border-block-end-color: transparent; background-color: transparent; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+  .auth-client main > .gmb-conteneur { max-inline-size: 28rem; }
+  .auth-client__tete { align-items: center; justify-items: center; text-align: center; }
+  .auth-client__embleme { inline-size: 4rem; block-size: 4rem; margin-block-end: var(--gmb-space-2); border-radius: 22%; box-shadow: 0 18px 40px -14px rgb(99 91 255 / 0.85), 0 0 0 1px rgb(255 255 255 / 0.08); }
+  .auth-client #titre-page { font-size: clamp(1.75rem, 1.45rem + 1.4vw, 2.25rem); letter-spacing: -0.03em; }
+  .auth-client .gmb-section__intro { max-inline-size: 24rem; color: var(--gmb-text-muted); font-size: var(--gmb-fs-sm); }
+  .auth-client form.gmb-carte, .auth-client .gmb-carte {
+    padding: var(--gmb-space-6);
+    border: 0;
+    border-radius: 24px;
+    background-color: var(--gmb-surface);
+    box-shadow: 0 1px 2px rgb(17 14 51 / 0.05), 0 24px 50px -30px rgb(17 14 51 / 0.45);
+  }
+  [data-theme="sombre"] .auth-client :is(form.gmb-carte, .gmb-carte) { background-color: #15123A; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 30px 60px -30px rgb(0 0 0 / 0.85); }
+  .auth-client .gmb-saisie { min-block-size: 3.25rem; border-radius: 14px; }
+  [data-theme="sombre"] .auth-client .gmb-saisie { border-color: transparent; background-color: #1D1950; box-shadow: inset 0 0 0 1px rgb(235 239 248 / 0.08); color: #EBEFF8; }
+  [data-theme="sombre"] .auth-client .gmb-saisie:focus { border-color: #00D4B8; box-shadow: 0 0 0 4px rgb(0 212 184 / 0.25); }
+  .auth-client #identifiant { font-family: var(--gmb-font-mono); font-size: 1.375rem; font-weight: var(--gmb-weight-semibold); letter-spacing: 0.2em; text-align: center; }
+  .auth-client .gmb-bouton { min-block-size: 3.25rem; border-radius: 999px; }
+  .auth-client form .gmb-rangee > .gmb-bouton--principal { flex: 1 1 100%; }
+  [data-theme="sombre"] .auth-client .gmb-bouton--principal { border-color: transparent; background-color: #00D4B8; color: #0B0926; box-shadow: 0 14px 30px -16px rgb(0 212 184 / 0.9); }
+  [data-theme="sombre"] .auth-client .gmb-bouton--principal:hover { background-color: #7FEBDD; }
+  .auth-client .gmb-liens-connexion { justify-content: center; }
+  .auth-client main > .gmb-conteneur > p:not(.gmb-mention) { text-align: center; }
+  .auth-client .gmb-mention { padding: var(--gmb-space-4); border-radius: 16px; background-color: var(--gmb-surface-brand, rgb(99 91 255 / 0.08)); font-size: var(--gmb-fs-xs); text-align: center; }
+  .auth-client .gmb-pied-tunnel { border-block-start: 1px solid var(--gmb-border); }
+  [data-theme="sombre"] .auth-client .gmb-touche { background-color: #1D1950; color: #EBEFF8; }
+}

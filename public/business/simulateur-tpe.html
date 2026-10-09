@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Simulateur de coûts pour TPE — GerMoonBank</title>
+  <meta name="description" content="Indiquez votre équipe, votre volume d’opérations et vos besoins : le simulateur calcule le coût de chaque formule.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/business/simulateur-tpe.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Simulateur de coûts pour TPE — GerMoonBank">
+  <meta property="og:description" content="Indiquez votre équipe, votre volume d’opérations et vos besoins : le simulateur calcule le coût de chaque formule.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/business/simulateur-tpe.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header segment="business" page="business-simulateur-tpe"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="index.html">Business</a></li><li><span aria-current="page">Simulateur de coûts</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Simulateur de coûts</h1>
+        <p class="gmb-page-heros__intro">Votre équipe, vos opérations, vos besoins : le coût de chaque formule Pro et Business.</p>
+      </div>
+    </section>
+    <section class="gmb-section" aria-labelledby="s11">
+      <div class="gmb-conteneur gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre gmb-section__titre--moyen" id="s11">Votre simulation</h2>
+        <form class="gmb-simulateur" data-simulateur="pro" aria-labelledby="titre-simulateur" novalidate>
+          <div class="gmb-simulateur__saisie">
+            <h2 class="gmb-carte__titre" id="titre-simulateur">Quelle formule pour votre activité ?</h2>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="pro-utilisateurs">Nombre d’utilisateurs</label>
+              <input class="gmb-saisie" id="pro-utilisateurs" name="pro-utilisateurs" type="number" min="1" max="10000" step="1" value="1" inputmode="numeric" style="max-width:12rem" aria-describedby="pro-utilisateurs-aide pro-utilisateurs-erreur">
+              <p class="gmb-champ__aide" id="pro-utilisateurs-aide">Les personnes qui ont un accès ou une carte.</p>
+              <p class="gmb-champ__erreur" id="pro-utilisateurs-erreur" data-erreur="utilisateurs" hidden><span data-icone="alerte"></span><span data-texte></span></p>
+            </div>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="pro-operations">Opérations SEPA par mois</label>
+              <input class="gmb-saisie" id="pro-operations" name="pro-operations" type="number" min="0" max="1000000" step="10" value="80" inputmode="numeric" style="max-width:12rem" aria-describedby="pro-operations-aide pro-operations-erreur">
+              <p class="gmb-champ__aide" id="pro-operations-aide">Virements et prélèvements, émis ou reçus. Au-delà du forfait : <span data-catalogue="operation-sup">0,20 € HT</span> par opération.</p>
+              <p class="gmb-champ__erreur" id="pro-operations-erreur" data-erreur="operations" hidden><span data-icone="alerte"></span><span data-texte></span></p>
+            </div>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="pro-besoin">Fonction indispensable</label>
+              <div class="gmb-liste"><select class="gmb-saisie" id="pro-besoin" name="pro-besoin"><option value="aucun">Aucun besoin particulier</option></select></div>
+            </div>
+          </div>
+          <div class="gmb-simulateur__resultat" data-theme="sombre">
+            <dl class="gmb-simulateur__principal"><dt>La formule la moins chère pour vous</dt><dd data-sortie="recommandee">Pro Solo</dd></dl>
+            <p class="gmb-simulateur__cout"><span data-sortie="cout">9,00 €</span> HT par mois</p>
+            <div class="gmb-tableau-zone" data-sortie-tableau tabindex="0" role="region" aria-label="Coût de chaque formule"></div>
+            <p class="gmb-visuellement-masque" aria-live="polite" data-sortie="annonce"></p>
+            <div><a class="gmb-bouton gmb-bouton--principal" href="../inscription/index.html?segment=pro&amp;formule=pro_solo" data-sortie="lien">Choisir cette formule</a></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Investir — Espace client GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../../css/pages/auth.css">
+  <link rel="stylesheet" href="../../css/app.css">
+  <script type="module" src="../../js/app/invest.js"></script>
+</head>
+<body data-app="investissement" class="app-corps">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="app-entete">
+    <a class="app-entete__marque" href="../../app/index.html"><strong>GerMoonBank</strong></a>
+    <div class="app-entete__actions"><span class="app-entete__identite" data-app-identite></span>
+      <button type="button" class="gmb-bouton gmb-bouton--fantome gmb-bouton--petit app-entete__bouton" data-discret aria-pressed="false"><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="app-entete__libelle">Masquer les montants</span></button>
+      <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit app-entete__bouton" data-deconnexion><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span class="app-entete__libelle">Se déconnecter</span></button></div>
+  </header>
+  <div class="app-cadre">
+    <nav class="app-nav" aria-label="Espace client" data-app-nav></nav>
+    <main id="contenu" class="app-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <h1 class="gmb-section__titre" id="titre-page">Placements</h1>
+      <div class="app-carte-scene"><span class="app-pastille app-pastille--ciel app-pastille--grande" aria-hidden="true"><svg class="gmb-icone" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></span>
+        <h2 class="app-carte-scene__titre">Préparez vos projets de placement</h2>
+        <p class="app-carte-scene__texte">Estimez ce que peut devenir votre épargne placée, frais déduits, et découvrez nos guides pour choisir en connaissance de cause.</p>
+        <p class="gmb-rangee"><a class="gmb-bouton gmb-bouton--principal" href="simulateur.html">Simuler un placement</a></p></div>
+      <section class="app-bloc" aria-labelledby="t-epargne"><div class="app-bloc__entete"><h2 class="app-bloc__titre" id="t-epargne">Votre épargne</h2></div>
+        <ul class="app-groupe">
+          <li><a class="app-ligne app-ligne--lien" href="../epargne/index.html"><span class="app-pastille app-pastille--teal" aria-hidden="true"><svg class="gmb-icone" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7c-1.5-2-4-3-7-3C7 4 4 7 4 11c0 2.5 1.2 4.4 3 5.6V20h3v-2h4v2h3v-3.4c1.1-.8 2-1.9 2.5-3.1H21V10h-1.6A6.8 6.8 0 0 0 19 7z"/><path d="M15.5 10h.01"/></svg></span><span class="app-ligne__corps"><span class="app-ligne__titre">Livret GerMoon+ et coffres</span><span class="app-ligne__detail">Épargne disponible à tout moment, intérêts chaque mois</span></span></a></li>
+        </ul></section>
+      <section class="app-bloc" aria-labelledby="t-guides"><div class="app-bloc__entete"><h2 class="app-bloc__titre" id="t-guides">Comprendre les placements</h2></div>
+        <ul class="app-groupe">
+          <li><a class="app-ligne app-ligne--lien" href="../../public/investissement/bourse.html"><span class="app-ligne__corps"><span class="app-ligne__titre">La Bourse : actions et fonds</span><span class="app-ligne__detail">Fonctionnement, risques, horizon de placement</span></span></a></li>
+          <li><a class="app-ligne app-ligne--lien" href="../../public/investissement/etf.html"><span class="app-ligne__corps"><span class="app-ligne__titre">Les ETF</span><span class="app-ligne__detail">Investir sur un indice à frais réduits</span></span></a></li>
+          <li><a class="app-ligne app-ligne--lien" href="../../public/investissement/assurance-vie.html"><span class="app-ligne__corps"><span class="app-ligne__titre">L’assurance-vie</span><span class="app-ligne__detail">Fonds en euros et unités de compte</span></span></a></li>
+          <li><a class="app-ligne app-ligne--lien" href="../../public/crypto/index.html"><span class="app-ligne__corps"><span class="app-ligne__titre">Les crypto-actifs</span><span class="app-ligne__detail">Bitcoin, Ether, conservation et fiscalité</span></span></a></li>
+        </ul></section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tarifs Pro et Business et simulateur de coût — GerMoonBank</title>
+  <meta name="description" content="Cinq formules de 9 € à 199 € HT par mois. Simulez votre coût selon vos utilisateurs et vos opérations, et trouvez la formule la moins chère.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/tarifs/business.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Tarifs Pro et Business et simulateur de coût — GerMoonBank">
+  <meta property="og:description" content="Cinq formules de 9 € à 199 € HT par mois. Simulez votre coût selon vos utilisateurs et vos opérations, et trouvez la formule la moins chère.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/tarifs/business.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/business.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header page="tarifs-business" segment="business"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="../business/index.html">Business</a></li><li><span aria-current="page">Tarifs Pro et Business</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Cinq formules pour les pros, sans engagement.</h1>
+        <p class="gmb-page-heros__intro">De l’indépendant qui démarre à la PME qui automatise ses paiements. Indiquez la taille de votre équipe et votre volume d’opérations : nous vous recommandons la formule la moins chère.</p>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--sans-haut" aria-label="Simulateur de coût">
+      <div class="gmb-conteneur">
+        <form class="gmb-simulateur" data-simulateur="pro" aria-labelledby="titre-simulateur" novalidate>
+          <div class="gmb-simulateur__saisie">
+            <h2 class="gmb-carte__titre" id="titre-simulateur">Quelle formule pour votre activité ?</h2>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="pro-utilisateurs">Nombre d’utilisateurs</label>
+              <input class="gmb-saisie" id="pro-utilisateurs" name="pro-utilisateurs" type="number" min="1" max="10000" step="1" value="1" inputmode="numeric" style="max-width:12rem" aria-describedby="pro-utilisateurs-aide pro-utilisateurs-erreur">
+              <p class="gmb-champ__aide" id="pro-utilisateurs-aide">Les personnes qui ont un accès ou une carte.</p>
+              <p class="gmb-champ__erreur" id="pro-utilisateurs-erreur" data-erreur="utilisateurs" hidden><span data-icone="alerte"></span><span data-texte></span></p>
+            </div>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="pro-operations">Opérations SEPA par mois</label>
+              <input class="gmb-saisie" id="pro-operations" name="pro-operations" type="number" min="0" max="1000000" step="10" value="80" inputmode="numeric" style="max-width:12rem" aria-describedby="pro-operations-aide pro-operations-erreur">
+              <p class="gmb-champ__aide" id="pro-operations-aide">Virements et prélèvements, émis ou reçus. Au-delà du forfait : <span data-catalogue="operation-sup">0,20 € HT</span> par opération.</p>
+              <p class="gmb-champ__erreur" id="pro-operations-erreur" data-erreur="operations" hidden><span data-icone="alerte"></span><span data-texte></span></p>
+            </div>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="pro-besoin">Fonction indispensable</label>
+              <div class="gmb-liste"><select class="gmb-saisie" id="pro-besoin" name="pro-besoin"><option value="aucun">Aucun besoin particulier</option></select></div>
+            </div>
+          </div>
+          <div class="gmb-simulateur__resultat" data-theme="sombre">
+            <dl class="gmb-simulateur__principal"><dt>La formule la moins chère pour vous</dt><dd data-sortie="recommandee">Pro Solo</dd></dl>
+            <p class="gmb-simulateur__cout"><span data-sortie="cout">9,00 €</span> HT par mois</p>
+            <div class="gmb-tableau-zone" data-sortie-tableau tabindex="0" role="region" aria-label="Coût de chaque formule"></div>
+            <p class="gmb-visuellement-masque" aria-live="polite" data-sortie="annonce"></p>
+            <div><a class="gmb-bouton gmb-bouton--principal" href="../inscription/index.html?segment=pro&amp;formule=pro_solo" data-sortie="lien">Choisir cette formule</a></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-formules">
+      <div class="gmb-conteneur">
+        <div class="gmb-section__entete"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-formules">Les cinq formules</h2></div>
+        <div class="gmb-formules-grille" data-formules-pro="tous"></div>
+      </div>
+    </section>
+
+    <section class="gmb-section" aria-labelledby="titre-comparatif">
+      <div class="gmb-conteneur">
+        <div class="gmb-section__entete"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-comparatif">Comparatif détaillé</h2></div>
+        <div class="gmb-comparatif-zone" tabindex="0" role="region" aria-label="Comparatif des formules Pro et Business, à faire défiler horizontalement" data-comparatif-pro></div>
+        <p class="gmb-comparatif-aide">Faites glisser le tableau pour voir les cinq formules.</p>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-faq">
+      <div class="gmb-conteneur gmb-conteneur--etroit">
+        <div class="gmb-section__entete gmb-section__entete--centre">
+          <h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-faq">Questions sur les tarifs Pro et Business</h2>
+        </div>
+        <details class="gmb-accordeon" open>
+          <summary>Qu’est-ce qu’une opération SEPA ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Un virement ou un prélèvement en euros, émis ou reçu. Chaque formule en inclut un nombre chaque mois ; au-delà, chacune coûte 0,20 € HT.</p></div>
+        </details>
+        <details class="gmb-accordeon">
+          <summary>Puis-je changer de formule quand mon équipe grandit ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Oui, à tout moment et sans engagement, depuis votre espace.</p></div>
+        </details>
+        <details class="gmb-accordeon">
+          <summary>Les prix sont-ils hors taxes ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Oui. Le régime de TVA applicable à ces services sera précisé avant le lancement.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-mentions">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-carte__titre" id="titre-mentions">Informations sur les tarifs</h2>
+        <p class="gmb-mention">Prix hors taxes par mois, sans engagement. Chaque opération SEPA au-delà du forfait : <span data-catalogue="operation-sup">0,20 € HT</span>. Le régime de TVA applicable aux services financiers sera arrêté avec le conseil fiscal et précisé avant le lancement.</p>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--nuit gmb-appel" data-theme="sombre" aria-labelledby="titre-appel">
+      <div class="gmb-astre"></div>
+      <div class="gmb-conteneur gmb-appel__contenu">
+        <h2 class="gmb-section__titre" id="titre-appel">Choisissez la formule qui suit votre croissance.</h2>
+        <p class="gmb-section__intro">Indépendant ou PME, vous changez de formule quand vous voulez.</p>
+        <a class="gmb-bouton gmb-bouton--principal gmb-bouton--grand" href="../inscription/index.html?segment=pro">Ouvrir un compte pro</a>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

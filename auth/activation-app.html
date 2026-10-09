@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr" data-theme="sombre">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Activer l’application — GerMoonBank</title>
+  <meta name="description" content="Appareil de confiance et installation de l’application GerMoonBank sur votre téléphone.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B0926">
+  <script>/* Apparence de l'Espace client (« Nuit » par défaut), appliquée avant l'affichage */(function(){try{var t=localStorage.getItem('gmb-theme');if(t==='clair'||(t===''&&matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.dataset.theme='clair';}}catch(e){}})();</script>
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/auth/activation-app.html">
+  <link rel="icon" href="../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="preload" href="../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../css/pages/auth.css">
+  <script type="module" src="../js/components.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+</head>
+<body data-page="activation-app" class="auth-client">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <header class="gmb-pile gmb-pile--serree auth-client__tete"><img class="auth-client__embleme" src="../assets/logo/gmb-icone.svg" alt="" width="64" height="64"><h1 class="gmb-section__titre" id="titre-page">Activer l’application</h1><p class="gmb-section__intro">Faites de cet appareil un appareil de confiance et installez l’application sur votre écran d’accueil.</p></header>
+      <section class="gmb-carte gmb-pile gmb-pile--serree" aria-labelledby="t-appareil"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-appareil">Appareil de confiance</h2>
+        <p data-etat-appareil></p>
+        <p><a class="gmb-bouton gmb-bouton--principal" href="connexion.html">Me connecter à l’Espace client</a></p>
+        <p><button type="button" class="gmb-bouton gmb-bouton--fantome" data-oublier-appareil>Ne plus faire confiance à cet appareil</button></p></section>
+      <section class="gmb-carte gmb-pile gmb-pile--serree" aria-labelledby="t-installer"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-installer">Installer l’application</h2>
+        <p data-etat-installation></p>
+        <p><button type="button" class="gmb-bouton gmb-bouton--secondaire" data-installer hidden>Installer l’application</button></p>
+        <p data-ios hidden>Sur iPhone ou iPad : touchez le bouton Partager de Safari, puis « Sur l’écran d’accueil ».</p>
+        <p>Sur Android : ouvrez le menu de votre navigateur, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ».</p></section>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <p class="gmb-mention"><strong>GerMoonBank ne vous demandera jamais votre code secret ni votre mot de passe</strong>, ni par téléphone, ni par e-mail, ni par message.</p>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

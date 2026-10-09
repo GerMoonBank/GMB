@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Simulateur de crédit immobilier — GerMoonBank</title>
+  <meta name="description" content="Calculez la mensualité, le coût des intérêts et de l’assurance d’un crédit immobilier, et votre taux d’endettement.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/credit/simulateur-immobilier.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Simulateur de crédit immobilier — GerMoonBank">
+  <meta property="og:description" content="Calculez la mensualité, le coût des intérêts et de l’assurance d’un crédit immobilier, et votre taux d’endettement.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/credit/simulateur-immobilier.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header segment="particuliers" page="simulateur-immobilier"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="index.html">Crédit</a></li><li><span aria-current="page">Simulateur de crédit immobilier</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Simulateur de crédit immobilier</h1>
+        <p class="gmb-page-heros__intro">Indiquez votre projet et le taux qu’on vous propose : mensualité, coût total et taux d’endettement s’affichent aussitôt.</p>
+      </div>
+    </section>
+    <section class="gmb-section gmb-section--serree" aria-label="Ce que propose GerMoonBank">
+      <div class="gmb-conteneur gmb-conteneur--etroit">
+        <div class="gmb-encadre gmb-encadre--neutre" role="note"><span data-icone="info"></span><p><strong>GerMoonBank ne propose pas de crédit immobilier : ce simulateur vous aide à préparer votre projet avec la banque de votre choix.</strong> Cette page vous explique son fonctionnement, pour vous aider à choisir en connaissance de cause.</p></div>
+      </div>
+    </section>
+    <section class="gmb-section" aria-labelledby="s68">
+      <div class="gmb-conteneur gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre gmb-section__titre--moyen" id="s68">Votre projet</h2>
+        <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-simulateur="immobilier" novalidate><div class="gmb-grille gmb-grille--2"><div class="gmb-champ"><label class="gmb-champ__libelle" for="si-prix">Prix du logement (€)</label><input class="gmb-saisie" id="si-prix" name="prix" type="text" inputmode="decimal" autocomplete="off" value="250000"></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="si-frais">Frais de notaire et de garantie (€)</label><input class="gmb-saisie" id="si-frais" name="frais" type="text" inputmode="decimal" autocomplete="off" value="18000" aria-describedby="si-frais-aide"><p class="gmb-champ__aide" id="si-frais-aide">Comptez environ 7 à 8 % du prix dans l’ancien, 2 à 3 % dans le neuf.</p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="si-apport">Apport personnel (€)</label><input class="gmb-saisie" id="si-apport" name="apport" type="text" inputmode="decimal" autocomplete="off" value="30000"></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="si-duree">Durée (années)</label><input class="gmb-saisie" id="si-duree" name="duree" type="text" inputmode="decimal" autocomplete="off" value="20"></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="si-taux">Taux nominal annuel (%)</label><input class="gmb-saisie" id="si-taux" name="taux" type="text" inputmode="decimal" autocomplete="off" value="" aria-describedby="si-taux-aide"><p class="gmb-champ__aide" id="si-taux-aide">Le taux proposé par votre banque.</p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="si-assurance">Taux annuel de l’assurance (%)</label><input class="gmb-saisie" id="si-assurance" name="assurance" type="text" inputmode="decimal" autocomplete="off" value="" aria-describedby="si-assurance-aide"><p class="gmb-champ__aide" id="si-assurance-aide">Le taux proposé par votre assureur, sur le capital emprunté.</p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="si-revenus">Revenus nets mensuels du foyer (€)</label><input class="gmb-saisie" id="si-revenus" name="revenus" type="text" inputmode="decimal" autocomplete="off" value=""></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="si-charges">Autres crédits en cours, par mois (€)</label><input class="gmb-saisie" id="si-charges" name="charges" type="text" inputmode="decimal" autocomplete="off" value="0"></div></div><p class="gmb-resultat" aria-live="polite" data-synthese-immobilier></p><div class="gmb-tableau-zone" tabindex="0" role="region" aria-label="Détail du crédit" data-resultats-immobilier></div><p class="gmb-mention">Repères du Haut Conseil de stabilité financière : taux d’endettement de 35 % au plus, assurance comprise, et durée de 25 ans au plus. Estimation indicative, qui ne vaut pas offre de prêt.</p></form>
+      </div>
+    </section>
+    <section class="gmb-section gmb-section--alt" aria-labelledby="s69">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-section__titre gmb-section__titre--moyen" id="s69">Informations légales</h2>
+        <p class="gmb-mention-obligatoire" data-catalogue="mention:credit">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

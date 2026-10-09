@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Prêt personnel et simulateur — GerMoonBank</title>
+  <meta name="description" content="Simulez votre prêt personnel de 1 000 € à 50 000 € sur 6 à 84 mois : mensualité, TAEG fixe, coût total. Exemple représentatif.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/credit/pret-personnel.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Prêt personnel et simulateur — GerMoonBank">
+  <meta property="og:description" content="Simulez votre prêt personnel de 1 000 € à 50 000 € sur 6 à 84 mois : mensualité, TAEG fixe, coût total. Exemple représentatif.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/credit/pret-personnel.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/business.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header page="credits" segment="particuliers"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="../particuliers/compte-courant.html">Particuliers</a></li><li><span aria-current="page">Crédits</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Un prêt personnel clair, du premier euro au dernier.</h1>
+        <p class="gmb-page-heros__intro">Estimez votre mensualité en quelques secondes : taux fixe, aucuns frais de dossier, et une demande suivie pas à pas dans Mon Dossier.</p>
+        <ul class="gmb-coches">
+          <li data-coche>Taux fixe sur toute la durée</li>
+          <li data-coche>De <span data-catalogue="credit-minimum">1 000 €</span> à <span data-catalogue="credit-maximum">50 000 €</span></li>
+          <li data-coche>De 6 à 84 mois</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--sans-haut" aria-label="Simulateur de prêt personnel">
+      <div class="gmb-conteneur">
+        <form class="gmb-simulateur" id="simulateur" data-simulateur="credit" aria-labelledby="titre-simulateur" novalidate>
+          <div class="gmb-simulateur__saisie">
+            <h2 class="gmb-carte__titre" id="titre-simulateur">Simulez votre prêt personnel</h2>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="credit-montant">Montant à emprunter</label>
+              <div class="gmb-saisie-groupe">
+                <input class="gmb-saisie gmb-saisie--montant" id="credit-montant" name="credit-montant" type="text" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="credit-montant-aide credit-montant-erreur">
+                <span class="gmb-saisie-groupe__suffixe" aria-hidden="true">€</span>
+              </div>
+              <input class="gmb-curseur" type="range" name="credit-montant-curseur" min="1000" max="50000" step="500" value="10000" aria-label="Montant à emprunter, par pas de 500 euros">
+              <p class="gmb-champ__aide" id="credit-montant-aide">De 1 000 € à 50 000 €. Le curseur avance par pas de 500 € ; vous pouvez aussi saisir un montant précis.</p>
+              <p class="gmb-champ__erreur" id="credit-montant-erreur" data-erreur="montant" hidden><span data-icone="alerte"></span><span data-texte></span></p>
+            </div>
+            <fieldset class="gmb-champ" style="border:0;padding:0;margin:0">
+              <legend class="gmb-champ__libelle" style="margin-block-end:var(--gmb-space-2)">Durée de remboursement</legend>
+              <div class="gmb-segments"><label class="gmb-segments__option"><input type="radio" name="credit-duree-choix" value="12"><span>1 an</span></label><label class="gmb-segments__option"><input type="radio" name="credit-duree-choix" value="24"><span>2 ans</span></label><label class="gmb-segments__option"><input type="radio" name="credit-duree-choix" value="36"><span>3 ans</span></label><label class="gmb-segments__option"><input type="radio" name="credit-duree-choix" value="48" checked><span>4 ans</span></label><label class="gmb-segments__option"><input type="radio" name="credit-duree-choix" value="60"><span>5 ans</span></label><label class="gmb-segments__option"><input type="radio" name="credit-duree-choix" value="72"><span>6 ans</span></label><label class="gmb-segments__option"><input type="radio" name="credit-duree-choix" value="84"><span>7 ans</span></label></div>
+              <label class="gmb-champ__libelle" for="credit-duree" style="margin-block-start:var(--gmb-space-3)">Ou saisissez une durée en mois</label>
+              <div class="gmb-saisie-groupe" style="max-width:12rem">
+                <input class="gmb-saisie" id="credit-duree" name="credit-duree" type="text" inputmode="numeric" autocomplete="off" value="48" aria-describedby="credit-duree-aide credit-duree-erreur">
+                <span class="gmb-saisie-groupe__suffixe" aria-hidden="true">mois</span>
+              </div>
+              <p class="gmb-champ__aide" id="credit-duree-aide">De 6 à 84 mois.</p>
+              <p class="gmb-champ__erreur" id="credit-duree-erreur" data-erreur="duree" hidden><span data-icone="alerte"></span><span data-texte></span></p>
+            </fieldset>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="credit-objet">Objet du prêt</label>
+              <div class="gmb-liste">
+                <select class="gmb-saisie" id="credit-objet" name="credit-objet">
+                  <option value="auto_moto">Auto ou moto</option>
+                  <option value="travaux">Travaux</option>
+                  <option value="etudes">Études</option>
+                  <option value="autre" selected>Autre projet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="gmb-simulateur__resultat" data-theme="sombre">
+            <dl class="gmb-simulateur__principal">
+              <dt>Votre mensualité</dt>
+              <dd class="gmb-montant" data-sortie="mensualite">233,71 €</dd>
+            </dl>
+            <dl class="gmb-resultats">
+              <div><dt>Montant emprunté</dt><dd data-sortie="montant">10 000,00 €</dd></div>
+              <div><dt>Durée</dt><dd data-sortie="duree">48 mois</dd></div>
+              <div><dt>Taux débiteur fixe</dt><dd data-sortie="taux">5,75 %</dd></div>
+              <div class="gmb-taeg"><dt>TAEG fixe</dt><dd data-sortie="taeg">5,90 %</dd></div>
+              <div><dt>Frais de dossier</dt><dd data-sortie="frais">0,00 €</dd></div>
+              <div><dt>Coût total du crédit</dt><dd data-sortie="cout">1 218,08 €</dd></div>
+              <div><dt>Montant total dû</dt><dd data-sortie="du">11 218,08 €</dd></div>
+              <div><dt>Assurance emprunteur facultative</dt><dd>Non incluse</dd></div>
+            </dl>
+            <p class="gmb-visuellement-masque" aria-live="polite" data-sortie="annonce"></p>
+            <p class="gmb-mention-obligatoire" data-catalogue="mention:credit">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
+            <a class="gmb-bouton gmb-bouton--principal gmb-bouton--bloc" href="../inscription/index.html?segment=particuliers&amp;produit=pret_personnel" data-sortie="lien">Faire ma demande de prêt</a>
+            <p class="gmb-mention">Taux de la grille en vigueur. Le taux définitif, confirmé dans l’offre de prêt, dépend de l’étude de votre dossier et ne peut pas dépasser la grille publiée.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--sans-haut" aria-labelledby="titre-exemple">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-carte__titre" id="titre-exemple">Exemple représentatif</h2>
+        <p class="gmb-exemple-representatif">Pour un prêt personnel de <strong data-catalogue="credit-exemple:montant">10 000 €</strong> sur <strong data-catalogue="credit-exemple:duree">48 mois</strong>, au taux débiteur fixe de <span data-catalogue="credit-exemple:taux">5,75 %</span>, <strong>TAEG fixe de <span data-catalogue="credit-exemple:taeg">5,90 %</span></strong>, vous remboursez <span data-catalogue="credit-exemple:nombre">48</span> mensualités de <strong data-catalogue="credit-exemple:mensualite">233,71 €</strong>. Montant total dû : <strong data-catalogue="credit-exemple:du">11 218,08 €</strong>. Coût total du crédit : <span data-catalogue="credit-exemple:cout">1 218,08 €</span>, dont frais de dossier : <span data-catalogue="credit-exemple:frais">0 €</span>. Assurance emprunteur facultative non incluse.</p>
+        <p class="gmb-mention-obligatoire" data-catalogue="mention:credit">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-etapes">
+      <div class="gmb-conteneur">
+        <div class="gmb-section__entete">
+          <h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-etapes">De la simulation aux fonds, en quatre étapes</h2>
+        </div>
+        <ol class="gmb-etapes">
+          <li><p class="gmb-etapes__titre">Simulez</p><p class="gmb-etapes__texte">Montant, durée, mensualité et coût total s’affichent en direct.</p></li>
+          <li><p class="gmb-etapes__titre">Faites votre demande</p><p class="gmb-etapes__texte">En ligne, avec vos justificatifs. Déjà client ? Depuis votre Espace client.</p></li>
+          <li><p class="gmb-etapes__titre">Suivez-la dans Mon Dossier</p><p class="gmb-etapes__texte">Pièces à compléter, décision et offre de prêt au même endroit.</p></li>
+          <li><p class="gmb-etapes__titre">Signez votre offre</p><p class="gmb-etapes__texte">Vous disposez ensuite d’un délai de rétractation de <span data-catalogue="credit-retractation">14 jours</span>.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="gmb-section" aria-labelledby="titre-faq">
+      <div class="gmb-conteneur gmb-conteneur--etroit">
+        <div class="gmb-section__entete gmb-section__entete--centre">
+          <h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-faq">Questions sur le prêt personnel</h2>
+        </div>
+        <details class="gmb-accordeon" open>
+          <summary>Le taux peut-il changer ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Non : le taux est fixe pendant toute la durée du prêt. Le taux définitif, confirmé dans votre offre, dépend de l’étude de votre dossier et ne peut pas dépasser la grille publiée.</p></div>
+        </details>
+        <details class="gmb-accordeon">
+          <summary>Ai-je un délai pour changer d’avis ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Oui. Après la signature de l’offre, vous disposez d’un délai de rétractation de 14 jours, sans avoir à vous justifier.</p></div>
+        </details>
+        <details class="gmb-accordeon">
+          <summary>Faut-il être client pour emprunter ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Non. Si vous n’êtes pas encore client, votre demande se fait en ligne et se suit dans Mon Dossier. Si vous êtes client, faites-la depuis votre Espace client.</p></div>
+        </details>
+        <details class="gmb-accordeon">
+          <summary>L’assurance emprunteur est-elle obligatoire ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Non, elle est facultative pour le prêt personnel. Son coût n’est pas inclus dans la simulation.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-mentions">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-carte__titre" id="titre-mentions">Informations légales sur le crédit</h2>
+        <p class="gmb-mention">Offre de prêt personnel soumise à l’acceptation de votre dossier par le prêteur. Prêteur : établissement partenaire agréé de GerMoonBank, dont l’identité figurera ici avant tout lancement commercial. GerMoonBank intervient en qualité d’intermédiaire en opérations de banque ; numéro ORIAS en cours d’attribution.</p>
+        <p class="gmb-mention">Délai de rétractation de <span data-catalogue="credit-retractation">14 jours</span> à compter de la signature de l’offre. Les taux de la grille, en vigueur au <span data-catalogue="date-effet">26/09/2026</span>, sont contrôlés à chaque publication et restent inférieurs au taux d’usure en vigueur.</p>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--nuit gmb-appel" data-theme="sombre" aria-labelledby="titre-appel">
+      <div class="gmb-astre"></div>
+      <div class="gmb-conteneur gmb-appel__contenu">
+        <h2 class="gmb-section__titre" id="titre-appel">Votre projet mérite une réponse claire.</h2>
+        <p class="gmb-section__intro">Simulez, puis faites votre demande en ligne.</p>
+        <a class="gmb-bouton gmb-bouton--principal gmb-bouton--grand" href="../inscription/index.html?segment=particuliers&amp;produit=pret_personnel">Faire ma demande de prêt</a>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

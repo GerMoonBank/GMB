@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vos coordonnées — Espace client GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../../css/pages/auth.css">
+  <link rel="stylesheet" href="../../css/app.css">
+  <script type="module" src="../../js/app/security.js"></script>
+</head>
+<body data-app="coordonnees" class="app-corps">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="app-entete">
+    <a class="app-entete__marque" href="../../app/index.html"><strong>GerMoonBank</strong></a>
+    <div class="app-entete__actions"><span class="app-entete__identite" data-app-identite></span>
+      <button type="button" class="gmb-bouton gmb-bouton--fantome gmb-bouton--petit app-entete__bouton" data-discret aria-pressed="false"><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="app-entete__libelle">Masquer les montants</span></button>
+      <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit app-entete__bouton" data-deconnexion><svg class="app-entete__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span class="app-entete__libelle">Se déconnecter</span></button></div>
+  </header>
+  <div class="app-cadre">
+    <nav class="app-nav" aria-label="Espace client" data-app-nav></nav>
+    <main id="contenu" class="app-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <div class="gmb-pile gmb-pile--large">
+        <h1 class="gmb-section__titre" id="titre-page">Vos coordonnées</h1>
+        <nav class="app-sous-nav" aria-label="Paramètres"><ul><li><a href="profil.html">Profil</a></li><li><a href="coordonnees.html" aria-current="page">Coordonnées</a></li><li><a href="code-secret.html">Code secret</a></li><li><a href="2fa.html">Sécurité</a></li><li><a href="appareils.html">Appareils</a></li><li><a href="notifications.html">Notifications</a></li><li><a href="langue-devise.html">Apparence</a></li><li><a href="mot-de-passe.html">Mot de passe</a></li><li><a href="fermeture.html">Fermeture</a></li></ul></nav>
+        <div data-email></div>
+        <p class="gmb-champ__aide">Votre adresse e-mail reçoit vos codes de connexion : pour la changer, <a href="../messages/nouveau.html">écrivez au service clients</a>, qui vérifiera la nouvelle adresse.</p>
+        <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="coordonnees" novalidate>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="telephone">Téléphone</label><input class="gmb-saisie" id="telephone" name="telephone" type="tel" autocomplete="tel"><p class="gmb-champ__aide">Par exemple 06 12 34 56 78 ou +33 6 12 34 56 78.</p></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="adresse_ligne1">Adresse</label><input class="gmb-saisie" id="adresse_ligne1" name="adresse_ligne1" type="text" autocomplete="address-line1"></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="adresse_ligne2">Complément d’adresse</label><input class="gmb-saisie" id="adresse_ligne2" name="adresse_ligne2" type="text" autocomplete="address-line2"><p class="gmb-champ__aide">Facultatif.</p></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="code_postal">Code postal</label><input class="gmb-saisie" id="code_postal" name="code_postal" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5"></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="ville">Ville</label><input class="gmb-saisie" id="ville" name="ville" type="text" autocomplete="address-level2"></div>
+          <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Enregistrer</button></div>
+          <p class="gmb-champ__aide">La modification est confirmée par votre code secret. Pour une adresse à l’étranger, écrivez au service clients.</p>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Polices de GerMoonBank — design/fonts/
+Manrope (Mikhail Sharanda) et JetBrains Mono (JetBrains) sont distribuées sous licence
+SIL Open Font License 1.1 : utilisation, intégration et redistribution libres, y compris
+dans un projet commercial. Texte de la licence : https://openfontlicense.org
+Fichiers : sous-ensemble latin (accents français, €, guillemets « », signe −), format woff2.

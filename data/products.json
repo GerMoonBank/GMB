@@ -1,0 +1,361 @@
+{
+  "dateEffet": "2026-09-26",
+  "moisPayesParAn": 10,
+  "formules": [
+    {
+      "code": "luna",
+      "nom": "Luna",
+      "prix": 0,
+      "accroche": "L’essentiel, gratuit",
+      "description": "L’essentiel du quotidien, sans frais cachés.",
+      "carte": "Débit",
+      "carteVisuel": "nuit",
+      "retraitsHorsZone": 200,
+      "changeSansFrais": 1000,
+      "tauxLivret": 2,
+      "moonpoints": 0,
+      "coffres": 3,
+      "cartesVirtuelles": 1,
+      "assurances": [],
+      "service": "Dans l’application",
+      "points": [
+        "Carte de débit",
+        "200 € par mois de retraits hors zone euro",
+        "Livret GMB à 2,00 % brut",
+        "3 coffres d’épargne"
+      ]
+    },
+    {
+      "code": "halo",
+      "nom": "Halo",
+      "prix": 4.9,
+      "accroche": "Pour personnaliser",
+      "description": "Pour voyager léger et épargner mieux.",
+      "carte": "Débit, design au choix",
+      "carteVisuel": "marque",
+      "retraitsHorsZone": 400,
+      "changeSansFrais": 3000,
+      "tauxLivret": 2.5,
+      "moonpoints": 0.25,
+      "coffres": 10,
+      "cartesVirtuelles": 3,
+      "assurances": [],
+      "service": "Prioritaire",
+      "points": [
+        "Carte au design de votre choix",
+        "400 € par mois de retraits hors zone euro",
+        "Livret GMB à 2,50 % brut",
+        "0,25 % reversé en MoonPoints"
+      ]
+    },
+    {
+      "code": "orbit",
+      "nom": "Orbit",
+      "prix": 9.9,
+      "accroche": "Pour voyager",
+      "badge": "Recommandée",
+      "description": "Assurances voyage et achats incluses.",
+      "carte": "Débit premium",
+      "carteVisuel": "marque",
+      "retraitsHorsZone": 800,
+      "changeSansFrais": 8000,
+      "tauxLivret": 3.25,
+      "moonpoints": 0.5,
+      "coffres": null,
+      "cartesVirtuelles": 5,
+      "assurances": [
+        "voyage",
+        "achats"
+      ],
+      "service": "Prioritaire",
+      "points": [
+        "Carte de débit premium",
+        "Assurances voyage et achats",
+        "Change sans frais jusqu’à 8 000 € par mois",
+        "Livret GMB à 3,25 % brut"
+      ]
+    },
+    {
+      "code": "eclipse",
+      "nom": "Éclipse",
+      "prix": 16.9,
+      "accroche": "Pour être mieux protégé",
+      "description": "Carte métal et protection étendue.",
+      "carte": "Métal",
+      "carteVisuel": "metal",
+      "retraitsHorsZone": 1500,
+      "changeSansFrais": null,
+      "tauxLivret": 4,
+      "moonpoints": 0.75,
+      "coffres": null,
+      "cartesVirtuelles": 10,
+      "assurances": [
+        "voyage",
+        "achats",
+        "annulation",
+        "location",
+        "telephone"
+      ],
+      "service": "Ligne dédiée",
+      "points": [
+        "Carte en métal",
+        "Assurances annulation, location de véhicule et téléphone",
+        "Change illimité en jours ouvrés",
+        "Livret GMB à 4,00 % brut"
+      ]
+    },
+    {
+      "code": "zenith",
+      "nom": "Zénith",
+      "prix": 49,
+      "accroche": "L’expérience complète",
+      "description": "Le meilleur taux et un conseiller dédié.",
+      "carte": "Métal",
+      "carteVisuel": "metal",
+      "retraitsHorsZone": 3000,
+      "changeSansFrais": null,
+      "tauxLivret": 5.25,
+      "moonpoints": 1,
+      "coffres": null,
+      "cartesVirtuelles": 20,
+      "assurances": [
+        "voyage",
+        "achats",
+        "annulation",
+        "location",
+        "telephone",
+        "famille"
+      ],
+      "service": "Conseiller dédié",
+      "salonsAeroport": true,
+      "points": [
+        "Carte en métal",
+        "Conseiller dédié et salons d’aéroport",
+        "Couverture familiale étendue",
+        "Livret GMB à 5,25 % brut"
+      ]
+    }
+  ],
+  "fraisHorsFormule": [
+    {
+      "libelle": "Retrait d’espèces hors zone euro, au-delà de la franchise",
+      "valeur": "2 % du montant, minimum 1 €"
+    },
+    {
+      "libelle": "Opération de change, au-delà de la franchise",
+      "valeur": "0,5 % du montant"
+    },
+    {
+      "libelle": "Majoration du change le week-end (marchés fermés)",
+      "valeur": "+1 %"
+    },
+    {
+      "libelle": "Virement SEPA, y compris instantané",
+      "valeur": "Gratuit"
+    },
+    {
+      "libelle": "Tenue de compte",
+      "valeur": "Comprise dans la formule"
+    }
+  ],
+  "formulesPro": [
+    {
+      "code": "pro_solo",
+      "segment": "pro",
+      "nom": "Pro Solo",
+      "prixHT": 9,
+      "accroche": "Facturer, encaisser et provisionner au même endroit.",
+      "utilisateurs": 1,
+      "utilisateursLibelle": "1",
+      "cartesPhysiques": 1,
+      "cartesVirtuelles": 5,
+      "operationsIncluses": 100,
+      "fonctions": [
+        "Facturation électronique",
+        "Provisions d’impôts et de TVA",
+        "Export comptable"
+      ],
+      "niveau": 0
+    },
+    {
+      "code": "pro_plus",
+      "segment": "pro",
+      "nom": "Pro Plus",
+      "prixHT": 19,
+      "accroche": "Liens de paiement et relances automatiques.",
+      "utilisateurs": 2,
+      "utilisateursLibelle": "2 et un comptable invité",
+      "cartesPhysiques": 2,
+      "cartesVirtuelles": 20,
+      "operationsIncluses": 300,
+      "fonctions": [
+        "Liens de paiement",
+        "Relances automatiques",
+        "Plusieurs comptes",
+        "Comptable invité"
+      ],
+      "niveau": 0,
+      "badge": "Pour les indépendants"
+    },
+    {
+      "code": "business_start",
+      "segment": "business",
+      "nom": "Business Start",
+      "prixHT": 29,
+      "accroche": "Rôles, approbations et notes de frais.",
+      "utilisateurs": 5,
+      "utilisateursLibelle": "5",
+      "cartesPhysiques": 5,
+      "cartesVirtuelles": 20,
+      "operationsIncluses": 500,
+      "fonctions": [
+        "Rôles de l’équipe",
+        "Approbations à un niveau",
+        "Notes de frais"
+      ],
+      "niveau": 1
+    },
+    {
+      "code": "business_growth",
+      "segment": "business",
+      "nom": "Business Growth",
+      "prixHT": 79,
+      "accroche": "Approbations à plusieurs niveaux et API en lecture.",
+      "utilisateurs": 20,
+      "utilisateursLibelle": "20",
+      "cartesPhysiques": 20,
+      "cartesVirtuelles": 100,
+      "operationsIncluses": 2000,
+      "fonctions": [
+        "Approbations à plusieurs niveaux",
+        "Lecture automatique des justificatifs",
+        "API en lecture"
+      ],
+      "niveau": 2,
+      "badge": "Pour les PME"
+    },
+    {
+      "code": "business_scale",
+      "segment": "business",
+      "nom": "Business Scale",
+      "prixHT": 199,
+      "accroche": "API complète, webhooks et support dédié.",
+      "utilisateurs": null,
+      "utilisateursLibelle": "Illimité",
+      "cartesPhysiques": 100,
+      "cartesVirtuelles": null,
+      "operationsIncluses": 10000,
+      "fonctions": [
+        "API complète et webhooks",
+        "Virements groupés",
+        "Support dédié"
+      ],
+      "niveau": 3
+    }
+  ],
+  "operationSupplementaireHT": 0.2,
+  "besoinsPro": [
+    {
+      "code": "aucun",
+      "libelle": "Aucun besoin particulier",
+      "niveauMin": 0
+    },
+    {
+      "code": "approbations",
+      "libelle": "Rôles et approbations",
+      "niveauMin": 1
+    },
+    {
+      "code": "api_lecture",
+      "libelle": "API en lecture",
+      "niveauMin": 2
+    },
+    {
+      "code": "api_complete",
+      "libelle": "API complète et webhooks",
+      "niveauMin": 3
+    }
+  ],
+  "facturation": {
+    "receptionTous": "1er septembre 2026",
+    "emissionGrandes": "1er septembre 2026",
+    "emissionPme": "1er septembre 2027",
+    "formats": "Factur-X, UBL ou CII",
+    "statuts": [
+      "Déposée",
+      "Rejetée",
+      "Refusée",
+      "Encaissée"
+    ],
+    "relances": "J+3 et J+15 après l’échéance",
+    "tauxProvision": 25,
+    "exemple": {
+      "numero": "F-2026-0142",
+      "client": "Studio Nord SARL",
+      "montantHT": 1800,
+      "tauxTVA": 20
+    }
+  },
+  "jeunes": {
+    "ageMin": 10,
+    "ageMax": 17,
+    "argentDePoche": 15,
+    "plafondHebdo": 50,
+    "plafondHebdoMin": 10,
+    "plafondHebdoMax": 300,
+    "categoriesBloquees": [
+      "Jeux d’argent",
+      "Alcool et tabac",
+      "Crypto-actifs"
+    ],
+    "controles": [
+      {
+        "controle": "Paiements en ligne",
+        "defaut": "Activés",
+        "plage": "Activés ou désactivés"
+      },
+      {
+        "controle": "Retraits au distributeur",
+        "defaut": "Désactivés",
+        "plage": "Activés ou désactivés"
+      },
+      {
+        "controle": "Paiements à l’étranger",
+        "defaut": "Désactivés",
+        "plage": "Activés ou désactivés"
+      },
+      {
+        "controle": "Alerte à chaque paiement",
+        "defaut": "Activée",
+        "plage": "Activée ou désactivée"
+      },
+      {
+        "controle": "Plafond hebdomadaire",
+        "defaut": "50 €",
+        "plage": "De 10 € à 300 €"
+      },
+      {
+        "controle": "Argent de poche",
+        "defaut": "15 € chaque samedi",
+        "plage": "Montant et fréquence libres"
+      },
+      {
+        "controle": "Catégories bloquées",
+        "defaut": "Jeux d’argent, alcool et tabac, crypto-actifs",
+        "plage": "Toujours bloquées"
+      }
+    ]
+  },
+  "calendrier": {
+    "bourse": "2028",
+    "crypto": "2028"
+  },
+  "mentions": {
+    "credit": "Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.",
+    "garantieDepots": "GerMoonBank n’est pas un établissement de crédit agréé : les sommes déposées ne bénéficient pas de la garantie du Fonds de Garantie des Dépôts et de Résolution (FGDR).",
+    "garantieTitres": "Les titres financiers relèvent d’une garantie distincte, dans la limite de 70 000 € par investisseur.",
+    "risqueBourse": "Investir en bourse comporte un risque de perte en capital. Les performances passées ne préjugent pas des performances futures.",
+    "risqueCrypto": "Les crypto-actifs présentent un risque de perte totale du capital investi. Ils ne sont couverts ni par la garantie des dépôts ni par la garantie des titres. Service réservé aux personnes majeures.",
+    "fiscaliteLivret": "Les intérêts sont soumis au prélèvement forfaitaire unique, avec option possible pour le barème de l’impôt sur le revenu, aux taux en vigueur."
+  }
+}

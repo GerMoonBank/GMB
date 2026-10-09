@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dossiers — Back-office GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../css/pages/bo.css">
+  <script type="module" src="../js/components.js"></script>
+  <script type="module" src="../js/bo/bo.js"></script>
+</head>
+<body data-bo="dossiers">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="bo-entete">
+    <a class="bo-entete__marque" href="index.html"><strong>GerMoonBank</strong> <span>Back-office</span></a>
+    <div class="bo-entete__utilisateur"><span data-bo-nom></span> <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit" data-bo-deconnexion>Se déconnecter</button></div>
+  </header>
+  <div class="bo-corps">
+    <nav class="bo-nav" aria-label="Modules du back-office" data-bo-nav></nav>
+    <main id="contenu" class="bo-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <div class="gmb-pile gmb-pile--large" data-bo-contenu>
+        <h1 class="gmb-section__titre" id="titre-page">Dossiers</h1>
+        <form class="gmb-carte bo-filtres" data-form="filtres" novalidate>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="f-type">Type</label><div class="gmb-liste"><select class="gmb-saisie" id="f-type" name="type"><option value="">Tous</option><option value="ouverture">Ouverture de compte</option><option value="credit">Prêt personnel</option></select></div></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="f-segment">Profil</label><div class="gmb-liste"><select class="gmb-saisie" id="f-segment" name="segment"><option value="">Tous</option><option value="particulier">Particulier</option><option value="pro">Pro</option><option value="business">Business</option><option value="jeunes">Jeunes</option></select></div></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="f-etat">État</label><div class="gmb-liste"><select class="gmb-saisie" id="f-etat" name="etat"><option value="depose,en_verification,analyse_conformite,demande_deposee,analyse">À traiter</option><option value="incomplet">En attente du demandeur</option><option value="brouillon">Non déposés (en cours de saisie)</option><option value="valide,compte_ouvert,offre_emise,delai_legal,acceptee,fonds_debloques">Validés et comptes ouverts</option><option value="refuse,refusee,abandonne,renonciation,archive">Refusés, abandonnés, archivés</option><option value="">Tous</option></select></div></div>
+        </form>
+        <div class="gmb-encadre gmb-encadre--neutre" data-info-dossiers role="status" hidden></div>
+        <div data-liste><p>Chargement…</p></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

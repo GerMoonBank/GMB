@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Trésorerie — Back-office GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../css/pages/bo.css">
+  <script type="module" src="../js/components.js"></script>
+  <script type="module" src="../js/bo/bo.js"></script>
+</head>
+<body data-bo="tresorerie">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="bo-entete">
+    <a class="bo-entete__marque" href="index.html"><strong>GerMoonBank</strong> <span>Back-office</span></a>
+    <div class="bo-entete__utilisateur"><span data-bo-nom></span> <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit" data-bo-deconnexion>Se déconnecter</button></div>
+  </header>
+  <div class="bo-corps">
+    <nav class="bo-nav" aria-label="Modules du back-office" data-bo-nav></nav>
+    <main id="contenu" class="bo-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <div class="gmb-pile gmb-pile--large" data-bo-contenu>
+        <h1 class="gmb-section__titre" id="titre-page">Trésorerie</h1>
+        <section class="gmb-carte bo-bloc" aria-labelledby="t-c"><h2 id="t-c">Compte de réception des virements</h2>
+          <p>Le compte bancaire réel de GerMoonBank : les demandeurs y envoient leur premier versement, avec la référence de leur dossier. Écrivez le titulaire exactement comme sur le relevé d’identité bancaire : la banque du demandeur compare ce nom à celui du compte et signale toute différence.</p>
+          <div data-collecte><p>Chargement…</p></div></section>
+        <section class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-v"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-v">Premiers versements attendus</h2><p>Rapprochez chaque virement reçu sur le compte de collecte de la référence du dossier.</p><div data-versements><p>Chargement…</p></div></section>
+        <section class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-x"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-x">Virements à exécuter</h2><p>Les virements de nos clients vers d’autres banques, déjà débités : passez l’ordre à la banque, puis indiquez sa référence.</p><div data-virements><p>Chargement…</p></div></section>
+        <section class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-f"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-f">Fonds reçus pour un client</h2><p>Un virement d’une autre banque arrivé sur le compte de collecte, avec le numéro de compte GerMoonBank du client en référence.</p>
+          <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="fonds" novalidate>
+            <div class="gmb-grille gmb-grille--2">
+              <div class="gmb-champ"><label class="gmb-champ__libelle" for="numero">Numéro de compte GerMoonBank (11 chiffres)</label><input class="gmb-saisie" id="numero" name="numero" type="text" inputmode="numeric"></div>
+              <div class="gmb-champ"><label class="gmb-champ__libelle" for="montant">Montant reçu (€)</label><input class="gmb-saisie" id="montant" name="montant" type="text" inputmode="decimal"></div>
+              <div class="gmb-champ"><label class="gmb-champ__libelle" for="emetteur">Émetteur du virement</label><input class="gmb-saisie" id="emetteur" name="emetteur" type="text"></div>
+              <div class="gmb-champ"><label class="gmb-champ__libelle" for="iban_emetteur">IBAN de l’émetteur</label><input class="gmb-saisie" id="iban_emetteur" name="iban_emetteur" type="text" autocomplete="off" spellcheck="false"></div>
+              <div class="gmb-champ"><label class="gmb-champ__libelle" for="motif">Motif du virement (facultatif)</label><input class="gmb-saisie" id="motif" name="motif" type="text" maxlength="140"></div>
+              <div class="gmb-champ"><label class="gmb-champ__libelle" for="reference">Référence bancaire (facultative)</label><input class="gmb-saisie" id="reference" name="reference" type="text"></div>
+            </div>
+            <p class="gmb-mention">Recopiez l’IBAN de l’émetteur et le motif depuis le relevé du compte de réception : le client les retrouve dans le détail de l’opération.</p>
+            <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Créditer le compte</button></div>
+          </form></section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

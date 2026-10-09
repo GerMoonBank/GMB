@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Espace Mon Dossier — GerMoonBank</title>
+  <meta name="description" content="Connexion à l’Espace Mon Dossier pour suivre votre demande.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/auth/mon-dossier.html">
+  <link rel="icon" href="../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="preload" href="../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../css/pages/auth.css">
+  <script type="module" src="../js/components.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+</head>
+<body data-page="mon-dossier">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <header class="gmb-pile gmb-pile--serree"><h1 class="gmb-section__titre" id="titre-page">Espace Mon Dossier</h1><p class="gmb-section__intro">Suivez votre demande d’ouverture de compte ou de prêt. Cet espace ne donne jamais accès à vos comptes.</p></header>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="connexion-dossier" novalidate>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="email">Adresse e-mail</label><input class="gmb-saisie" id="email" name="email" type="email" autocomplete="email" aria-describedby="email-erreur"><p class="gmb-champ__erreur" id="email-erreur" hidden></p></div>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="mdp">Mot de passe</label><input class="gmb-saisie" id="mdp" name="mdp" type="password" autocomplete="current-password" aria-describedby="mdp-erreur"><p class="gmb-champ__erreur" id="mdp-erreur" hidden></p></div>
+        <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Se connecter</button></div>
+        <p class="gmb-liens-connexion"><a href="mot-de-passe-oublie.html">Mot de passe oublié ?</a> · <a href="../public/inscription/index.html">Ouvrir un compte</a></p>
+      </form>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="code-appareil" novalidate hidden>
+        <h2 class="gmb-section__titre gmb-section__titre--moyen">Confirmez cet appareil</h2>
+        <p>Pour votre sécurité, nous avons envoyé un code à <strong data-email-code></strong>.</p>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="code">Code reçu par e-mail</label><input class="gmb-saisie" id="code" name="code" type="text" autocomplete="one-time-code" aria-describedby="code-aide code-erreur" inputmode="numeric" maxlength="6"><p class="gmb-champ__aide" id="code-aide">6 chiffres, valables 10 minutes.</p><p class="gmb-champ__erreur" id="code-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="memoriser" name="memoriser" checked><span>Se souvenir de cet appareil</span></label></div><div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Valider</button></div>
+        <p><button type="button" class="gmb-bouton gmb-bouton--fantome" data-renvoyer-code>Recevoir un nouveau code</button></p>
+        <p class="gmb-champ__aide">Votre e-mail contient un lien plutôt qu’un code ? Ouvrez ce lien sur cet appareil : la suite se fait toute seule.</p>
+      </form>
+      <p>Vos comptes sont dans l’<a href="connexion.html">Espace client</a>.</p>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <p class="gmb-mention"><strong>GerMoonBank ne vous demandera jamais votre code secret ni votre mot de passe</strong>, ni par téléphone, ni par e-mail, ni par message.</p>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# GerMoonBank · robots.txt
+# Les robots ne lisent ce fichier qu'à la racine d'un domaine : il prendra effet quand le
+# site sera servi sur son propre nom de domaine. Les espaces privés ne doivent pas être indexés.
+User-agent: *
+Disallow: /app/
+Disallow: /auth/
+Disallow: /bo/
+Disallow: /ouvrir/
+Disallow: /mon-dossier/
+Disallow: /clients/
+
+Sitemap: https://germoonbank.github.io/GMB/sitemap.xml

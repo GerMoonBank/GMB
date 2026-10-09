@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>International et change : franchises par formule — GerMoonBank</title>
+  <meta name="description" content="Payez et retirez à l’étranger avec des franchises incluses. Comparateur de taux de change et écart avec le taux de référence de la BCE affiché avant de payer.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/cartes/frais-etranger.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="International et change : franchises par formule — GerMoonBank">
+  <meta property="og:description" content="Payez et retirez à l’étranger avec des franchises incluses. Comparateur de taux de change et écart avec le taux de référence de la BCE affiché avant de payer.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/cartes/frais-etranger.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/business.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/forms.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header page="international" segment="particuliers"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="../particuliers/compte-courant.html">Particuliers</a></li><li><span aria-current="page">International et change</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Le monde entier, sans frais cachés.</h1>
+        <p class="gmb-page-heros__intro">Payez et retirez à l’étranger avec des franchises incluses dans votre formule. Au-delà, les frais sont calculés et affichés avant chaque opération, avec l’écart par rapport au taux de référence de la BCE.</p>
+        <ul class="gmb-coches">
+          <li data-coche>Paiements par carte en euros gratuits</li>
+          <li data-coche>Franchises remises à zéro chaque mois</li>
+          <li data-coche>Écart avec le taux de la BCE affiché avant de payer</li>
+        </ul>
+      </div>
+    </section>
+<section class="gmb-section gmb-section--serree" aria-label="Information sur les cartes"><div class="gmb-conteneur gmb-conteneur--etroit"><div class="gmb-encadre gmb-encadre--neutre" role="note" data-correction="cartes"><span data-icone="info"></span><p><strong>Aucune carte n’est émise aujourd’hui : l’émission d’une carte bancaire exige un partenaire émetteur, membre d’un réseau de cartes (Visa ou Mastercard), et GerMoonBank n’en dispose pas.</strong> Les cartes décrites ici sont celles prévues pour chaque formule ; vos paiements se font par virement.</p></div></div></section>
+
+    <section class="gmb-section gmb-section--sans-haut" aria-labelledby="titre-franchises">
+      <div class="gmb-conteneur gmb-conteneur--etroit">
+        <div class="gmb-section__entete">
+          <h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-franchises">Vos franchises, selon votre formule</h2>
+          <p class="gmb-section__intro">Chaque mois, une part de vos retraits hors zone euro et de vos opérations de change est incluse dans votre formule.</p>
+        </div>
+        <div class="gmb-tableau-zone" data-tableau-franchises></div>
+        <p class="gmb-mention" style="margin-block-start:var(--gmb-space-4)">Au-delà des franchises : retrait hors zone euro <span data-catalogue="frais-retrait">2 % (minimum 1 €)</span> ; change <span data-catalogue="frais-change">0,5 %</span> ; majoration de <span data-catalogue="majoration-weekend">1 %</span> le week-end, lorsque les marchés sont fermés.</p>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-change">
+      <div class="gmb-conteneur">
+        <form class="gmb-simulateur" data-simulateur="change" aria-labelledby="titre-change" novalidate>
+          <div class="gmb-simulateur__saisie">
+            <h2 class="gmb-carte__titre" id="titre-change">Comparateur de taux de change</h2>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="change-montant">Montant à convertir</label>
+              <div class="gmb-saisie-groupe">
+                <input class="gmb-saisie gmb-saisie--montant" id="change-montant" name="change-montant" type="text" inputmode="decimal" autocomplete="off" value="1000" aria-describedby="change-montant-erreur">
+                <span class="gmb-saisie-groupe__suffixe" aria-hidden="true">€</span>
+              </div>
+              <p class="gmb-champ__erreur" id="change-montant-erreur" data-erreur="montant" hidden><span data-icone="alerte"></span><span data-texte></span></p>
+            </div>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="change-devise">Devise</label>
+              <div class="gmb-liste"><select class="gmb-saisie" id="change-devise" name="change-devise"><option value="USD">Dollar américain (USD)</option></select></div>
+            </div>
+            <fieldset class="gmb-champ" style="border:0;padding:0;margin:0">
+              <legend class="gmb-champ__libelle" style="margin-block-end:var(--gmb-space-2)">Votre formule</legend>
+              <div class="gmb-segments"><label class="gmb-segments__option"><input type="radio" name="change-formule" value="luna"><span>Luna</span></label><label class="gmb-segments__option"><input type="radio" name="change-formule" value="halo"><span>Halo</span></label><label class="gmb-segments__option"><input type="radio" name="change-formule" value="orbit" checked><span>Orbit</span></label><label class="gmb-segments__option"><input type="radio" name="change-formule" value="eclipse"><span>Éclipse</span></label><label class="gmb-segments__option"><input type="radio" name="change-formule" value="zenith"><span>Zénith</span></label></div>
+            </fieldset>
+            <div class="gmb-champ">
+              <label class="gmb-champ__libelle" for="change-deja">Déjà converti ce mois-ci</label>
+              <div class="gmb-saisie-groupe" style="max-width:14rem">
+                <input class="gmb-saisie" id="change-deja" name="change-deja" type="text" inputmode="decimal" autocomplete="off" value="0" aria-describedby="change-deja-aide">
+                <span class="gmb-saisie-groupe__suffixe" aria-hidden="true">€</span>
+              </div>
+              <p class="gmb-champ__aide" id="change-deja-aide">Pour tenir compte de ce qu’il reste de votre franchise.</p>
+            </div>
+            <fieldset class="gmb-champ" style="border:0;padding:0;margin:0">
+              <legend class="gmb-champ__libelle" style="margin-block-end:var(--gmb-space-2)">Quand ?</legend>
+              <div class="gmb-segments"><label class="gmb-segments__option"><input type="radio" name="change-moment" value="semaine" checked><span>En semaine</span></label><label class="gmb-segments__option"><input type="radio" name="change-moment" value="weekend"><span>Le week-end</span></label></div>
+            </fieldset>
+          </div>
+          <div class="gmb-simulateur__resultat" data-theme="sombre">
+            <dl class="gmb-simulateur__principal"><dt>Vous recevez</dt><dd class="gmb-montant" data-sortie="recu">1 170,00 $US</dd></dl>
+            <dl class="gmb-resultats">
+              <div><dt>Taux de référence de la BCE</dt><dd data-sortie="taux-bce">1 € = 1,1700 USD</dd></div>
+              <div><dt>Part dans votre franchise</dt><dd data-sortie="dans-franchise">1 000,00 €</dd></div>
+              <div><dt>Part au-delà</dt><dd data-sortie="hors-franchise">0,00 €</dd></div>
+              <div><dt>Frais de change</dt><dd data-sortie="frais">0,00 €</dd></div>
+              <div class="gmb-fort"><dt>Écart avec le taux de la BCE</dt><dd data-sortie="ecart">0,00 %</dd></div>
+              <div><dt>Total débité</dt><dd data-sortie="total">1 000,00 €</dd></div>
+            </dl>
+            <p class="gmb-visuellement-masque" aria-live="polite" data-sortie="annonce"></p>
+            <p class="gmb-mention">Taux de référence de la Banque centrale européenne du <span data-catalogue="date-taux-change">…</span>, chargés en direct. Le franc CFA (XOF) a une parité fixe avec l’euro : 1 € = 655,957 F CFA.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="gmb-section" aria-labelledby="titre-retrait">
+      <div class="gmb-conteneur gmb-conteneur--etroit">
+        <div class="gmb-section__entete">
+          <h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-retrait">Exemple : retirer l’équivalent de 300 € hors zone euro</h2>
+          <p class="gmb-section__intro">En début de mois, franchise entière. Seule la part au-delà de la franchise est facturée.</p>
+        </div>
+        <div class="gmb-tableau-zone" data-tableau-retrait data-montant="300"></div>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-conseils">
+      <div class="gmb-conteneur">
+        <div class="gmb-section__entete"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-conseils">Trois réflexes en voyage</h2></div>
+        <ul class="gmb-grille gmb-grille--3" style="list-style:none;padding:0">
+          <li class="gmb-argument"><span class="gmb-argument__icone" data-icone="globe"></span><div><p class="gmb-argument__titre">Payez dans la devise locale</p><p class="gmb-argument__texte">Si un commerçant ou un distributeur vous propose de payer en euros, refusez : sa conversion est souvent plus chère que celle de votre carte.</p></div></li>
+          <li class="gmb-argument"><span class="gmb-argument__icone" data-icone="info"></span><div><p class="gmb-argument__titre">Regardez avant de valider</p><p class="gmb-argument__texte">Le taux appliqué, les frais et l’écart avec le taux de la BCE s’affichent avant chaque opération dans l’application.</p></div></li>
+          <li class="gmb-argument"><span class="gmb-argument__icone" data-icone="flocon"></span><div><p class="gmb-argument__titre">Gelez votre carte au moindre doute</p><p class="gmb-argument__texte">Un geste suffit pour la bloquer, un autre pour la débloquer, où que vous soyez.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="gmb-section" aria-labelledby="titre-faq">
+      <div class="gmb-conteneur gmb-conteneur--etroit">
+        <div class="gmb-section__entete gmb-section__entete--centre">
+          <h2 class="gmb-section__titre gmb-section__titre--moyen" id="titre-faq">Questions sur l’étranger</h2>
+        </div>
+        <details class="gmb-accordeon" open>
+          <summary>Les franchises sont-elles mensuelles ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Oui. Elles repartent à zéro le premier jour de chaque mois et ne se cumulent pas d’un mois sur l’autre.</p></div>
+        </details>
+        <details class="gmb-accordeon">
+          <summary>Pourquoi une majoration le week-end ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Les marchés des changes sont fermés le week-end : la majoration de 1 % couvre le risque de variation du taux jusqu’à leur réouverture.</p></div>
+        </details>
+        <details class="gmb-accordeon">
+          <summary>Comment est calculé l’écart avec le taux de la BCE ?</summary>
+          <div class="gmb-accordeon__contenu"><p>C’est le rapport entre les frais de l’opération et son montant. Il s’affiche avant le paiement, puis vous est notifié après un paiement par carte dans une autre devise de l’Union.</p></div>
+        </details>
+        <details class="gmb-accordeon">
+          <summary>Les paiements en euros à l’étranger sont-ils gratuits ?</summary>
+          <div class="gmb-accordeon__contenu"><p>Oui, dans tous les pays et avec toutes les formules : aucun frais de change ne s’applique à un paiement en euros.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--alt" aria-labelledby="titre-mentions">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne">
+        <h2 class="gmb-carte__titre" id="titre-mentions">Informations sur le change</h2>
+        <p class="gmb-mention">Taux de change : taux de référence publié par la Banque centrale européenne, majoré des frais indiqués. L’écart avec ce taux est affiché avant chaque paiement, puis notifié après un paiement par carte dans une autre devise de l’Union, conformément au règlement (UE) 2021/1230.</p><p class="gmb-mention">Les taux du comparateur sont les taux de référence de la BCE du <span data-catalogue="date-taux-change">…</span>. Franchises et frais selon la formule, détaillés dans la brochure tarifaire.</p>
+      </div>
+    </section>
+
+    <section class="gmb-section gmb-section--nuit gmb-appel" data-theme="sombre" aria-labelledby="titre-appel">
+      <div class="gmb-astre"></div>
+      <div class="gmb-conteneur gmb-appel__contenu">
+        <h2 class="gmb-section__titre" id="titre-appel">Ouvrez votre compte en 8 minutes.</h2>
+        <p class="gmb-section__intro">Sans engagement, avec la carte Luna à <span data-catalogue="prix:luna">0 €</span>.</p>
+        <a class="gmb-bouton gmb-bouton--principal gmb-bouton--grand" href="../inscription/index.html?segment=particuliers">Ouvrir un compte</a>
+      </div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

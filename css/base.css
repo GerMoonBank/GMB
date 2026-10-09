@@ -1,0 +1,693 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/base.css
+   Polices, remise à zéro, typographie, focus — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend design/base.css (polices dans assets/fonts/).
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+/* =============================================================================
+   1. POLICES HÉBERGÉES SUR LE SITE
+   font-display: swap affiche immédiatement le texte avec la police de repli,
+   puis bascule sur Manrope dès qu'elle est chargée.
+   ========================================================================== */
+@font-face {
+  font-family: "Manrope";
+  src: url("../assets/fonts/manrope-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../assets/fonts/manrope-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../assets/fonts/manrope-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../assets/fonts/manrope-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../assets/fonts/manrope-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/jetbrains-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/jetbrains-mono-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Police de repli calibrée sur Manrope : Arial (ou son équivalent) est
+   agrandi de 2,3 % et ses hauteurs ajustées, pour que le texte ne bouge pas
+   au moment où Manrope s'affiche (mesuré sur une phrase type du site). */
+@font-face {
+  font-family: "Manrope Repli";
+  src: local("Arial"), local("ArialMT"), local("Helvetica Neue"), local("Helvetica"), local("Liberation Sans"), local("Roboto");
+  size-adjust: 102.3%;
+  ascent-override: 104.2%;
+  descent-override: 29.3%;
+  line-gap-override: 0%;
+}
+
+
+/* =============================================================================
+   2. REMISE À ZÉRO DES NAVIGATEURS
+   Neutralise les différences entre Chrome, Safari, Firefox et Edge sans
+   supprimer les comportements utiles (soulignement des liens, focus).
+   ========================================================================== */
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: 100dvh; /* hauteur réelle sur mobile, barre d'adresse comprise */
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  img,
+  video {
+    height: auto;
+  }
+
+  input,
+  button,
+  textarea,
+  select,
+  optgroup {
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+  }
+
+  button {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  legend {
+    padding: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  iframe {
+    border: 0;
+  }
+
+  :where(ul, ol)[role="list"] {
+    list-style: none;
+    padding: 0;
+  }
+
+  [hidden]:not([hidden="until-found"]) {
+    display: none !important;
+  }
+}
+
+
+/* =============================================================================
+   3. SOCLE TYPOGRAPHIQUE ET COMPORTEMENTS GLOBAUX
+   ========================================================================== */
+@layer base {
+
+  /* ---------- 3.1 Document ---------- */
+  :root {
+    accent-color: var(--gmb-action);   /* cases à cocher, boutons radio, curseurs natifs */
+    caret-color: var(--gmb-action);    /* curseur de saisie */
+    interpolate-size: allow-keywords;  /* animation vers height: auto (accordéons), navigateurs récents */
+  }
+
+  html {
+    font-size: var(--gmb-root-size);   /* 100 %, puis 106,25 % et 112,5 % sur les très grands écrans */
+    scroll-padding-top: calc(var(--gmb-header-h) + var(--gmb-space-4)); /* les ancres ne passent pas sous l'en-tête fixe */
+    scrollbar-gutter: stable;          /* aucune secousse quand la barre de défilement apparaît */
+    scrollbar-color: var(--gmb-scrollbar-thumb) var(--gmb-scrollbar-track);
+    -webkit-tap-highlight-color: transparent;
+    hanging-punctuation: first allow-end last;
+  }
+
+  body {
+    font-family: var(--gmb-font-sans), "Manrope Repli", sans-serif;
+    font-size: var(--gmb-fs-md);
+    font-weight: var(--gmb-weight-regular);
+    line-height: var(--gmb-lh-body);
+    color: var(--gmb-text);
+    background-color: var(--gmb-bg);
+    font-synthesis: none;              /* jamais de faux gras ni de faux italique */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;                  /* aucun défilement horizontal parasite, sans casser position: sticky */
+  }
+
+  /* Un bloc placé dans un autre thème prend ses propres couleurs
+     (ex. <section data-theme="sombre"> dans une page claire) */
+  [data-theme]:not(html) {
+    color: var(--gmb-text);
+    background-color: var(--gmb-bg);
+  }
+
+  /* ---------- 3.2 Titres ---------- */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--gmb-font-sans), "Manrope Repli", sans-serif;
+    color: var(--gmb-text);
+    line-height: var(--gmb-lh-heading);
+    letter-spacing: var(--gmb-tracking-heading);
+    text-wrap: balance;                /* lignes de titre équilibrées */
+    overflow-wrap: break-word;
+  }
+
+  h1 {
+    font-size: var(--gmb-fs-3xl);
+    font-weight: var(--gmb-weight-extrabold);
+    letter-spacing: var(--gmb-tracking-display);
+  }
+
+  h2 {
+    font-size: var(--gmb-fs-2xl);
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  h3 {
+    font-size: var(--gmb-fs-xl);
+    font-weight: var(--gmb-weight-bold);
+    letter-spacing: var(--gmb-tracking-snug);
+  }
+
+  h4 {
+    font-size: var(--gmb-fs-lg);
+    font-weight: var(--gmb-weight-bold);
+    letter-spacing: var(--gmb-tracking-snug);
+  }
+
+  h5,
+  h6 {
+    font-size: var(--gmb-fs-md);
+    font-weight: var(--gmb-weight-bold);
+    letter-spacing: var(--gmb-tracking-normal);
+  }
+
+  /* ---------- 3.3 Texte courant ---------- */
+  p,
+  li,
+  dd,
+  figcaption,
+  blockquote {
+    text-wrap: pretty;                 /* évite les mots seuls en fin de paragraphe */
+    overflow-wrap: break-word;
+  }
+
+  strong,
+  b {
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  small {
+    font-size: var(--gmb-fs-sm);
+  }
+
+  sub,
+  sup {
+    font-size: 0.75em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  abbr[title] {
+    text-decoration: underline dotted;
+    text-underline-offset: 0.2em;
+    cursor: help;
+  }
+
+  mark {
+    background-color: var(--gmb-highlight-soft);
+    color: var(--gmb-on-highlight-soft);
+    padding-inline: 0.15em;
+    border-radius: var(--gmb-radius-xs);
+  }
+
+  address {
+    font-style: normal;
+  }
+
+  hr {
+    border: 0;
+    border-block-start: var(--gmb-border-width) solid var(--gmb-divider);
+    margin-block: var(--gmb-space-6);
+  }
+
+  /* Montants, dates et références : chiffres tabulaires alignés */
+  data,
+  time,
+  output {
+    font-feature-settings: var(--gmb-font-features-amount);
+  }
+
+  data {
+    white-space: nowrap;               /* un montant ne se coupe jamais en fin de ligne */
+  }
+
+  /* ---------- 3.4 Code, références, IBAN ---------- */
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--gmb-font-mono);
+    font-size: 0.9em;
+    font-feature-settings: normal;
+  }
+
+  kbd {
+    display: inline-block;
+    padding: 0.1em 0.45em;
+    border: var(--gmb-border-width) solid var(--gmb-border-strong);
+    border-block-end-width: 2px;
+    border-radius: var(--gmb-radius-xs);
+    background-color: var(--gmb-surface);
+    font-size: 0.85em;
+    line-height: 1.4;
+  }
+
+  pre {
+    overflow-x: auto;
+    white-space: pre;
+    tab-size: 2;
+  }
+
+  /* ---------- 3.5 Liens ---------- */
+  a {
+    color: var(--gmb-link);
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+    text-decoration-color: currentColor;
+    text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+    transition: var(--gmb-transition-colors), text-decoration-color var(--gmb-duration-fast) var(--gmb-ease-standard);
+  }
+
+  a:hover {
+    color: var(--gmb-link-hover);
+    text-decoration-color: currentColor;
+  }
+
+  /* Liens de navigation et cartes cliquables : sans soulignement par défaut,
+     le composant gère son propre état de survol */
+  :where(nav, [role="navigation"]) a,
+  a:where([class]) {
+    text-decoration-line: none;
+  }
+
+  /* ---------- 3.6 Focus clavier : toujours visible ---------- */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: var(--gmb-focus-width) solid var(--gmb-focus-color);
+    outline-offset: var(--gmb-focus-offset);
+    box-shadow: var(--gmb-focus-ring);
+    border-radius: var(--gmb-radius-xs);
+  }
+
+  /* ---------- 3.7 Sélection et barres de défilement ---------- */
+  ::selection {
+    background-color: var(--gmb-selection-bg);
+    color: var(--gmb-selection-text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--gmb-scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--gmb-scrollbar-thumb);
+    border: 3px solid transparent;
+    border-radius: var(--gmb-radius-pill);
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--gmb-scrollbar-thumb-hover);
+  }
+
+  /* ---------- 3.8 Formulaires (apparence de base ; composants dans components.css) ---------- */
+  input,
+  select,
+  textarea {
+    font-size: max(16px, 1em);         /* 16 px minimum : empêche le zoom automatique sur iPhone */
+  }
+
+  ::placeholder {
+    color: var(--gmb-text-faint);
+    opacity: 1;
+  }
+
+  label {
+    cursor: default;
+  }
+
+  label[for],
+  :where(input[type="checkbox"], input[type="radio"]) + label {
+    cursor: pointer;
+  }
+
+  :where(button, [role="button"], input, select, textarea):disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  /* Supprime le fond jaune de remplissage automatique de Chrome et Safari */
+  :where(input, select, textarea):-webkit-autofill,
+  :where(input, select, textarea):-webkit-autofill:hover,
+  :where(input, select, textarea):-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--gmb-text);
+    -webkit-box-shadow: 0 0 0 1000px var(--gmb-surface) inset;
+    caret-color: var(--gmb-text);
+    transition: background-color 9999s ease-out 0s;
+  }
+
+  /* Montants saisis : flèches numériques masquées, chiffres tabulaires */
+  input[type="number"] {
+    font-feature-settings: var(--gmb-font-features-amount);
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    cursor: pointer;
+  }
+
+  /* Réponse tactile immédiate, sans délai de double toucher */
+  a,
+  button,
+  [role="button"],
+  input,
+  label,
+  select,
+  summary,
+  textarea {
+    touch-action: manipulation;
+  }
+
+  summary {
+    cursor: pointer;
+  }
+
+  /* ---------- 3.9 Tableaux et médias ---------- */
+  table {
+    width: 100%;
+    font-feature-settings: var(--gmb-font-features-amount);
+  }
+
+  th {
+    text-align: start;
+    font-weight: var(--gmb-weight-semibold);
+  }
+
+  caption {
+    text-align: start;
+  }
+
+  img {
+    font-style: italic;                /* texte alternatif lisible si l'image ne charge pas */
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  svg:not([fill]) {
+    fill: currentColor;
+  }
+
+  /* ---------- 3.10 États d'interface ---------- */
+  [aria-busy="true"] {
+    cursor: progress;
+  }
+
+  [inert] {
+    user-select: none;
+  }
+
+  /* ---------- 3.11 Aides à l'accessibilité ---------- */
+
+  /* Lien « Aller au contenu », premier élément de chaque page */
+  .gmb-lien-evitement {
+    position: fixed;
+    inset-block-start: calc(var(--gmb-safe-top) + var(--gmb-space-2));
+    inset-inline-start: calc(var(--gmb-safe-left) + var(--gmb-space-3));
+    z-index: var(--gmb-z-skip-link);
+    padding: var(--gmb-space-3) var(--gmb-space-5);
+    border-radius: var(--gmb-radius-md);
+    background-color: var(--gmb-action);
+    color: var(--gmb-on-action);
+    font-weight: var(--gmb-weight-bold);
+    text-decoration: none;
+    box-shadow: var(--gmb-shadow-lg);
+    transform: translateY(calc(-100% - var(--gmb-space-8)));
+    transition: transform var(--gmb-duration-normal) var(--gmb-ease-out-quint);
+  }
+
+  .gmb-lien-evitement:focus,
+  .gmb-lien-evitement:focus-visible {
+    transform: translateY(0);
+    color: var(--gmb-on-action);
+  }
+
+  /* ---------- 3.12 Texte riche (pages légales, aide, articles du CMS) ---------- */
+  .gmb-prose {
+    max-width: var(--gmb-measure);
+    color: var(--gmb-text);
+  }
+
+  .gmb-prose > * + * {
+    margin-block-start: var(--gmb-space-4);
+  }
+
+  .gmb-prose > :is(h2, h3, h4) {
+    margin-block-start: var(--gmb-space-8);
+  }
+
+  .gmb-prose > :is(h2, h3, h4) + * {
+    margin-block-start: var(--gmb-space-3);
+  }
+
+  .gmb-prose :is(ul, ol) {
+    padding-inline-start: 1.25em;
+  }
+
+  .gmb-prose li + li {
+    margin-block-start: var(--gmb-space-2);
+  }
+
+  .gmb-prose li::marker {
+    color: var(--gmb-action);
+  }
+
+  .gmb-prose :not(pre) > code {
+    padding: 0.1em 0.35em;
+    border-radius: var(--gmb-radius-xs);
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-prose pre {
+    padding: var(--gmb-space-4) var(--gmb-space-5);
+    border-radius: var(--gmb-radius-lg);
+    background-color: var(--gmb-encre-900);
+    color: var(--gmb-nuage-100);
+  }
+
+  .gmb-prose blockquote {
+    padding-inline-start: var(--gmb-space-5);
+    border-inline-start: 3px solid var(--gmb-action);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-prose table {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;                  /* un tableau large défile sans élargir la page */
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+  }
+
+  .gmb-prose :is(th, td) {
+    padding: var(--gmb-space-3) var(--gmb-space-4);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-border);
+    vertical-align: top;
+  }
+
+  .gmb-prose th {
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-prose small,
+  .gmb-mention {
+    font-size: var(--gmb-fs-2xs);
+    line-height: var(--gmb-lh-relaxed);
+    color: var(--gmb-text-muted);
+  }
+
+  /* ---------- 3.13 Réglages de l'appareil ---------- */
+
+  /* Défilement doux uniquement si l'appareil accepte les animations */
+  @media (prefers-reduced-motion: no-preference) {
+    html:focus-within {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Moins d'animations : tout mouvement devient instantané */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Contraste élevé de Windows : bordures et focus en couleurs système */
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline-color: Highlight;
+    }
+
+    .gmb-lien-evitement,
+    kbd,
+    mark {
+      border: 1px solid CanvasText;
+    }
+  }
+
+  /* ---------- 3.14 Impression (relevés, attestations, contrats) ---------- */
+  @media print {
+    body {
+      background: #FFFFFF;
+      color: #000000;
+      font-size: 11pt;
+      overflow: visible;
+    }
+
+    nav,
+    video,
+    audio,
+    .gmb-lien-evitement,
+    [data-impression="non"] {
+      display: none !important;
+    }
+
+    a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.85em;
+      color: #333333;
+    }
+
+    h1, h2, h3, h4 {
+      break-after: avoid;
+    }
+
+    table,
+    figure,
+    img,
+    blockquote,
+    pre {
+      break-inside: avoid;
+    }
+  }
+}
+
+/* Transitions douces entre les pages du site (navigateurs récents), seulement
+   si l'appareil accepte les animations */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}

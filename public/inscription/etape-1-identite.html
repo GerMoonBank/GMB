@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Votre identité — GerMoonBank</title>
+  <meta name="description" content="Étape 1 de votre demande : votre identité.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/inscription/etape-1-identite.html">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/inscription.js"></script>
+</head>
+<body data-etape="etape-1-identite">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <nav aria-label="Étapes de la demande"><ol class="gmb-frise-etapes"><li aria-current="step" data-fait="false"><span class="gmb-frise-etapes__numero">1</span><span>Identité</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">2</span><span>Coordonnées</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">3</span><span><span data-frise-etape="3">Votre situation</span></span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">4</span><span>Documents</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">5</span><span>Signature</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">6</span><span><span data-frise-etape="6">Premier versement</span></span></li></ol></nav>
+      <header class="gmb-pile gmb-pile--serree"><p class="gmb-mention">Demande <span data-reference>…</span></p><h1 class="gmb-section__titre" id="titre-page">Votre identité</h1><p class="gmb-section__intro">Telle qu’elle figure sur votre pièce d’identité.</p></header>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="identite" novalidate>
+        <fieldset class="gmb-champ" aria-describedby="civilite-erreur"><legend class="gmb-champ__libelle">Civilité</legend><div class="gmb-pile gmb-pile--serree"><label class="gmb-choix"><input type="radio" name="civilite" value="madame" id="civilite"><span>Madame</span></label><label class="gmb-choix"><input type="radio" name="civilite" value="monsieur"><span>Monsieur</span></label></div><p class="gmb-champ__erreur" id="civilite-erreur" hidden></p></fieldset><div class="gmb-champ"><label class="gmb-champ__libelle" for="nom_naissance">Nom de naissance</label><input class="gmb-saisie" id="nom_naissance" name="nom_naissance" type="text" autocomplete="family-name" required aria-describedby="nom_naissance-erreur"><p class="gmb-champ__erreur" id="nom_naissance-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="nom_usage">Nom d’usage (facultatif)</label><input class="gmb-saisie" id="nom_usage" name="nom_usage" type="text" aria-describedby="nom_usage-aide nom_usage-erreur"><p class="gmb-champ__aide" id="nom_usage-aide">Par exemple, votre nom d’épouse.</p><p class="gmb-champ__erreur" id="nom_usage-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="prenoms">Prénoms</label><input class="gmb-saisie" id="prenoms" name="prenoms" type="text" autocomplete="given-name" required aria-describedby="prenoms-aide prenoms-erreur"><p class="gmb-champ__aide" id="prenoms-aide">Tous vos prénoms, dans l’ordre de l’état civil.</p><p class="gmb-champ__erreur" id="prenoms-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="date_naissance">Date de naissance</label><input class="gmb-saisie" id="date_naissance" name="date_naissance" type="date" autocomplete="bday" required aria-describedby="date_naissance-erreur"><p class="gmb-champ__erreur" id="date_naissance-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="lieu_naissance">Ville de naissance</label><input class="gmb-saisie" id="lieu_naissance" name="lieu_naissance" type="text" required aria-describedby="lieu_naissance-erreur"><p class="gmb-champ__erreur" id="lieu_naissance-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="pays_naissance">Pays de naissance</label><div class="gmb-liste"><select class="gmb-saisie" id="pays_naissance" name="pays_naissance" required aria-describedby="pays_naissance-erreur"><option value="FR">France</option><option value="BE">Belgique</option><option value="DE">Allemagne</option><option value="ES">Espagne</option><option value="IT">Italie</option><option value="LU">Luxembourg</option><option value="NL">Pays-Bas</option><option value="PT">Portugal</option><option value="CH">Suisse</option><option value="GB">Royaume-Uni</option><option value="MA">Maroc</option><option value="DZ">Algérie</option><option value="TN">Tunisie</option><option value="SN">Sénégal</option><option value="CI">Côte d’Ivoire</option><option value="BJ">Bénin</option><option value="CM">Cameroun</option><option value="US">États-Unis</option><option value="CA">Canada</option><option value="XX">Autre pays</option></select></div><p class="gmb-champ__erreur" id="pays_naissance-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="nationalite">Nationalité</label><div class="gmb-liste"><select class="gmb-saisie" id="nationalite" name="nationalite" required aria-describedby="nationalite-erreur"><option value="FR">France</option><option value="BE">Belgique</option><option value="DE">Allemagne</option><option value="ES">Espagne</option><option value="IT">Italie</option><option value="LU">Luxembourg</option><option value="NL">Pays-Bas</option><option value="PT">Portugal</option><option value="CH">Suisse</option><option value="GB">Royaume-Uni</option><option value="MA">Maroc</option><option value="DZ">Algérie</option><option value="TN">Tunisie</option><option value="SN">Sénégal</option><option value="CI">Côte d’Ivoire</option><option value="BJ">Bénin</option><option value="CM">Cameroun</option><option value="US">États-Unis</option><option value="CA">Canada</option><option value="XX">Autre pays</option></select></div><p class="gmb-champ__erreur" id="nationalite-erreur" hidden></p></div><div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Enregistrer et continuer</button></div>
+      </form>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

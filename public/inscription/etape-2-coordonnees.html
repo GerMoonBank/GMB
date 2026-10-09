@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vos coordonnées — GerMoonBank</title>
+  <meta name="description" content="Étape 2 de votre demande : vos coordonnées et votre situation fiscale.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/inscription/etape-2-coordonnees.html">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/inscription.js"></script>
+</head>
+<body data-etape="etape-2-coordonnees">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <nav aria-label="Étapes de la demande"><ol class="gmb-frise-etapes"><li data-fait="true"><span class="gmb-frise-etapes__numero">1</span><span>Identité</span></li><li aria-current="step" data-fait="false"><span class="gmb-frise-etapes__numero">2</span><span>Coordonnées</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">3</span><span><span data-frise-etape="3">Votre situation</span></span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">4</span><span>Documents</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">5</span><span>Signature</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">6</span><span><span data-frise-etape="6">Premier versement</span></span></li></ol></nav>
+      <header class="gmb-pile gmb-pile--serree"><p class="gmb-mention">Demande <span data-reference>…</span></p><h1 class="gmb-section__titre" id="titre-page">Vos coordonnées</h1><p class="gmb-section__intro">Votre adresse et votre situation fiscale.</p></header>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="coordonnees" novalidate>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="telephone">Téléphone mobile</label><input class="gmb-saisie" id="telephone" name="telephone" type="tel" autocomplete="tel" required aria-describedby="telephone-erreur"><p class="gmb-champ__erreur" id="telephone-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="adresse_ligne1">Adresse</label><input class="gmb-saisie" id="adresse_ligne1" name="adresse_ligne1" type="text" autocomplete="address-line1" required aria-describedby="adresse_ligne1-erreur"><p class="gmb-champ__erreur" id="adresse_ligne1-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="adresse_ligne2">Complément d’adresse (facultatif)</label><input class="gmb-saisie" id="adresse_ligne2" name="adresse_ligne2" type="text" autocomplete="address-line2" aria-describedby="adresse_ligne2-erreur"><p class="gmb-champ__erreur" id="adresse_ligne2-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="code_postal">Code postal</label><input class="gmb-saisie" id="code_postal" name="code_postal" type="text" autocomplete="postal-code" required aria-describedby="code_postal-erreur" inputmode="numeric"><p class="gmb-champ__erreur" id="code_postal-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="ville">Ville</label><input class="gmb-saisie" id="ville" name="ville" type="text" autocomplete="address-level2" required aria-describedby="ville-erreur"><p class="gmb-champ__erreur" id="ville-erreur" hidden></p></div>
+        <p class="gmb-champ__aide">L’ouverture en ligne est réservée aux personnes qui résident en France.</p>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="residence_fiscale">Pays de résidence fiscale</label><div class="gmb-liste"><select class="gmb-saisie" id="residence_fiscale" name="residence_fiscale" required aria-describedby="residence_fiscale-erreur"><option value="FR">France</option><option value="BE">Belgique</option><option value="DE">Allemagne</option><option value="ES">Espagne</option><option value="IT">Italie</option><option value="LU">Luxembourg</option><option value="NL">Pays-Bas</option><option value="PT">Portugal</option><option value="CH">Suisse</option><option value="GB">Royaume-Uni</option><option value="MA">Maroc</option><option value="DZ">Algérie</option><option value="TN">Tunisie</option><option value="SN">Sénégal</option><option value="CI">Côte d’Ivoire</option><option value="BJ">Bénin</option><option value="CM">Cameroun</option><option value="US">États-Unis</option><option value="CA">Canada</option><option value="XX">Autre pays</option></select></div><p class="gmb-champ__erreur" id="residence_fiscale-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="nif">Numéro fiscal (facultatif)</label><input class="gmb-saisie" id="nif" name="nif" type="text" aria-describedby="nif-aide nif-erreur" inputmode="numeric"><p class="gmb-champ__aide" id="nif-aide">Obligatoire si vous êtes résident fiscal en France : 13 chiffres, sur votre avis d’imposition.</p><p class="gmb-champ__erreur" id="nif-erreur" hidden></p></div><fieldset class="gmb-champ" aria-describedby="personne_us-erreur"><legend class="gmb-champ__libelle">Êtes-vous une personne américaine au sens fiscal (citoyen ou résident des États-Unis) ?</legend><div class="gmb-pile gmb-pile--serree"><label class="gmb-choix"><input type="radio" name="personne_us" value="false" id="personne_us"><span>Non</span></label><label class="gmb-choix"><input type="radio" name="personne_us" value="true"><span>Oui</span></label></div><p class="gmb-champ__erreur" id="personne_us-erreur" hidden></p></fieldset><fieldset class="gmb-champ" aria-describedby="ppe_declaree-erreur"><legend class="gmb-champ__libelle">Exercez-vous, ou avez-vous exercé, une fonction politique ou publique importante, ou êtes-vous proche d’une telle personne ?</legend><div class="gmb-pile gmb-pile--serree"><label class="gmb-choix"><input type="radio" name="ppe_declaree" value="false" id="ppe_declaree"><span>Non</span></label><label class="gmb-choix"><input type="radio" name="ppe_declaree" value="true"><span>Oui</span></label></div><p class="gmb-champ__erreur" id="ppe_declaree-erreur" hidden></p></fieldset><div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Enregistrer et continuer</button></div>
+      </form>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

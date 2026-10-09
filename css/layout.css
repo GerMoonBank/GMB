@@ -1,0 +1,1375 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/layout.css
+   En-tête, pied de page, conteneurs, grilles, piles — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend design/layout.css.
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+@layer layout {
+
+  /* ===========================================================================
+     1. CONTENEURS
+     La largeur utile reste constante ; les marges latérales s'adaptent et
+     respectent les encoches des téléphones en mode paysage.
+     ======================================================================== */
+  .gmb-conteneur {
+    width: 100%;
+    max-width: calc(var(--gmb-container-xl) + 2 * var(--gmb-gutter));
+    margin-inline: auto;
+    padding-inline: max(var(--gmb-gutter), var(--gmb-safe-left)) max(var(--gmb-gutter), var(--gmb-safe-right));
+  }
+
+  .gmb-conteneur--formulaire { max-width: calc(var(--gmb-container-xs) + 2 * var(--gmb-gutter)); }
+  .gmb-conteneur--lecture    { max-width: calc(var(--gmb-container-sm) + 2 * var(--gmb-gutter)); }
+  .gmb-conteneur--etroit     { max-width: calc(var(--gmb-container-md) + 2 * var(--gmb-gutter)); }
+  .gmb-conteneur--large      { max-width: calc(var(--gmb-container-2xl) + 2 * var(--gmb-gutter)); }
+  .gmb-conteneur--maximal    { max-width: calc(var(--gmb-container-max) + 2 * var(--gmb-gutter)); }
+  .gmb-conteneur--plein      { max-width: none; }
+
+
+  /* ===========================================================================
+     2. SECTIONS DE PAGE
+     ======================================================================== */
+  .gmb-principal {
+    display: block;
+    min-height: 60vh;
+  }
+
+  .gmb-section {
+    position: relative;
+    padding-block: var(--gmb-section-y);
+  }
+
+  .gmb-section--serree { padding-block: calc(var(--gmb-section-y) * 0.6); }
+  .gmb-section--sans-haut { padding-block-start: 0; }
+  .gmb-section--alt { background-color: var(--gmb-bg-alt); }
+
+  /* Bandeau principal (héros) : halos violet, teal et rose */
+  .gmb-section--heros {
+    padding-block: calc(var(--gmb-section-y) * 0.7) var(--gmb-section-y);
+    background: var(--gmb-gradient-hero), var(--gmb-bg);
+    overflow: clip;
+  }
+
+  /* Bloc nuit : à combiner avec data-theme="sombre" */
+  .gmb-section--nuit {
+    background: var(--gmb-gradient-night);
+    overflow: clip;
+  }
+
+  .gmb-section__entete {
+    display: grid;
+    gap: var(--gmb-space-3);
+    max-width: 46rem;
+    margin-block-end: var(--gmb-space-8);
+  }
+
+  .gmb-section__entete--centre {
+    margin-inline: auto;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .gmb-section__surtitre {
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-bold);
+    letter-spacing: var(--gmb-tracking-wide);
+    color: var(--gmb-accent);
+  }
+
+  .gmb-section__titre {
+    font-size: var(--gmb-fs-4xl);
+    font-weight: var(--gmb-weight-extrabold);
+    line-height: var(--gmb-lh-tight);
+    letter-spacing: var(--gmb-tracking-display);
+  }
+
+  .gmb-section__titre--moyen { font-size: var(--gmb-fs-3xl); }
+
+  .gmb-section__intro {
+    font-size: var(--gmb-fs-lg);
+    line-height: var(--gmb-lh-body);
+    color: var(--gmb-text-muted);
+    max-width: 40rem;
+  }
+
+
+  /* ===========================================================================
+     3. PRIMITIVES DE MISE EN PAGE
+     ======================================================================== */
+
+  /* Pile verticale */
+  .gmb-pile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gmb-pile-ecart, var(--gmb-stack));
+  }
+
+  .gmb-pile--serree { --gmb-pile-ecart: var(--gmb-space-2); }
+  .gmb-pile--moyenne { --gmb-pile-ecart: var(--gmb-space-4); }
+  .gmb-pile--large { --gmb-pile-ecart: var(--gmb-space-8); }
+
+  /* Rangée qui passe à la ligne si nécessaire */
+  .gmb-rangee {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gmb-rangee-ecart, var(--gmb-space-3));
+  }
+
+  .gmb-rangee--entre { justify-content: space-between; }
+  .gmb-rangee--centre { justify-content: center; }
+  .gmb-rangee--fin { justify-content: flex-end; }
+  .gmb-rangee--haut { align-items: flex-start; }
+  .gmb-rangee--sans-retour { flex-wrap: nowrap; }
+  .gmb-rangee--serree { --gmb-rangee-ecart: var(--gmb-space-2); }
+
+  .gmb-pousse { margin-inline-start: auto; }
+
+  /* Grille automatique : autant de colonnes que la largeur le permet */
+  .gmb-grille {
+    display: grid;
+    gap: var(--gmb-grille-ecart, var(--gmb-grid-gap));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--gmb-grille-min, 16rem)), 1fr));
+  }
+
+  .gmb-grille--etroite { --gmb-grille-min: 12rem; }
+  .gmb-grille--large { --gmb-grille-min: 20rem; }
+
+  /* Grilles à nombre de colonnes fixé selon l'écran */
+  .gmb-grille--2,
+  .gmb-grille--3,
+  .gmb-grille--4,
+  .gmb-grille--5 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 480px) {
+    .gmb-grille--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 768px) {
+    .gmb-grille--2,
+    .gmb-grille--3,
+    .gmb-grille--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-grille--3,
+    .gmb-grille--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1280px) {
+    .gmb-grille--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .gmb-grille--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  }
+
+  /* Bascule : côte à côte au-delà d'un seuil, empilé en dessous (texte + visuel) */
+  .gmb-bascule {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gmb-bascule-ecart, var(--gmb-space-9));
+  }
+
+  .gmb-bascule > * {
+    flex-grow: 1;
+    flex-basis: calc((var(--gmb-bascule-seuil, 54rem) - 100%) * 999);
+    min-width: 0;
+  }
+
+  .gmb-bascule--haut { align-items: flex-start; }
+  .gmb-bascule > .gmb-bascule__large { flex-grow: 1.4; }
+
+  /* Défilement horizontal à aimantation (cartes, formules) sur mobile */
+  .gmb-defilement {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--gmb-defilement-largeur, minmax(15.5rem, 82%));
+    gap: var(--gmb-grid-gap);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gmb-gutter);
+    padding-block: var(--gmb-space-2) var(--gmb-space-4);
+    margin-inline: calc(var(--gmb-gutter) * -1);
+    padding-inline: var(--gmb-gutter);
+    scrollbar-width: none;
+  }
+
+  .gmb-defilement::-webkit-scrollbar { display: none; }
+  .gmb-defilement > * { scroll-snap-align: start; }
+
+  /* Sur grand écran, la même liste redevient une grille */
+  @media (min-width: 1024px) {
+    .gmb-defilement--grille-bureau {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(var(--gmb-colonnes-bureau, 3), minmax(0, 1fr));
+      overflow: visible;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .gmb-defilement--grille-bureau-5 { --gmb-colonnes-bureau: 5; }
+  }
+
+  /* Disposition principale + colonne latérale (tableau de bord, fiches) */
+  .gmb-disposition {
+    display: grid;
+    gap: var(--gmb-grid-gap);
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  @media (min-width: 1280px) {
+    .gmb-disposition--laterale { grid-template-columns: minmax(0, 1fr) minmax(20rem, 26rem); }
+    .gmb-disposition--equilibree { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+
+
+  /* ===========================================================================
+     4. BANDEAUX D'INFORMATION ET BANNIÈRE D'APPLICATION (VIT-00)
+     Quatre niveaux : promotion, information, alerte fraude, incident.
+     ======================================================================== */
+  .gmb-bandeau {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--gmb-space-1) var(--gmb-space-3);
+    min-height: var(--gmb-promo-h);
+    padding: var(--gmb-space-2) calc(var(--gmb-gutter) + var(--gmb-touch-min)) var(--gmb-space-2) var(--gmb-gutter);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-semibold);
+    line-height: var(--gmb-lh-snug);
+    text-align: center;
+  }
+
+  .gmb-bandeau a {
+    color: inherit;
+    font-weight: var(--gmb-weight-bold);
+    text-decoration-line: underline;
+    text-underline-offset: 0.2em;
+    white-space: nowrap;
+  }
+
+  .gmb-bandeau--promotion {
+    background: var(--gmb-gradient-promo);
+    color: var(--gmb-blanc);
+  }
+
+  .gmb-bandeau--information {
+    background-color: var(--gmb-surface-brand);
+    color: var(--gmb-on-action-soft);
+  }
+
+  .gmb-bandeau--alerte {
+    background-color: var(--gmb-alerte-bg);
+    color: var(--gmb-alerte-text);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-alerte-border);
+  }
+
+  .gmb-bandeau--incident {
+    background-color: var(--gmb-danger-700);
+    color: var(--gmb-blanc);
+    padding-inline-end: var(--gmb-gutter); /* non fermable : pas de bouton */
+  }
+
+  .gmb-bandeau__fermer {
+    position: absolute;
+    inset-inline-end: var(--gmb-space-1);
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    display: grid;
+    place-items: center;
+    width: var(--gmb-touch-min);
+    height: var(--gmb-touch-min);
+    border-radius: var(--gmb-radius-pill);
+    color: inherit;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-bandeau__fermer:hover {
+    background-color: color-mix(in srgb, currentColor 14%, transparent);
+  }
+
+  /* Bannière « Installer l'application » : téléphones uniquement */
+  .gmb-banniere-app {
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-space-2) var(--gmb-gutter);
+    background-color: var(--gmb-surface-brand);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-border);
+  }
+
+  .gmb-banniere-app__icone {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--gmb-radius-logo);
+  }
+
+  .gmb-banniere-app__texte {
+    flex: 1 1 auto;
+    min-width: 0;
+    line-height: 1.25;
+  }
+
+  .gmb-banniere-app__nom {
+    display: block;
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-bold);
+  }
+
+  .gmb-banniere-app__detail {
+    display: block;
+    font-size: var(--gmb-fs-2xs);
+    color: var(--gmb-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .gmb-banniere-app { display: none; }
+  }
+
+
+  /* ===========================================================================
+     5. EN-TÊTE DE LA VITRINE (VIT-00)
+     Fixe au défilement, verre dépoli, méga-menu sur ordinateur, bouton menu
+     sur mobile et tablette.
+     ======================================================================== */
+  .gmb-entete {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: var(--gmb-z-header);
+    padding-block-start: var(--gmb-safe-top);
+    background-color: var(--gmb-glass-bg);
+    -webkit-backdrop-filter: blur(var(--gmb-glass-blur)) saturate(var(--gmb-glass-saturate));
+    backdrop-filter: blur(var(--gmb-glass-blur)) saturate(var(--gmb-glass-saturate));
+    border-block-end: var(--gmb-border-width) solid var(--gmb-glass-border);
+    transition:
+      background-color var(--gmb-duration-normal) var(--gmb-ease-standard),
+      box-shadow var(--gmb-duration-normal) var(--gmb-ease-standard),
+      border-color var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-entete[data-etat="defile"] {
+    box-shadow: var(--gmb-shadow-md);
+  }
+
+  /* En-tête transparent au-dessus d'un héros, opaque dès que l'on défile */
+  .gmb-entete[data-transparent="true"]:not([data-etat="defile"]):not(:has([aria-expanded="true"])) {
+    background-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: transparent;
+  }
+
+  .gmb-entete__barre {
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-5);
+    height: var(--gmb-header-h);
+  }
+
+  .gmb-entete__logo {
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+    height: var(--gmb-logo-h);
+    border-radius: var(--gmb-radius-sm);
+  }
+
+  .gmb-entete__logo :is(img, svg) {
+    height: 100%;
+    width: auto;
+  }
+
+  /* Navigation principale (ordinateur) */
+  .gmb-entete__nav {
+    display: none;
+    height: 100%;
+  }
+
+  .gmb-entete__liens {
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-1);
+    height: 100%;
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-entete__lien {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gmb-space-1);
+    height: var(--gmb-control-sm);
+    padding-inline: var(--gmb-space-3);
+    border-radius: var(--gmb-radius-sm);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text-muted);
+    white-space: nowrap;
+    text-decoration: none;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-entete__lien:hover,
+  .gmb-entete__lien[aria-expanded="true"] {
+    color: var(--gmb-text);
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-entete__lien[aria-current="page"] {
+    color: var(--gmb-text);
+  }
+
+  .gmb-entete__lien[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    inset-inline: var(--gmb-space-3);
+    inset-block-end: -6px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--gmb-action);
+  }
+
+  .gmb-entete__chevron {
+    width: var(--gmb-icon-sm);
+    height: var(--gmb-icon-sm);
+    transition: transform var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  [aria-expanded="true"] > .gmb-entete__chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Accès : Suivre mon dossier, Espace client, Ouvrir un compte */
+  .gmb-entete__actions {
+    display: none;
+    align-items: center;
+    gap: var(--gmb-space-2);
+    margin-inline-start: auto;
+  }
+
+  .gmb-entete__suivre {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gmb-space-2);
+    height: var(--gmb-control-sm);
+    padding-inline: var(--gmb-space-3);
+    border-radius: var(--gmb-radius-sm);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-entete__suivre:hover {
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-entete__suivre-texte {
+    display: none;
+  }
+
+  /* Boutons d'icône du mobile : Espace client, menu */
+  .gmb-entete__mobile {
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-1);
+    margin-inline-start: auto;
+  }
+
+  .gmb-icone-bouton {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: var(--gmb-touch-min);
+    height: var(--gmb-touch-min);
+    border-radius: var(--gmb-radius-md);
+    color: var(--gmb-text);
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-icone-bouton:hover {
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-icone-bouton :is(svg, img) {
+    width: var(--gmb-icon-lg);
+    height: var(--gmb-icon-lg);
+  }
+
+  /* Bouton menu en trois traits, animé en croix à l'ouverture */
+  .gmb-burger {
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 16px;
+  }
+
+  .gmb-burger > span {
+    position: absolute;
+    inset-inline: 0;
+    height: 2px;
+    border-radius: 2px;
+    background-color: currentColor;
+    transition:
+      transform var(--gmb-duration-normal) var(--gmb-ease-standard),
+      opacity var(--gmb-duration-fast) var(--gmb-ease-standard);
+  }
+
+  .gmb-burger > span:nth-child(1) { inset-block-start: 0; }
+  .gmb-burger > span:nth-child(2) { inset-block-start: 7px; }
+  .gmb-burger > span:nth-child(3) { inset-block-end: 0; }
+
+  [aria-expanded="true"] .gmb-burger > span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  [aria-expanded="true"] .gmb-burger > span:nth-child(2) { opacity: 0; }
+  [aria-expanded="true"] .gmb-burger > span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (min-width: 1024px) {
+    .gmb-entete__nav { display: block; flex: 1 1 auto; }
+    .gmb-entete__actions { display: flex; }
+    .gmb-entete__mobile { display: none; }
+  }
+
+  @media (min-width: 1280px) {
+    .gmb-entete__suivre-texte { display: inline; }
+  }
+
+
+  /* ===========================================================================
+     6. MÉGA-MENU (ordinateur)
+     ======================================================================== */
+  .gmb-mega {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    background-color: var(--gmb-surface-raised);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-border);
+    box-shadow: var(--gmb-shadow-xl);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition:
+      opacity var(--gmb-duration-normal) var(--gmb-ease-standard),
+      transform var(--gmb-duration-normal) var(--gmb-ease-standard),
+      visibility 0s linear var(--gmb-duration-normal);
+  }
+
+  .gmb-mega[data-ouvert="true"] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  .gmb-mega__contenu {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(16rem, 1.15fr);
+    gap: var(--gmb-space-6);
+    padding-block: var(--gmb-space-7) var(--gmb-space-8);
+  }
+
+  .gmb-mega__titre {
+    margin-block-end: var(--gmb-space-2);
+    padding-inline: var(--gmb-space-3);
+    font-size: var(--gmb-fs-xs);
+    font-weight: var(--gmb-weight-bold);
+    letter-spacing: var(--gmb-tracking-wide);
+    color: var(--gmb-text-faint);
+  }
+
+  .gmb-mega__liste {
+    display: grid;
+    gap: var(--gmb-space-1);
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-mega__lien {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: var(--gmb-space-3);
+    align-items: center;
+    padding: var(--gmb-space-3);
+    border-radius: var(--gmb-radius-md);
+    color: var(--gmb-text);
+    text-decoration: none;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-mega__lien:hover {
+    background-color: var(--gmb-surface-2);
+  }
+
+  .gmb-mega__icone {
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--gmb-radius-sm);
+    background-color: var(--gmb-action-soft);
+    color: var(--gmb-on-action-soft);
+  }
+
+  .gmb-mega__icone :is(svg, img) {
+    width: var(--gmb-icon-md);
+    height: var(--gmb-icon-md);
+  }
+
+  .gmb-mega__lien-titre {
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-bold);
+    line-height: var(--gmb-lh-snug);
+  }
+
+  .gmb-mega__lien-texte {
+    font-size: var(--gmb-fs-xs);
+    line-height: var(--gmb-lh-snug);
+    color: var(--gmb-text-muted);
+  }
+
+  /* Carte mise en avant (à combiner avec data-theme="sombre") */
+  .gmb-mega__carte {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-space-6);
+    border-radius: var(--gmb-radius-xl);
+    background: var(--gmb-gradient-night);
+    overflow: hidden;
+  }
+
+  @media (max-width: 1023.98px) {
+    .gmb-mega { display: none; }
+  }
+
+  /* Voile sous le méga-menu et les tiroirs */
+  .gmb-voile {
+    position: fixed;
+    inset: 0;
+    z-index: var(--gmb-z-overlay);
+    background-color: var(--gmb-scrim);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--gmb-duration-normal) var(--gmb-ease-standard), visibility 0s linear var(--gmb-duration-normal);
+  }
+
+  .gmb-voile[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .gmb-voile--sous-entete {
+    inset-block-start: calc(var(--gmb-header-h) + var(--gmb-safe-top));
+    z-index: calc(var(--gmb-z-header) - 1);
+  }
+
+
+  /* ===========================================================================
+     7. MENU MOBILE À ONGLETS (VIT-00, captures Revolut et BoursoBank)
+     Plein écran : onglets de segments, rubriques dépliables, liens
+     secondaires, « Suivre mon dossier », deux boutons fixés en bas.
+     ======================================================================== */
+  html[data-menu-ouvert="true"] {
+    overflow: hidden;
+  }
+
+  .gmb-menu-mobile {
+    position: fixed;
+    inset: 0;
+    z-index: var(--gmb-z-drawer);
+    display: flex;
+    flex-direction: column;
+    padding-block-start: var(--gmb-safe-top);
+    background-color: var(--gmb-surface);
+    color: var(--gmb-text);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition:
+      transform var(--gmb-duration-panel) var(--gmb-ease-emphasized),
+      visibility 0s linear var(--gmb-duration-panel);
+  }
+
+  .gmb-menu-mobile[data-ouvert="true"] {
+    transform: none;
+    visibility: visible;
+    transition: transform var(--gmb-duration-panel) var(--gmb-ease-emphasized), visibility 0s;
+  }
+
+  .gmb-menu-mobile__haut {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gmb-space-3);
+    height: var(--gmb-header-h);
+    padding-inline: max(var(--gmb-gutter), var(--gmb-safe-left)) max(var(--gmb-space-2), var(--gmb-safe-right));
+  }
+
+  .gmb-menu-mobile__segments {
+    display: flex;
+    flex: none;
+    gap: var(--gmb-space-2);
+    padding: var(--gmb-space-1) var(--gmb-gutter) var(--gmb-space-3);
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .gmb-menu-mobile__segments::-webkit-scrollbar { display: none; }
+
+  .gmb-menu-mobile__segment {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    height: var(--gmb-control-sm);
+    padding-inline: var(--gmb-space-4);
+    border: var(--gmb-border-width-strong) solid var(--gmb-border-strong);
+    border-radius: var(--gmb-radius-pill);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text-muted);
+    white-space: nowrap;
+    scroll-snap-align: start;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-menu-mobile__segment[aria-selected="true"] {
+    border-color: var(--gmb-action);
+    background-color: var(--gmb-action-soft);
+    color: var(--gmb-on-action-soft);
+  }
+
+  .gmb-menu-mobile__corps {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--gmb-space-2) var(--gmb-gutter) var(--gmb-space-6);
+  }
+
+  .gmb-menu-mobile__decouvrir {
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-2);
+    min-height: var(--gmb-touch-min);
+    margin-block-end: var(--gmb-space-1);
+    font-size: var(--gmb-fs-lg);
+    font-weight: var(--gmb-weight-extrabold);
+    color: var(--gmb-text);
+    text-decoration: none;
+  }
+
+  .gmb-menu-mobile__panneau[hidden] {
+    display: none;
+  }
+
+  /* Rubriques dépliables (<details>) */
+  .gmb-menu-mobile__rubrique {
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-menu-mobile__rubrique > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gmb-space-3);
+    min-height: 52px;
+    font-size: var(--gmb-fs-md);
+    font-weight: var(--gmb-weight-semibold);
+    list-style: none;
+  }
+
+  .gmb-menu-mobile__rubrique > summary::-webkit-details-marker { display: none; }
+
+  .gmb-menu-mobile__rubrique > summary::after {
+    content: "";
+    flex: none;
+    width: 9px;
+    height: 9px;
+    margin-inline-end: 6px;
+    border-inline-end: 2px solid var(--gmb-text-faint);
+    border-block-end: 2px solid var(--gmb-text-faint);
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform var(--gmb-duration-normal) var(--gmb-ease-standard);
+  }
+
+  .gmb-menu-mobile__rubrique[open] > summary::after {
+    transform: translateY(2px) rotate(225deg);
+  }
+
+  .gmb-menu-mobile__sous-liens {
+    display: grid;
+    gap: 2px;
+    padding: 0 0 var(--gmb-space-3);
+    list-style: none;
+  }
+
+  .gmb-menu-mobile__sous-liens a {
+    display: flex;
+    align-items: center;
+    min-height: var(--gmb-touch-min);
+    padding-inline: var(--gmb-space-3);
+    border-radius: var(--gmb-radius-md);
+    color: var(--gmb-text-muted);
+    text-decoration: none;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-menu-mobile__sous-liens a:hover,
+  .gmb-menu-mobile__sous-liens a[aria-current="page"] {
+    background-color: var(--gmb-surface-2);
+    color: var(--gmb-text);
+  }
+
+  .gmb-menu-mobile__secondaire {
+    display: grid;
+    padding: var(--gmb-space-3) 0;
+    list-style: none;
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-menu-mobile__secondaire a {
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-3);
+    min-height: var(--gmb-touch-min);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text-muted);
+    text-decoration: none;
+  }
+
+  .gmb-menu-mobile__secondaire :is(svg, img) {
+    width: var(--gmb-icon-md);
+    height: var(--gmb-icon-md);
+    color: var(--gmb-action);
+  }
+
+  .gmb-menu-mobile__suivre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text);
+    text-decoration: none;
+  }
+
+  .gmb-menu-mobile__actions {
+    display: grid;
+    flex: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-space-3) max(var(--gmb-gutter), var(--gmb-safe-right)) calc(var(--gmb-space-3) + var(--gmb-safe-bottom)) max(var(--gmb-gutter), var(--gmb-safe-left));
+    background-color: var(--gmb-surface);
+    box-shadow: 0 -1px 0 var(--gmb-divider), 0 -12px 24px -16px var(--gmb-scrim);
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-menu-mobile { display: none; }
+  }
+
+
+  /* ===========================================================================
+     8. BARRE D'ACTION FIXE EN BAS (mobile, pages produit)
+     ======================================================================== */
+  .gmb-barre-action {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: var(--gmb-z-cta-bar);
+    display: flex;
+    gap: var(--gmb-space-3);
+    padding: var(--gmb-space-3) var(--gmb-gutter) calc(var(--gmb-space-3) + var(--gmb-safe-bottom));
+    background-color: var(--gmb-glass-bg);
+    -webkit-backdrop-filter: blur(var(--gmb-glass-blur)) saturate(var(--gmb-glass-saturate));
+    backdrop-filter: blur(var(--gmb-glass-blur)) saturate(var(--gmb-glass-saturate));
+    border-block-start: var(--gmb-border-width) solid var(--gmb-glass-border);
+    transform: translateY(110%);
+    transition: transform var(--gmb-duration-panel) var(--gmb-ease-emphasized);
+  }
+
+  .gmb-barre-action[data-visible="true"] {
+    transform: none;
+  }
+
+  .gmb-barre-action > * {
+    flex: 1 1 0;
+  }
+
+  @media (min-width: 768px) {
+    .gmb-barre-action { display: none; }
+  }
+
+
+  /* ===========================================================================
+     9. PIED DE PAGE (VIT-00)
+     Quatre colonnes de liens, mentions légales, liens légaux, langues et
+     réseaux. À combiner avec data-theme="sombre".
+     ======================================================================== */
+  .gmb-pied {
+    padding-block: var(--gmb-section-y) calc(var(--gmb-space-8) + var(--gmb-safe-bottom));
+    background-color: var(--gmb-bg);
+    color: var(--gmb-text);
+  }
+
+  .gmb-pied__haut {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gmb-space-6);
+    padding-block-end: var(--gmb-space-8);
+    border-block-end: var(--gmb-border-width) solid var(--gmb-divider);
+  }
+
+  .gmb-pied__logo {
+    display: inline-flex;
+    height: var(--gmb-logo-h);
+  }
+
+  .gmb-pied__logo :is(img, svg) {
+    height: 100%;
+    width: auto;
+  }
+
+  .gmb-pied__accroche {
+    max-width: 26rem;
+    margin-block-start: var(--gmb-space-3);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-pied__applis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gmb-space-3);
+  }
+
+  .gmb-pied__colonnes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gmb-space-8) var(--gmb-space-6);
+    padding-block: var(--gmb-space-8);
+  }
+
+  .gmb-pied__titre {
+    margin-block-end: var(--gmb-space-3);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-bold);
+    letter-spacing: var(--gmb-tracking-normal);
+    color: var(--gmb-text);
+  }
+
+  .gmb-pied__liens {
+    display: grid;
+    gap: 2px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-pied__liens a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+    text-decoration: none;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-pied__liens a:hover {
+    color: var(--gmb-text);
+    text-decoration-line: underline;
+  }
+
+  .gmb-pied__mentions {
+    display: grid;
+    gap: var(--gmb-space-2);
+    padding-block: var(--gmb-space-6);
+    border-block: var(--gmb-border-width) solid var(--gmb-divider);
+    font-size: var(--gmb-fs-2xs);
+    line-height: var(--gmb-lh-relaxed);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-pied__bas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gmb-space-4);
+    padding-block-start: var(--gmb-space-6);
+    font-size: var(--gmb-fs-xs);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-pied__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gmb-space-2) var(--gmb-space-5);
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-pied__legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--gmb-touch-min);
+    color: var(--gmb-text-muted);
+    text-decoration: none;
+  }
+
+  .gmb-pied__legal a:hover {
+    color: var(--gmb-text);
+    text-decoration-line: underline;
+  }
+
+  .gmb-pied__reseaux {
+    display: flex;
+    gap: var(--gmb-space-2);
+  }
+
+  .gmb-pied__reseaux a {
+    display: grid;
+    place-items: center;
+    width: var(--gmb-touch-min);
+    height: var(--gmb-touch-min);
+    border: var(--gmb-border-width) solid var(--gmb-border-strong);
+    border-radius: var(--gmb-radius-pill);
+    color: var(--gmb-text-muted);
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-pied__reseaux a:hover {
+    color: var(--gmb-text);
+    border-color: var(--gmb-text-muted);
+  }
+
+  .gmb-pied__reseaux :is(svg, img) {
+    width: var(--gmb-icon-md);
+    height: var(--gmb-icon-md);
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-pied__colonnes { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+
+
+  /* ===========================================================================
+     10. ÉCRANS DE CONNEXION ET DE SOUSCRIPTION (AUTH, DOS-01, ONB)
+     ======================================================================== */
+
+  /* Carte centrée (connexion, mot de passe oublié) */
+  .gmb-ecran-centre {
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    padding: calc(var(--gmb-safe-top) + var(--gmb-gutter)) var(--gmb-gutter) calc(var(--gmb-safe-bottom) + var(--gmb-gutter));
+    background: var(--gmb-gradient-hero), var(--gmb-bg);
+  }
+
+  .gmb-ecran-centre__carte {
+    width: 100%;
+    max-width: var(--gmb-container-xs);
+  }
+
+  /* Écran partagé : visuel sombre à gauche, formulaire à droite (DOS-01) */
+  .gmb-ecran-partage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 100dvh;
+  }
+
+  .gmb-ecran-partage__visuel {
+    display: none;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--gmb-space-5);
+    padding: var(--gmb-space-10) var(--gmb-space-9);
+    background: var(--gmb-gradient-night);
+    overflow: hidden;
+  }
+
+  .gmb-ecran-partage__formulaire {
+    display: grid;
+    place-items: center;
+    padding: calc(var(--gmb-safe-top) + var(--gmb-gutter)) var(--gmb-gutter) calc(var(--gmb-safe-bottom) + var(--gmb-gutter));
+  }
+
+  .gmb-ecran-partage__formulaire > * {
+    width: 100%;
+    max-width: var(--gmb-container-xs);
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-ecran-partage { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+    .gmb-ecran-partage__visuel { display: flex; }
+  }
+
+  /* Écran d'application mobile (clavier du code secret, étapes du tunnel) :
+     contenu en haut, actions collées en bas, encoches respectées */
+  .gmb-ecran-mobile {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    padding: calc(var(--gmb-safe-top) + var(--gmb-space-3)) max(var(--gmb-gutter), var(--gmb-safe-right)) 0 max(var(--gmb-gutter), var(--gmb-safe-left));
+  }
+
+  .gmb-ecran-mobile__corps {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: var(--gmb-container-xs);
+    margin-inline: auto;
+  }
+
+  .gmb-ecran-mobile__pied {
+    position: sticky;
+    inset-block-end: 0;
+    width: 100%;
+    max-width: var(--gmb-container-xs);
+    margin-inline: auto;
+    padding-block: var(--gmb-space-4) calc(var(--gmb-space-4) + var(--gmb-safe-bottom));
+    background: linear-gradient(to top, var(--gmb-bg) 70%, transparent);
+  }
+
+  /* Barre de progression du tunnel d'ouverture (11 étapes) */
+  .gmb-etapes-haut {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: var(--gmb-z-sticky);
+    padding-block: calc(var(--gmb-safe-top) + var(--gmb-space-2)) var(--gmb-space-3);
+    background-color: var(--gmb-glass-bg);
+    -webkit-backdrop-filter: blur(var(--gmb-glass-blur));
+    backdrop-filter: blur(var(--gmb-glass-blur));
+  }
+
+
+  /* ===========================================================================
+     11. STRUCTURE DE L'ESPACE CLIENT (PAR, PRO, BIZ, JEU)
+     Mobile : barre du haut + barre d'onglets en bas.
+     Ordinateur (1 024 px et plus) : barre latérale fixe + contenu.
+     ======================================================================== */
+  .gmb-app {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    min-height: 100dvh;
+    background-color: var(--gmb-bg);
+  }
+
+  .gmb-app__barre-laterale {
+    display: none;
+  }
+
+  .gmb-app__haut {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: var(--gmb-z-sticky);
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-3);
+    min-height: calc(var(--gmb-header-h) + var(--gmb-safe-top));
+    padding: var(--gmb-safe-top) max(var(--gmb-gutter), var(--gmb-safe-right)) 0 max(var(--gmb-gutter), var(--gmb-safe-left));
+    background-color: var(--gmb-glass-bg);
+    -webkit-backdrop-filter: blur(var(--gmb-glass-blur)) saturate(var(--gmb-glass-saturate));
+    backdrop-filter: blur(var(--gmb-glass-blur)) saturate(var(--gmb-glass-saturate));
+    border-block-end: var(--gmb-border-width) solid var(--gmb-glass-border);
+  }
+
+  .gmb-app__contenu {
+    width: 100%;
+    max-width: var(--gmb-container-2xl);
+    margin-inline: auto;
+    padding: var(--gmb-space-5) max(var(--gmb-gutter), var(--gmb-safe-right))
+             calc(var(--gmb-tabbar-h) + var(--gmb-safe-bottom) + var(--gmb-space-6)) max(var(--gmb-gutter), var(--gmb-safe-left));
+  }
+
+  /* Barre d'onglets du mobile */
+  .gmb-app__onglets {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: var(--gmb-z-sticky);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    height: calc(var(--gmb-tabbar-h) + var(--gmb-safe-bottom));
+    padding-block-end: var(--gmb-safe-bottom);
+    padding-inline: var(--gmb-safe-left) var(--gmb-safe-right);
+    background-color: var(--gmb-glass-bg);
+    -webkit-backdrop-filter: blur(var(--gmb-glass-blur)) saturate(var(--gmb-glass-saturate));
+    backdrop-filter: blur(var(--gmb-glass-blur)) saturate(var(--gmb-glass-saturate));
+    border-block-start: var(--gmb-border-width) solid var(--gmb-glass-border);
+  }
+
+  .gmb-app__onglet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: var(--gmb-touch-min);
+    font-size: var(--gmb-fs-2xs);
+    font-weight: var(--gmb-weight-bold);
+    color: var(--gmb-text-faint);
+    text-decoration: none;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-app__onglet :is(svg, img) {
+    width: 22px;
+    height: 22px;
+  }
+
+  .gmb-app__onglet[aria-current="page"] {
+    color: var(--gmb-action);
+  }
+
+  /* Barre latérale de l'ordinateur */
+  .gmb-app__logo {
+    display: inline-flex;
+    height: var(--gmb-logo-h);
+    margin: 0 var(--gmb-space-3) var(--gmb-space-5);
+  }
+
+  .gmb-app__logo :is(img, svg) {
+    height: 100%;
+    width: auto;
+  }
+
+  .gmb-app__groupe {
+    padding: var(--gmb-space-4) var(--gmb-space-3) var(--gmb-space-1);
+    font-size: var(--gmb-fs-2xs);
+    font-weight: var(--gmb-weight-bold);
+    letter-spacing: var(--gmb-tracking-wide);
+    color: var(--gmb-text-faint);
+  }
+
+  .gmb-app__lien {
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-3);
+    min-height: 42px;
+    padding-inline: var(--gmb-space-3);
+    border-radius: var(--gmb-radius-md);
+    font-size: var(--gmb-fs-sm);
+    font-weight: var(--gmb-weight-semibold);
+    color: var(--gmb-text-muted);
+    text-decoration: none;
+    transition: var(--gmb-transition-colors);
+  }
+
+  .gmb-app__lien:hover {
+    background-color: var(--gmb-surface-2);
+    color: var(--gmb-text);
+  }
+
+  .gmb-app__lien[aria-current="page"] {
+    background-color: var(--gmb-action-soft);
+    color: var(--gmb-on-action-soft);
+  }
+
+  .gmb-app__lien :is(svg, img) {
+    flex: none;
+    width: var(--gmb-icon-md);
+    height: var(--gmb-icon-md);
+  }
+
+  .gmb-app__badge {
+    margin-inline-start: auto;
+  }
+
+  .gmb-app__barre-laterale-pied {
+    display: grid;
+    gap: var(--gmb-space-1);
+    margin-block-start: auto;
+    padding-block-start: var(--gmb-space-5);
+  }
+
+  @media (min-width: 1024px) {
+    .gmb-app {
+      grid-template-columns: var(--gmb-sidebar-w) minmax(0, 1fr);
+    }
+
+    .gmb-app__barre-laterale {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      grid-row: 1 / -1;
+      position: sticky;
+      inset-block-start: 0;
+      height: 100dvh;
+      overflow-y: auto;
+      padding: var(--gmb-space-6) var(--gmb-space-4);
+      background-color: var(--gmb-bg-alt);
+      border-inline-end: var(--gmb-border-width) solid var(--gmb-border);
+    }
+
+    .gmb-app__onglets { display: none; }
+
+    .gmb-app__contenu {
+      padding-block: var(--gmb-space-7) var(--gmb-space-10);
+    }
+  }
+
+  /* Back-office : plus dense, prioritairement sur ordinateur (ADM) */
+  .gmb-app--bo {
+    --gmb-sidebar-w: 232px;
+    --gmb-header-h: 56px;
+  }
+
+  .gmb-app--bo .gmb-app__contenu {
+    max-width: none;
+    padding-block-end: var(--gmb-space-8);
+  }
+
+  .gmb-app--bo .gmb-app__onglets { display: none; }
+
+  .gmb-app--bo .gmb-app__lien {
+    min-height: 36px;
+    font-size: var(--gmb-fs-xs);
+  }
+
+
+  /* ===========================================================================
+     12. IMPRESSION
+     ======================================================================== */
+  @media print {
+    .gmb-entete,
+    .gmb-mega,
+    .gmb-voile,
+    .gmb-menu-mobile,
+    .gmb-bandeau,
+    .gmb-banniere-app,
+    .gmb-barre-action,
+    .gmb-app__barre-laterale,
+    .gmb-app__haut,
+    .gmb-app__onglets,
+    .gmb-pied__reseaux,
+    .gmb-pied__applis {
+      display: none !important;
+    }
+
+    .gmb-app {
+      display: block;
+    }
+
+    .gmb-section {
+      padding-block: 12pt;
+    }
+  }
+}

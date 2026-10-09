@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Document d’information tarifaire — GerMoonBank</title>
+  <meta name="description" content="Document d’information tarifaire du compte courant GerMoonBank, formule par formule, au format européen.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/legal/tarification.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Document d’information tarifaire — GerMoonBank">
+  <meta property="og:description" content="Document d’information tarifaire du compte courant GerMoonBank, formule par formule, au format européen.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/legal/tarification.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/business.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <style>
+    .doc-actions { display: flex; flex-wrap: wrap; gap: var(--gmb-space-3); align-items: end; }
+    .doc-dit__groupe th { background-color: var(--gmb-surface-2); font-weight: var(--gmb-weight-bold); }
+    .doc-dit th[scope="row"] { width: 55%; }
+    .doc-dit td.gmb-nombre { text-align: start; white-space: normal; overflow-wrap: anywhere; }
+    @media print {
+      gm-header, gm-footer, .gmb-lien-evitement, .doc-actions, .gmb-fil-ariane { display: none !important; }
+      .gmb-page-heros { padding-block: 0 !important; background: none !important; }
+      .gmb-section { padding-block: 8pt !important; }
+      .gmb-tableau-zone { overflow: visible !important; }
+      .doc-section { break-inside: avoid-page; }
+      body { background: #fff !important; }
+    }
+  </style>
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header segment="particuliers"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="../tarifs/particuliers.html">Tarifs</a></li><li><span aria-current="page">Document d’information tarifaire</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Document d’information tarifaire</h1>
+        <p class="gmb-page-heros__intro">Le document normalisé qui vous permet de comparer les frais de votre compte avec ceux d’autres comptes.</p>
+        <div class="doc-actions">
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="dit-formule">Formule</label><div class="gmb-liste"><select class="gmb-saisie" id="dit-formule" data-choix-formule></select></div></div>
+          <button type="button" class="gmb-bouton gmb-bouton--principal" data-imprimer>Imprimer ou enregistrer en PDF</button>
+        </div>
+      </div>
+    </section>
+    <section class="gmb-section" aria-label="Document d’information tarifaire">
+      <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--moyenne" data-document="dit"><p>Chargement du document…</p></div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Signature — GerMoonBank</title>
+  <meta name="description" content="Étape 5 de votre demande : récapitulatif et signature.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/inscription/etape-5-signature.html">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/inscription.js"></script>
+</head>
+<body data-etape="etape-5-signature">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <nav aria-label="Étapes de la demande"><ol class="gmb-frise-etapes"><li data-fait="true"><span class="gmb-frise-etapes__numero">1</span><span>Identité</span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">2</span><span>Coordonnées</span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">3</span><span><span data-frise-etape="3">Votre situation</span></span></li><li data-fait="true"><span class="gmb-frise-etapes__numero">4</span><span>Documents</span></li><li aria-current="step" data-fait="false"><span class="gmb-frise-etapes__numero">5</span><span>Signature</span></li><li data-fait="false"><span class="gmb-frise-etapes__numero">6</span><span><span data-frise-etape="6">Premier versement</span></span></li></ol></nav>
+      <header class="gmb-pile gmb-pile--serree"><p class="gmb-mention">Demande <span data-reference>…</span></p><h1 class="gmb-section__titre" id="titre-page">Vérifiez et signez</h1><p class="gmb-section__intro">Relisez votre demande et les documents contractuels.</p></header>
+      <section class="gmb-carte" aria-label="Récapitulatif" data-recapitulatif></section>
+      <section class="gmb-carte gmb-pile gmb-pile--serree" aria-label="Documents à lire"><h2 class="gmb-section__titre gmb-section__titre--moyen">Documents</h2>
+        <p><a href="../legal/cgu.html" target="_blank" rel="noopener">Conditions générales d’utilisation<span class="gmb-visuellement-masque"> (nouvel onglet)</span></a> · <a href="../legal/cgv.html" target="_blank" rel="noopener">Conditions générales de vente<span class="gmb-visuellement-masque"> (nouvel onglet)</span></a> · <a href="../tarifs/grille-tarifaire.html" target="_blank" rel="noopener">Grille tarifaire<span class="gmb-visuellement-masque"> (nouvel onglet)</span></a> · <a href="../legal/tarification.html" target="_blank" rel="noopener">Document d’information tarifaire<span class="gmb-visuellement-masque"> (nouvel onglet)</span></a> · <a href="../legal/rgpd.html" target="_blank" rel="noopener">Confidentialité<span class="gmb-visuellement-masque"> (nouvel onglet)</span></a></p></section>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="signature" novalidate>
+        <div data-si-ficp hidden><div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="ficp" name="ficp" aria-describedby="ficp-erreur"><span>J’autorise GerMoonBank à consulter le fichier des incidents de remboursement des crédits aux particuliers (FICP).</span></label><p class="gmb-champ__erreur" id="ficp-erreur" hidden></p></div></div>
+        <div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="accepte" name="accepte" required aria-describedby="accepte-erreur"><span>J’ai lu les documents ci-dessus, je certifie l’exactitude des informations fournies et je signe ma demande.</span></label><p class="gmb-champ__erreur" id="accepte-erreur" hidden></p></div>
+        <p class="gmb-mention">Votre signature est horodatée et conservée comme preuve de votre accord.</p>
+        <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Signer ma demande</button></div>
+      </form>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

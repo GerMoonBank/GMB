@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ouvrir un compte — GerMoonBank</title>
+  <meta name="description" content="Ouvrez votre compte GerMoonBank en ligne : Particulier, Pro, Business, Jeunes, ou demandez un prêt personnel.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/inscription/index.html">
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/onboarding.css">
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/inscription.js"></script>
+</head>
+<body data-etape="index">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <header class="gmb-pile gmb-pile--serree"><h1 class="gmb-section__titre" id="titre-page">Ouvrir un compte</h1><p class="gmb-section__intro">Quelques minutes en ligne. Vous pourrez enregistrer et reprendre votre demande à tout moment.</p></header>
+      <div class="gmb-carte gmb-pile gmb-pile--serree" data-bloc="reprendre" hidden><p>Vous avez une demande en cours : <strong data-reference-reprendre></strong>.</p><p><a class="gmb-bouton gmb-bouton--secondaire" data-lien-reprendre href="#">Reprendre ma demande</a></p></div>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="commencer" novalidate>
+        <div class="gmb-pile gmb-pile--moyenne" data-bloc="profil">
+          <h2 class="gmb-section__titre gmb-section__titre--moyen">Votre profil</h2>
+          <fieldset class="gmb-champ" aria-describedby="segment-erreur"><legend class="gmb-champ__libelle">Pour qui ouvrez-vous un compte ?</legend><div class="gmb-pile gmb-pile--serree"><label class="gmb-choix"><input type="radio" name="segment" value="particulier" id="segment"><span>Pour moi, à titre personnel</span></label><label class="gmb-choix"><input type="radio" name="segment" value="pro"><span>Pour mon activité d’indépendant (Pro)</span></label><label class="gmb-choix"><input type="radio" name="segment" value="business"><span>Pour ma société (Business)</span></label><label class="gmb-choix"><input type="radio" name="segment" value="jeunes"><span>Pour mon enfant de 10 à 17 ans, avec mon propre compte (Jeunes)</span></label></div><p class="gmb-champ__erreur" id="segment-erreur" hidden></p></fieldset>
+          <p class="gmb-champ__aide" data-aide-segment="jeunes" hidden>Votre compte et celui de votre enfant sont ouverts ensemble. Vous choisissez ci-dessous la formule de votre propre compte.</p>
+          <p class="gmb-champ__aide" data-aide-segment="business" hidden>Le premier versement devra venir d’un compte au nom de la société.</p>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="formule">Formule</label><div class="gmb-liste"><select class="gmb-saisie" id="formule" name="formule" required aria-describedby="formule-erreur"></select></div><p class="gmb-champ__erreur" id="formule-erreur" hidden></p></div>
+        </div>
+        <div class="gmb-pile gmb-pile--moyenne" data-bloc="credit" hidden>
+          <h2 class="gmb-section__titre gmb-section__titre--moyen">Votre projet de prêt</h2>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="montant">Montant (€)</label><input class="gmb-saisie" id="montant" name="montant" type="text" required aria-describedby="montant-erreur" inputmode="decimal"><p class="gmb-champ__erreur" id="montant-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="duree">Durée (mois)</label><input class="gmb-saisie" id="duree" name="duree" type="text" required aria-describedby="duree-erreur" inputmode="numeric"><p class="gmb-champ__erreur" id="duree-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-champ__libelle" for="objet">Objet du prêt</label><div class="gmb-liste"><select class="gmb-saisie" id="objet" name="objet" required aria-describedby="objet-erreur"></select></div><p class="gmb-champ__erreur" id="objet-erreur" hidden></p></div>
+          <p class="gmb-mention-obligatoire">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
+          <p class="gmb-champ__aide">Votre compte GerMoonBank est ouvert dans la même demande : les fonds y sont versés et les échéances y sont prélevées chaque mois.</p>
+        </div>
+        <div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="residence" name="residence" required aria-describedby="residence-erreur"><span>Je réside en France.</span></label><p class="gmb-champ__erreur" id="residence-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="majeur" name="majeur" required aria-describedby="majeur-erreur"><span>J’ai 18 ans ou plus.</span></label><p class="gmb-champ__erreur" id="majeur-erreur" hidden></p></div>
+        <div class="gmb-pile gmb-pile--moyenne" data-bloc="connecte" hidden><p>Vous êtes connecté avec l’adresse <strong data-email-connecte></strong>.</p></div>
+        <div class="gmb-pile gmb-pile--moyenne" data-bloc="acces">
+          <h2 class="gmb-section__titre gmb-section__titre--moyen">Vos accès à l’Espace Mon Dossier</h2>
+          <p class="gmb-champ__aide">Ils servent à suivre votre demande. Ils ne donnent jamais accès à un compte bancaire.</p>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="email">Adresse e-mail</label><input class="gmb-saisie" id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-erreur"><p class="gmb-champ__erreur" id="email-erreur" hidden></p></div>
+          <div class="gmb-champ"><label class="gmb-champ__libelle" for="mdp">Mot de passe</label><div class="gmb-mdp"><input class="gmb-saisie" id="mdp" name="mdp" type="password" autocomplete="new-password" required aria-describedby="mdp-regles mdp-erreur"><button type="button" class="gmb-bouton gmb-bouton--fantome gmb-bouton--petit" data-afficher-mdp aria-pressed="false" aria-label="Afficher le mot de passe">Afficher</button></div>
+            <div class="gmb-jauge" data-jauge data-niveau="0" role="img" aria-label="Mot de passe vide"></div>
+            <ul class="gmb-regles" id="mdp-regles" data-regles><li data-regle="longueur"><span class="gmb-icone"></span>12 caractères au moins</li><li data-regle="email"><span class="gmb-icone"></span>Sans votre adresse e-mail</li><li data-regle="connu"><span class="gmb-icone"></span>Absent des fuites de données connues</li></ul><p class="gmb-champ__erreur" id="mdp-erreur" hidden></p></div>
+          <div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="cgu" name="cgu" required aria-describedby="cgu-erreur"><span>J’accepte les <a href="../legal/cgu.html" target="_blank" rel="noopener">conditions générales d’utilisation<span class="gmb-visuellement-masque"> (nouvel onglet)</span></a>.</span></label><p class="gmb-champ__erreur" id="cgu-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="confidentialite" name="confidentialite" required aria-describedby="confidentialite-erreur"><span>J’ai pris connaissance de la <a href="../legal/rgpd.html" target="_blank" rel="noopener">politique de confidentialité<span class="gmb-visuellement-masque"> (nouvel onglet)</span></a>.</span></label><p class="gmb-champ__erreur" id="confidentialite-erreur" hidden></p></div><div class="gmb-champ"><label class="gmb-case"><input type="checkbox" id="marketing" name="marketing" aria-describedby="marketing-erreur"><span>J’accepte de recevoir les actualités de GerMoonBank par e-mail.</span></label><p class="gmb-champ__erreur" id="marketing-erreur" hidden></p></div>
+        </div>
+        <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Continuer</button></div>
+      </form>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="code" novalidate hidden>
+        <h2 class="gmb-section__titre gmb-section__titre--moyen">Confirmez votre adresse e-mail</h2>
+        <p>Nous avons envoyé un code à 6 chiffres à <strong data-email-code></strong>. Il est valable 10 minutes. Pensez à regarder aussi dans vos courriers indésirables.</p>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="code">Code reçu par e-mail</label><input class="gmb-saisie" id="code" name="code" type="text" autocomplete="one-time-code" required aria-describedby="code-erreur" inputmode="numeric" maxlength="6"><p class="gmb-champ__erreur" id="code-erreur" hidden></p></div><div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Valider le code</button></div>
+        <p><button type="button" class="gmb-bouton gmb-bouton--fantome" data-renvoyer-code>Recevoir un nouveau code</button></p>
+        <p class="gmb-champ__aide">Votre e-mail contient un lien plutôt qu’un code ? Ouvrez ce lien sur cet appareil : la suite se fait toute seule.</p>
+      </form>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>

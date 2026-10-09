@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sécurité — Back-office GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../css/pages/bo.css">
+  <script type="module" src="../js/components.js"></script>
+  <script type="module" src="../js/bo/bo.js"></script>
+</head>
+<body data-bo="securite">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <header class="bo-entete">
+    <a class="bo-entete__marque" href="index.html"><strong>GerMoonBank</strong> <span>Back-office</span></a>
+    <div class="bo-entete__utilisateur"><span data-bo-nom></span> <button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit" data-bo-deconnexion>Se déconnecter</button></div>
+  </header>
+  <div class="bo-corps">
+    <nav class="bo-nav" aria-label="Modules du back-office" data-bo-nav></nav>
+    <main id="contenu" class="bo-principal" tabindex="-1">
+      <div class="gmb-message-formulaire" data-message hidden></div>
+      <div class="gmb-pile gmb-pile--large" data-bo-contenu>
+        <p>Chargement…</p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

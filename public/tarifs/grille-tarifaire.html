@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Brochure tarifaire — GerMoonBank</title>
+  <meta name="description" content="Toutes les conditions et tous les frais de GerMoonBank : formules, frais hors formule, Livret, international, prêt personnel, Pro et Business.">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="canonical" href="https://germoonbank.github.io/GMB/public/tarifs/grille-tarifaire.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GerMoonBank">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Brochure tarifaire — GerMoonBank">
+  <meta property="og:description" content="Toutes les conditions et tous les frais de GerMoonBank : formules, frais hors formule, Livret, international, prêt personnel, Pro et Business.">
+  <meta property="og:url" content="https://germoonbank.github.io/GMB/public/tarifs/grille-tarifaire.html">
+  <meta property="og:image" content="https://germoonbank.github.io/GMB/assets/logo/gmb-partage.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="preload" href="../../assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <link rel="stylesheet" href="../../css/pages/product.css">
+  <link rel="stylesheet" href="../../css/pages/business.css">
+  <link rel="stylesheet" href="../../css/pages/legal.css">
+  <style>
+    .doc-actions { display: flex; flex-wrap: wrap; gap: var(--gmb-space-3); align-items: end; }
+    .doc-dit__groupe th { background-color: var(--gmb-surface-2); font-weight: var(--gmb-weight-bold); }
+    .doc-dit th[scope="row"] { width: 55%; }
+    .doc-dit td.gmb-nombre { text-align: start; white-space: normal; overflow-wrap: anywhere; }
+    @media print {
+      gm-header, gm-footer, .gmb-lien-evitement, .doc-actions, .gmb-fil-ariane { display: none !important; }
+      .gmb-page-heros { padding-block: 0 !important; background: none !important; }
+      .gmb-section { padding-block: 8pt !important; }
+      .gmb-tableau-zone { overflow: visible !important; }
+      .doc-section { break-inside: avoid-page; }
+      body { background: #fff !important; }
+    }
+  </style>
+  <script type="module" src="../../js/components.js"></script>
+  <script type="module" src="../../js/animations.js"></script>
+</head>
+<body>
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-header segment="particuliers"></gm-header>
+  <main id="contenu" class="gmb-principal" tabindex="-1">
+    <section class="gmb-page-heros" aria-labelledby="titre-page">
+      <div class="gmb-conteneur gmb-page-heros__texte">
+        <nav class="gmb-fil-ariane" aria-label="Fil d’Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="particuliers.html">Tarifs</a></li><li><span aria-current="page">Brochure tarifaire</span></li></ol></nav>
+        <h1 class="gmb-page-heros__titre" id="titre-page">Brochure tarifaire</h1>
+        <p class="gmb-page-heros__intro">Toutes les conditions et tous les frais de GerMoonBank, en vigueur au <span data-date-effet>26 septembre 2026</span>.</p>
+        <div class="doc-actions"><button type="button" class="gmb-bouton gmb-bouton--principal" data-imprimer>Imprimer ou enregistrer en PDF</button><a class="gmb-bouton gmb-bouton--secondaire" href="../legal/tarification.html">Document d’information tarifaire</a></div>
+      </div>
+    </section>
+    <section class="gmb-section" aria-label="Contenu de la brochure">
+      <div class="gmb-conteneur gmb-pile gmb-pile--large" data-document="brochure"><p>Chargement de la brochure…</p></div>
+    </section>
+  </main>
+  <gm-footer></gm-footer>
+</body>
+</html>

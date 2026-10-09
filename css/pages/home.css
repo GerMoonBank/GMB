@@ -1,0 +1,313 @@
+/* =============================================================================
+   GerMoonBank (GMB) · css/pages/home.css
+   Page d’accueil (VIT-01) — version 3
+   -----------------------------------------------------------------------------
+   Architecture des 372 fichiers. Reprend les styles de l’accueil, jusqu’ici écrits dans index.html.
+   Ordre des couches (css/variables.css) : tokens, reset, base, layout,
+   components, utilities, pages.
+   ========================================================================== */
+@layer pages {
+    /* ==========================================================================
+       Styles propres à la page d'accueil (VIT-01)
+       ======================================================================= */
+
+    /* 1. Bandeau principal ---------------------------------------------------- */
+    .accueil-heros {
+      position: relative;
+      isolation: isolate;
+      padding-block-end: 0;
+    }
+
+    .accueil-heros::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(1.5px 1.5px at 12% 22%, rgba(255, 255, 255, .55), transparent 60%),
+        radial-gradient(1px 1px at 28% 68%, rgba(255, 255, 255, .45), transparent 60%),
+        radial-gradient(1.5px 1.5px at 46% 14%, rgba(255, 255, 255, .5), transparent 60%),
+        radial-gradient(1px 1px at 62% 82%, rgba(255, 255, 255, .4), transparent 60%),
+        radial-gradient(1.5px 1.5px at 84% 30%, rgba(255, 255, 255, .5), transparent 60%),
+        radial-gradient(1px 1px at 92% 64%, rgba(255, 255, 255, .45), transparent 60%);
+      pointer-events: none;
+    }
+
+    .accueil-heros__grille {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      gap: var(--gmb-space-9);
+      padding-block-end: var(--gmb-space-9);
+    }
+
+    .accueil-heros__texte {
+      display: grid;
+      justify-items: start;
+      gap: var(--gmb-space-5);
+    }
+
+    .accueil-heros__titre {
+      max-width: 15ch;
+      font-size: var(--gmb-fs-5xl);
+      font-weight: var(--gmb-weight-extrabold);
+      line-height: 1.03;
+      letter-spacing: var(--gmb-tracking-display);
+      text-wrap: balance;
+    }
+
+    .accueil-heros__intro {
+      max-width: 34rem;
+      font-size: var(--gmb-fs-lg);
+      color: var(--gmb-text-muted);
+    }
+
+    .accueil-heros__visuel {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 34rem;
+    }
+
+    .accueil-heros__visuel .gmb-astre {
+      --gmb-astre-taille: min(30rem, 88vw);
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      z-index: -1;
+      translate: -32% -48%;
+    }
+
+    .accueil-heros__visuel .gmb-appareil {
+      --gmb-appareil-largeur: min(17.5rem, 76vw);
+    }
+
+    @media (min-width: 1024px) {
+      .accueil-heros__grille {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      }
+
+      .accueil-heros__visuel {
+        min-height: 40rem;
+      }
+    }
+
+    /* Écran du téléphone (aperçu de l'Espace client) */
+    .app {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      gap: 11px;
+      padding: 12px 15px 0;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    .app__haut { display: flex; align-items: center; gap: 8px; }
+    .app__haut .gmb-avatar { width: 30px; height: 30px; font-size: 10px; }
+    .app__salut small { display: block; font-size: 10px; color: var(--gmb-text-muted); }
+    .app__salut strong { font-size: 13px; }
+    .app__icones { display: flex; gap: 10px; margin-inline-start: auto; color: var(--gmb-text-muted); }
+    .app__solde-libelle { font-size: 10px; color: var(--gmb-text-muted); }
+    .app__solde { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; }
+    .app__comptes { display: flex; flex-wrap: wrap; gap: 6px; }
+    .app__comptes span { padding: 4px 9px; border-radius: 999px; background: var(--gmb-surface-2); font-size: 10px; font-weight: 700; }
+    .app__actions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; font-size: 10px; font-weight: 600; text-align: center; }
+    .app__action { display: grid; place-items: center; width: 38px; height: 38px; margin: 0 auto 4px; border-radius: 50%; background: var(--gmb-surface-2); }
+    .app__action--principale { background: var(--gmb-action); color: var(--gmb-on-action); }
+    .app__budget { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--gmb-border); border-radius: 14px; background: var(--gmb-surface-2); }
+    .app__budget small { display: block; font-size: 10px; color: var(--gmb-text-muted); }
+    .app__budget strong { font-size: 15px; }
+    .app__ops .gmb-operation { gap: 9px; padding-block: 5px; }
+    .app__ops .gmb-operation__icone { width: 30px; height: 30px; border-radius: 9px; }
+    .app__ops .gmb-operation__libelle { font-size: 12px; }
+    .app__ops .gmb-operation__detail { font-size: 10px; }
+    .app__ops .gmb-operation__montant { font-size: 12px; }
+    .app__onglets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-block-start: auto; padding: 8px 4px 14px; border-top: 1px solid var(--gmb-divider); font-size: 9px; font-weight: 600; text-align: center; color: var(--gmb-text-faint); }
+    .app__onglets span:first-child { color: var(--gmb-action); }
+    .app__onglets svg { display: block; margin: 0 auto 2px; }
+
+    /* 2. Bandeau de confiance -------------------------------------------------- */
+    .accueil-confiance {
+      border-block-start: var(--gmb-border-width) solid var(--gmb-divider);
+      background-color: rgba(7, 6, 26, 0.45);
+    }
+
+    .accueil-confiance__liste {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--gmb-space-5);
+      padding-block: var(--gmb-space-6);
+      list-style: none;
+    }
+
+    @media (min-width: 768px) {
+      .accueil-confiance__liste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1280px) {
+      .accueil-confiance__liste { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+      .accueil-confiance__liste > li + li { padding-inline-start: var(--gmb-space-6); border-inline-start: var(--gmb-border-width) solid var(--gmb-divider); }
+      .accueil-confiance__liste > li { padding-inline-end: var(--gmb-space-5); }
+    }
+
+    /* 3. Univers ---------------------------------------------------------------- */
+    .accueil-univers__entete {
+      display: grid;
+      gap: var(--gmb-space-4);
+      margin-block-end: var(--gmb-space-8);
+    }
+
+    @media (min-width: 1024px) {
+      .accueil-univers__entete { grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); align-items: end; }
+    }
+
+    .accueil-univers .gmb-carte { min-height: 15rem; }
+
+    .accueil-univers__vedette .gmb-carte-bancaire {
+      --gmb-carte-bancaire-largeur: 11rem;
+      position: absolute;
+      inset-inline-end: -1.25rem;
+      inset-block-end: -1.5rem;
+      rotate: -14deg;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .accueil-univers__vedette { padding-block-end: 6.5rem; overflow: hidden; }
+    .accueil-univers__vedette .gmb-carte__texte { max-width: 17rem; }
+
+    /* 4. Épargne et simulateur ------------------------------------------------ */
+    .accueil-epargne {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      overflow: hidden;
+      border: var(--gmb-border-width) solid var(--gmb-border);
+      border-radius: var(--gmb-radius-2xl);
+      background-color: var(--gmb-surface);
+      box-shadow: var(--gmb-shadow-sm);
+    }
+
+    @media (min-width: 1024px) {
+      .accueil-epargne { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .accueil-epargne__info,
+    .accueil-epargne__simulateur {
+      display: grid;
+      align-content: start;
+      gap: var(--gmb-space-5);
+      padding: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+    }
+
+    .accueil-epargne__info { background-color: var(--gmb-bg-alt); }
+    .accueil-epargne__simulateur { background: var(--gmb-gradient-night); }
+
+    .simulateur__ligne {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--gmb-space-2);
+    }
+
+    .simulateur__montant {
+      font-size: var(--gmb-fs-2xl);
+      font-weight: var(--gmb-weight-extrabold);
+    }
+
+    .simulateur__bornes {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--gmb-fs-2xs);
+      color: var(--gmb-text-muted);
+    }
+
+    @media (max-width: 479.98px) {
+      .accueil-epargne .gmb-segments { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); width: 100%; }
+      .accueil-epargne .gmb-segments__option > span { padding-inline: 2px; font-size: var(--gmb-fs-xs); }
+    }
+
+    .simulateur__resultats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gmb-space-4) var(--gmb-space-9);
+      margin: 0;
+      padding-block-start: var(--gmb-space-5);
+      border-block-start: var(--gmb-border-width) solid var(--gmb-divider);
+    }
+
+    .simulateur__resultats dt { font-size: var(--gmb-fs-sm); color: var(--gmb-text-muted); }
+    .simulateur__resultats dd { margin: 0; font-size: var(--gmb-fs-2xl); font-weight: var(--gmb-weight-extrabold); }
+    .simulateur__resultats .simulateur__annuel { color: var(--gmb-accent); }
+
+    /* 5. Sécurité --------------------------------------------------------------- */
+    .accueil-securite__illustration {
+      align-items: center;
+      gap: var(--gmb-space-5);
+      padding: var(--gmb-space-7) var(--gmb-space-5);
+      text-align: center;
+    }
+
+    .accueil-securite__illustration .gmb-touche { cursor: default; }
+
+    /* 6. Formules --------------------------------------------------------------- */
+    .accueil-formules__pied {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--gmb-space-3);
+      margin-block-start: var(--gmb-space-6);
+    }
+
+    /* 7. Application -------------------------------------------------------------- */
+    .accueil-application {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      gap: var(--gmb-space-7);
+      padding: clamp(1.75rem, 1rem + 3vw, 3.5rem);
+    }
+
+    @media (min-width: 1024px) {
+      .accueil-application { grid-template-columns: auto minmax(0, 1fr) auto; }
+    }
+
+    .accueil-application__icone {
+      width: clamp(5rem, 4rem + 4vw, 7.5rem);
+      filter: drop-shadow(0 18px 30px rgba(99, 91, 255, .45));
+    }
+
+    .accueil-application__qr {
+      display: grid;
+      justify-items: center;
+      gap: var(--gmb-space-2);
+      font-size: var(--gmb-fs-xs);
+      color: var(--gmb-text-muted);
+      text-align: center;
+    }
+
+    /* 10. Appel final ------------------------------------------------------------ */
+    .accueil-final {
+      position: relative;
+      isolation: isolate;
+      text-align: center;
+    }
+
+    .accueil-final .gmb-astre {
+      --gmb-astre-taille: 26rem;
+      inset-block-end: -19rem;
+      inset-inline-start: 50%;
+      z-index: -1;
+      translate: -50% 0;
+      opacity: 0.85;
+    }
+
+    .accueil-final__contenu {
+      display: grid;
+      justify-items: center;
+      gap: var(--gmb-space-5);
+      padding-block-end: var(--gmb-space-9);
+    }
+  
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Connexion — Back-office GerMoonBank</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F3F5FA">
+  <link rel="icon" href="../assets/logo/favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/logo/gmb-icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/pages/onboarding.css">
+  <link rel="stylesheet" href="../css/pages/bo.css">
+  <script type="module" src="../js/components.js"></script>
+  <script type="module" src="../js/bo/bo.js"></script>
+</head>
+<body data-bo="connexion">
+  <a class="gmb-lien-evitement" href="#contenu">Aller au contenu</a>
+  <gm-entete-souscription></gm-entete-souscription>
+  <main id="contenu" class="gmb-principal gmb-section" tabindex="-1">
+    <div class="gmb-conteneur gmb-conteneur--etroit gmb-pile gmb-pile--large">
+      <header class="gmb-pile gmb-pile--serree"><h1 class="gmb-section__titre" id="titre-page">Back-office</h1><p class="gmb-section__intro">Réservé aux collaborateurs GerMoonBank. Un code par e-mail est demandé à chaque connexion.</p></header>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="connexion" novalidate>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="email">Adresse e-mail professionnelle</label><input class="gmb-saisie" id="email" name="email" type="email" autocomplete="username"></div>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="mdp">Mot de passe</label><input class="gmb-saisie" id="mdp" name="mdp" type="password" autocomplete="current-password"></div>
+        <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Se connecter</button></div>
+      </form>
+      <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="code" novalidate hidden>
+        <p>Code envoyé à <strong data-email-code></strong>. Il est valable 10 minutes ; seul le dernier code reçu fonctionne.</p>
+        <div class="gmb-champ"><label class="gmb-champ__libelle" for="code">Code reçu par e-mail</label><input class="gmb-saisie" id="code" name="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code"></div>
+        <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Valider</button></div>
+        <p><button type="button" class="gmb-bouton gmb-bouton--fantome" data-renvoyer-code>Recevoir un nouveau code</button></p>
+        <p class="gmb-champ__aide">Votre e-mail contient un lien plutôt qu’un code ? Ouvrez ce lien sur cet appareil : la suite se fait toute seule.</p>
+      </form>
+      <div class="gmb-message-formulaire" data-message hidden></div>
+    </div>
+  </main>
+  <gm-pied-souscription></gm-pied-souscription>
+</body>
+</html>
