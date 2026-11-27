@@ -691,3 +691,49 @@
     navigation: auto;
   }
 }
+
+/* =============================================================================
+   ÉCRAN DE CHARGEMENT (js/chargement.js)
+   Le logo s'affiche et sa lune se remplit tant que la page n'est pas prête.
+   Invisible pendant les 200 premières millisecondes (une page rapide s'affiche
+   directement) ; retiré par js/chargement.js (classes « gmb-sortie » puis
+   « gmb-pret » sur <html>), ou de lui-même après 8 secondes.
+   ========================================================================== */
+@layer base {
+  html:not(.gmb-pret) body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    background: var(--ec-fond, var(--gmb-bg, #F3F5FA)) url("../assets/logo/gmb-chargement-logo.svg") center / min(17rem, 68vw) auto no-repeat;
+    animation: gmb-ecran-entree 0.25s ease-out 0.2s both, gmb-ecran-secours 0.3s ease-in 8s forwards;
+  }
+
+  /* Fond sombre : écrans de connexion et Espace client en apparence Nuit */
+  html[data-theme="sombre"]:not(.gmb-pret) body::before,
+  html:not([data-apparence="claire"]):not(.gmb-pret) body.app-corps:not([data-app^="dossier"])::before {
+    background-color: var(--ec-fond, var(--gmb-bg, #07061A));
+    background-image: url("../assets/logo/gmb-chargement-logo-sombre.svg");
+  }
+
+  html.gmb-sortie:not(.gmb-pret) body::before {
+    animation: gmb-ecran-sortie 0.32s ease-in forwards;
+  }
+
+  @keyframes gmb-ecran-entree { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes gmb-ecran-sortie { from { opacity: 1; } to { opacity: 0; } }
+  @keyframes gmb-ecran-secours { to { opacity: 0; visibility: hidden; } }
+
+  /* Animations réduites : logo fixe */
+  @media (prefers-reduced-motion: reduce) {
+    html:not(.gmb-pret) body::before { background-image: url("../assets/logo/gmb-logo.svg"); }
+    html[data-theme="sombre"]:not(.gmb-pret) body::before,
+    html:not([data-apparence="claire"]):not(.gmb-pret) body.app-corps:not([data-app^="dossier"])::before {
+      background-image: url("../assets/logo/gmb-logo-sombre.svg");
+    }
+  }
+
+  @media print {
+    html:not(.gmb-pret) body::before { content: none; }
+  }
+}

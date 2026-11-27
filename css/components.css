@@ -1776,4 +1776,23 @@
   .gmb-tableau tbody th, .gmb-tableau td { padding: var(--gmb-space-3) var(--gmb-space-4); text-align: start; border-block-end: var(--gmb-border-width) solid var(--gmb-border); vertical-align: middle; }
   .gmb-tableau tbody tr:last-child :is(th, td) { border-block-end: 0; }
   .gmb-mention-obligatoire { margin: 0; padding: var(--gmb-space-3) var(--gmb-space-4); font-size: var(--gmb-fs-sm); background-color: var(--gmb-surface-2); border-inline-start: 3px solid var(--gmb-violet-500); border-radius: var(--gmb-radius-md); }
+
+  /* Chargement d'un bloc : l'icône du logo, dont la lune se remplit, remplace « Chargement… »
+     (le texte reste lu par les lecteurs d'écran) */
+  .gmb-lune-chargement {
+    display: grid;
+    place-items: center;
+    min-block-size: 6rem;
+    margin: 0;
+    padding-block: var(--gmb-space-5);
+  }
+  .gmb-lune-chargement__icone {
+    display: block;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    background: url("../assets/logo/gmb-chargement.svg") center / contain no-repeat;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gmb-lune-chargement__icone { background-image: url("../assets/logo/gmb-icone.svg"); }
+  }
 }

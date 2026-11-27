@@ -23,6 +23,7 @@ import { chemin, formaterMontant, formaterDate, echapperHtml, icone, logoSVG } f
 import { client, session, espaceDe, contexte, lire, appeler, messageErreur, ErreurGmb, oublierContexte } from '../donnees.js';
 import { occupe, afficherMessage, erreurChamp } from '../forms.js';
 import { Clavier } from '../auth.js';
+import { pagePrete, pagePreteAuPlusTard } from '../chargement.js';
 
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -515,13 +516,18 @@ export async function ouvrirEspace(rubrique) {
   return ctx;
 }
 
-/** Démarre le contrôleur de la page, d'après data-app. */
+/** Démarre le contrôleur de la page, d'après data-app. L'écran de chargement
+ *  (logo dont la lune se remplit) reste affiché jusqu'à ce que la page soit
+ *  remplie, 2,5 secondes au plus : les blocs encore en attente montrent ensuite
+ *  leur propre lune. */
 export function demarrerPage(controleurs) {
   document.addEventListener('submit', (x) => x.preventDefault());
+  pagePreteAuPlusTard(2500);
   const lancer = async () => {
     const c = controleurs[document.body.dataset.app];
-    if (!c) return;
+    if (!c) { pagePrete(); return; }
     try { await c(); } catch (x) { if (!/Session absente/.test(x?.message)) message(messageErreur(x)); }
+    finally { pagePrete(); }
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', lancer, { once: true }); else lancer();
 }

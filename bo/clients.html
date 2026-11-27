@@ -30,13 +30,13 @@
       <div class="gmb-message-formulaire" data-message hidden></div>
       <div class="gmb-pile gmb-pile--large" data-bo-contenu>
         <h1 class="gmb-section__titre" id="titre-page">Clients</h1>
-        <section data-section-globale class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-commandes-cartes"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-commandes-cartes">Commandes de cartes</h2><p>Transmettez chaque commande à l’émetteur des cartes, puis enregistrez la carte émise : 4 derniers chiffres et date d’expiration, jamais le numéro complet. Une carte physique est activée par le client à réception.</p><div data-commandes-cartes><p>Chargement…</p></div></section>
-        <section data-section-globale class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-clotures"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-clotures">Demandes de fermeture</h2><p>Restituez d’abord le solde par virement sur l’IBAN indiqué, puis indiquez la clôture : elle est refusée tant qu’un solde reste sur les comptes.</p><div data-clotures><p>Chargement…</p></div></section>
+        <section data-section-globale class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-commandes-cartes"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-commandes-cartes">Commandes de cartes</h2><p>Transmettez chaque commande à l’émetteur des cartes, puis enregistrez la carte émise : 4 derniers chiffres et date d’expiration, jamais le numéro complet. Une carte physique est activée par le client à réception.</p><div data-commandes-cartes><p class="gmb-lune-chargement" role="status"><span class="gmb-lune-chargement__icone" aria-hidden="true"></span><span class="gmb-visuellement-masque">Chargement…</span></p></div></section>
+        <section data-section-globale class="gmb-pile gmb-pile--moyenne" aria-labelledby="t-clotures"><h2 class="gmb-section__titre gmb-section__titre--moyen" id="t-clotures">Demandes de fermeture</h2><p>Restituez d’abord le solde par virement sur l’IBAN indiqué, puis indiquez la clôture : elle est refusée tant qu’un solde reste sur les comptes.</p><div data-clotures><p class="gmb-lune-chargement" role="status"><span class="gmb-lune-chargement__icone" aria-hidden="true"></span><span class="gmb-visuellement-masque">Chargement…</span></p></div></section>
         <form class="gmb-carte bo-filtres" data-form="recherche" novalidate role="search">
           <div class="gmb-champ"><label class="gmb-champ__libelle" for="texte">Identifiant ou nom</label><input class="gmb-saisie" id="texte" name="texte" type="search"></div>
           <div class="gmb-rangee"><button type="submit" class="gmb-bouton gmb-bouton--principal">Rechercher</button></div>
         </form>
-        <div class="gmb-pile gmb-pile--large" data-liste><p>Chargement…</p></div>
+        <div class="gmb-pile gmb-pile--large" data-liste><p class="gmb-lune-chargement" role="status"><span class="gmb-lune-chargement__icone" aria-hidden="true"></span><span class="gmb-visuellement-masque">Chargement…</span></p></div>
       </div>
     </main>
   </div>

@@ -8,6 +8,7 @@ import { $, $$, e, date, parametre, message, executer, tableau, badge, demander 
 import { chemin, formaterMontant, icone, logoSVG } from '../core.js';
 import { client, session, espaceDe, lire, appeler, inserer, deposerFichier, messageErreur, ErreurGmb, oublierContexte } from '../donnees.js';
 import { controlerFichier, justificatifTropAncien, empreinteFichier, erreurChamp, copier } from '../forms.js';
+import { pagePrete, pagePreteAuPlusTard } from '../chargement.js';
 
 const ETATS = { brouillon: 'À terminer', depose: 'Déposée', en_verification: 'En vérification', incomplet: 'À compléter', analyse_conformite: 'En vérification complémentaire', valide: 'Validée', compte_ouvert: 'Compte ouvert',
   refuse: 'Refusée', abandonne: 'Abandonnée', archive: 'Archivée', demande_deposee: 'Déposée', analyse: 'En analyse', offre_emise: 'Offre à accepter', delai_legal: 'Offre acceptée', acceptee: 'Acceptée', fonds_debloques: 'Fonds versés', renonciation: 'Rétractation' };
@@ -236,8 +237,10 @@ async function identifiant() {
 
 document.addEventListener('submit', (x) => x.preventDefault());
 const CONTROLEURS = { 'dossier-suivi': suivi, 'dossier-documents': documents, 'dossier-echanges': echanges, 'dossier-signatures': signatures, 'dossier-identifiant': identifiant };
+pagePreteAuPlusTard(2500);
 (async () => {
   const c = CONTROLEURS[document.body.dataset.app];
-  if (!c) return;
+  if (!c) { pagePrete(); return; }
   try { await c(); } catch (x) { if (!/Session absente/.test(x?.message)) message(messageErreur(x)); }
+  finally { pagePrete(); }
 })();

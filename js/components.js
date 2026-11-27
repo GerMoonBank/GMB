@@ -18,6 +18,7 @@ import {
   prixAnnuel, stockage,
   initialiserTheme,
 } from './core.js';
+import { pagePrete } from './chargement.js';
 import {
   ACCES, CLE_BANNIERE_APP, ECRAN_BUREAU, LIENS_SECONDAIRES, LIENS_SIMPLES, NAVIGATION,
   NIVEAUX_BANDEAU,
@@ -1139,3 +1140,10 @@ class GmPiedSouscription extends HTMLElement {
 }
 if (!customElements.get('gm-entete-souscription')) customElements.define('gm-entete-souscription', GmEnteteSouscription);
 if (!customElements.get('gm-pied-souscription')) customElements.define('gm-pied-souscription', GmPiedSouscription);
+
+/* -----------------------------------------------------------------------------
+   Écran de chargement (js/chargement.js) : la page est prête quand les composants
+   sont posés et les polices chargées (1,5 seconde au plus pour les polices).
+   -------------------------------------------------------------------------- */
+Promise.race([document.fonts?.ready, new Promise((r) => { setTimeout(r, 1500); })])
+  .finally(() => requestAnimationFrame(() => pagePrete()));
