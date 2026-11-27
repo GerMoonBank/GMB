@@ -481,7 +481,7 @@ class GmFooter extends HTMLElement {
     <div class="gmb-pied__haut">
       <div>
         <a class="gmb-pied__logo" href="${chemin('')}" aria-label="GerMoonBank, accueil">${logoSVG({ decoratif: true })}</a>
-        <p class="gmb-pied__accroche">La banque qui veille sur votre argent, jour et nuit.</p>
+        <p class="gmb-pied__accroche">GerMoonBank, la banque des Élus Moon.</p>
       </div>
       <p class="gmb-pied__applis">${icone('smartphone')}<span>Application web : depuis votre navigateur, ajoutez GerMoonBank à l’écran d’accueil de votre téléphone.</span></p>
     </div>
