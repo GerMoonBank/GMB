@@ -716,6 +716,12 @@
     background-image: url("../assets/logo/gmb-chargement-logo-sombre.svg");
   }
 
+  /* Version anglaise : l'écran couvre la page dès le premier affichage, jusqu'à la fin
+     de la traduction (pas d'éclair de français) */
+  html.gmb-en:not(.gmb-sortie):not(.gmb-pret) body::before {
+    animation: gmb-ecran-secours 0.3s ease-in 8s forwards;
+  }
+
   html.gmb-sortie:not(.gmb-pret) body::before {
     animation: gmb-ecran-sortie 0.32s ease-in forwards;
   }

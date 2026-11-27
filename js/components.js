@@ -9,6 +9,7 @@
    ========================================================================== */
 
 import {
+  LANGUE,
   CALENDRIER, COMPARATIF, CONFIG, CREDIT, DATE_EFFET, FACTURATION,
   FORMULES, FORMULES_PRO, FRAIS_HORS_FORMULE, INTERNATIONAL, JEUNES, LIVRET,
   MENTIONS, OPERATION_SUPPLEMENTAIRE_HT, bloquerDefilement, chemin, consentement, coutCredit,
@@ -19,6 +20,7 @@ import {
   initialiserTheme,
 } from './core.js';
 import { pagePrete } from './chargement.js';
+import { choisirLangue, traduirePage } from './langue.js';
 import {
   ACCES, CLE_BANNIERE_APP, ECRAN_BUREAU, LIENS_SECONDAIRES, LIENS_SIMPLES, NAVIGATION,
   NIVEAUX_BANDEAU,
@@ -507,8 +509,8 @@ class GmFooter extends HTMLElement {
         <li><button type="button" class="gmb-lien-bouton gmb-pied__cookies" data-action="reglages-cookies">Gérer les cookies</button></li>
       </ul>
       <div class="gmb-pied__langues" role="group" aria-label="Langue du site">
-        <a class="gmb-pied__langue" href="#" lang="fr" aria-current="true" data-langue="fr">Français</a>
-        <a class="gmb-pied__langue" href="#" lang="en" hreflang="en" data-langue="en">English</a>
+        <a class="gmb-pied__langue" href="#" lang="fr" translate="no" data-langue="fr"${LANGUE === 'fr' ? ' aria-current="true"' : ''}>Français</a>
+        <a class="gmb-pied__langue" href="#" lang="en" hreflang="en" translate="no" data-langue="en"${LANGUE === 'en' ? ' aria-current="true"' : ''}>English</a>
       </div>
       ${reseaux.length ? `<div class="gmb-pied__reseaux">${reseaux.map(([nom, url]) => `<a href="${url}" rel="noopener" aria-label="GerMoonBank sur ${nom}">${icone('globe')}</a>`).join('')}</div>` : ''}
       <p>© ${annee} GerMoonBank</p>
@@ -564,9 +566,7 @@ class GmFooter extends HTMLElement {
 
       if (cible.dataset.langue) {
         evenement.preventDefault();
-        if (cible.dataset.langue === 'en') {
-          notifier('This page is not available in English yet. You are viewing the French version.', { type: 'info' });
-        }
+        if (cible.dataset.langue !== LANGUE) choisirLangue(cible.dataset.langue);
         return;
       }
 
@@ -991,7 +991,7 @@ function brochure() {
     <p>Montant de ${prix(CREDIT.montantMin, { decimales: 0 })} à ${prix(CREDIT.montantMax, { decimales: 0 })}, sur ${CREDIT.dureeMin} à ${CREDIT.dureeMax} mois. Frais de dossier : 0 €. Assurance emprunteur facultative.</p>
     <p class="gmb-mention-obligatoire">${e(MENTIONS.credit)}</p>`, 'b-credit'));
   parties.push(section('Formules Pro et Business', `${tableau('Prix hors taxes', ['Formule', 'Par mois HT', 'Utilisateurs', 'Opérations incluses'],
-    FORMULES_PRO.map((f) => [f.nom, prix(f.prixHT), e(f.utilisateursLibelle), e(new Intl.NumberFormat('fr-FR').format(f.operationsIncluses))]))}
+    FORMULES_PRO.map((f) => [f.nom, prix(f.prixHT), e(f.utilisateursLibelle), e(new Intl.NumberFormat(CONFIG.locale).format(f.operationsIncluses))]))}
     <p>Opération SEPA au-delà des opérations incluses : ${prix(OPERATION_SUPPLEMENTAIRE_HT)} HT.</p>`, 'b-pro'));
   return parties.join('');
 }
@@ -1135,7 +1135,14 @@ class GmPiedSouscription extends HTMLElement {
     this.innerHTML = `<footer class="gmb-pied-tunnel"><div class="gmb-conteneur gmb-pile gmb-pile--serree">
       <p>GerMoonBank est édité par The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin. Vos données sont hébergées dans l’Union européenne.</p>
       <p><a href="${chemin('public/legal/cgu.html')}">Conditions générales</a> · <a href="${chemin('public/legal/rgpd.html')}">Confidentialité</a> · <a href="${chemin('public/legal/mentions-legales.html')}">Mentions légales</a></p>
+      <p class="gmb-pied-tunnel__langues" translate="no"><a href="#" lang="fr" data-langue="fr"${LANGUE === 'fr' ? ' aria-current="true"' : ''}>Français</a> · <a href="#" lang="en" hreflang="en" data-langue="en"${LANGUE === 'en' ? ' aria-current="true"' : ''}>English</a></p>
     </div></footer>`;
+    this.addEventListener('click', (evenement) => {
+      const lien = evenement.target.closest('[data-langue]');
+      if (!lien) return;
+      evenement.preventDefault();
+      if (lien.dataset.langue !== LANGUE) choisirLangue(lien.dataset.langue);
+    });
   }
 }
 if (!customElements.get('gm-entete-souscription')) customElements.define('gm-entete-souscription', GmEnteteSouscription);
@@ -1145,5 +1152,7 @@ if (!customElements.get('gm-pied-souscription')) customElements.define('gm-pied-
    Écran de chargement (js/chargement.js) : la page est prête quand les composants
    sont posés et les polices chargées (1,5 seconde au plus pour les polices).
    -------------------------------------------------------------------------- */
-Promise.race([document.fonts?.ready, new Promise((r) => { setTimeout(r, 1500); })])
-  .finally(() => requestAnimationFrame(() => pagePrete()));
+Promise.all([
+  Promise.race([document.fonts?.ready, new Promise((r) => { setTimeout(r, 1500); })]),
+  traduirePage().catch(() => {}),
+]).finally(() => requestAnimationFrame(() => pagePrete()));

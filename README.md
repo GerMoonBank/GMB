@@ -32,6 +32,7 @@ back-office et la base de données. La liste complète, fichier par fichier, est
 | `js/` | Modules : `core.js`, `donnees.js`, `nav.js`, `components.js`, `forms.js`, `charts.js`, `animations.js`… |
 | `data/` | Catalogue (`products.json`, `rates.json`), questions, équipe, glossaire |
 | `assets/` | Logos, icônes, polices |
+| `i18n/en/` | Version anglaise : traductions par rubrique, appliquées par `js/langue.js` |
 | `docs/` | Architecture, design system, charte éditoriale, sécurité |
 | `supabase/` | Base de données (installation, mise à niveau, tâches), fonction serveur, module d’installation |
 
@@ -63,6 +64,10 @@ Le détail, pas à pas, est dans [`docs/INSTALLATION.md`](docs/INSTALLATION.md) 
   aussi par `js/donnees.js`. Voir `docs/SECURITE.md`.
 - Les prix, taux et frais viennent uniquement de `data/products.json` et `data/rates.json`.
 - Écriture : `docs/CHARTE-EDITORIALE.md`. Visuel : `docs/DESIGN-SYSTEM.md`.
+- Langues : le site est écrit en français ; le bouton « English » du pied de page (ou Paramètres ›
+  Langue dans l’Espace client) affiche toutes les pages en anglais. Un texte ajouté ou modifié
+  doit recevoir sa traduction dans `i18n/en/` ; en anglais, `gmbTextesManquants()` dans la
+  console liste les textes restés en français.
 
 ## Avancement
 

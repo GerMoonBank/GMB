@@ -3,13 +3,15 @@
    Profil, coordonnées (code secret), mot de passe, changement du code secret,
    sécurité et connexions, appareils, notifications, apparence, fermeture.
    ========================================================================== */
+import { CONFIG, LANGUE } from '../core.js';
+import { choisirLangue } from '../langue.js';
 import { ouvrirEspace, demarrerPage, $, e, date, badge, tableau, demander, executer, message, authentifier, refusSca, appliquerApparence } from './app.js';
 import { lire, appeler, ErreurGmb } from '../donnees.js';
 
 const CIVILITES = { madame: 'Madame', monsieur: 'Monsieur' };
 const MOTIFS = [['ne_convient_plus', 'Le service ne me convient plus'], ['frais', 'Les frais'], ['autre_banque', 'Je regroupe mes comptes dans une autre banque'], ['demenagement_etranger', 'Je m’installe à l’étranger'], ['autre', 'Autre raison']];
 const RESULTATS = { succes: ['Réussie', 'succes'], echec_code: ['Code erroné', 'danger'], bloque: ['Accès bloqué', 'danger'], bloque_definitif: ['Accès bloqué', 'danger'], sca_refusee: ['Validation refusée', 'danger'], grille_expiree: ['Clavier expiré', 'neutre'] };
-const heure = (d) => new Date(d).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+const heure = (d) => new Date(d).toLocaleTimeString(CONFIG.locale, { hour: '2-digit', minute: '2-digit' });
 
 const NOMS_FORMULES = { luna: 'Luna', halo: 'Halo', orbit: 'Orbit', eclipse: 'Éclipse', zenith: 'Zénith', pro_solo: 'Pro Solo', pro_plus: 'Pro Plus', business_start: 'Business Start', business_growth: 'Business Growth', business_scale: 'Business Scale' };
 async function moi(ctx) { return lire('clients', { colonnes: 'id, identifiant, segment, formule_code, ouvert_le, personne_id, theme, langue, preferences', egal: { id: ctx.client.id }, unique: true }); }
@@ -114,6 +116,16 @@ async function apparence() {
     appliquerApparence(theme === 'systeme' ? '' : theme);
     await appeler('gmb_preferences', { p_theme: theme });
   }, 'Apparence enregistrée.'));
+  // Langue : enregistrée sur le compte, puis appliquée sur cet appareil (la page se recharge)
+  const formLangue = $('[data-form="langue"]');
+  if (formLangue) {
+    formLangue.elements.langue.value = LANGUE;
+    formLangue.addEventListener('change', () => executer(formLangue.querySelector('fieldset'), async () => {
+      const code = formLangue.elements.langue.value;
+      await appeler('gmb_preferences', { p_langue: code }).catch(() => { /* la langue reste au moins appliquée sur cet appareil */ });
+      choisirLangue(code);
+    }));
+  }
 }
 
 async function fermeture() {

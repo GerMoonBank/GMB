@@ -5,7 +5,7 @@
 import { ouvrirEspace, demarrerPage, $, $$, e, date, page, parametre, montant, tableau, executer, message, iconeEc, pastille, aspectCompte,
   TYPES_COMPTE, CATEGORIES, LIBELLES_CATEGORIE, LIBELLES_TYPE_OPERATION, ligneOperation, operationsParJour, numeroLisible, ficheOperation, trierComptes } from './app.js';
 import { lire, ErreurGmb } from '../donnees.js';
-import { chemin, formaterMontant } from '../core.js';
+import { CONFIG, chemin, formaterMontant } from '../core.js';
 
 const STATUTS_OPERATION_CSV = { comptabilisee: 'Effectuée', en_attente: 'En attente', refusee: 'Refusée', annulee: 'Annulée' };
 
@@ -71,7 +71,7 @@ async function historique() {
     const k = comptes.find((y) => y.id === compteId);
     const lignes = [['Date', 'Heure', 'Libellé', 'Type', 'Contrepartie', 'IBAN de la contrepartie', 'Motif', 'Catégorie', 'Montant (EUR)', 'Statut', 'Référence']]
       .concat(visibles.map((o) => { const d = new Date(o.date_operation || o.created_at);
-        return [d.toLocaleDateString('fr-FR'), d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }), o.libelle, LIBELLES_TYPE_OPERATION[o.type] || o.type, o.contrepartie_nom || '', o.contrepartie_iban || '',
+        return [d.toLocaleDateString(CONFIG.locale), d.toLocaleTimeString(CONFIG.locale, { hour: '2-digit', minute: '2-digit' }), o.libelle, LIBELLES_TYPE_OPERATION[o.type] || o.type, o.contrepartie_nom || '', o.contrepartie_iban || '',
           o.motif || '', LIBELLES_CATEGORIE[o.categorie_code] || '', String(o.montant).replace('.', ','), STATUTS_OPERATION_CSV[o.statut] || o.statut, o.reference || '']; }));
     const csv = '\ufeff' + lignes.map((l) => l.map((c) => `"${String(c ?? '').replace(/"/g, '""')}"`).join(';')).join('\r\n');
     const lien = document.createElement('a');
@@ -91,11 +91,11 @@ async function historique() {
    s'enregistre en PDF depuis le navigateur.
    ========================================================================== */
 const NOMS_FORMULES = { luna: 'Luna', halo: 'Halo', orbit: 'Orbit', eclipse: 'Éclipse', zenith: 'Zénith', pro_solo: 'Pro Solo', pro_plus: 'Pro Plus', business_start: 'Business Start', business_growth: 'Business Growth', business_scale: 'Business Scale' };
-const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+const MOIS = Array.from({ length: 12 }, (_, i) => new Intl.DateTimeFormat(CONFIG.locale, { month: 'long' }).format(new Date(2026, i, 15)));
 const PIED_DOCUMENT = 'GerMoonBank, édité par The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin.';
 const eur = (n) => formaterMontant(Number(n || 0));
 function documentImprimable(titre, corps) {
-  return `<article class="app-document" data-document aria-label="${e(titre)}"><header class="app-document__entete"><p><strong>GerMoonBank</strong></p><h2>${e(titre)}</h2><p>Édité le ${e(new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }))}</p></header>
+  return `<article class="app-document" data-document aria-label="${e(titre)}"><header class="app-document__entete"><p><strong>GerMoonBank</strong></p><h2>${e(titre)}</h2><p>Édité le ${e(new Date().toLocaleDateString(CONFIG.locale, { day: 'numeric', month: 'long', year: 'numeric' }))}</p></header>
     ${corps}<footer class="app-document__pied"><p>${e(PIED_DOCUMENT)}</p></footer></article>
     <p class="app-document__actions"><button type="button" class="gmb-bouton gmb-bouton--principal" data-imprimer>Imprimer ou enregistrer en PDF</button></p>`;
 }
@@ -146,7 +146,7 @@ async function attestations() {
       const zone = $('[data-document-zone]');
       zone.innerHTML = documentImprimable(avecSolde ? 'Attestation de solde' : 'Attestation de titularité de compte', `<p>GerMoonBank atteste que ${e(ctx.nom)} est titulaire, depuis le ${date(k.ouvert_le, 'long')}, du compte suivant :</p>
         <dl class="app-recap"><div><dt>Compte</dt><dd>${e(k.libelle || TYPES_COMPTE[k.type])}</dd></div><div><dt>Numéro de compte</dt><dd>${e(numeroLisible(k.numero))}</dd></div>${k.iban ? `<div><dt>IBAN</dt><dd>${e(numeroLisible(k.iban))}</dd></div>${k.bic ? `<div><dt>BIC</dt><dd>${e(k.bic)}</dd></div>` : ''}` : ''}<div><dt>Statut</dt><dd>Actif</dd></div>
-        ${avecSolde ? `<div><dt>Solde au ${e(new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }))}</dt><dd><strong>${e(eur(k.solde))}</strong></dd></div>` : ''}</dl>`);
+        ${avecSolde ? `<div><dt>Solde au ${e(new Date().toLocaleDateString(CONFIG.locale, { day: 'numeric', month: 'long', year: 'numeric' }))}</dt><dd><strong>${e(eur(k.solde))}</strong></dd></div>` : ''}</dl>`);
       brancherImpression(zone);
     });
   });

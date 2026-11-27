@@ -9,7 +9,7 @@
    elle-même le droit du collaborateur : l'interface ne fait que refléter ces droits.
    ========================================================================== */
 
-import { chemin, formaterMontant, formaterDate, formaterIban, echapperHtml, icone, logoSVG } from '../core.js';
+import { CONFIG, chemin, formaterMontant, formaterDate, formaterIban, echapperHtml, icone, logoSVG } from '../core.js';
 import {
   client, session, espaceDe, contexte, lire, appeler, etatFonction, lienTemporaire, messageErreur, ErreurGmb, oublierContexte,
   ARRIVEE_PAR_LIEN, VERSION_BASE, limiteEmail, attenteEmail, brancherRenvoi, messageDejaParti,
@@ -1056,7 +1056,7 @@ async function pageReclamations() {
     const rdv = [...rc.map((r) => ({ ...r, source: 'client', qui: `<a href="${page('clients', `?id=${r.client_id}`)}">${e(identR[r.client_id] || '—')}</a>` })),
       ...rd.map((r) => ({ ...r, source: 'dossier', motif: 'Finaliser la demande', qui: `<a href="${page('dossier', `?id=${r.dossier_id}`)}">${e(refs[r.dossier_id] || '—')}</a>` }))].sort((a, b) => String(a.debut).localeCompare(String(b.debut)));
     const bouton = (r, statut, libelle, style) => `<button type="button" class="gmb-bouton gmb-bouton--${style} gmb-bouton--petit" data-rdv-id="${r.id}" data-source="${r.source}" data-rdv-statut="${statut}">${libelle}</button>`;
-    zoneRdv.innerHTML = tableau('Rendez-vous', ['Date', 'Demandeur', 'Canal', 'Objet', 'Statut', 'Actions'], rdv.map((r) => [`${date(r.debut)} à ${new Date(r.debut).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' })}`,
+    zoneRdv.innerHTML = tableau('Rendez-vous', ['Date', 'Demandeur', 'Canal', 'Objet', 'Statut', 'Actions'], rdv.map((r) => [`${date(r.debut)} à ${new Date(r.debut).toLocaleTimeString(CONFIG.locale, { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' })}`,
       r.qui, e(r.canal === 'video' ? 'Vidéo' : 'Téléphone'), e(r.motif || ''), badge(r.statut === 'confirme' ? 'Confirmé' : 'Demandé', r.statut === 'confirme' ? 'succes' : 'neutre'),
       ecrit ? `${r.statut === 'demande' ? bouton(r, 'confirme', 'Confirmer', 'secondaire') : bouton(r, 'termine', 'Terminé', 'secondaire')} ${bouton(r, 'annule', 'Annuler', 'fantome')}` : '—']), 'Aucun rendez-vous à traiter.');
   };

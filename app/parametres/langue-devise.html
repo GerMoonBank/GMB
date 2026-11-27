@@ -2,6 +2,7 @@
 <html lang="fr" data-theme="clair">
 <head>
   <meta charset="utf-8">
+  <script>/* Langue choisie (bouton « English »), appliquée avant l’affichage */try{if(localStorage.getItem('gmb-langue')==='en'){document.documentElement.lang='en';document.documentElement.classList.add('gmb-en')}}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Apparence, langue et devise — Espace client GerMoonBank</title>
   <meta name="robots" content="noindex, nofollow">
@@ -41,8 +42,14 @@
             <label class="gmb-choix"><input type="radio" name="theme" value="clair"><span>Claire</span></label>
             <label class="gmb-choix"><input type="radio" name="theme" value="systeme"><span>Comme mon appareil</span></label></fieldset>
         </form>
-        <div class="gmb-carte gmb-pile gmb-pile--serree"><dl class="app-recap"><div><dt>Langue</dt><dd>Français</dd></div><div><dt>Devise</dt><dd>Euro (€)</dd></div></dl>
-          <p class="gmb-champ__aide">GerMoonBank est disponible en français, et tous les comptes sont tenus en euros.</p></div>
+        <form class="gmb-carte gmb-pile gmb-pile--moyenne" data-form="langue" novalidate>
+          <fieldset class="gmb-pile gmb-pile--serree"><legend class="gmb-champ__libelle">Langue</legend>
+            <label class="gmb-choix"><input type="radio" name="langue" value="fr"><span lang="fr" translate="no">Français</span></label>
+            <label class="gmb-choix"><input type="radio" name="langue" value="en"><span lang="en" translate="no">English</span></label></fieldset>
+          <p class="gmb-champ__aide">La langue choisie s’applique à l’Espace client et au site.</p>
+        </form>
+        <div class="gmb-carte gmb-pile gmb-pile--serree"><dl class="app-recap"><div><dt>Devise</dt><dd>Euro (€)</dd></div></dl>
+          <p class="gmb-champ__aide">Tous les comptes sont tenus en euros.</p></div>
       </div>
     </main>
   </div>

@@ -8,13 +8,13 @@
 import { ouvrirEspace, demarrerPage, $, e, date, page, montant, executer, demander, message, iconeEc, pastille, ligneOperation, ficheOperation,
   aspectOperation, trierComptes, STATUTS_VIREMENT, TYPES_COMPTE, LIBELLES_CATEGORIE, LIBELLES_TYPE_OPERATION } from './app.js';
 import { lire, appeler, inserer, modifier } from '../donnees.js';
-import { formaterMontant } from '../core.js';
+import { CONFIG, formaterMontant } from '../core.js';
 
 /* Actions rapides : la première, « Ajouter » (recevoir de l'argent), porte la couleur d'action */
 const ACTIONS = [['ajouter', 'Ajouter', 'comptes/rib.html'], ['virement', 'Virer', 'comptes/virements.html'], ['carte', 'Cartes', 'cartes/index.html'], ['epargne', 'Épargner', 'epargne/index.html']];
 /* Mouvements entre vos propres comptes : ni dépense ni revenu */
 const HORS_BUDGET = new Set(['interne', 'arrondi']);
-const NOM_MOIS = new Intl.DateTimeFormat('fr-FR', { month: 'long' });
+const NOM_MOIS = new Intl.DateTimeFormat(CONFIG.locale, { month: 'long' });
 const NOMS_COURTS = { courant: 'Courant', livret: 'Livret', coffre: 'Coffre', devise: 'Devise', crypto: 'Crypto', titres: 'Titres', jeune: 'Jeunes', pro: 'Pro', business: 'Business' };
 
 const nomCourt = (k) => (k.libelle && k.libelle.length <= 18 ? k.libelle : NOMS_COURTS[k.type] || TYPES_COMPTE[k.type] || 'Compte');

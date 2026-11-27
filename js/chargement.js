@@ -37,11 +37,14 @@ export function pagePrete() {
   const racine = document.documentElement;
   const ecoule = performance.now();
   const premiere = premierePage();
-  if (ecoule < APPARITION_MS) {
+  const visibleDesLeDebut = racine.classList.contains('gmb-en'); // version anglaise : écran affiché d'emblée
+  if (ecoule < APPARITION_MS && !visibleDesLeDebut) {
     racine.classList.add('gmb-pret');
     return;
   }
-  const fin = Math.max(APPARITION_MS + ENTREE_MS, premiere ? APPARITION_MS + PREMIERE_VISITE_MS : 0);
+  const fin = visibleDesLeDebut
+    ? (premiere ? PREMIERE_VISITE_MS : 0)
+    : Math.max(APPARITION_MS + ENTREE_MS, premiere ? APPARITION_MS + PREMIERE_VISITE_MS : 0);
   setTimeout(() => {
     racine.classList.add('gmb-sortie');
     setTimeout(() => racine.classList.add('gmb-pret'), FONDU_MS);

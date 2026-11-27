@@ -6,7 +6,7 @@
    ========================================================================== */
 import { ouvrirEspace, demarrerPage, $, e, date, parametre, page, badge, tableau, executer, message } from './app.js';
 import { lire, appeler, ErreurGmb, oublierContexte } from '../donnees.js';
-import { icone } from '../core.js';
+import { CONFIG, icone } from '../core.js';
 
 const SUJET_CHAT = 'Discussion instantanée';
 const HORAIRES = 'du lundi au vendredi, de 9 h à 18 h (heure de Paris)';
@@ -15,7 +15,7 @@ const STATUTS_RECLAMATION = { recue: ['Reçue', 'neutre'], en_cours: ['En cours 
 const STATUTS_RDV = { demande: ['Demandé', 'neutre'], confirme: ['Confirmé', 'succes'], annule: ['Annulé', 'neutre'], termine: ['Terminé', 'neutre'] };
 const CATEGORIES = [['compte', 'Mon compte'], ['paiement', 'Un paiement ou un virement'], ['carte', 'Ma carte'], ['credit', 'Mon crédit'], ['autre', 'Un autre sujet']];
 const AUTEURS = { client: 'Vous', conseiller: 'Service clients', assistant: 'Assistant', systeme: 'GerMoonBank' };
-const heure = (d) => new Date(d).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+const heure = (d) => new Date(d).toLocaleTimeString(CONFIG.locale, { hour: '2-digit', minute: '2-digit' });
 const bulles = (liste) => (liste.length ? `<ol class="app-fil app-fil--messages">${liste.map((m) => `<li class="app-fil__message app-fil__message--${e(m.auteur)}"><p>${e(m.contenu)}</p><small>${e(AUTEURS[m.auteur] || m.auteur)} · ${date(m.created_at, 'long')} à ${heure(m.created_at)}</small></li>`).join('')}</ol>` : '<p class="app-vide">Aucun message pour le moment.</p>');
 
 /** Une date-heure saisie « à l'heure de Paris » (AAAA-MM-JJTHH:MM) convertie en instant ISO. */

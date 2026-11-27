@@ -6,7 +6,7 @@
    ========================================================================== */
 import { ouvrirEspace, demarrerPage, $, e, date, parametre, page, montant, badge, tableau, demander, executer, message, authentifier, refusSca, ligneOperation, operationsParJour, ficheOperation, numeroLisible } from './app.js';
 import { lire, appeler, ErreurGmb } from '../donnees.js';
-import { formaterMontant, icone, CREDIT } from '../core.js';
+import { CONFIG, formaterMontant, icone, CREDIT } from '../core.js';
 
 const FREQUENCES = [['mensuelle', 'Tous les mois'], ['hebdomadaire', 'Toutes les semaines'], ['trimestrielle', 'Tous les trimestres']];
 const pct = (v) => (v === null || v === undefined ? '—' : `${String(v).replace('.', ',')} %`);
@@ -181,7 +181,7 @@ async function interets() {
   const parMois = {};
   for (const i of liste) { const m = i.jour.slice(0, 7); parMois[m] = (parMois[m] || 0) + Number(i.montant); }
   $('[data-taux]').innerHTML = `Taux actuel : <strong>${pct(k.livret.taux)}</strong> par an. Les intérêts sont calculés chaque jour sur votre solde et versés sur le Livret le jour même.`;
-  $('[data-liste]').innerHTML = tableau('Intérêts par mois', ['Mois', 'Intérêts versés'], Object.entries(parMois).map(([m, v]) => [e(new Date(`${m}-15T12:00:00`).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })), montant(v, { toujours: true })]), 'Aucun intérêt versé sur les douze derniers mois.');
+  $('[data-liste]').innerHTML = tableau('Intérêts par mois', ['Mois', 'Intérêts versés'], Object.entries(parMois).map(([m, v]) => [e(new Date(`${m}-15T12:00:00`).toLocaleDateString(CONFIG.locale, { month: 'long', year: 'numeric' })), montant(v, { toujours: true })]), 'Aucun intérêt versé sur les douze derniers mois.');
 }
 
 

@@ -19,11 +19,12 @@
    - visuel des cartes GerMoonBank ; mention légale unique en bas de page.
    ========================================================================== */
 
-import { chemin, formaterMontant, formaterDate, echapperHtml, icone, logoSVG } from '../core.js';
+import { CONFIG, chemin, formaterMontant, formaterDate, echapperHtml, icone, logoSVG } from '../core.js';
 import { client, session, espaceDe, contexte, lire, appeler, messageErreur, ErreurGmb, oublierContexte } from '../donnees.js';
 import { occupe, afficherMessage, erreurChamp } from '../forms.js';
 import { Clavier } from '../auth.js';
 import { pagePrete, pagePreteAuPlusTard } from '../chargement.js';
+import { traduirePage } from '../langue.js';
 
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -174,10 +175,10 @@ const STATUTS_OPERATION = { comptabilisee: 'Effectuée', en_attente: 'En attente
 const SENS_D_ABORD = new Set(['virement_recu', 'virement_emis', 'versement_initial', 'remboursement', 'credit']);
 export const aspectOperation = (o) => (SENS_D_ABORD.has(o.type) && (!o.categorie_code || o.categorie_code === 'transferts') ? ASPECT_TYPE[o.type] : null)
   || ASPECT_CATEGORIE[o.categorie_code] || ASPECT_TYPE[o.type] || [Number(o.montant) > 0 ? 'entree' : 'sortie', Number(o.montant) > 0 ? 'teal' : 'violet'];
-const JOURS = new Intl.DateTimeFormat('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-const JOUR_COURT = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short' });
-const HEURE = new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit' });
-const DATE_HEURE = new Intl.DateTimeFormat('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+const JOURS = new Intl.DateTimeFormat(CONFIG.locale, { weekday: 'long', day: 'numeric', month: 'long' });
+const JOUR_COURT = new Intl.DateTimeFormat(CONFIG.locale, { day: 'numeric', month: 'short' });
+const HEURE = new Intl.DateTimeFormat(CONFIG.locale, { hour: '2-digit', minute: '2-digit' });
+const DATE_HEURE = new Intl.DateTimeFormat(CONFIG.locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const jourIso = (d) => { const x = new Date(d); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
 const majuscule = (t) => t.charAt(0).toUpperCase() + t.slice(1);
 /** « Aujourd'hui », « Hier » ou « Mardi 6 octobre ». */
@@ -524,6 +525,7 @@ export function demarrerPage(controleurs) {
   document.addEventListener('submit', (x) => x.preventDefault());
   pagePreteAuPlusTard(2500);
   const lancer = async () => {
+    await traduirePage().catch(() => {});
     const c = controleurs[document.body.dataset.app];
     if (!c) { pagePrete(); return; }
     try { await c(); } catch (x) { if (!/Session absente/.test(x?.message)) message(messageErreur(x)); }

@@ -5,10 +5,11 @@
    donne jamais accès à un compte bancaire.
    ========================================================================== */
 import { $, $$, e, date, parametre, message, executer, tableau, badge, demander } from './app.js';
-import { chemin, formaterMontant, icone, logoSVG } from '../core.js';
+import { CONFIG, chemin, formaterMontant, icone, logoSVG } from '../core.js';
 import { client, session, espaceDe, lire, appeler, inserer, deposerFichier, messageErreur, ErreurGmb, oublierContexte } from '../donnees.js';
 import { controlerFichier, justificatifTropAncien, empreinteFichier, erreurChamp, copier } from '../forms.js';
 import { pagePrete, pagePreteAuPlusTard } from '../chargement.js';
+import { traduirePage } from '../langue.js';
 
 const ETATS = { brouillon: 'À terminer', depose: 'Déposée', en_verification: 'En vérification', incomplet: 'À compléter', analyse_conformite: 'En vérification complémentaire', valide: 'Validée', compte_ouvert: 'Compte ouvert',
   refuse: 'Refusée', abandonne: 'Abandonnée', archive: 'Archivée', demande_deposee: 'Déposée', analyse: 'En analyse', offre_emise: 'Offre à accepter', delai_legal: 'Offre acceptée', acceptee: 'Acceptée', fonds_debloques: 'Fonds versés', renonciation: 'Rétractation' };
@@ -136,7 +137,7 @@ async function echanges() {
   const rendre = async () => {
     const [messages, rdv] = await Promise.all([lire('dossier_messages', { egal: { dossier_id: d.id }, ordre: 'created_at', croissant: true }), lire('dossier_rendez_vous', { egal: { dossier_id: d.id }, ordre: 'debut', croissant: false })]);
     $('[data-messages]').innerHTML = messages.length ? `<ol class="app-fil app-fil--messages">${messages.map((m) => `<li class="app-fil__message app-fil__message--${e(m.auteur)}"><p>${e(m.contenu)}</p><small>${e(m.auteur === 'client' ? 'Vous' : m.auteur === 'conseiller' ? 'Votre conseiller' : 'GerMoonBank')} · ${date(m.created_at, 'long')}</small></li>`).join('')}</ol>` : '<p class="app-vide">Aucun message pour le moment.</p>';
-    $('[data-liste-rdv]').innerHTML = tableau('Vos rendez-vous', ['Date', 'Canal', 'Statut'], rdv.map((r) => [date(r.debut, 'long') + ' à ' + new Date(r.debut).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }), e(r.canal === 'video' ? 'Vidéo' : 'Téléphone'),
+    $('[data-liste-rdv]').innerHTML = tableau('Vos rendez-vous', ['Date', 'Canal', 'Statut'], rdv.map((r) => [date(r.debut, 'long') + ' à ' + new Date(r.debut).toLocaleTimeString(CONFIG.locale, { hour: '2-digit', minute: '2-digit' }), e(r.canal === 'video' ? 'Vidéo' : 'Téléphone'),
       badge({ demande: 'Demandé', confirme: 'Confirmé', annule: 'Annulé', termine: 'Terminé' }[r.statut] || r.statut, r.statut === 'confirme' ? 'succes' : 'neutre')]), 'Aucun rendez-vous.');
   };
   const form = $('[data-form="message"]');
@@ -239,6 +240,7 @@ document.addEventListener('submit', (x) => x.preventDefault());
 const CONTROLEURS = { 'dossier-suivi': suivi, 'dossier-documents': documents, 'dossier-echanges': echanges, 'dossier-signatures': signatures, 'dossier-identifiant': identifiant };
 pagePreteAuPlusTard(2500);
 (async () => {
+  await traduirePage().catch(() => {});
   const c = CONTROLEURS[document.body.dataset.app];
   if (!c) { pagePrete(); return; }
   try { await c(); } catch (x) { if (!/Session absente/.test(x?.message)) message(messageErreur(x)); }

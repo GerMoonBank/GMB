@@ -8,6 +8,7 @@
    ========================================================================== */
 
 import {
+  CONFIG,
   BESOINS_PRO, CREDIT, FORMULES, INTERNATIONAL, LIVRET, REGLEMENTES,
   annoncer, antiRebond, chemin, coutCredit, coutsPro, echapperHtml,
   formaterDate, formaterMontant, formaterNombre, formaterTaux, formule, formulePro,
@@ -22,7 +23,7 @@ const normaliser = (texte) => String(texte).toLowerCase().normalize('NFD').repla
 
 function formaterDevise(valeur, code) {
   const decimales = ['JPY', 'XOF'].includes(code) ? 0 : 2;
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: code, minimumFractionDigits: decimales, maximumFractionDigits: decimales }).format(valeur);
+  return new Intl.NumberFormat(CONFIG.locale, { style: 'currency', currency: code, minimumFractionDigits: decimales, maximumFractionDigits: decimales }).format(valeur);
 }
 
 function brancherComparateurChange(formulaire) {

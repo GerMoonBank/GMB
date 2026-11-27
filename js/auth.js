@@ -349,7 +349,7 @@ async function pageConnexion() {
           await clavier.charger(identifiant);
           throw new ErreurGmb(r.essais_restants ? `Code incorrect. Il vous reste ${r.essais_restants} essai${r.essais_restants > 1 ? 's' : ''} avant le blocage.` : 'Code incorrect.');
         case 'bloque':
-          throw new ErreurGmb(`Votre accès est bloqué par sécurité jusqu’à ${new Date(r.bloque_jusqu).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}. Vous pouvez aussi réinitialiser votre code secret.`);
+          throw new ErreurGmb(`Votre accès est bloqué par sécurité jusqu’à ${new Date(r.bloque_jusqu).toLocaleTimeString(CONFIG.locale, { hour: '2-digit', minute: '2-digit' })}. Vous pouvez aussi réinitialiser votre code secret.`);
         case 'bloque_definitif':
           location.href = chemin('auth/code-secret.html?raison=bloque');
           return;

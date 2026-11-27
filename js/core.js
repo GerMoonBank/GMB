@@ -25,9 +25,14 @@ export const VERSION = '2.1.0';
  *  Fonctionne sur GitHub Pages (…/GMB/), en local et dans tous les sous-dossiers. */
 export const RACINE = new URL('../', import.meta.url);
 
+/** Langue choisie par le visiteur (bouton « English » du pied de page, js/langue.js) : 'fr' ou 'en'. */
+export const LANGUE = (() => {
+  try { return globalThis.localStorage?.getItem('gmb-langue') === 'en' ? 'en' : 'fr'; } catch { return 'fr'; }
+})();
+
 export const CONFIG = Object.freeze({
   nom: 'GerMoonBank',
-  locale: 'fr-FR',
+  locale: LANGUE === 'en' ? 'en-GB' : 'fr-FR',
   devise: 'EUR',
   fuseau: 'Europe/Paris',
   supabase: Object.freeze({
@@ -734,8 +739,8 @@ export function prixAnnuel(code) {
    -------------------------------------------------------------------------- */
 const tous = (valeur) => FORMULES.map(() => valeur);
 const parFormule = (fonction) => FORMULES.map(fonction);
-const euros = (n) => `${new Intl.NumberFormat('fr-FR').format(n)}\u00A0€`;
-const taux = (n) => `${new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n)}\u00A0%`;
+const euros = (n) => `${new Intl.NumberFormat(CONFIG.locale).format(n)}\u00A0€`;
+const taux = (n) => `${new Intl.NumberFormat(CONFIG.locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n)}${CONFIG.locale.startsWith('fr') ? '\u00A0%' : '%'}`;
 const assurance = (code) => parFormule((f) => f.assurances.includes(code));
 
 export const COMPARATIF = Object.freeze([
