@@ -461,6 +461,53 @@ const RESEAUX = [
   ['Instagram', ''],
 ];
 
+/**
+ * Agréments, garantie des dépôts, assurances et sécurité (bloc du pied de page).
+ * À remplir uniquement avec des références vérifiées dans les registres
+ * officiels : REGAFI pour l'agrément, ORIAS pour l'intermédiation, Registre du
+ * commerce pour la société. Tant que « regafi » est vide, le bloc ne s'affiche pas.
+ */
+const AGREMENTS = {
+  etablissement: '', // raison sociale, telle qu'inscrite sur REGAFI
+  statut: '', // catégorie d'agrément, telle qu'inscrite sur REGAFI
+  regafi: '',
+  orias: '',
+  bic: '',
+  rcs: '', // ex. « RCS Paris 123 456 789 »
+  capital: '', // ex. « 10 000 000 € »
+  siege: '', // adresse du siège social
+  garantieDepots: '', // texte de la garantie des dépôts (FGDR)
+  assurances: [], // [{ nom, detail, assureur, contrat }]
+  securite: [], // [{ nom, detail }]
+};
+
+function blocAgrements(a = AGREMENTS) {
+  if (!a.regafi) return '';
+  const h = (t) => echapperHtml(String(t ?? ''));
+  const reference = (libelle, valeur) => (valeur ? `<li>${libelle} : <span class="gmb-pied__numero">${h(valeur)}</span></li>` : '');
+  const societe = [a.rcs, a.capital && `capital de ${a.capital}`, a.siege && `siège : ${a.siege}`].filter(Boolean).map(h).join(' · ');
+  const assurances = [
+    ...a.assurances.map((x) => `<li><strong>${h(x.nom)}</strong> : ${h(x.detail)}${x.assureur ? ` Assureur : ${h(x.assureur)}${x.contrat ? `, contrat n° ${h(x.contrat)}` : ''}.` : ''}</li>`),
+    ...a.securite.map((x) => `<li><strong>${h(x.nom)}</strong> : ${h(x.detail)}</li>`),
+  ];
+  return `<div class="gmb-pied__agrements">
+      <section>
+        <h2 class="gmb-pied__titre">Agréments et régulation</h2>
+        <p><strong>${h(a.etablissement)}</strong>${a.statut ? `, ${h(a.statut)}` : ''}.</p>
+        <ul class="gmb-pied__references">${reference('Identifiant REGAFI', a.regafi)}${reference('Immatriculation ORIAS', a.orias)}${reference('Code BIC', a.bic)}</ul>
+        ${societe ? `<p>${societe}</p>` : ''}
+      </section>
+      ${a.garantieDepots ? `<section>
+        <h2 class="gmb-pied__titre">Garantie des dépôts</h2>
+        <p>${h(a.garantieDepots)} <a href="${chemin('public/legal/fgdr.html')}">En savoir plus</a></p>
+      </section>` : ''}
+      ${assurances.length ? `<section>
+        <h2 class="gmb-pied__titre">Assurances et sécurité</h2>
+        <ul class="gmb-pied__references">${assurances.join('')}</ul>
+      </section>` : ''}
+    </div>`;
+}
+
 class GmFooter extends HTMLElement {
   connectedCallback() {
     if (this.dataset.monte) return;
@@ -494,6 +541,8 @@ class GmFooter extends HTMLElement {
         </ul>
       </section>`).join('')}
     </nav>
+
+    ${blocAgrements()}
 
     <div class="gmb-pied__mentions">
       <p class="gmb-pied__statut">GerMoonBank est une marque de The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin.</p>

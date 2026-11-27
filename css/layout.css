@@ -1005,6 +1005,38 @@
     color: var(--gmb-text-muted);
   }
 
+  /* Agréments, garantie des dépôts, assurances : affiché seulement quand les
+     références sont renseignées (AGREMENTS dans js/components.js). */
+  .gmb-pied__agrements {
+    display: grid;
+    gap: var(--gmb-space-6);
+    padding-block: var(--gmb-space-6);
+    border-block-start: var(--gmb-border-width) solid var(--gmb-divider);
+    font-size: var(--gmb-fs-xs);
+    line-height: var(--gmb-lh-relaxed);
+    color: var(--gmb-text-muted);
+  }
+
+  .gmb-pied__agrements :is(p, ul) + :is(p, ul) {
+    margin-block-start: var(--gmb-space-2);
+  }
+
+  .gmb-pied__agrements :is(strong, a) {
+    color: var(--gmb-text);
+  }
+
+  .gmb-pied__references {
+    display: grid;
+    gap: var(--gmb-space-1);
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-pied__numero {
+    font-family: var(--gmb-font-mono);
+    color: var(--gmb-text);
+  }
+
   .gmb-pied__bas {
     display: flex;
     flex-wrap: wrap;
@@ -1061,6 +1093,10 @@
   .gmb-pied__reseaux :is(svg, img) {
     width: var(--gmb-icon-md);
     height: var(--gmb-icon-md);
+  }
+
+  @media (min-width: 768px) {
+    .gmb-pied__agrements { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
 
   @media (min-width: 1024px) {
