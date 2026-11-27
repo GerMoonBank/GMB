@@ -451,11 +451,11 @@ function racineDe(rubrique) {
   return { rubrique: r, estRacine: ici.endsWith(`/app/${r.adresse}`) };
 }
 
-/** Mention légale de l'Espace client : une seule, exacte, en bas de chaque page. */
+/** Pied de chaque page de l'Espace client : éditeur et liens vers les conditions et mentions légales. */
 function mentionLegale() {
   const zone = $('.app-principal');
   if (!zone || $('.app-mentions', zone)) return;
-  zone.insertAdjacentHTML('beforeend', `<footer class="app-mentions"><p><strong>Statut.</strong> GerMoonBank est édité par The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin. GerMoonBank n’est pas un établissement agréé par l’ACPR : les sommes versées ne bénéficient pas de la garantie des dépôts (FGDR).</p>
+  zone.insertAdjacentHTML('beforeend', `<footer class="app-mentions"><p>GerMoonBank est édité par The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin.</p>
     <p><a href="${chemin('public/legal/cgu.html')}">Conditions générales</a><a href="${chemin('public/legal/rgpd.html')}">Confidentialité</a><a href="${chemin('public/legal/mentions-legales.html')}">Mentions légales</a></p></footer>`);
 }
 

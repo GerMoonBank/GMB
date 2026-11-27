@@ -5,8 +5,7 @@ Jeunes, avec un back-office qui fait avancer chaque dossier.
 
 - Site : https://germoonbank.github.io/GMB/
 - Éditeur : The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin.
-- Statut : GerMoonBank n’est ni un établissement de crédit, ni un établissement de
-  paiement, ni un établissement de monnaie électronique agréé par l’ACPR.
+- Mentions légales : https://germoonbank.github.io/GMB/public/legal/mentions-legales.html
 
 > **Installation et mise à niveau : ouvrez le [module d’installation](https://germoonbank.github.io/GMB/supabase/installation/installation-base-gmb.html)**, ou suivez [`docs/INSTALLATION.md`](docs/INSTALLATION.md). L’arborescence complète est dans [`docs/ARBORESCENCE.md`](docs/ARBORESCENCE.md).
 

@@ -18,11 +18,12 @@ Règles d’écriture de tous les textes : pages, messages d’erreur, e-mails, 
   « fictif », « bientôt disponible » pour un service présenté comme existant.
 - Un produit que GerMoonBank ne propose pas fait l’objet d’un **guide exact**, qui le dit
   clairement : « GerMoonBank ne propose pas le Livret A. »
-- Un service qui exige un prestataire agréé et n’est pas encore branché l’indique
-  honnêtement dans l’Espace client.
-- Le statut réel de GerMoonBank figure en pied de page : il n’est ni établissement de
-  crédit, ni établissement de paiement, ni établissement de monnaie électronique agréé par
-  l’ACPR, et les sommes versées ne bénéficient pas de la garantie des dépôts (FGDR).
+- Un service qui n’est pas encore ouvert n’est jamais présenté comme disponible dans
+  l’Espace client.
+- Le statut réglementaire de GerMoonBank figure uniquement dans les pages juridiques
+  (Mentions légales, CGU, AMF, FGDR) : jamais en pied de page, en bandeau ni en encadré sur
+  les autres pages. Il se met à jour avec les références officielles (REGAFI, ORIAS) dès
+  qu’elles sont fournies.
 - Aucun chiffre réglementé qui change souvent (taux du Livret A, prélèvements sociaux…) ne
   s’écrit en dur : on renvoie à la source officielle ou on le lit en direct.
 
@@ -47,7 +48,8 @@ Les montants et taux affichés viennent toujours du catalogue (`data/products.js
   remboursement avant de vous engager. » Le TAEG est affiché plus grand que tout autre taux.
 - **Investissement** : risque de perte en capital ; pour les crypto-actifs, risque de perte
   totale.
-- **Épargne** : la mention exacte de la garantie des dépôts (voir plus haut).
+- **Épargne** : la garantie des dépôts est décrite dans la page juridique FGDR
+  (`public/legal/fgdr.html`).
 
 ## Messages d’erreur
 

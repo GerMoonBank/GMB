@@ -92,7 +92,7 @@ async function historique() {
    ========================================================================== */
 const NOMS_FORMULES = { luna: 'Luna', halo: 'Halo', orbit: 'Orbit', eclipse: 'Éclipse', zenith: 'Zénith', pro_solo: 'Pro Solo', pro_plus: 'Pro Plus', business_start: 'Business Start', business_growth: 'Business Growth', business_scale: 'Business Scale' };
 const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
-const PIED_DOCUMENT = 'GerMoonBank, édité par The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin. Établissement non agréé par l’ACPR : sommes non couvertes par la garantie des dépôts (FGDR).';
+const PIED_DOCUMENT = 'GerMoonBank, édité par The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin.';
 const eur = (n) => formaterMontant(Number(n || 0));
 function documentImprimable(titre, corps) {
   return `<article class="app-document" data-document aria-label="${e(titre)}"><header class="app-document__entete"><p><strong>GerMoonBank</strong></p><h2>${e(titre)}</h2><p>Édité le ${e(new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }))}</p></header>

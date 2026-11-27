@@ -496,9 +496,8 @@ class GmFooter extends HTMLElement {
     </nav>
 
     <div class="gmb-pied__mentions">
-      <p class="gmb-pied__statut"><strong>Statut.</strong> GerMoonBank est édité par The Hub of Inspiration of Soccer (HubISoccer). GerMoonBank n’est ni un établissement de crédit, ni un établissement de paiement, ni un établissement de monnaie électronique agréé par l’ACPR.</p>
-      <p>GerMoonBank est une marque de The Hub of Inspiration of Soccer (RCCM RB/ABC/24 A 111814). Les services bancaires et de paiement seront fournis par un établissement partenaire agréé, dont l’identité et les agréments figureront ici avant tout lancement commercial.</p>
-      <p>Les sommes déposées ne bénéficient pas de la garantie des dépôts (FGDR). Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
+      <p class="gmb-pied__statut">GerMoonBank est une marque de The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin.</p>
+      <p>Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
     </div>
 
     <div class="gmb-pied__bas">
@@ -993,7 +992,6 @@ function brochure() {
   parties.push(section('Formules Pro et Business', `${tableau('Prix hors taxes', ['Formule', 'Par mois HT', 'Utilisateurs', 'Opérations incluses'],
     FORMULES_PRO.map((f) => [f.nom, prix(f.prixHT), e(f.utilisateursLibelle), e(new Intl.NumberFormat('fr-FR').format(f.operationsIncluses))]))}
     <p>Opération SEPA au-delà des opérations incluses : ${prix(OPERATION_SUPPLEMENTAIRE_HT)} HT.</p>`, 'b-pro'));
-  parties.push(section('Garantie des dépôts', `<p>${e(MENTIONS.garantieDepots)}</p>`, 'b-garantie'));
   return parties.join('');
 }
 
@@ -1134,7 +1132,6 @@ class GmPiedSouscription extends HTMLElement {
     if (this.dataset.pret) return;
     this.dataset.pret = '1';
     this.innerHTML = `<footer class="gmb-pied-tunnel"><div class="gmb-conteneur gmb-pile gmb-pile--serree">
-      <p><strong>Statut.</strong> GerMoonBank n’est pas un établissement agréé par l’ACPR : les sommes versées ne bénéficient pas de la garantie des dépôts (FGDR).</p>
       <p>GerMoonBank est édité par The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin. Vos données sont hébergées dans l’Union européenne.</p>
       <p><a href="${chemin('public/legal/cgu.html')}">Conditions générales</a> · <a href="${chemin('public/legal/rgpd.html')}">Confidentialité</a> · <a href="${chemin('public/legal/mentions-legales.html')}">Mentions légales</a></p>
     </div></footer>`;
