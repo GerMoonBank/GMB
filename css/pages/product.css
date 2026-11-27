@@ -666,4 +666,68 @@
     font-size: var(--gmb-fs-sm);
     color: var(--gmb-text-muted);
   }
+
+
+  /* ===========================================================================
+     KIT PRESSE (public/societe/presse.html) : aperçus des logos et nuancier
+     ======================================================================== */
+  .gmb-kit__apercu {
+    display: grid;
+    place-items: center;
+    min-height: 7.5rem;
+    margin-block-end: var(--gmb-space-4);
+    padding: var(--gmb-space-5);
+    border: var(--gmb-border-width) solid var(--gmb-border);
+    border-radius: var(--gmb-radius-lg);
+    background-color: #FFFFFF;
+  }
+
+  .gmb-kit__apercu img {
+    width: auto;
+    max-width: 100%;
+    height: 2.25rem;
+  }
+
+  .gmb-kit__apercu--carre img { height: 4.5rem; }
+
+  .gmb-kit__apercu--image { padding: 0; overflow: hidden; }
+
+  .gmb-kit__apercu--image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .gmb-kit__apercu--sombre {
+    border-color: transparent;
+    background-color: var(--gmb-encre-950);
+  }
+
+  .gmb-nuancier {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: var(--gmb-space-5);
+    list-style: none;
+    padding: 0;
+  }
+
+  .gmb-nuancier li {
+    display: flex;
+    align-items: center;
+    gap: var(--gmb-space-3);
+  }
+
+  .gmb-nuancier__pastille {
+    flex: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--gmb-radius-md);
+    background-color: var(--couleur);
+    box-shadow: inset 0 0 0 1px rgba(17, 14, 51, .12);
+  }
+
+  .gmb-nuancier__code {
+    font-family: var(--gmb-font-mono);
+    font-size: var(--gmb-fs-sm);
+    color: var(--gmb-text-muted);
+  }
 }

@@ -171,7 +171,8 @@ async function pageIndex() {
     if (liste.some((f) => f.code === actuelle)) form.elements.formule.value = actuelle;
     $$('[data-aide-segment]').forEach((el) => { el.hidden = el.dataset.aideSegment !== segment; });
   };
-  const segmentDemande = parametre('segment');
+  // Les liens du site écrivent « particuliers » ; le formulaire attend « particulier ».
+  const segmentDemande = parametre('segment') === 'particuliers' ? 'particulier' : parametre('segment');
   if (['particulier', 'pro', 'business', 'jeunes'].includes(segmentDemande)) remplir(form, { segment: segmentDemande });
   remplirFormules();
   if (parametre('formule')) form.elements.formule.value = parametre('formule');

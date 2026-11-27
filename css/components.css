@@ -1765,7 +1765,7 @@
   }
 
   /* Composants communs à tous les espaces */
-  .gmb-bouton--fantome { background-color: transparent; border-color: transparent; color: var(--gmb-violet-700); box-shadow: none; }
+  .gmb-bouton--fantome { background-color: transparent; border-color: transparent; color: var(--gmb-link); box-shadow: none; }
   .gmb-bouton--fantome:hover { background-color: var(--gmb-surface-2); }
   .gmb-bouton--fantome.gmb-bouton--danger { color: var(--gmb-danger-text); }
   .gmb-dialogue__formulaire { display: grid; gap: var(--gmb-space-4); }
