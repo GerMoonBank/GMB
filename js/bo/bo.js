@@ -681,8 +681,10 @@ async function pageCredit() {
   const zoneImpayes = $('[data-impayes]');
   const rendreClients = async () => {
     const aujourdhui = new Date().toISOString().slice(0, 10);
-    const demandes = await lire('demandes', { egal: { type: 'pret_personnel' }, dans: { etat: ['demande_deposee', 'analyse', 'incomplet', 'offre_emise', 'delai_legal'] }, ordre: 'created_at', croissant: true });
-    const credits = await lire('credits', { egal: { statut: 'impaye' }, ordre: 'created_at', croissant: true });
+    const [demandes, credits] = await Promise.all([
+      lire('demandes', { egal: { type: 'pret_personnel' }, dans: { etat: ['demande_deposee', 'analyse', 'incomplet', 'offre_emise', 'delai_legal'] }, ordre: 'created_at', croissant: true }),
+      lire('credits', { egal: { statut: 'impaye' }, ordre: 'created_at', croissant: true }),
+    ]);
     const ids = [...new Set([...demandes, ...credits].map((x) => x.client_id))];
     const clients = ids.length ? await lire('clients', { colonnes: 'id, identifiant', dans: { id: ids } }) : [];
     const ident = Object.fromEntries(clients.map((c) => [c.id, c.identifiant]));
@@ -765,9 +767,11 @@ async function pageTresorerie() {
       `<a href="${page('dossier', `?id=${v.dossier_id}`)}">${e(ref[v.dossier_id] || '—')}</a>`, formaterMontant(v.montant), e(v.nom_titulaire || '—'), date(v.declare_le, 'long'),
       ecrit ? `<button type="button" class="gmb-bouton gmb-bouton--secondaire gmb-bouton--petit" data-recu="${v.dossier_id}">Reçu</button>` : '—']), 'Aucun versement attendu.');
     const virements = await lire('virements', { colonnes: 'id, compte_id, montant, devise, motif, beneficiaire_id, created_at', egal: { statut: 'a_executer' }, ordre: 'created_at', croissant: true });
-    const comptes = virements.length ? await lire('comptes', { colonnes: 'id, numero', dans: { id: virements.map((v) => v.compte_id) } }) : [];
+    const [comptes, benefs] = virements.length ? await Promise.all([
+      lire('comptes', { colonnes: 'id, numero', dans: { id: virements.map((v) => v.compte_id) } }),
+      lire('beneficiaires', { colonnes: 'id, nom, iban', dans: { id: virements.map((v) => v.beneficiaire_id).filter(Boolean) } }),
+    ]) : [[], []];
     const numero = Object.fromEntries(comptes.map((k) => [k.id, k.numero]));
-    const benefs = virements.length ? await lire('beneficiaires', { colonnes: 'id, nom, iban', dans: { id: virements.map((v) => v.beneficiaire_id).filter(Boolean) } }) : [];
     const benef = Object.fromEntries(benefs.map((x) => [x.id, x]));
     zoneX.innerHTML = tableau('Virements vers d’autres banques à exécuter', ['Montant', 'Compte débité', 'Bénéficiaire', 'Motif', 'Créé le', 'Actions'], virements.map((v) => [
       formaterMontant(v.montant), e(numero[v.compte_id] || '—'), e(benef[v.beneficiaire_id] ? `${benef[v.beneficiaire_id].nom} · ${benef[v.beneficiaire_id].iban}` : '—'), e(v.motif || '—'), date(v.created_at, 'long'),

@@ -79,6 +79,7 @@ function progression(solde, objectif) {
 
 async function coffres() {
   const ctx = await ouvrirEspace('epargne');
+  if (parametre('clos') !== null) message(`Coffre clos : ${formaterMontant(Number(parametre('clos')) || 0)} rendus sur votre compte courant.`, 'succes');
   const rendre = async () => {
     const k = await comptesEpargne(ctx);
     const solde = Object.fromEntries(k.coffresComptes.map((c) => [c.id, Number(c.solde)]));
@@ -103,8 +104,10 @@ async function coffre() {
   const rendre = async () => {
     const c = await lire('coffres', { egal: { id }, unique: true });
     if (!c || c.statut === 'clos') { $('[data-coffre]').innerHTML = `<p class="app-vide">Ce coffre n’existe plus.</p><p><a href="${page('epargne/coffres.html')}">Vos coffres</a></p>`; return; }
-    const compte = await lire('comptes', { colonnes: 'id, solde', egal: { id: c.compte_id }, unique: true });
-    const ops = await lire('operations', { dans: { compte_id: [c.compte_id] }, ordre: 'created_at', croissant: false, limite: 20 });
+    const [compte, ops] = await Promise.all([
+      lire('comptes', { colonnes: 'id, solde', egal: { id: c.compte_id }, unique: true }),
+      lire('operations', { dans: { compte_id: [c.compte_id] }, ordre: 'created_at', croissant: false, limite: 20 }),
+    ]);
     $('h1').textContent = c.nom;
     $('[data-coffre]').innerHTML = `<p class="app-solde">${montant(compte?.solde)}</p>${progression(compte?.solde, c.objectif)}
       ${c.date_objectif ? `<p>Date visée : ${date(c.date_objectif, 'long')}</p>` : ''}
@@ -122,8 +125,8 @@ async function coffre() {
       const r = await demander(`Clore le coffre « ${c.nom} » ?`, [], { valider: 'Clore le coffre', danger: true, intro: 'Son solde revient sur votre compte courant.' });
       if (!r) return;
       const res = await appeler('gmb_coffre_cloturer', { p_coffre: id });
-      location.href = page('epargne/coffres.html');
-      message(`Coffre clos : ${formaterMontant(res?.rendu || 0)} rendus sur votre compte courant.`, 'succes');
+      // La confirmation s'affiche sur la liste des coffres : affichée ici, elle partirait avec la page
+      location.href = page('epargne/coffres.html', `?clos=${encodeURIComponent(Number(res?.rendu) || 0)}`);
     }));
   };
   document.addEventListener('gmb:discret', () => rendre());
@@ -222,9 +225,11 @@ async function credit() {
 
 async function echeancier() {
   const ctx = await ouvrirEspace('credit');
-  const c = await lire('credits', { egal: { id: parametre('id') }, unique: true });
+  const [c, liste] = await Promise.all([
+    lire('credits', { egal: { id: parametre('id') }, unique: true }),
+    lire('credit_echeances', { egal: { credit_id: parametre('id') }, ordre: 'numero', croissant: true }),
+  ]);
   if (!c) { $('[data-echeancier]').innerHTML = '<p class="app-vide">Prêt introuvable.</p>'; return; }
-  const liste = await lire('credit_echeances', { egal: { credit_id: c.id }, ordre: 'numero', croissant: true });
   $('[data-echeancier]').innerHTML = `<p>${e(formaterMontant(c.montant))} sur ${e(c.duree_mois)} mois, taux débiteur fixe ${pct(c.taux_debiteur)}.</p>
     ${tableau('Échéancier', ['N°', 'Date', 'Échéance', 'Capital', 'Intérêts', 'Capital restant', 'Statut'], liste.map((x) => [e(x.numero), date(x.date_echeance), montant(x.montant, { toujours: true }), montant(x.capital, { toujours: true }),
       montant(x.interets, { toujours: true }), montant(x.capital_restant, { toujours: true }), badge(...(STATUTS_ECHEANCE[x.statut] || [x.statut, 'neutre']))]), 'Aucune échéance.')}`;

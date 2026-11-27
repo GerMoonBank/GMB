@@ -499,10 +499,10 @@ export async function ouvrirEspace(rubrique) {
   const s = await session();
   if (!s || espaceDe(s) !== 'client') { location.replace(chemin('auth/connexion.html?raison=session')); throw new ErreurGmb('Session absente'); }
   const ctx = await contexte();
-  const [personne, moi] = await Promise.all([
-    ctx.client?.personne_id ? lire('personnes', { colonnes: 'prenoms, nom_naissance, nom_usage', egal: { id: ctx.client.personne_id }, unique: true }) : null,
-    lire('clients', { colonnes: 'id, formule_code, segment, theme', egal: { id: ctx.client.id }, unique: true }).catch(() => null),
-  ]);
+  // Nom, formule et apparence viennent du contexte, déjà chargé : aucune lecture de plus avant l'affichage
+  const personne = ctx.identite
+    || (ctx.client?.personne_id ? await lire('personnes', { colonnes: 'prenoms, nom_naissance, nom_usage', egal: { id: ctx.client.personne_id }, unique: true }).catch(() => null) : null);
+  const moi = ctx.client;
   const nomFamille = (personne?.nom_usage || '').trim() || personne?.nom_naissance || '';
   ctx.prenom = personne?.prenoms?.split(' ')[0] || '';
   ctx.nom = `${personne?.prenoms || ''} ${nomFamille.toUpperCase()}`.trim();

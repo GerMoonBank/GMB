@@ -18,7 +18,7 @@
    ========================================================================== */
 
 // Version 5 : remplace les copies de polices enregistrées alors que leurs fichiers étaient vides
-const VERSION = 'gmb-v12-2026-11-27';
+const VERSION = 'gmb-v13-2026-11-27';
 const DURABLES = /\.(?:woff2|png|jpg|jpeg|webp|svg|ico)$/i;
 const PRIVES = /\/(?:app|auth|bo|mon-dossier|clients|public\/inscription|supabase)\//;
 

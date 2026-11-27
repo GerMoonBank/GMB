@@ -91,9 +91,11 @@ async function conversation() {
   if (parametre('envoye')) message('Message envoyé : nous vous répondons ' + HORAIRES + '.', 'succes');
   let dernier = 0;
   const rendre = async () => {
-    const fil = await lire('fils_messagerie', { egal: { id }, unique: true });
+    const [fil, liste] = await Promise.all([
+      lire('fils_messagerie', { egal: { id }, unique: true }),
+      lire('messages', { egal: { fil_id: id }, ordre: 'created_at', croissant: true }),
+    ]);
     if (!fil) { zone.innerHTML = `<p class="app-vide">Conversation introuvable.</p><p><a href="${page('messages/index.html')}">Vos messages</a></p>`; form.hidden = true; return; }
-    const liste = await lire('messages', { egal: { fil_id: id }, ordre: 'created_at', croissant: true });
     $('[data-sujet]').innerHTML = `${e(fil.sujet)} ${badge(...(STATUTS_FIL[fil.statut] || [fil.statut, 'neutre']))}`;
     if (liste.length !== dernier) { zone.innerHTML = bulles(liste); dernier = liste.length; zone.lastElementChild?.lastElementChild?.scrollIntoView?.({ block: 'nearest' }); }
     $('[data-clore]').hidden = fil.statut === 'clos';

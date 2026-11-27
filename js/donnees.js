@@ -258,17 +258,32 @@ export async function contexte() {
     if (error) throw error;
     if (!moi) throw new ErreurGmb('Aucun client n’est rattaché à cet accès. Contactez votre conseiller.');
     ctx.client = moi;
-    ctx.entreprises = await valeurs(c.from('entreprise_membres').select('entreprise_id').eq('client_id', moi.id).eq('statut', 'actif'), 'entreprise_id');
-    const enfants = await valeurs(c.from('comptes_jeunes').select('jeune_client_id').eq('parent_client_id', moi.id), 'jeune_client_id');
+    // Les lectures indépendantes partent ensemble : trois allers-retours avant l'affichage
+    // de chaque page, au lieu de dix l'un après l'autre (plusieurs secondes sur mobile).
+    const [entreprises, enfants, fils, factures, identite] = await Promise.all([
+      valeurs(c.from('entreprise_membres').select('entreprise_id').eq('client_id', moi.id).eq('statut', 'actif'), 'entreprise_id'),
+      valeurs(c.from('comptes_jeunes').select('jeune_client_id').eq('parent_client_id', moi.id), 'jeune_client_id'),
+      valeurs(c.from('fils_messagerie').select('id').eq('client_id', moi.id), 'id'),
+      valeurs(c.from('factures').select('id').eq('client_id', moi.id), 'id'),
+      // Nom et prénoms pour l'en-tête ; une erreur ici n'empêche pas d'ouvrir l'Espace client
+      moi.personne_id ? avecDelai(c.from('personnes').select('prenoms, nom_naissance, nom_usage').eq('id', moi.personne_id).maybeSingle()).then(({ data }) => data || null, () => null) : null,
+    ]);
+    ctx.entreprises = entreprises;
+    ctx.fils = fils;
+    ctx.factures = factures;
+    ctx.identite = identite;
     ctx.clients = [moi.id, ...enfants];
-    const propres = await valeurs(c.from('comptes').select('id').in('client_id', ctx.clients), 'id');
-    const pro = ctx.entreprises.length ? await valeurs(c.from('comptes').select('id').in('entreprise_id', ctx.entreprises), 'id') : [];
+    const [propres, pro, personnes, credits, demandes] = await Promise.all([
+      valeurs(c.from('comptes').select('id').in('client_id', ctx.clients), 'id'),
+      entreprises.length ? valeurs(c.from('comptes').select('id').in('entreprise_id', entreprises), 'id') : [],
+      enfants.length ? valeurs(c.from('clients').select('personne_id').in('id', ctx.clients), 'personne_id') : [moi.personne_id].filter(Boolean),
+      valeurs(c.from('credits').select('id').in('client_id', ctx.clients), 'id'),
+      valeurs(c.from('demandes').select('id').in('client_id', ctx.clients), 'id'),
+    ]);
     ctx.comptes = [...new Set([...propres, ...pro])];
-    ctx.personnes = await valeurs(c.from('clients').select('personne_id').in('id', ctx.clients), 'personne_id');
-    ctx.fils = await valeurs(c.from('fils_messagerie').select('id').eq('client_id', moi.id), 'id');
-    ctx.credits = await valeurs(c.from('credits').select('id').in('client_id', ctx.clients), 'id');
-    ctx.demandes = await valeurs(c.from('demandes').select('id').in('client_id', ctx.clients), 'id');
-    ctx.factures = await valeurs(c.from('factures').select('id').eq('client_id', moi.id), 'id');
+    ctx.personnes = personnes;
+    ctx.credits = credits;
+    ctx.demandes = demandes;
   } else if (ctx.espace === 'backoffice') {
     const { data, error } = await avecDelai(c.from('collaborateurs').select('id, nom, actif').eq('id', ctx.uid).maybeSingle());
     if (error) throw error;
