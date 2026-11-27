@@ -30,21 +30,30 @@ mot de passe de Mon Dossier ne donne jamais accès à l’Espace client.
   60 minutes au plus par session.
 - « Se déconnecter de tous les appareils » est disponible dans les deux espaces.
 
-## 4. Accès aux données pendant le développement
+## 4. Accès aux données
 
-Règle du projet : **aucune RLS** sur les tables tant que le projet n’est pas terminé. Les
-règles d’accès sont enregistrées dans la base mais inactives.
+Depuis le 27 novembre 2026, les règles d’accès (**RLS**) sont **actives sur les 84 tables**
+publiques (`supabase/gmb_mode_production.sql`). La clé publique du site ne donne plus accès
+qu’à ce que chaque espace a le droit de voir :
 
-- `js/donnees.js` est le seul point d’accès aux tables depuis le site. Il filtre chaque
+- **visiteur** : le catalogue, les contenus du site, l’état des services et le compte de
+  réception des premiers versements ;
+- **demandeur** (Mon Dossier) : ses demandes, ses pièces, ses messages et rendez-vous ;
+- **client** : son client, ses comptes et ceux de ses enfants ou de ses entreprises ;
+- **back-office** : selon les rôles et habilitations du collaborateur.
+
+En plus de ces règles :
+
+- `js/donnees.js` reste le seul point d’accès aux tables depuis le site. Il filtre chaque
   lecture et chaque écriture sur la personne connectée, refuse toute table non déclarée et
   impose lui-même les colonnes de propriété.
 - L’argent, les cartes, les décisions et les signatures passent par les fonctions
   contrôlées de la base (`gmb_*`), qui vérifient elles-mêmes les droits.
+- Les seules écritures directes du site sont limitées à leurs colonnes : budget, messages
+  et rendez-vous, favori d’un bénéficiaire, liste et statut d’un mandat de prélèvement.
 
-**Limite à connaître :** sans RLS, toute personne qui dispose de la clé publique du site
-(elle figure, par nature, dans `js/core.js`) peut lire et modifier les tables directement,
-sans passer par le site. Pendant le développement, n’y mettez donc que vos propres essais,
-jamais les données de vrais clients, et n’ouvrez pas le service au public.
+`supabase/gmb_mode_developpement.sql` remet la base sans RLS : à n’utiliser que sur une base
+d’essai, jamais avec de vrais clients.
 
 Une exception est déjà protégée : les coordonnées du compte qui reçoit les virements
 (`parametres_banque`) sont en lecture seule pour le site. Elles ne changent que par le
@@ -76,8 +85,8 @@ publique.
 
 ## 8. Avant d’ouvrir le service au public
 
-1. Réactiver les règles d’accès : exécuter `supabase/gmb_mode_production.sql`, puis
-   vérifier chaque parcours.
+1. Règles d’accès : **fait le 27/11/2026** (`supabase/gmb_mode_production.sql`). Vérifier
+   chaque parcours après toute modification de la base.
 2. Limiter la fonction serveur au site : secret `GMB_ORIGINES`.
 3. Brancher un serveur d’envoi d’e-mails professionnel et régler les modèles avec code.
 4. Régler les adresses du site et les limites de tentatives dans Supabase Auth.

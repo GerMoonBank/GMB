@@ -38,8 +38,8 @@ export const CONFIG = Object.freeze({
   /** Durées de conservation, en jours */
   durees: Object.freeze({ banniereApp: 30, bandeau: 30, consentement: 180 }),
   /** Les codes de sécurité sont envoyés par e-mail par Supabase (modèles avec
-   *  {{ .Token }}). Pendant le développement, la base n'a pas de RLS : chaque accès
-   *  aux données passe par js/donnees.js, qui filtre sur la personne connectée. */
+   *  {{ .Token }}). Les règles d'accès (RLS) de la base sont actives, et chaque accès
+   *  aux données passe aussi par js/donnees.js, qui filtre sur la personne connectée. */
 });
 
 const NBSP = '\u00A0';

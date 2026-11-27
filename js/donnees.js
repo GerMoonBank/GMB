@@ -2,9 +2,9 @@
    GerMoonBank (GMB) · js/donnees.js
    Accès unique aux données — version 4 (2026-10-07)
    -----------------------------------------------------------------------------
-   Règle du projet pendant le développement : aucune RLS dans la base. Ce module
-   est donc le SEUL point d'accès aux tables, et il filtre chaque lecture et
-   chaque écriture sur la personne connectée :
+   Les règles d'accès (RLS) de la base sont actives ; ce module reste en plus le
+   SEUL point d'accès aux tables, et il filtre chaque lecture et chaque écriture
+   sur la personne connectée :
      espace « dossier »     demandes déposées par la personne (demandeur_auth)
      espace « client »      son client, ses comptes, ceux des entreprises dont
                             elle est membre active et ceux de ses enfants (Jeunes)

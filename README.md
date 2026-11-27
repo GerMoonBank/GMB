@@ -59,8 +59,8 @@ Le détail, pas à pas, est dans [`docs/INSTALLATION.md`](docs/INSTALLATION.md) 
 ## Règles du projet
 
 - Aucune démonstration ni donnée fictive : uniquement des processus réels.
-- Pendant le développement, aucune RLS : chaque accès aux données passe par
-  `js/donnees.js`. Voir `docs/SECURITE.md` avant toute ouverture au public.
+- Règles d’accès (RLS) actives sur toutes les tables ; chaque accès aux données passe
+  aussi par `js/donnees.js`. Voir `docs/SECURITE.md`.
 - Les prix, taux et frais viennent uniquement de `data/products.json` et `data/rates.json`.
 - Écriture : `docs/CHARTE-EDITORIALE.md`. Visuel : `docs/DESIGN-SYSTEM.md`.
 
