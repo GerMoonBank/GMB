@@ -765,7 +765,8 @@
   .app-carte-visuel--marque { --app-carte-fond: radial-gradient(85% 120% at 100% 0%, rgb(0 212 184 / 0.38), transparent 56%), linear-gradient(135deg, #8C85FF 0%, #635BFF 38%, #3E35D3 74%, #2A2399 100%); }
   .app-carte-visuel--nuit { --app-carte-fond: radial-gradient(110% 120% at 100% 0%, rgb(99 91 255 / 0.55), transparent 58%), radial-gradient(70% 90% at 0% 100%, rgb(0 212 184 / 0.2), transparent 62%), linear-gradient(150deg, #241D6B 0%, #0E0B2E 72%); }
   .app-carte-visuel--metal { --app-carte-fond: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 3px), linear-gradient(118deg, #1C1F27 0%, #4E5462 28%, #A3A9B6 45%, #555B68 60%, #181B22 100%); }
-  .app-carte-visuel__face { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-rows: auto 1fr auto auto; padding: 6.4cqw 7cqw 6cqw; }
+  /* Colonne bornée à la carte : un nom de titulaire long se raccourcit au lieu de pousser la formule et « Débit » hors de la carte */
+  .app-carte-visuel__face { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto auto; padding: 6.4cqw 7cqw 6cqw; }
   .app-carte-visuel__lune { position: absolute; z-index: -1; inset-block-start: -22cqw; inset-inline-end: -16cqw; inline-size: 66cqw; aspect-ratio: 1; border-radius: 50%; box-shadow: inset 7.5cqw -4.5cqw 0 0 rgb(255 255 255 / 0.09); }
   .app-carte-visuel--marque .app-carte-visuel__lune { box-shadow: inset 7.5cqw -4.5cqw 0 0 rgb(0 212 184 / 0.32); }
   .app-carte-visuel--nuit .app-carte-visuel__lune { box-shadow: inset 7.5cqw -4.5cqw 0 0 rgb(0 212 184 / 0.42); }

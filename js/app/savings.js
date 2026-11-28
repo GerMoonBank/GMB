@@ -39,7 +39,7 @@ async function vueEnsemble() {
     const actifs = coffres.filter((c) => c.statut !== 'clos');
     $('[data-livret]').innerHTML = k.livret ? `<p class="app-solde">${montant(k.livret.solde)}</p><p>Taux ${pct(k.livret.taux)} · plafond ${e(k.livret.plafond ? formaterMontant(k.livret.plafond) : '—')} · intérêts versés chaque jour</p>
         <div class="gmb-rangee"><button type="button" class="gmb-bouton gmb-bouton--principal" data-verser>Verser</button><button type="button" class="gmb-bouton gmb-bouton--secondaire" data-retirer>Retirer</button><a class="gmb-bouton gmb-bouton--fantome" href="${page('epargne/livret-detail.html')}">Détail</a></div>`
-      : '<p class="app-vide">Vous ne détenez pas de Livret. Le Livret GerMoon+ est inclus dans les formules Orbit, Éclipse et Zénith.</p>';
+      : '<p class="app-vide">Vous ne détenez pas de Livret. Le Livret GMB est inclus dans toutes les formules Particuliers.</p>';
     $('[data-coffres]').innerHTML = `<p>${actifs.length} coffre${actifs.length > 1 ? 's' : ''} · ${montant(actifs.reduce((t, c) => t + (soldeCoffre[c.compte_id] || 0), 0))}</p><p><a href="${page('epargne/coffres.html')}">Gérer vos coffres</a> · <a href="${page('epargne/objectifs.html')}">Vos objectifs</a></p>`;
     $('[data-programmes]').innerHTML = programmes.length ? `<ul>${programmes.map((p) => `<li>${montant(p.montant, { toujours: true })} · ${e(FREQUENCES.find(([f]) => f === p.frequence)?.[1].toLowerCase())} · prochain le ${date(p.prochaine_date, 'long')}</li>`).join('')}</ul>` : '<p class="app-vide">Aucune épargne programmée.</p>';
     $('[data-verser]')?.addEventListener('click', (x) => executer(x.currentTarget, async () => { if (await mouvementLivret('verser', k)) await rendre(); }));
@@ -197,6 +197,9 @@ const STATUTS_ECHEANCE = { a_venir: ['À venir', 'neutre'], payee: ['Payée', 's
 const ETATS_DEMANDE = { demande_deposee: 'Demande déposée', analyse: 'En analyse', incomplet: 'Incomplète', offre_emise: 'Offre à accepter', delai_legal: 'Offre acceptée : délai légal',
   acceptee: 'Acceptée', fonds_debloques: 'Fonds versés', refusee: 'Refusée', renonciation: 'Rétractation', validee: 'Validée', realisee: 'Réalisée', annulee: 'Annulée' };
 const MENTION_CREDIT = 'Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.';
+// Une fois la date de versement passée, « délai légal » ne décrit plus la situation : les fonds sont attendus
+const versementAttendu = (d) => d.etat === 'delai_legal' && Boolean(d.deblocage_possible_le) && new Date(d.deblocage_possible_le) <= new Date();
+const etatDemande = (d) => (versementAttendu(d) ? 'Offre acceptée : versement en attente' : ETATS_DEMANDE[d.etat] || d.etat);
 
 async function credits() {
   const ctx = await ouvrirEspace('credit');
@@ -204,7 +207,7 @@ async function credits() {
   $('[data-prets]').innerHTML = tableau('Vos prêts', ['Prêt', 'Capital restant', 'Mensualité', 'Statut'], prets.map((c) => [`<a href="${page('credit/detail.html', `?id=${c.id}`)}">${e(formaterMontant(c.montant))} sur ${e(c.duree_mois)} mois</a>`,
     montant(c.capital_restant), montant(c.mensualite, { toujours: true }), badge(...(STATUTS_CREDIT[c.statut] || [c.statut, 'neutre']))]), 'Vous n’avez aucun prêt.');
   const enCours = demandes.filter((d) => !['fonds_debloques', 'refusee', 'renonciation', 'annulee', 'realisee'].includes(d.etat));
-  $('[data-demandes]').innerHTML = enCours.length ? `<ul>${enCours.map((d) => `<li>${e(d.reference)} · ${e(formaterMontant(d.montant))} sur ${e(d.duree_mois)} mois · ${badge(ETATS_DEMANDE[d.etat] || d.etat, d.etat === 'offre_emise' ? 'succes' : 'neutre')}</li>`).join('')}</ul><p><a href="${page('credit/suivi.html')}">Suivre vos demandes</a></p>` : '<p class="app-vide">Aucune demande en cours.</p>';
+  $('[data-demandes]').innerHTML = enCours.length ? `<ul>${enCours.map((d) => `<li>${e(d.reference)} · ${e(formaterMontant(d.montant))} sur ${e(d.duree_mois)} mois · ${badge(etatDemande(d), d.etat === 'offre_emise' ? 'succes' : 'neutre')}</li>`).join('')}</ul><p><a href="${page('credit/suivi.html')}">Suivre vos demandes</a></p>` : '<p class="app-vide">Aucune demande en cours.</p>';
 }
 
 async function credit() {
@@ -313,11 +316,13 @@ async function suiviCredit() {
     const demandes = await lire('demandes', { egal: { type: 'pret_personnel' }, ordre: 'created_at', croissant: false });
     const maintenant = new Date();
     $('[data-demandes]').innerHTML = demandes.length ? demandes.map((d) => `<article class="gmb-carte gmb-pile gmb-pile--serree"><h2 class="gmb-section__titre gmb-section__titre--moyen">${e(d.reference)} · ${e(formaterMontant(d.montant))} sur ${e(d.duree_mois)} mois</h2>
-        <p>${badge(ETATS_DEMANDE[d.etat] || d.etat, d.etat === 'offre_emise' ? 'succes' : d.etat === 'refusee' ? 'danger' : 'neutre')}</p>
+        <p>${badge(etatDemande(d), d.etat === 'offre_emise' ? 'succes' : d.etat === 'refusee' ? 'danger' : 'neutre')}</p>
         ${d.offre_emise_le ? `<dl class="app-recap"><div><dt>Taux débiteur fixe</dt><dd>${pct(d.taux_debiteur)}</dd></div><div><dt>TAEG fixe</dt><dd>${pct(d.taeg)}</dd></div><div><dt>Mensualité</dt><dd>${montant(d.mensualite, { toujours: true })}</dd></div>
           <div><dt>Coût total</dt><dd>${montant(d.cout_total, { toujours: true })}</dd></div><div><dt>Montant total dû</dt><dd>${montant(d.montant_total_du, { toujours: true })}</dd></div></dl>` : ''}
         ${d.etat === 'offre_emise' ? `<p class="gmb-mention-obligatoire">${e(MENTION_CREDIT)}</p><p><button type="button" class="gmb-bouton gmb-bouton--principal" data-accepter="${d.id}">Accepter l’offre</button></p>` : ''}
-        ${d.etat === 'delai_legal' ? `<p>Vous avez accepté l’offre le ${date(d.acceptee_le, 'long')}. Les fonds seront versés sur votre compte courant à partir du ${date(d.deblocage_possible_le, 'long')}.</p>
+        ${d.etat === 'delai_legal' ? `<p>Vous avez accepté l’offre le ${date(d.acceptee_le, 'long')}. ${versementAttendu(d)
+    ? `Le versement des fonds sur votre compte courant, possible depuis le ${date(d.deblocage_possible_le, 'long')}, est en attente.`
+    : `Les fonds seront versés sur votre compte courant à partir du ${date(d.deblocage_possible_le, 'long')}.`}</p>
           ${d.retractation_fin && new Date(d.retractation_fin) > maintenant ? `<p>Vous pouvez vous rétracter jusqu’au ${date(d.retractation_fin, 'long')}, sans motif ni frais.</p><p><button type="button" class="gmb-bouton gmb-bouton--secondaire" data-retracter="${d.id}">Me rétracter</button></p>` : ''}` : ''}
       </article>`).join('') : '<p class="app-vide">Aucune demande de prêt.</p>';
   };

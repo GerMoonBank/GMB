@@ -135,7 +135,7 @@ export function tableau(legende, entetes, lignes, vide = 'Aucun élément.') {
 /* -----------------------------------------------------------------------------
    Comptes, opérations, cartes : lignes et visuels communs
    -------------------------------------------------------------------------- */
-export const TYPES_COMPTE = { courant: 'Compte courant', livret: 'Livret GerMoon+', coffre: 'Coffre', devise: 'Compte en devise', crypto: 'Portefeuille crypto', titres: 'Compte-titres', jeune: 'Compte Jeunes', pro: 'Compte Pro', business: 'Compte Business' };
+export const TYPES_COMPTE = { courant: 'Compte courant', livret: 'Livret GMB', coffre: 'Coffre', devise: 'Compte en devise', crypto: 'Portefeuille crypto', titres: 'Compte-titres', jeune: 'Compte Jeunes', pro: 'Compte Pro', business: 'Compte Business' };
 export const STATUTS_VIREMENT = { a_valider: 'À valider', en_approbation: 'En approbation', valide: 'Programmé', a_executer: 'En cours de traitement', execute: 'Exécuté', rejete: 'Rejeté', annule: 'Annulé' };
 const ASPECT_COMPTE = { courant: ['banque', 'violet'], pro: ['mallette', 'nuit'], business: ['entreprise', 'nuit'], jeune: ['sourire', 'rose'], livret: ['epargne', 'teal'],
   coffre: ['coffre', 'rose'], devise: ['globe', 'ciel'], titres: ['graphique', 'ambre'], crypto: ['eclair', 'nuit'] };

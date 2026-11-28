@@ -1,5 +1,142 @@
 {
 "textes":{
+"Plus":"More",
+"Fermer":"Close",
+"Bonjour":"Hello",
+"Vous":"You",
+"Virer":"Transfer",
+"Recevoir":"Receive",
+"Relevés":"Statements",
+"Exporter":"Export",
+"Copier":"Copy",
+"Verser":"Deposit",
+"Retirer":"Withdraw",
+"Détail":"Details",
+"Ajouter":"Add",
+"Épargner":"Save",
+"Révoquer":"Revoke",
+"Choisissez":"Choose",
+"Choisir le compte":"Choose the account",
+"Actions sur le compte":"Account actions",
+"Hier":"Yesterday",
+"Demain":"Tomorrow",
+"Nouveau":"New",
+"Toutes":"All",
+"Numéro":"Number",
+"Plafond":"Limit",
+"Titulaire":"Account holder",
+"Bénéficiaire":"Beneficiary",
+"IBAN":"IBAN",
+"Banque":"Bank",
+"Mensualité":"Monthly payment",
+"Référence":"Reference",
+"Montant":"Amount",
+"TAEG":"APR",
+"Date":"Date",
+"Résultat":"Result",
+"Appareil":"Device",
+"Statut":"Status",
+"Nom":"Name",
+"Identifiant":"Client ID",
+"Débit":"Debit",
+"Virtuelle":"Virtual",
+"Convention de compte":"Account agreement",
+"Compte ouvert le":"Account opened on",
+"conditions générales d'utilisation":"general terms of use",
+"conditions générales de vente":"general terms of sale",
+"document d'information tarifaire":"fee information document",
+"GerMoonBank, édité par The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Bénin.":"GerMoonBank, published by The Hub of Inspiration of Soccer (HubISoccer), RCCM RB/ABC/24 A 111814, Benin.",
+"Réussie":"Successful",
+"Travaux":"Home improvements",
+"Études":"Studies",
+"Courses":"Groceries",
+"Restaurants":"Restaurants",
+"Transports":"Transport",
+"Logement":"Housing",
+"Loisirs":"Leisure",
+"Santé":"Health",
+"Shopping":"Shopping",
+"Voyages":"Travel",
+"Abonnements":"Subscriptions",
+"Revenus":"Income",
+"Impôts":"Taxes",
+"Autres":"Other",
+"France":"France",
+"Belgique":"Belgium",
+"Luxembourg":"Luxembourg",
+"Suisse":"Switzerland",
+"Monaco":"Monaco",
+"Allemagne":"Germany",
+"Espagne":"Spain",
+"Italie":"Italy",
+"Portugal":"Portugal",
+"Pays-Bas":"Netherlands",
+"Royaume-Uni":"United Kingdom",
+"Bénin":"Benin",
+"Cameroun":"Cameroon",
+"Gabon":"Gabon",
+"Mali":"Mali",
+"Niger":"Niger",
+"Sénégal":"Senegal",
+"Togo":"Togo",
+"Maroc":"Morocco",
+"Tunisie":"Tunisia",
+"Algérie":"Algeria",
+"Canada":"Canada",
+"États-Unis":"United States",
+"Demande acceptée":"Application accepted",
+"Demande annulée":"Application cancelled",
+"Demande clôturée":"Application closed",
+"Demande de prêt déposée":"Loan application submitted",
+"Demande en cours de saisie":"Application in progress",
+"Demande réalisée":"Application completed",
+"Dossier archivé":"Application archived",
+"Dossier déposé":"Application submitted",
+"Étude de votre demande":"Reviewing your application",
+"Nous ne pouvons pas donner une suite favorable à votre demande":"We are unable to approve your application",
+"Offre signée : délai de rétractation de 14 jours":"Offer signed: 14-day withdrawal period",
+"Prêt accepté":"Loan accepted",
+"Une pièce est à remplacer":"A document needs to be replaced",
+"Vérification des pièces":"Checking your documents",
+"Vérifications complémentaires en cours":"Additional checks in progress",
+"Votre dossier est accepté":"Your application is accepted",
+"Votre identifiant bancaire est disponible":"Your client ID is available",
+"Votre offre de prêt est disponible":"Your loan offer is available",
+"Accès bloqué par sécurité":"Access blocked for security",
+"Argent de poche reçu":"Pocket money received",
+"Carte activée":"Card activated",
+"Code secret modifié":"Secret code changed",
+"Commande de carte enregistrée":"Card order registered",
+"Commande de carte refusée":"Card order declined",
+"Compte fermé":"Account closed",
+"Coordonnées modifiées":"Contact details updated",
+"Cotisation non prélevée":"Fee not collected",
+"Demande de carte virtuelle enregistrée":"Virtual card request registered",
+"Demande de fermeture":"Closure request",
+"Demande de fermeture reçue":"Closure request received",
+"Échéance de prêt impayée":"Unpaid loan instalment",
+"Épargne programmée non effectuée":"Scheduled saving not made",
+"Nouveau bénéficiaire ajouté":"New beneficiary added",
+"Nouvel appareil de confiance":"New trusted device",
+"Opposition enregistrée":"Card block registered",
+"Paiement de votre enfant":"Payment by your child",
+"Réglages mis à jour":"Settings updated",
+"Remboursement anticipé effectué":"Early repayment made",
+"Virement envoyé":"Transfer sent",
+"Virement non exécuté":"Transfer not executed",
+"Votre carte est en route":"Your card is on its way",
+"Votre carte virtuelle est prête":"Your virtual card is ready",
+"Votre compte est ouvert":"Your account is open",
+"Votre IBAN est disponible":"Your IBAN is available",
+"Plusieurs codes erronés ont été saisis. Si ce n'était pas vous, contactez-nous.":"Several incorrect codes were entered. If this wasn't you, contact us.",
+"Tes réglages de carte ont été modifiés par ton parent.":"Your card settings were changed by your parent.",
+"Un nouvel appareil a été ajouté à votre Espace client. Si ce n'était pas vous, révoquez-le et contactez-nous.":"A new device has been added to your Client Area. If this wasn't you, revoke it and contact us.",
+"Votre code secret a été modifié. Si vous n'êtes pas à l'origine de ce changement, contactez immédiatement le service clients.":"Your secret code has been changed. If you did not make this change, contact customer service immediately.",
+"Votre compte GerMoonBank est fermé. Merci de nous avoir fait confiance.":"Your GerMoonBank account is closed. Thank you for your trust.",
+"Votre demande de fermeture est enregistrée. Le solde sera restitué sur l'IBAN indiqué et votre compte fermé sous 30 jours au plus, sans frais.":"Your closure request is registered. The balance will be returned to the IBAN provided and your account closed within 30 days at most, free of charge.",
+"Votre identifiant bancaire est disponible dans l'Espace Mon Dossier. Activez ensuite votre accès : un code vous sera envoyé par e-mail.":"Your client ID is available in the My Application area. Then activate your access: a code will be sent to you by email.",
+"Votre relevé d'identité bancaire (RIB) est disponible dans la rubrique Comptes : communiquez-le pour recevoir vos virements et prélèvements.":"Your bank details (RIB) are available in the Accounts section: share them to receive transfers and direct debits.",
+"Votre téléphone et votre adresse ont été mis à jour. Si vous n'êtes pas à l'origine de ce changement, contactez immédiatement le service clients.":"Your phone number and address have been updated. If you did not make this change, contact customer service immediately.",
 "% de":"% of",
 "(aucune : moins de 10 000 € remboursés par anticipation sur 12 mois)":"(none: less than €10,000 repaid early over 12 months)",
 ", au taux de":", at the rate of",
@@ -365,9 +502,9 @@
 "Les virements dans une autre devise que l'euro, ou hors de la zone SEPA, ne sont pas proposés.":"Transfers in a currency other than the euro, or outside the SEPA area, are not offered.",
 "Les virements programmés vers ce bénéficiaire ne seront plus possibles.":"Scheduled transfers to this payee will no longer be possible.",
 "Libellé, bénéficiaire, référence…":"Description, payee, reference…",
-"Livret GerMoon+":"GerMoon+ Savings",
-"Livret GerMoon+ et coffres":"GerMoon+ Savings and vaults",
-"Livret GerMoon+ — Espace client GerMoonBank":"GerMoon+ Savings — GerMoonBank Client Area",
+"Livret GMB":"GMB Savings",
+"Livret GMB et coffres":"GMB Savings and vaults",
+"Livret GMB — Espace client GerMoonBank":"GMB Savings — GerMoonBank Client Area",
 "Ma carte":"My card",
 "Maintenant":"Now",
 "Mandat révoqué.":"Mandate revoked.",
@@ -412,6 +549,7 @@
 "Objet de la réclamation":"Subject of the complaint",
 "Objet du rendez-vous":"Purpose of the appointment",
 "Offre acceptée : délai légal":"Offer accepted: legal period",
+"Offre acceptée : versement en attente":"Offer accepted: payout pending",
 "Offre acceptée.":"Offer accepted.",
 "Offre à accepter":"Offer to accept",
 "Offres de prêt acceptées":"Accepted loan offers",
@@ -664,8 +802,8 @@
 "Vous n'avez aucune carte.":"You do not have any cards.",
 "Vous n'avez pas de conseiller attitré : une équipe de conseillers vous répond, du lundi au vendredi, de 9 h à 18 h (heure de Paris).":"You do not have a dedicated adviser: a team of advisers answers you, Monday to Friday, from 9 am to 6 pm (Paris time).",
 "Vous ne détenez pas de Livret.":"You do not hold a savings account.",
-"Vous ne détenez pas de Livret. Le Livret GerMoon+ est inclus dans les formules Orbit, Éclipse et Zénith.":"You do not hold a savings account. GerMoon+ Savings is included in the Orbit, Éclipse and Zénith plans.",
-"Vous ne détenez pas encore de compte d'épargne. Le Livret GerMoon+ est inclus dans les formules Orbit, Éclipse et Zénith.":"You do not hold a savings account yet. GerMoon+ Savings is included in the Orbit, Éclipse and Zénith plans.",
+"Vous ne détenez pas de Livret. Le Livret GMB est inclus dans toutes les formules Particuliers.":"You do not hold a savings account. GMB Savings is included in every Personal plan.",
+"Vous ne détenez pas encore de compte d'épargne. Le Livret GMB est inclus dans toutes les formules Particuliers.":"You do not hold a savings account yet. GMB Savings is included in every Personal plan.",
 "Vous pouvez rembourser tout ou partie de votre prêt à tout moment. L'indemnité est de 1 % du montant remboursé si plus d'un an reste à courir, de 0,5 % sinon, sans dépasser les intérêts restant dus ; aucune indemnité n'est due tant que vos remboursements anticipés ne dépassent pas 10 000 € sur 12 mois.":"You can repay all or part of your loan at any time. The penalty is 1% of the amount repaid if more than one year remains, 0.5% otherwise, without exceeding the interest still due; no penalty is due as long as your early repayments do not exceed €10,000 over 12 months.",
 "Vous pouvez virer des euros vers tout compte de la zone SEPA (les 27 pays de l'Union européenne, plus l'Islande, le Liechtenstein, la Norvège, la Suisse, Monaco, Saint-Marin, Andorre, le Vatican et le Royaume-Uni), depuis la page":"You can transfer euros to any account in the SEPA area (the 27 European Union countries, plus Iceland, Liechtenstein, Norway, Switzerland, Monaco, San Marino, Andorra, the Vatican and the United Kingdom), from the page",
 "Vous pouvez vous rétracter jusqu'au":"You can withdraw until",
@@ -732,7 +870,7 @@
 "Écrire un message":"Write a message",
 "Écrivez votre message.":"Write your message.",
 "Écrivez votre question : un conseiller vous répond":"Write your question: an adviser will reply",
-"Épargne disponible à tout moment, intérêts chaque mois":"Savings available at any time, interest every month",
+"Épargne disponible à tout moment, intérêts versés chaque jour":"Savings available at any time, interest paid every day",
 "Épargne programmée arrêtée.":"Scheduled savings stopped.",
 "Épargne programmée enregistrée.":"Scheduled savings saved.",
 "Épargne programmée — Espace client GerMoonBank":"Scheduled savings — GerMoonBank Client Area",
@@ -743,6 +881,138 @@
 "écrivez au service clients":"write to customer service"
 },
 "motifs":[
+[
+"(.*?) à (\\d+:\\d+)",
+"$1 at $2"
+],
+[
+"(.*?) · (\\d+ [A-Za-z]+ \\d{4})",
+"$1 · $2"
+],
+[
+"(\\d+ [A-Za-z]+ \\d{4}) à (\\D.*)",
+"$1 in $2"
+],
+[
+"Aujourd'hui, (.*?)",
+"Today, $1"
+],
+[
+"Hier, (.*?)",
+"Yesterday, $1"
+],
+[
+"Demain, (.*?)",
+"Tomorrow, $1"
+],
+[
+"Édité le (.*?)",
+"Issued on $1"
+],
+[
+"n° (.*?)",
+"No. $1"
+],
+[
+"(.*?) · n° (.*?)",
+"$1 · No. $2"
+],
+[
+"Intérêts du (.*?)",
+"Interest for $1"
+],
+[
+"Carte virtuelle ([A-ZÀ-Ý][A-Za-zÀ-ÿ]+(?: [A-Z][a-z]+)?)",
+"$1 virtual card"
+],
+[
+"Carte physique ([A-ZÀ-Ý][A-Za-zÀ-ÿ]+(?: [A-Z][a-z]+)?)",
+"$1 physical card"
+],
+[
+"Carte éphémère ([A-ZÀ-Ý][A-Za-zÀ-ÿ]+(?: [A-Z][a-z]+)?)",
+"$1 single-use card"
+],
+[
+"(.*?) sur (iOS|iPadOS|Android|Windows|macOS|Linux|ChromeOS)",
+"$1 on $2"
+],
+[
+"Monsieur (.*?)",
+"Mr $1"
+],
+[
+"Madame (.*?)",
+"Mrs $1"
+],
+[
+"Votre demande (.*?) a évolué\\.",
+"Your request $1 has been updated."
+],
+[
+"Votre demande de carte virtuelle (.*?) est enregistrée\\. Vous serez prévenu dès qu'elle sera disponible\\.",
+"Your $1 virtual card request is registered. We will let you know as soon as it is available."
+],
+[
+"Votre commande de carte (.*?) est enregistrée\\. Vous serez prévenu de son envoi\\.",
+"Your $1 card order is registered. We will let you know when it is sent."
+],
+[
+"Votre carte (.*?) •••• (.*?) vous a été envoyée\\. Activez-la dès réception, depuis la rubrique Cartes\\.",
+"Your $1 card •••• $2 has been sent to you. Activate it as soon as you receive it, from the Cards section."
+],
+[
+"Votre carte •••• (.*?) est active\\.",
+"Your card •••• $1 is active."
+],
+[
+"Votre carte •••• (.*?) est définitivement bloquée\\.",
+"Your card •••• $1 is permanently blocked."
+],
+[
+"Votre carte virtuelle (.*?) •••• (.*?) est active\\.",
+"Your $1 virtual card •••• $2 is active."
+],
+[
+"Votre coffre « (.*?) » a atteint son objectif\\. Bravo !",
+"Your vault “$1” has reached its goal. Well done!"
+],
+[
+"(.*?) a été ajouté à vos bénéficiaires\\. Si ce n'était pas vous, contactez-nous immédiatement\\.",
+"$1 has been added to your beneficiaries. If this wasn't you, contact us immediately."
+],
+[
+"(\\d[\\d ,.]* €) reçus de (.*?)\\.",
+"$1 received from $2."
+],
+[
+"Tu as reçu (.*?) d'argent de poche\\.",
+"You received $1 in pocket money."
+],
+[
+"L'échéance (.*?)/(.*?) de votre prêt \\((.*?)\\) n'a pas pu être prélevée faute de solde suffisant\\. Elle sera représentée chaque jour : approvisionnez votre compte\\.",
+"Instalment $1/$2 of your loan ($3) could not be collected due to insufficient funds. It will be presented again every day: please top up your account."
+],
+[
+"Votre virement de (.*?) a été transmis à la banque du bénéficiaire\\.",
+"Your transfer of $1 has been sent to the beneficiary's bank."
+],
+[
+"Votre virement de (.*?) n'a pas pu être exécuté : (.*?)\\. La somme vous est restituée\\.",
+"Your transfer of $1 could not be executed: $2. The amount has been returned to you."
+],
+[
+"Vous avez remboursé (.*?) par anticipation : votre nouvelle mensualité est de (.*?)\\.",
+"You have repaid $1 early: your new monthly payment is $2."
+],
+[
+"Vous avez remboursé (.*?) par anticipation : votre prêt est soldé\\.",
+"You have repaid $1 early: your loan is paid off."
+],
+[
+"Vous avez accepté l'offre le (.*?)\\. Le versement des fonds sur votre compte courant, possible depuis le (.*?), est en attente\\.",
+"You accepted the offer on $1. Payment of the funds into your current account, possible since $2, is pending."
+],
 [
 "(?:(.*?) )?compte(.*?) actif(.*?)",
 "$1 active account$2"

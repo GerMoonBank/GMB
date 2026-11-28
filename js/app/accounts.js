@@ -40,7 +40,7 @@ async function epargneComptes() {
   const rendre = async () => {
     const liste = (await lireComptes(ctx)).filter((c) => ['livret', 'coffre'].includes(c.type));
     $('[data-epargne]').innerHTML = liste.length ? `<ul class="app-groupe">${liste.map((c) => ligneCompte(c)).join('')}</ul>`
-      : '<p class="app-vide">Vous ne détenez pas encore de compte d’épargne. Le Livret GerMoon+ est inclus dans les formules Orbit, Éclipse et Zénith.</p>';
+      : '<p class="app-vide">Vous ne détenez pas encore de compte d’épargne. Le Livret GMB est inclus dans toutes les formules Particuliers.</p>';
   };
   document.addEventListener('gmb:discret', () => rendre());
   await rendre();

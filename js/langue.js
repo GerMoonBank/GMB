@@ -95,7 +95,9 @@ function chercher(n, profondeur) {
 
 /** Valeur reprise dans un motif : traduite si elle est connue (y compris « a et b », « a, b »), sinon telle quelle. */
 function fragment(valeur, profondeur) {
-  if (!valeur || !LETTRE.test(valeur)) return valeur;
+  if (!valeur) return valeur;
+  // Montant ou taux repris dans une phrase venue de la base (« 1 234,56 € ») : écrit à l'anglaise
+  if (!LETTRE.test(valeur)) return nombre(normaliser(valeur)) ?? valeur;
   const n = normaliser(valeur);
   let en = chercher(n, profondeur);
   if (en === undefined) {
